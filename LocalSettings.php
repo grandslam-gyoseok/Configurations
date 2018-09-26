@@ -313,6 +313,7 @@ $wgGroupPermissions["staff"]["editalluserpages"]=true;
 wfLoadExtension("Cite");
 wfLoadExtension("CodeEditor"); //Requires WikiEditor
 wfLoadExtension("CodeMirror");
+wfLoadExtension("CollapsibleVector");
 wfLoadExtension("Highlightjs_Integration");
 wfLoadExtension("MultimediaViewer");
 wfLoadExtension("RevisionSlider");
