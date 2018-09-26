@@ -318,6 +318,7 @@ wfLoadExtension("Highlightjs_Integration");
 wfLoadExtension("MultimediaViewer");
 wfLoadExtension("RevisionSlider");
 wfLoadExtension("TextExtracts");
+wfLoadExtension("TwoColConflict");
 wfLoadExtension("WikiEditor");
 
 #Skins
