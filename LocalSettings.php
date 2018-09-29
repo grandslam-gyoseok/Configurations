@@ -250,10 +250,12 @@ $wgCookieWarningEnabled=true;
 
 /*Interwiki*/
 wfLoadExtension("Interwiki");
+//Owner (owner)
 $wgGroupPermissions["owner"]["interwiki"]=true;
 
 /*Maintenance*/
 wfLoadExtension("Maintenance");
+//Owner (owner)
 $wgGroupPermissions["owner"]["maintenance"]=true;
 
 /*Nuke*/
@@ -281,6 +283,7 @@ $wgGroupPermissions["owner"]["renameuser"]=true;
 
 /*ReplaceText*/
 wfLoadExtension("ReplaceText");
+//Owner (owner)
 $wgGroupPermissions["owner"]["replacetext"]=true;
 
 /*TitleBlacklist*/
@@ -307,6 +310,7 @@ $wgGroupPermissions["owner"]["usermerge"]=true;
 /*UserPageEditProtection*/
 require_once "$IP/extensions/UserPageEditProtection/UserPageEditProtection.php";
 $wgOnlyUserEditUserPage=true;
+//Staffs (staff)
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
@@ -385,14 +389,14 @@ unset($wgGroupPermissions["bureaucrat"]);
 unset($wgGroupPermissions["sysop"]);};
 //*/
 
-/*Inherit permissions*/
-$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
-$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
-$wgGroupPermissions["owner"]+=$wgGroupPermissions["admin"];
-
 /*Temporary groups
 $wgGroupPermissions["*"]["userrights"]=true;
 $wgGroupPermissions["bureaucrat"]["read"]=true;
 $wgGroupPermissions["interface-admin"]["read"]=true;
 $wgGroupPermissions["sysop"]["read"]=true;
 //*/
+
+/*Inherit permissions*/
+$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
+$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
+$wgGroupPermissions["owner"]+=$wgGroupPermissions["admin"];
