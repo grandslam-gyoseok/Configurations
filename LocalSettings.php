@@ -182,19 +182,22 @@ $wgRestrictionTypes=array("create","edit","move","delete","upload","protect");
 $wgRestrictionLevels=array("","1stprotect","2ndprotect","3rdprotect","fullyprotect");
 $wgCascadingRestrictionLevels=array("2ndprotect","3rdprotect","fullyprotect");
 //Namespace protection
-$wgNamespaceProtection[NS_HELP]=array("2ndprotect");
-$wgNamespaceProtection[NS_MEDIAWIKI_TALK]=array("fullyprotect");
-$wgNamespaceProtection[NS_PROJECT]=array("fullyprotect");
-$wgNamespaceProtection[NS_TEMPLATE]=array("3rdprotect");
-//Autoconfirmed users (autoconfirmed)
-$wgGroupPermissions["autoconfirmed"]["1stprotect"]=true;
-//Staffs (staff)
-$wgGroupPermissions["staff"]["2ndprotect"]=true;
-//Administrators (admin)
-$wgGroupPermissions["admin"]["3rdprotect"]=true;
-//Owner (owner)
-$wgGroupPermissions["owner"]["editinterface"]=true;
-$wgGroupPermissions["owner"]["fullyprotect"]=true;
+$wgNamespaceProtection=
+[NS_HELP=>"2ndprotect",
+NS_MEDIAWIKI_TALK=>"fullyprotect",
+NS_PROJECT=>"fullyprotect",
+NS_TEMPLATE=>"3rdprotect"];
+$wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
+["autoconfirmed"=> //Autoconfirmed users
+	["1stprotect"=>true],
+"staff"=> //Staffs
+	["2ndprotect"=>true],
+"admin"=> //Administrators
+	["3rdprotect"=>true],
+"owner"=> //Owner
+	["editinterface"=>true,
+	"fullyprotect"=>true]
+]);
 
 /*Autoconfirm*/
 $wgAutoConfirmAge=60*60*24*15; //15 days
@@ -204,20 +207,22 @@ $wgAutoConfirmCount=15;
 /*AbuseFilter*/
 wfLoadExtension("AbuseFilter");
 $wgAbuseFilterNotifications="rc";
-//*
-$wgGroupPermissions["*"]["abusefilter-log-detail"]=true;
-//Administrators (admin)
-$wgGroupPermissions["admin"]["abusefilter-modify"]=true;
-//Owner (owner)
-$wgGroupPermissions["owner"]["abusefilter-hide-log"]=true;
-$wgGroupPermissions["owner"]["abusefilter-hidden-log"]=true;
-$wgGroupPermissions["owner"]["abusefilter-log-private"]=true;
-$wgGroupPermissions["owner"]["abusefilter-modify-global"]=true;
-$wgGroupPermissions["owner"]["abusefilter-modify-restricted"]=true;
-$wgGroupPermissions["owner"]["abusefilter-private"]=true;
-$wgGroupPermissions["owner"]["abusefilter-private-log"]=true;
-$wgGroupPermissions["owner"]["abusefilter-revert"]=true;
-$wgGroupPermissions["owner"]["abusefilter-view-private"]=true;
+$wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
+["*"=>
+	["abusefilter-log-detail"=>true],
+"admin"=> //Administrators
+	["abusefilter-modify"=>true],
+"owner"=> //Owner
+	["abusefilter-hide-log"=>true,
+	"abusefilter-hidden-log"=>true,
+	"abusefilter-log-private"=>true,
+	"abusefilter-modify-global"=>true,
+	"abusefilter-modify-restricted"=>true,
+	"abusefilter-private"=>true,
+	"abusefilter-private-log"=>true,
+	"abusefilter-revert"=>true,
+	"abusefilter-view-private"=>true]
+]);
 
 /*AntiSpoof*/
 wfLoadExtension("AntiSpoof");
