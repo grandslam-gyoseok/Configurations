@@ -314,16 +314,7 @@ $wgOnlyUserEditUserPage=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
-wfLoadExtension("Cite");
-wfLoadExtension("CodeEditor"); //Requires WikiEditor
-wfLoadExtension("CodeMirror");
-wfLoadExtension("CollapsibleVector");
-wfLoadExtension("Highlightjs_Integration");
-wfLoadExtension("MultimediaViewer");
-wfLoadExtension("RevisionSlider");
-wfLoadExtension("TextExtracts");
-wfLoadExtension("TwoColConflict");
-wfLoadExtension("WikiEditor");
+wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Highlightjs_Integration","MultimediaViewer","RevisionSlider","TextExtracts","TwoColConflict","WikiEditor"));
 
 #Skins
 /*Default skin*/
@@ -339,8 +330,7 @@ wfLoadSkin("Vector");
 $wgVectorResponsive=true;
 
 /*Other skins*/
-wfLoadSkin("GreyStuff");
-wfLoadSkin("Timeless");
+wfLoadSkins(array("GreyStuff","Timeless"));
 
 #System
 /*Server*/
