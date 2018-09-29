@@ -33,8 +33,8 @@ $wgNamespaceAliases=
 //This project only
 $wgNamespaceAliases["PEB"]=NS_PROJECT;
 
-/*Default Preferences
-Warning: Do not reassign global variable of $wgDefaultUserOptions*/
+/*Default Preferences*/
+//Warning: Do not reassign global variable of $wgDefaultUserOptions
 //Disable 'Group changes by page in recent changes and watchlist' option by default
 $wgDefaultUserOptions["usenewrc"]=0;
 //Disable 'Add pages I create and files I upload to my watchlist' option by default
