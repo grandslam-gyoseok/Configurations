@@ -255,6 +255,10 @@ $wgCookieWarningEnabled=true;
 
 /*Interwiki*/
 wfLoadExtension("Interwiki");
+//Enable interwiki transcluding
+$wgEnableScaryTranscluding=true;
+//Expiry time for interwiki transclusion cache
+$wgTranscludeCacheExpiry=60;
 //Owner (owner)
 $wgGroupPermissions["owner"]["interwiki"]=true;
 
@@ -324,6 +328,12 @@ wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Hig
 #Skins
 /*Default skin*/
 $wgDefaultSkin="Vector";
+
+/*Liberty*/
+wfLoadSkin("Liberty");
+//This color shows on address bar in some mobile browsers
+$wgLibertyMainColor="#9933ff";
+$wgTwitterAccount="pseol2190";
 
 /*Metrolook*/
 wfLoadSkin("Metrolook");
