@@ -138,7 +138,6 @@ $wgGroupPermissions=
 	"reupload"=>true,
 	"rollback"=>true,
 	"suppressredirect"=>true,
-	"unblockself"=>true,
 	"undelete"=>true],
 "admin"=> //Administrators
 	["deletelogentry"=>true,
@@ -146,6 +145,7 @@ $wgGroupPermissions=
 	"move-categorypages"=>true,
 	"patrol"=>true,
 	"reupload-shared"=>true,
+	"unblockself"=>true,
 	"upload_by_url"=>true],
 "owner"=> //Owner
 	["apihighlimits"=>true,
@@ -296,6 +296,17 @@ wfLoadExtension("ReplaceText");
 //Owner (owner)
 $wgGroupPermissions["owner"]["replacetext"]=true;
 
+/*StaffPowers*/
+wfLoadExtension("StaffPowers");
+//Disable ShoutWiki specific message
+$wgStaffPowersShoutWikiMessages=false;
+//Users in this group cannot be blocked by other users except by users that have unblockable permission
+$wgStaffPowersStewardGroupName="staff";
+//Staffs (staff)
+$wgGroupPermissions["staff"]["unblockable"]=false;
+//Administrators (admin)
+$wgGroupPermissions["admin"]["unblockable"]=true;
+
 /*TitleBlacklist*/
 wfLoadExtension("TitleBlacklist");
 //Owner (owner)
@@ -325,6 +336,7 @@ $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
 wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Highlightjs_Integration","MultimediaViewer","RevisionSlider","TextExtracts","TwoColConflict","WikiEditor"));
+require_once "$IP/extensions/Purge/Purge.php"; //Purge
 
 #Skins
 /*Default skin*/
