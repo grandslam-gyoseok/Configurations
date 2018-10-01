@@ -121,6 +121,7 @@ $wgGroupPermissions=
 	["move"=>true,
 	"move-subpages"=>true,
 	"movefile"=>true,
+	"purge"=>true,
 	"reupload-own"=>true,
 	"sendemail"=>true,
 	"upload"=>true],
