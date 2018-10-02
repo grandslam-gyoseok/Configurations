@@ -303,10 +303,11 @@ wfLoadExtension("ReplaceText");
 //Owner (owner)
 $wgGroupPermissions["owner"]["replacetext"]=true;
 
-/*SecurePoll*/
+/*SecurePoll
 wfLoadExtension("SecurePoll");
 //Owner (owner)
 $wgGroupPermissions["owner"]["securepoll-create-poll"]=true;
+*/
 
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
