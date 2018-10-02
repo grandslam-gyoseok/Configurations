@@ -45,6 +45,13 @@ $wgDefaultUserOptions["watchdefault"]=0;
 /*Disable user talk for non-logged in users*/
 $wgDisableAnonTalk=true;
 
+/*Edit Review Improvements*/
+//Enable new filter on recent changes
+$wgStructuredChangeFiltersShowPreference=true;
+//Enable new filter on watchlist
+$wgStructuredChangeFiltersOnWatchlist=true;
+$wgStructuredChangeFiltersShowWatchlistPreference=true;
+
 /*Blocking*/
 //Prevent blocked users from editing their talk pages
 $wgBlockAllowsUTEdit=false;
@@ -296,6 +303,11 @@ wfLoadExtension("ReplaceText");
 //Owner (owner)
 $wgGroupPermissions["owner"]["replacetext"]=true;
 
+/*SecurePoll*/
+wfLoadExtension("SecurePoll");
+//Owner (owner)
+$wgGroupPermissions["owner"]["securepoll-create-poll"]=true;
+
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
 //Disable ShoutWiki specific message
@@ -335,7 +347,7 @@ $wgOnlyUserEditUserPage=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Highlightjs_Integration","MultimediaViewer","RevisionSlider","TextExtracts","TwoColConflict","WikiEditor"));
+wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Highlightjs_Integration","Josa","MultimediaViewer","RevisionSlider","TextExtracts","TwoColConflict","WikiEditor"));
 require_once "$IP/extensions/Purge/Purge.php"; //Purge
 
 #Skins
