@@ -371,7 +371,7 @@ wfLoadSkin("Vector");
 $wgVectorResponsive=true;
 
 /*Other skins*/
-wfLoadSkins(array("Acmedia","GreyStuff","Timeless"));
+wfLoadSkins(array("GreyStuff","Timeless"));
 
 #System
 /*Server*/
