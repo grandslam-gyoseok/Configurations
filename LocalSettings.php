@@ -348,7 +348,7 @@ $wgOnlyUserEditUserPage=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Highlightjs_Integration","Josa","MultimediaViewer","RevisionSlider","TextExtracts","TwoColConflict","WikiEditor"));
+wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Highlightjs_Integration","InputBox","Josa","MultimediaViewer","RevisionSlider","SimpleMathJax","TextExtracts","TwoColConflict","WikiEditor"));
 require_once "$IP/extensions/Purge/Purge.php"; //Purge
 
 #Skins
@@ -371,7 +371,7 @@ wfLoadSkin("Vector");
 $wgVectorResponsive=true;
 
 /*Other skins*/
-wfLoadSkins(array("GreyStuff","Timeless"));
+wfLoadSkins(array("Acmedia","GreyStuff","Timeless"));
 
 #System
 /*Server*/
