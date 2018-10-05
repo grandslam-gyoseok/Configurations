@@ -63,6 +63,10 @@ $wgAutoblockExpiry=60*60*24*365; //1 year
 //Enable autoblock cookie
 $wgCookieSetOnAutoblock=true;
 
+/*Invalid username characters*/
+//Prevent creating accounts with these characters
+$wgInvalidUsernameCharacters="`~!@$%^&*()=+\\|;:,.?";
+
 /*CSS and JavaScript*/
 //Apply CSS to Special:Preferences and Special:UserLogin page
 $wgAllowSiteCSSOnRestrictedPages=true;
