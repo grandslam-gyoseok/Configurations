@@ -65,7 +65,7 @@ $wgCookieSetOnAutoblock=true;
 
 /*Invalid username characters*/
 //Prevent creating accounts with these characters
-$wgInvalidUsernameCharacters="`~!@$%^&*()=+\\|;:,.?";
+$wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 
 /*CSS and JavaScript*/
 //Apply CSS to Special:Preferences and Special:UserLogin page
