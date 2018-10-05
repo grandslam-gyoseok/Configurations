@@ -6,10 +6,10 @@ $wgResourceBasePath=$wgScriptPath;
 #----
 
 #General
-/*Wiki name*/
+/*Wiki information*/
+//Wiki name
 $wgSitename="PlavorEXITBeta";
-
-/*Logo*/
+//Logo
 $wgLogo="$wgResourceBasePath/logo.png";
 
 /*Copyright*/
@@ -28,10 +28,9 @@ $wgNamespaceAliases=
 ["@"=>NS_USER,
 "M"=>NS_MEDIAWIKI,
 "T"=>NS_TEMPLATE,
-"U"=>NS_USER];
-
+"U"=>NS_USER,
 //This project only
-$wgNamespaceAliases["PEB"]=NS_PROJECT;
+"PEB"=>NS_PROJECT];
 
 /*Default Preferences*/
 //Warning: Do not reassign global variable of $wgDefaultUserOptions
@@ -59,14 +58,13 @@ $wgBlockAllowsUTEdit=false;
 $wgBlockCIDRLimit=
 ["IPv4"=>8, //###.0.0.0/8
 "IPv6"=>16]; //####::/16
-
 //Autoblock expiration
 $wgAutoblockExpiry=60*60*24*365; //1 year
 //Enable autoblock cookie
 $wgCookieSetOnAutoblock=true;
 
 /*CSS and JavaScript*/
-//Apply CSS to 'Special:Preferences' and 'Special:UserLogin' page
+//Apply CSS to Special:Preferences and Special:UserLogin page
 $wgAllowSiteCSSOnRestrictedPages=true;
 //Allow personal CSS
 $wgAllowUserCss=true;
@@ -90,7 +88,7 @@ $wgCapitalLinks=false;
 $wgEnableUploads=true;
 //Allow uploading from URLs
 $wgAllowCopyUploads=true;
-//Disable uploading from URLs in 'Special:Upload' page
+//Disable uploading from URLs in Special:Upload page
 $wgCopyUploadsFromSpecialUpload=false;
 //Display warning when trying to upload files larger than this
 $wgUploadSizeWarning=1024*1024*3; //3 MB
@@ -195,6 +193,7 @@ $wgNamespaceProtection=
 NS_MEDIAWIKI_TALK=>"fullyprotect",
 NS_PROJECT=>"fullyprotect",
 NS_TEMPLATE=>"3rdprotect"];
+//Permissions
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ["autoconfirmed"=> //Autoconfirmed users
 	["1stprotect"=>true],
@@ -214,7 +213,9 @@ $wgAutoConfirmCount=15;
 #Extensions
 /*AbuseFilter*/
 wfLoadExtension("AbuseFilter");
+//Show abuse filter trigger notifications in Special:RecentChanges page
 $wgAbuseFilterNotifications="rc";
+//Permissions
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ["*"=>
 	["abusefilter-log-detail"=>true],
@@ -247,6 +248,11 @@ $wgGroupPermissions["owner"]["checkuser"]=true;
 //checkuser
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 {unset($wgGroupPermissions["checkuser"]);};
+
+/*CodeMirror*/
+wfLoadExtension("CodeMirror");
+//Enable wikitext syntax highlighting by default
+$wgDefaultUserOptions["usecodemirror"]=1;
 
 /*ConfirmEdit*/
 wfLoadExtension("ConfirmEdit");
@@ -291,6 +297,7 @@ $wgPFEnableStringFunctions=true;
 /*Popups*/
 wfLoadExtension("Popups");
 $wgPopupsBetaFeature=true;
+//Enable Popups by default
 $wgPopupsOptInDefaultState="1";
 
 /*Renameuser*/
@@ -348,7 +355,7 @@ $wgOnlyUserEditUserPage=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Highlightjs_Integration","InputBox","Josa","MultimediaViewer","RevisionSlider","SimpleMathJax","TextExtracts","TwoColConflict","WikiEditor"));
+wfLoadExtensions(array("Cite","CodeEditor","CollapsibleVector","Highlightjs_Integration","InputBox","Josa","MultimediaViewer","RevisionSlider","SimpleMathJax","TextExtracts","TwoColConflict","WikiEditor"));
 require_once "$IP/extensions/Purge/Purge.php"; //Purge
 
 #Skins
@@ -372,6 +379,10 @@ $wgVectorResponsive=true;
 
 /*Other skins*/
 wfLoadSkins(array("GreyStuff","Timeless"));
+
+#Email
+/*Disable email functions*/
+$wgEnableEmail=false;
 
 #System
 /*Server*/
