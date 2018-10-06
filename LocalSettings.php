@@ -124,7 +124,8 @@ $wgGroupPermissions=
 	"editmywatchlist"=>true,
 	"minoredit"=>true,
 	"viewmyprivateinfo"=>true,
-	"viewmywatchlist"=>true],
+	"viewmywatchlist"=>true,
+	"writeapi"=>true],
 "autoconfirmed"=> //Autoconfirmed users
 	["move"=>true,
 	"move-subpages"=>true,
@@ -182,8 +183,7 @@ $wgGroupPermissions=
 	"suppressrevision"=>true,
 	"userrights"=>true,
 	"userrights-interwiki"=>true,
-	"viewsuppressed"=>true,
-	"writeapi"=>true]
+	"viewsuppressed"=>true]
 ];
 
 /*Protection*/
@@ -278,6 +278,18 @@ $wgEnableScaryTranscluding=true;
 $wgTranscludeCacheExpiry=60;
 //Owner (owner)
 $wgGroupPermissions["owner"]["interwiki"]=true;
+
+/*LiquidThreads*/
+wfLoadExtension("LiquidThreads");
+//Do not allow users to toggle LiquidThreads per-page.
+$wgLiquidThreadsAllowUserControl=false;
+//Users (user)
+$wgGroupPermissions["user"]["lqt-split"]=false;
+$wgGroupPermissions["user"]["lqt-merge"]=false;
+$wgGroupPermissions["user"]["lqt-react"]=true;
+//Owner (owner)
+$wgGroupPermissions["user"]["lqt-split"]=true;
+$wgGroupPermissions["user"]["lqt-merge"]=true;
 
 /*Maintenance*/
 wfLoadExtension("Maintenance");
