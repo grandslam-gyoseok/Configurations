@@ -273,6 +273,7 @@ $wgCookieWarningEnabled=true;
 /*Echo*/
 wfLoadExtension("Echo");
 $wgEchoEnableEmailBatch=false;
+$wgEchoPerUserBlacklist=true;
 
 /*Interwiki*/
 wfLoadExtension("Interwiki");
