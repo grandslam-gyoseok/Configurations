@@ -270,6 +270,10 @@ $wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
 wfLoadExtension("CookieWarning");
 $wgCookieWarningEnabled=true;
 
+/*Echo*/
+wfLoadExtension("Echo");
+$wgEchoEnableEmailBatch=false;
+
 /*Interwiki*/
 wfLoadExtension("Interwiki");
 //Enable interwiki transcluding
@@ -367,7 +371,7 @@ require_once "$IP/extensions/Purge/Purge.php"; //Purge
 
 #Skins
 /*Default skin*/
-$wgDefaultSkin="Vector";
+$wgDefaultSkin="Timeless";
 
 /*Liberty*/
 wfLoadSkin("Liberty");
@@ -385,7 +389,7 @@ wfLoadSkin("Vector");
 $wgVectorResponsive=true;
 
 /*Other skins*/
-wfLoadSkins(array("GreyStuff","Timeless"));
+wfLoadSkins(array("GreyStuff","Poncho","Timeless"));
 
 #Email
 /*Disable email functions*/
