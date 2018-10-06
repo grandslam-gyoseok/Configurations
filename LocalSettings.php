@@ -83,7 +83,7 @@ $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 //Allow using lowercase letters in first letter of page titles
 $wgCapitalLinks=false;
 //Content namespaces
-$wgContentNamespaces=array("NS_HELP","NS_MAIN","NS_PROJECT","NS_USER");
+$wgContentNamespaces=array(NS_HELP,NS_MAIN,NS_PROJECT,NS_USER);
 
 #Files and media
 /*File uploads*/
