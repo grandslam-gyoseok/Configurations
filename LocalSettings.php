@@ -41,9 +41,6 @@ $wgDefaultUserOptions["watchcreations"]=0;
 //Disable 'Add pages and files I edit to my watchlist' option by default
 $wgDefaultUserOptions["watchdefault"]=0;
 
-/*Disable user talk for non-logged in users*/
-$wgDisableAnonTalk=true;
-
 /*Edit Review Improvements*/
 //Enable new filter on recent changes
 $wgStructuredChangeFiltersShowPreference=true;
@@ -63,10 +60,6 @@ $wgAutoblockExpiry=60*60*24*365; //1 year
 //Enable autoblock cookie
 $wgCookieSetOnAutoblock=true;
 
-/*Invalid username characters*/
-//Prevent creating accounts with these characters
-$wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
-
 /*CSS and JavaScript*/
 //Apply CSS to Special:Preferences and Special:UserLogin page
 $wgAllowSiteCSSOnRestrictedPages=true;
@@ -82,9 +75,15 @@ $wgExportAllowListContributors=true;
 $wgExportFromNamespaces=true;
 //*/
 
-/*Capitalization*/
+/*Others*/
+//Disable user talk for non-logged in users
+$wgDisableAnonTalk=true;
+//Prevent creating accounts with these characters
+$wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 //Allow using lowercase letters in first letter of page titles
 $wgCapitalLinks=false;
+//Content namespaces
+$wgContentNamespaces=array("NS_HELP","NS_MAIN","NS_PROJECT","NS_USER");
 
 #Files and media
 /*File uploads*/
@@ -292,7 +291,7 @@ $wgGroupPermissions["owner"]["nuke"]=true;
 
 /*PageImages*/
 wfLoadExtension("PageImages");
-$wgPageImagesNamespaces=array("NS_HELP","NS_MAIN","NS_USER");
+$wgPageImagesNamespaces=$wgContentNamespaces;
 
 /*ParserFunctions*/
 wfLoadExtension("ParserFunctions");
