@@ -344,6 +344,10 @@ $wgGroupPermissions["user"]["torunblocked"]=false;
 //Owner (owner)
 $wgGroupPermissions["owner"]["torunblocked"]=true;
 
+/*UniversalLanguageSelector*/
+wfLoadExtension("UniversalLanguageSelector");
+$wgULSGeoService=true;
+
 /*UserMerge*/
 wfLoadExtension("UserMerge");
 //Prevent merging users in these groups
@@ -375,10 +379,6 @@ $wgTwitterAccount="pseol2190";
 wfLoadSkin("Metrolook");
 $wgMetrolookDownArrow=false;
 $wgMetrolookLine=false;
-
-/*UniversalLanguageSelector*/
-wfLoadExtension("UniversalLanguageSelector");
-$wgULSGeoService=true;
 
 /*Vector*/
 wfLoadSkin("Vector");
