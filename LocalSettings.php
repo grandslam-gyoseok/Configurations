@@ -252,11 +252,6 @@ $wgGroupPermissions["owner"]["checkuser"]=true;
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 {unset($wgGroupPermissions["checkuser"]);};
 
-/*CodeMirror*/
-wfLoadExtension("CodeMirror");
-//Enable wikitext syntax highlighting by default
-$wgDefaultUserOptions["usecodemirror"]=1;
-
 /*ConfirmEdit*/
 wfLoadExtension("ConfirmEdit");
 $wgCaptchaClass="SimpleCaptcha";
@@ -367,7 +362,7 @@ $wgOnlyUserEditUserPage=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(array("Cite","CodeEditor","CollapsibleVector","Highlightjs_Integration","InputBox","Josa","MultimediaViewer","RevisionSlider","SimpleMathJax","TextExtracts","TwoColConflict","WikiEditor"));
+wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Highlightjs_Integration","InputBox","Josa","MultimediaViewer","RevisionSlider","SimpleMathJax","TextExtracts","TwoColConflict","WikiEditor"));
 require_once "$IP/extensions/Purge/Purge.php"; //Purge
 
 #Skins
