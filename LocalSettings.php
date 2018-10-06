@@ -376,6 +376,10 @@ wfLoadSkin("Metrolook");
 $wgMetrolookDownArrow=false;
 $wgMetrolookLine=false;
 
+/*UniversalLanguageSelector*/
+wfLoadExtension("UniversalLanguageSelector");
+$wgULSGeoService=true;
+
 /*Vector*/
 wfLoadSkin("Vector");
 $wgVectorResponsive=true;
