@@ -367,7 +367,7 @@ require_once "$IP/extensions/Purge/Purge.php"; //Purge
 
 #Skins
 /*Default skin*/
-$wgDefaultSkin="Timeless";
+$wgDefaultSkin="Vector";
 
 /*Liberty*/
 wfLoadSkin("Liberty");
