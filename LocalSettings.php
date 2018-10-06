@@ -281,15 +281,17 @@ $wgGroupPermissions["owner"]["interwiki"]=true;
 
 /*LiquidThreads*/
 wfLoadExtension("LiquidThreads");
-//Do not allow users to toggle LiquidThreads per-page.
+//Do not allow users to toggle LiquidThreads per-page
 $wgLiquidThreadsAllowUserControl=false;
+//Turn off LiquidThreads email notifications
+$wgLqtEnotif=false;
 //Users (user)
 $wgGroupPermissions["user"]["lqt-split"]=false;
 $wgGroupPermissions["user"]["lqt-merge"]=false;
 $wgGroupPermissions["user"]["lqt-react"]=true;
 //Owner (owner)
-$wgGroupPermissions["user"]["lqt-split"]=true;
-$wgGroupPermissions["user"]["lqt-merge"]=true;
+$wgGroupPermissions["owner"]["lqt-split"]=true;
+$wgGroupPermissions["owner"]["lqt-merge"]=true;
 
 /*Maintenance*/
 wfLoadExtension("Maintenance");
