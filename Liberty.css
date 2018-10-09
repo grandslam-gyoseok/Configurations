@@ -1,0 +1,16 @@
+.Liberty .nav-wrapper,
+.dropdown-menu a.dropdown-item:hover,
+.dropdown-menu a.dropdown-item:focus,
+.Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-footer span.label
+{background: #9933ff;}
+.Liberty .nav-wrapper .navbar .navbar-nav .nav-item a.nav-link:hover,
+.Liberty .nav-wrapper .navbar .navbar-nav .nav-item span.nav-link:hover,
+.Liberty .nav-wrapper .navbar .navbar-nav .nav-item a.nav-link:focus,
+.Liberty .nav-wrapper .navbar .navbar-nav .nav-item span.nav-link:focus,
+.Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-footer span.label:hover,
+.Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-footer span.label:focus
+{background: #c5a6ff;}
+.Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item a.nav-link.active::before,
+.Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item a.nav-link:hover::before,
+.Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item a.nav-link:focus::before
+{border-bottom: 2px solid #9933ff;}
