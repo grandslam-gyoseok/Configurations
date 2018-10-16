@@ -41,13 +41,6 @@ $wgDefaultUserOptions["watchcreations"]=0;
 //Disable 'Add pages and files I edit to my watchlist' option by default
 $wgDefaultUserOptions["watchdefault"]=0;
 
-/*Edit Review Improvements*/
-//Enable new filter on recent changes
-$wgStructuredChangeFiltersShowPreference=true;
-//Enable new filter on watchlist
-$wgStructuredChangeFiltersOnWatchlist=true;
-$wgStructuredChangeFiltersShowWatchlistPreference=true;
-
 /*Blocking*/
 //Prevent blocked users from editing their talk pages
 $wgBlockAllowsUTEdit=false;
@@ -112,7 +105,6 @@ $wgGroupPermissions=
   "unwatchedpages"=>true],
 "user"=> //Users
   ["applychangetags"=>true,
-  "createaccount"=>false,
   "createpage"=>true,
   "createtalk"=>true,
   "edit"=>true,
@@ -160,7 +152,6 @@ $wgGroupPermissions=
   "autoconfirmed"=>true,
   "bigdelete"=>true,
   "changetags"=>true,
-  "createaccount"=>true,
   "editcontentmodel"=>true,
   "editsitecss"=>true,
   "editsitejs"=>true,
@@ -328,12 +319,6 @@ $wgGroupPermissions["owner"]["renameuser"]=true;
 wfLoadExtension("ReplaceText");
 //Owner (owner)
 $wgGroupPermissions["owner"]["replacetext"]=true;
-
-/*SecurePoll
-wfLoadExtension("SecurePoll");
-//Owner (owner)
-$wgGroupPermissions["owner"]["securepoll-create-poll"]=true;
-*/
 
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
