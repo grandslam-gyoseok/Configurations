@@ -21,7 +21,7 @@ $wgRightsPage="";
 
 /*Sitenotice*/
 //This will be displayed if 'MediaWiki:Sitenotice' and 'MediaWiki:Anonnotice' are empty
-$wgSiteNotice="<center><big>'''Welcome to [[{{SITENAME}}]]!'''</big></center>";
+$wgSiteNotice="<big>'''Welcome to [[{{SITENAME}}]]!'''</big>";
 
 /*Namespace Aliases*/
 $wgNamespaceAliases=
@@ -82,8 +82,6 @@ $wgDisableAnonTalk=true;
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 //Allow using lowercase letters in first letter of page titles
 $wgCapitalLinks=false;
-//Content namespaces
-$wgContentNamespaces=array(NS_HELP,NS_MAIN,NS_PROJECT,NS_USER);
 
 #Files and media
 /*File uploads*/
@@ -104,86 +102,89 @@ $wgUseInstantCommons=true;
 
 #Permissions
 /*Group permissions*/
+//Grant permissions
 $wgGroupPermissions=
 ["*"=>
-	["autocreateaccount"=>true,
-	"createaccount"=>true,
-	"patrolmarks"=>true,
-	"read"=>true,
-	"unwatchedpages"=>true],
+ ["autocreateaccount"=>true,
+ "createaccount"=>true,
+ "patrolmarks"=>true,
+ "read"=>true,
+ "unwatchedpages"=>true],
 "user"=> //Users
-	["applychangetags"=>true,
-	"createpage"=>true,
-	"createtalk"=>true,
-	"edit"=>true,
-	"editmyoptions"=>true,
-	"editmyprivateinfo"=>true,
-	"editmyusercss"=>true,
-	"editmyuserjs"=>true,
-	"editmyuserjson"=>true,
-	"editmywatchlist"=>true,
-	"minoredit"=>true,
-	"viewmyprivateinfo"=>true,
-	"viewmywatchlist"=>true,
-	"writeapi"=>true],
+ ["applychangetags"=>true,
+ "createaccount"=>false,
+ "createpage"=>true,
+ "createtalk"=>true,
+ "edit"=>true,
+ "editmyoptions"=>true,
+ "editmyprivateinfo"=>true,
+ "editmyusercss"=>true,
+ "editmyuserjs"=>true,
+ "editmyuserjson"=>true,
+ "editmywatchlist"=>true,
+ "minoredit"=>true,
+ "viewmyprivateinfo"=>true,
+ "viewmywatchlist"=>true,
+ "writeapi"=>true],
 "autoconfirmed"=> //Autoconfirmed users
-	["move"=>true,
-	"move-subpages"=>true,
-	"movefile"=>true,
-	"purge"=>true,
-	"reupload-own"=>true,
-	"sendemail"=>true,
-	"upload"=>true],
+ ["move"=>true,
+ "move-subpages"=>true,
+ "movefile"=>true,
+ "purge"=>true,
+ "reupload-own"=>true,
+ "sendemail"=>true,
+ "upload"=>true],
 "staff"=> //Staffs
-	["autopatrol"=>true,
-	"block"=>true,
-	"blockemail"=>true,
-	"browsearchive"=>true,
-	"delete"=>true,
-	"deletedhistory"=>true,
-	"deletedtext"=>true,
-	"deleterevision"=>true,
-	"protect"=>true,
-	"reupload"=>true,
-	"rollback"=>true,
-	"suppressredirect"=>true,
-	"undelete"=>true],
+ ["autopatrol"=>true,
+ "block"=>true,
+ "blockemail"=>true,
+ "browsearchive"=>true,
+ "delete"=>true,
+ "deletedhistory"=>true,
+ "deletedtext"=>true,
+ "deleterevision"=>true,
+ "protect"=>true,
+ "reupload"=>true,
+ "rollback"=>true,
+ "suppressredirect"=>true,
+ "undelete"=>true],
 "admin"=> //Administrators
-	["deletelogentry"=>true,
-	"ipblock-exempt"=>true,
-	"move-categorypages"=>true,
-	"patrol"=>true,
-	"reupload-shared"=>true,
-	"unblockself"=>true,
-	"upload_by_url"=>true],
+ ["deletelogentry"=>true,
+ "ipblock-exempt"=>true,
+ "move-categorypages"=>true,
+ "patrol"=>true,
+ "reupload-shared"=>true,
+ "upload_by_url"=>true],
 "owner"=> //Owner
-	["apihighlimits"=>true,
-	"autoconfirmed"=>true,
-	"bigdelete"=>true,
-	"changetags"=>true,
-	"editcontentmodel"=>true,
-	"editsitecss"=>true,
-	"editsitejs"=>true,
-	"editsitejson"=>true,
-	"editusercss"=>true,
-	"edituserjs"=>true,
-	"edituserjson"=>true,
-	"hideuser"=>true,
-	"import"=>true,
-	"importupload"=>true,
-	"managechangetags"=>true,
-	"markbotedits"=>true,
-	"mergehistory"=>true,
-	"move-rootuserpages"=>true,
-	"nominornewtalk"=>true,
-	"noratelimit"=>true,
-	"pagelang"=>true,
-	"siteadmin"=>true,
-	"suppressionlog"=>true,
-	"suppressrevision"=>true,
-	"userrights"=>true,
-	"userrights-interwiki"=>true,
-	"viewsuppressed"=>true]
+ ["apihighlimits"=>true,
+ "autoconfirmed"=>true,
+ "bigdelete"=>true,
+ "changetags"=>true,
+ "createaccount"=>true,
+ "editcontentmodel"=>true,
+ "editsitecss"=>true,
+ "editsitejs"=>true,
+ "editsitejson"=>true,
+ "editusercss"=>true,
+ "edituserjs"=>true,
+ "edituserjson"=>true,
+ "hideuser"=>true,
+ "import"=>true,
+ "importupload"=>true,
+ "managechangetags"=>true,
+ "markbotedits"=>true,
+ "mergehistory"=>true,
+ "move-rootuserpages"=>true,
+ "nominornewtalk"=>true,
+ "noratelimit"=>true,
+ "pagelang"=>true,
+ "siteadmin"=>true,
+ "suppressionlog"=>true,
+ "suppressrevision"=>true,
+ "unblockself"=>true,
+ "userrights"=>true,
+ "userrights-interwiki"=>true,
+ "viewsuppressed"=>true]
 ];
 
 /*Protection*/
@@ -192,7 +193,8 @@ $wgRestrictionLevels=array("","1stprotect","2ndprotect","3rdprotect","fullyprote
 $wgCascadingRestrictionLevels=array("2ndprotect","3rdprotect","fullyprotect");
 //Namespace protection
 $wgNamespaceProtection=
-[NS_HELP=>"2ndprotect",
+[NS_FILE=>"1stprotect",
+NS_HELP=>"2ndprotect",
 NS_MEDIAWIKI_TALK=>"fullyprotect",
 NS_PROJECT=>"fullyprotect",
 NS_TEMPLATE=>"3rdprotect"];
@@ -221,19 +223,19 @@ $wgAbuseFilterNotifications="rc";
 //Permissions
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ["*"=>
-	["abusefilter-log-detail"=>true],
+ ["abusefilter-log-detail"=>true],
 "admin"=> //Administrators
-	["abusefilter-modify"=>true],
+ ["abusefilter-modify"=>true],
 "owner"=> //Owner
-	["abusefilter-hide-log"=>true,
-	"abusefilter-hidden-log"=>true,
-	"abusefilter-log-private"=>true,
-	"abusefilter-modify-global"=>true,
-	"abusefilter-modify-restricted"=>true,
-	"abusefilter-private"=>true,
-	"abusefilter-private-log"=>true,
-	"abusefilter-revert"=>true,
-	"abusefilter-view-private"=>true]
+ ["abusefilter-hide-log"=>true,
+ "abusefilter-hidden-log"=>true,
+ "abusefilter-log-private"=>true,
+ "abusefilter-modify-global"=>true,
+ "abusefilter-modify-restricted"=>true,
+ "abusefilter-private"=>true,
+ "abusefilter-private-log"=>true,
+ "abusefilter-revert"=>true,
+ "abusefilter-view-private"=>true]
 ]);
 
 /*AntiSpoof*/
@@ -385,7 +387,7 @@ $wgDefaultSkin="Vector";
 
 /*Liberty*/
 wfLoadSkin("Liberty");
-//This color shows on address bar in some mobile browsers
+//Color for navbar and address bar in some mobile browsers
 $wgLibertyMainColor="#9933ff";
 $wgTwitterAccount="pseol2190";
 
@@ -399,7 +401,7 @@ wfLoadSkin("Vector");
 $wgVectorResponsive=true;
 
 /*Other skins*/
-wfLoadSkins(array("GreyStuff","Poncho","Timeless"));
+wfLoadSkins(array("GreyStuff","Timeless"));
 
 #Email
 /*Disable email functions*/
