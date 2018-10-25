@@ -50,6 +50,8 @@ $wgBlockCIDRLimit=
 "IPv6"=>16]; //####::/16
 //Autoblock expiration
 $wgAutoblockExpiry=60*60*24*365; //1 year
+//Apply blocks to XFF header
+$wgApplyIpBlocksToXff=true;
 //Enable autoblock cookie
 $wgCookieSetOnAutoblock=true;
 
@@ -291,6 +293,11 @@ wfLoadExtension("Maintenance");
 //Owner (owner)
 $wgGroupPermissions["owner"]["maintenance"]=true;
 
+/*MaintenanceShell*/
+wfLoadExtension("MaintenanceShell");
+//Owner (owner)
+$wgGroupPermissions["owner"]["maintenanceshell"]=true;
+
 /*Nuke*/
 wfLoadExtension("Nuke");
 //Owner (owner)
@@ -363,7 +370,7 @@ $wgOnlyUserEditUserPage=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Highlightjs_Integration","InputBox","Josa","MultimediaViewer","RevisionSlider","SimpleMathJax","TextExtracts","TwoColConflict","WikiEditor"));
+wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Highlightjs_Integration","InputBox","Josa","MultimediaViewer","RevisionSlider","SimpleMathJax","TextExtracts","TwoColConflict","WikiEditor","YouTube"));
 require_once "$IP/extensions/Purge/Purge.php"; //Purge
 
 #Skins
@@ -397,11 +404,10 @@ $wgEnableEmail=false;
 //Base URL of the server
 //$wgServer="http://exit.nerdpol.ovh:81";
 
-/*Entry point
+/*Entry point*/
 //Short URL
 $wgArticlePath="/exit/$1";
 $wgUsePathInfo=true;
-*/
 
 /*Open external links in a new tab*/
 $wgExternalLinkTarget="_blank";
