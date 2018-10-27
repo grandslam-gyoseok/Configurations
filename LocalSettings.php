@@ -33,13 +33,17 @@ $wgNamespaceAliases=
 "PEB"=>NS_PROJECT];
 
 /*Default Preferences*/
-//Warning: Do not reassign global variable of $wgDefaultUserOptions
-//Disable 'Group changes by page in recent changes and watchlist' option by default
-$wgDefaultUserOptions["usenewrc"]=0;
-//Disable 'Add pages I create and files I upload to my watchlist' option by default
-$wgDefaultUserOptions["watchcreations"]=0;
-//Disable 'Add pages and files I edit to my watchlist' option by default
-$wgDefaultUserOptions["watchdefault"]=0;
+$wgDefaultUserOptions=array_merge_recursive($wgDefaultUserOptions,
+[//Enable "Show previews without reloading the page" option (live preview) by default
+"uselivepreview"=>1,
+//Disable "Group changes by page in recent changes and watchlist" option by default
+"usenewrc"=>0,
+//Disable "Add pages I create and files I upload to my watchlist" option by default
+"watchcreations"=>0,
+//Disable "Add pages and files I edit to my watchlist" option by default
+"watchdefault"=>0,
+//Disable "Add new files I upload to my watchlist" option by default
+"watchuploads"=>0]);
 
 /*Blocking*/
 //Prevent blocked users from editing their talk pages
@@ -118,8 +122,7 @@ $wgGroupPermissions=
   "editmywatchlist"=>true,
   "minoredit"=>true,
   "viewmyprivateinfo"=>true,
-  "viewmywatchlist"=>true,
-  "writeapi"=>true],
+  "viewmywatchlist"=>true],
 "autoconfirmed"=> //Autoconfirmed users
   ["move"=>true,
   "move-subpages"=>true,
@@ -177,7 +180,8 @@ $wgGroupPermissions=
   "unblockself"=>true,
   "userrights"=>true,
   "userrights-interwiki"=>true,
-  "viewsuppressed"=>true]
+  "viewsuppressed"=>true,
+  "writeapi"=>true]
 ];
 
 /*Protection*/
@@ -274,20 +278,6 @@ $wgTranscludeCacheExpiry=60;
 //Owner (owner)
 $wgGroupPermissions["owner"]["interwiki"]=true;
 
-/*LiquidThreads*/
-wfLoadExtension("LiquidThreads");
-//Do not allow users to toggle LiquidThreads per-page
-$wgLiquidThreadsAllowUserControl=false;
-//Turn off LiquidThreads email notifications
-$wgLqtEnotif=false;
-//Users (user)
-$wgGroupPermissions["user"]["lqt-split"]=false;
-$wgGroupPermissions["user"]["lqt-merge"]=false;
-$wgGroupPermissions["user"]["lqt-react"]=true;
-//Owner (owner)
-$wgGroupPermissions["owner"]["lqt-split"]=true;
-$wgGroupPermissions["owner"]["lqt-merge"]=true;
-
 /*Maintenance*/
 wfLoadExtension("Maintenance");
 //Owner (owner)
@@ -352,10 +342,6 @@ $wgGroupPermissions["user"]["torunblocked"]=false;
 //Owner (owner)
 $wgGroupPermissions["owner"]["torunblocked"]=true;
 
-/*UniversalLanguageSelector*/
-wfLoadExtension("UniversalLanguageSelector");
-$wgULSGeoService=true;
-
 /*UserMerge*/
 wfLoadExtension("UserMerge");
 //Prevent merging users in these groups
@@ -370,8 +356,7 @@ $wgOnlyUserEditUserPage=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","CollapsibleVector","Highlightjs_Integration","InputBox","Josa","MultimediaViewer","RevisionSlider","SimpleMathJax","TextExtracts","TwoColConflict","WikiEditor","YouTube"));
-require_once "$IP/extensions/Purge/Purge.php"; //Purge
+wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","Highlightjs_Integration","InputBox","Josa","MultimediaViewer","RevisionSlider","SimpleMathJax","TextExtracts","TwoColConflict","WikiEditor","YouTube"));
 
 #Skins
 /*Default skin*/
@@ -383,17 +368,12 @@ wfLoadSkin("Liberty");
 $wgLibertyMainColor="#9933ff";
 $wgTwitterAccount="pseol2190";
 
-/*Metrolook*/
-wfLoadSkin("Metrolook");
-$wgMetrolookDownArrow=false;
-$wgMetrolookLine=false;
-
 /*Vector*/
 wfLoadSkin("Vector");
 $wgVectorResponsive=true;
 
 /*Other skins*/
-wfLoadSkins(array("GreyStuff","Timeless"));
+wfLoadSkin("Timeless");
 
 #Email
 /*Disable email functions*/
