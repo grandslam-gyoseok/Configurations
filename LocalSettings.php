@@ -32,6 +32,15 @@ $wgNamespaceAliases=
 //This project only
 "PEB"=>NS_PROJECT];
 
+/*Reserved usernames*/
+//Prevent creating accounts with these usernames
+$wgReservedUsernames=array_merge($wgReservedUsernames,
+["Null","ㄴㄴ","ㄷㄷ","ㅇㅇ","ㅋㅋ","ㅠㅠ",
+//Action names
+"Block","Create","Delete","Edit","Move","Protect",
+//동작 이름
+"보호","삭제","생성","이동","편집","차단"]);
+
 /*Default Preferences*/
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 [//Enable "Show previews without reloading the page" option (live preview) by default
