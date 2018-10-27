@@ -33,7 +33,7 @@ $wgNamespaceAliases=
 "PEB"=>NS_PROJECT];
 
 /*Default Preferences*/
-$wgDefaultUserOptions=array_merge_recursive($wgDefaultUserOptions,
+$wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 [//Enable "Show previews without reloading the page" option (live preview) by default
 "uselivepreview"=>1,
 //Disable "Group changes by page in recent changes and watchlist" option by default
