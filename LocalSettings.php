@@ -43,9 +43,7 @@ $wgReservedUsernames=array_merge($wgReservedUsernames,
 
 /*Default Preferences*/
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
-[//Enable "Show previews without reloading the page" option (live preview) by default
-"uselivepreview"=>1,
-//Disable "Group changes by page in recent changes and watchlist" option by default
+[//Disable "Group changes by page in recent changes and watchlist" option by default
 "usenewrc"=>0,
 //Disable "Add pages I create and files I upload to my watchlist" option by default
 "watchcreations"=>0,
@@ -287,16 +285,6 @@ $wgTranscludeCacheExpiry=60;
 //Owner (owner)
 $wgGroupPermissions["owner"]["interwiki"]=true;
 
-/*Maintenance*/
-wfLoadExtension("Maintenance");
-//Owner (owner)
-$wgGroupPermissions["owner"]["maintenance"]=true;
-
-/*MaintenanceShell*/
-wfLoadExtension("MaintenanceShell");
-//Owner (owner)
-$wgGroupPermissions["owner"]["maintenanceshell"]=true;
-
 /*Nuke*/
 wfLoadExtension("Nuke");
 //Owner (owner)
@@ -339,9 +327,10 @@ $wgGroupPermissions["admin"]["unblockable"]=true;
 
 /*TitleBlacklist*/
 wfLoadExtension("TitleBlacklist");
-//Owner (owner)
-$wgGroupPermissions["owner"]["tboverride"]=true;
-$wgGroupPermissions["owner"]["titleblacklistlog"]=true;
+//*
+$wgGroupPermissions["*"]["titleblacklistlog"]=true;
+//Administrators (admin)
+$wgGroupPermissions["admin"]["tboverride"]=true;
 
 /*TorBlock*/
 wfLoadExtension("TorBlock");
