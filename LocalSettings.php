@@ -412,8 +412,12 @@ $wgFileCacheDirectory="$IP/cache";
 $wgJobRunRate=2;
 
 /*Diff3*/
-//This setting is for Windows only
+//Path to Diff3 (Windows only)
 $wgDiff3="C:/Program Files (x86)/GnuWin32/bin/diff3.exe";
+
+/*ImageMagick*/
+//Enable ImageMagick (Ubuntu only)
+//$wgUseImageMagick=true;
 
 /*Debug
 $wgShowExceptionDetails=true;
