@@ -1,4 +1,16 @@
-<? //Remove this line when inserting it to server-side LocalSettings.php
+<?php
+/*Prevent web access*/
+if (!defined("MEDIAWIKI"))
+{exit;}
+
+/*Debug
+error_reporting(-1);
+ini_set("display_errors",1);
+$wgShowExceptionDetails=true;
+$wgShowDBErrorBacktrace=true;
+$wgShowSQLErrors=true;
+//*/
+
 /*Entry point*/
 //Must be above $wgLogo
 $wgScriptPath="/plavorexitbeta";
@@ -350,7 +362,7 @@ $wgUserMergeProtectedGroups=array("admin","owner");
 $wgGroupPermissions["owner"]["usermerge"]=true;
 
 /*UserPageEditProtection*/
-require_once "$IP/extensions/UserPageEditProtection/UserPageEditProtection.php";
+include_once("$IP/extensions/UserPageEditProtection/UserPageEditProtection.php");
 $wgOnlyUserEditUserPage=true;
 //Staffs (staff)
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
@@ -397,15 +409,15 @@ $wgExternalLinkTarget="_blank";
 $wgAuthenticationTokenVersion="0";
 
 /*Cache*/
-//Main cache
+//Object cache
 $wgMainCacheType=CACHE_ACCEL; //PHP object caching
-//Memcached servers
-$wgMemCachedServers=[];
-//Localisation cache
+//Cache directory
 $wgCacheDirectory="$IP/cache";
+//Store localisation cache as PHP array
+$wgLocalisationCacheConf["store"]="array";
 //File cache
 $wgUseFileCache=true;
-$wgFileCacheDirectory="$IP/cache";
+$wgFileCacheDirectory=$wgCacheDirectory;
 
 /*Job*/
 //Run 2 jobs per request
@@ -419,11 +431,15 @@ $wgDiff3="C:/Program Files (x86)/GnuWin32/bin/diff3.exe";
 //Enable ImageMagick (Ubuntu only)
 //$wgUseImageMagick=true;
 
-/*Debug
-$wgShowExceptionDetails=true;
-$wgShowDBErrorBacktrace=true;
-$wgShowSQLErrors=true;
-//*/
+/*Database*/
+//Database type
+$wgDBtype="sqlite";
+//SQLite database directory
+$wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta" //Windows
+//$wgSQLiteDataDir="/database/PlavorEXITBeta"; //Linux
+
+/*Private settings*/
+include_once("$IP/PrivateSettings.php");
 
 #----
 /*Remove groups*/
