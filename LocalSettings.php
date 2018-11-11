@@ -35,7 +35,7 @@ $wgNamespaceAliases=
 /*Reserved usernames*/
 //Prevent creating accounts with these usernames
 $wgReservedUsernames=array_merge($wgReservedUsernames,
-["Null","ㄴㄴ","ㄷㄷ","ㅇㅇ","ㅋㅋ","ㅠㅠ",
+["Null",
 //Action names
 "Block","Create","Delete","Edit","Move","Protect",
 //동작 이름
@@ -82,12 +82,14 @@ $wgExportFromNamespaces=true;
 //*/
 
 /*Others*/
-//Disable user talk for non-logged in users
-$wgDisableAnonTalk=true;
-//Prevent creating accounts with these characters
-$wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 //Allow using lowercase letters in first letter of page titles
 $wgCapitalLinks=false;
+//Disable user talk for non-logged in users
+$wgDisableAnonTalk=true;
+//Enable category browsing
+$wgUseCategoryBrowser=true;
+//Prevent creating accounts with these characters
+$wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 
 #Files and media
 /*File uploads*/
@@ -404,6 +406,10 @@ $wgCacheDirectory="$IP/cache";
 //File cache
 $wgUseFileCache=true;
 $wgFileCacheDirectory="$IP/cache";
+
+/*Job*/
+//Run 2 jobs per request
+$wgJobRunRate=2;
 
 /*Diff3*/
 //This setting is for Windows only
