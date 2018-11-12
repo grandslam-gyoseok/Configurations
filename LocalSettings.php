@@ -323,11 +323,6 @@ wfLoadExtension("Renameuser");
 //Owner (owner)
 $wgGroupPermissions["owner"]["renameuser"]=true;
 
-/*ReplaceText*/
-wfLoadExtension("ReplaceText");
-//Owner (owner)
-$wgGroupPermissions["owner"]["replacetext"]=true;
-
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
 //Disable ShoutWiki specific message
@@ -368,7 +363,7 @@ $wgOnlyUserEditUserPage=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","Highlightjs_Integration","InputBox","Josa","MultimediaViewer","RevisionSlider","SimpleMathJax","TextExtracts","TwoColConflict","WikiEditor","YouTube"));
+wfLoadExtensions(array("Cite","CodeEditor","CodeMirror","Highlightjs_Integration","InputBox","Josa","MultimediaViewer","TextExtracts","TwoColConflict","WikiEditor"));
 
 #Skins
 /*Default skin*/
