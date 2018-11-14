@@ -393,8 +393,14 @@ $wgEnableEmail=false;
 
 /*Entry point*/
 //Short URL
-$wgArticlePath="/exit/$1";
+$wgArticlePath="/page/$1";
 $wgUsePathInfo=true;
+$wgActionPaths=
+["delete"=>"/delete/$1",
+"edit"=>"/edit/$1",
+"history"=>"/history/$1",
+"protect"=>"/protect/$1",
+"purge"=>"/purge/$1"];
 
 /*Open external links in a new tab*/
 $wgExternalLinkTarget="_blank";
@@ -429,12 +435,16 @@ $wgDiff3="C:/Program Files (x86)/GnuWin32/bin/diff3.exe";
 /*Database*/
 //Database type
 $wgDBtype="sqlite";
+//Database name
+$wgDBname="database";
+
 //SQLite database directory
-$wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta" //Windows
-//$wgSQLiteDataDir="/database/PlavorEXITBeta"; //Linux
+$wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta" //Windows only
+//$wgSQLiteDataDir="/etc/nginx/data/PlavorEXITBeta"; //Linux only
 
 /*Private settings*/
-include_once("$IP/PrivateSettings.php");
+include_once("C:/nginx/data/PlavorEXITBeta/PrivateSettings.php"); //Windows only
+//include_once("/etc/nginx/data/PlavorEXITBeta/PrivateSettings.php"); //Linux only
 
 #----
 /*Remove groups*/
