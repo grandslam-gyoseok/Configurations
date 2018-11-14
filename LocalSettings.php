@@ -400,7 +400,8 @@ $wgActionPaths=
 "edit"=>"/edit/$1",
 "history"=>"/history/$1",
 "protect"=>"/protect/$1",
-"purge"=>"/purge/$1"];
+"purge"=>"/purge/$1",
+"unprotect"=>"/unprotect/$1"];
 
 /*Open external links in a new tab*/
 $wgExternalLinkTarget="_blank";
