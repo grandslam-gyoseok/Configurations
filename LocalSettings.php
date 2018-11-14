@@ -13,7 +13,7 @@ $wgShowSQLErrors=true;
 
 /*Entry point*/
 //Must be above $wgLogo
-$wgScriptPath="/plavorexitbeta";
+$wgScriptPath="/mediawiki";
 $wgResourceBasePath=$wgScriptPath;
 #----
 
