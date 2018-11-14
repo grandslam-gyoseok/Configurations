@@ -440,11 +440,11 @@ $wgDBname="database";
 
 //SQLite database directory
 $wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta" //Windows only
-//$wgSQLiteDataDir="/etc/nginx/data/PlavorEXITBeta"; //Linux only
+//$wgSQLiteDataDir="/web_data/PlavorEXITBeta"; //Linux only
 
 /*Private settings*/
 include_once("C:/nginx/data/PlavorEXITBeta/PrivateSettings.php"); //Windows only
-//include_once("/etc/nginx/data/PlavorEXITBeta/PrivateSettings.php"); //Linux only
+//include_once("/web_data/PlavorEXITBeta/PrivateSettings.php"); //Linux only
 
 #----
 /*Remove groups*/
