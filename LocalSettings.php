@@ -440,7 +440,7 @@ $wgDBtype="sqlite";
 $wgDBname="database";
 
 //SQLite database directory
-$wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta" //Windows only
+$wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta"; //Windows only
 //$wgSQLiteDataDir="/web_data/PlavorEXITBeta"; //Linux only
 
 /*Private settings*/
