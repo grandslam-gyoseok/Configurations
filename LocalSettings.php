@@ -49,9 +49,9 @@ $wgNamespaceAliases=
 $wgReservedUsernames=array_merge($wgReservedUsernames,
 ["Null",
 //Action names
-"Block","Create","Delete","Edit","Move","Protect",
+"Block","Create","Delete","Edit","Move","Protect","Watch"
 //동작 이름
-"보호","삭제","생성","이동","편집","차단"]);
+"보호","삭제","생성","이동","주시","편집","차단"]);
 
 /*Default Preferences*/
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
@@ -395,13 +395,9 @@ $wgEnableEmail=false;
 //Short URL
 $wgArticlePath="/page/$1";
 $wgUsePathInfo=true;
-$wgActionPaths=
-["delete"=>"/delete/$1",
-"edit"=>"/edit/$1",
-"history"=>"/history/$1",
-"protect"=>"/protect/$1",
-"purge"=>"/purge/$1",
-"unprotect"=>"/unprotect/$1"];
+$actions=["delete","edit","history","protect","purge","submit","unprotect"]
+foreach ($actions as $action)
+{$wgActionPaths[$action]="/$action/$1";}
 
 /*Open external links in a new tab*/
 $wgExternalLinkTarget="_blank";
@@ -425,13 +421,13 @@ $wgFileCacheDirectory=$wgCacheDirectory;
 //Run 2 jobs per request
 $wgJobRunRate=2;
 
-/*Diff3*/
-//Path to Diff3 (Windows only)
-$wgDiff3="C:/Program Files (x86)/GnuWin32/bin/diff3.exe";
+/*Diff3*/ //windows_only
+//Path to Diff3 //windows_only
+$wgDiff3="C:/Program Files (x86)/GnuWin32/bin/diff3.exe"; //windows_only
 
-/*ImageMagick*/
-//Enable ImageMagick (Ubuntu only)
-//$wgUseImageMagick=true;
+/*ImageMagick*/ //linux_only
+//Enable ImageMagick //linux_only
+$wgUseImageMagick=true; //linux_only
 
 /*Database*/
 //Database type
@@ -440,12 +436,12 @@ $wgDBtype="sqlite";
 $wgDBname="database";
 
 //SQLite database directory
-$wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta"; //Windows only
-//$wgSQLiteDataDir="/web_data/PlavorEXITBeta"; //Linux only
+$wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta"; //windows_only
+$wgSQLiteDataDir="/web_data/PlavorEXITBeta"; //linux_only
 
 /*Private settings*/
-include_once("C:/nginx/data/PlavorEXITBeta/PrivateSettings.php"); //Windows only
-//include_once("/web_data/PlavorEXITBeta/PrivateSettings.php"); //Linux only
+include_once("C:/nginx/data/PlavorEXITBeta/PrivateSettings.php"); //windows_only
+include_once("/web_data/PlavorEXITBeta/PrivateSettings.php"); //linux_only
 
 #----
 /*Remove groups*/
