@@ -49,7 +49,7 @@ $wgNamespaceAliases=
 $wgReservedUsernames=array_merge($wgReservedUsernames,
 ["Null",
 //Action names
-"Block","Create","Delete","Edit","Move","Protect","Watch"
+"Block","Create","Delete","Edit","Move","Protect","Watch",
 //동작 이름
 "보호","삭제","생성","이동","주시","편집","차단"]);
 
@@ -395,7 +395,7 @@ $wgEnableEmail=false;
 //Short URL
 $wgArticlePath="/page/$1";
 $wgUsePathInfo=true;
-$actions=["delete","edit","history","protect","purge","submit","unprotect"]
+$actions=["delete","edit","history","protect","purge","submit","unprotect"];
 foreach ($actions as $action)
 {$wgActionPaths[$action]="/$action/$1";}
 
