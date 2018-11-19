@@ -421,13 +421,13 @@ $wgFileCacheDirectory=$wgCacheDirectory;
 //Run 2 jobs per request
 $wgJobRunRate=2;
 
-/*Diff3*/ //windows_only
-//Path to Diff3 //windows_only
-$wgDiff3="C:/Program Files (x86)/GnuWin32/bin/diff3.exe"; //windows_only
+/*Diff3*/ //[windows_only]
+//Path to Diff3 //[windows_only]
+$wgDiff3="C:/Program Files (x86)/GnuWin32/bin/diff3.exe"; //[windows_only]
 
-/*ImageMagick*/ //linux_only
-//Enable ImageMagick //linux_only
-$wgUseImageMagick=true; //linux_only
+/*ImageMagick*/ //[linux_only]
+//Enable ImageMagick //[linux_only]
+$wgUseImageMagick=true; //[linux_only]
 
 /*Database*/
 //Database type
@@ -436,12 +436,12 @@ $wgDBtype="sqlite";
 $wgDBname="database";
 
 //SQLite database directory
-$wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta"; //windows_only
-$wgSQLiteDataDir="/web_data/PlavorEXITBeta"; //linux_only
+$wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta"; //[windows_only]
+$wgSQLiteDataDir="/web_data/PlavorEXITBeta"; //[linux_only]
 
 /*Private settings*/
-include_once("C:/nginx/data/PlavorEXITBeta/PrivateSettings.php"); //windows_only
-include_once("/web_data/PlavorEXITBeta/PrivateSettings.php"); //linux_only
+include_once("C:/nginx/data/PlavorEXITBeta/PrivateSettings.php"); //[windows_only]
+include_once("/web_data/PlavorEXITBeta/PrivateSettings.php"); //[linux_only]
 
 #----
 /*Remove groups*/
