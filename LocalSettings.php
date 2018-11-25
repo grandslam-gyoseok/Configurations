@@ -395,7 +395,7 @@ $wgEnableEmail=false;
 //Short URL
 $wgArticlePath="/page/$1";
 $wgUsePathInfo=true;
-$actions=["delete","edit","history","protect","purge","submit","unprotect"];
+$actions=["delete","edit","history","info","markpatrolled","protect","purge","render","revert","rollback","submit","unprotect","unwatch","watch"];
 foreach ($actions as $action)
 {$wgActionPaths[$action]="/$action/$1";}
 
