@@ -65,18 +65,18 @@ $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 "watchuploads"=>0]);
 
 /*Blocking*/
+//Apply blocks to XFF header
+$wgApplyIpBlocksToXff=true;
+//Autoblock expiration
+$wgAutoblockExpiry=60*60*24*365; //1 year
+//Enable autoblock cookie
+$wgCookieSetOnAutoblock=true;
 //Prevent blocked users from editing their talk pages
 $wgBlockAllowsUTEdit=false;
 //Limit IP address CIDR range when blocking
 $wgBlockCIDRLimit=
 ["IPv4"=>8, //###.0.0.0/8
 "IPv6"=>16]; //####::/16
-//Autoblock expiration
-$wgAutoblockExpiry=60*60*24*365; //1 year
-//Apply blocks to XFF header
-$wgApplyIpBlocksToXff=true;
-//Enable autoblock cookie
-$wgCookieSetOnAutoblock=true;
 
 /*CSS and JavaScript*/
 //Apply CSS to Special:Preferences and Special:UserLogin page
@@ -98,10 +98,10 @@ $wgExportFromNamespaces=true;
 $wgCapitalLinks=false;
 //Disable user talk for non-logged in users
 $wgDisableAnonTalk=true;
-//Enable category browsing
-$wgUseCategoryBrowser=true;
 //Prevent creating accounts with these characters
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
+//Enable category browsing
+$wgUseCategoryBrowser=true;
 
 #Files and media
 /*File uploads*/
@@ -388,7 +388,7 @@ $wgEnableEmail=false;
 #System
 /*Server*/
 //Base URL of the server
-//$wgServer="http://exit.nerdpol.ovh:81";
+//$wgServer="http://exit.plavormind.tk:81";
 
 /*Entry point*/
 //Short URL
