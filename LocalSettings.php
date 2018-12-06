@@ -32,7 +32,7 @@ $wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/";
 $wgRightsPage="";
 
 /*Sitenotice*/
-//This will be displayed if 'MediaWiki:Sitenotice' and 'MediaWiki:Anonnotice' are empty
+//This will be displayed if MediaWiki:Sitenotice and MediaWiki:Anonnotice are empty
 $wgSiteNotice="<big>'''Welcome to [[{{SITENAME}}]]!'''</big>";
 
 /*Namespace Aliases*/
@@ -211,8 +211,7 @@ $wgRestrictionLevels=array("","1stprotect","2ndprotect","3rdprotect","fullyprote
 $wgCascadingRestrictionLevels=array("2ndprotect","3rdprotect","fullyprotect");
 //Namespace protection
 $wgNamespaceProtection=
-[NS_FILE=>"1stprotect",
-NS_HELP=>"2ndprotect",
+[NS_HELP=>"2ndprotect",
 NS_MEDIAWIKI_TALK=>"fullyprotect",
 NS_PROJECT=>"fullyprotect",
 NS_TEMPLATE=>"3rdprotect"];
@@ -434,7 +433,6 @@ $wgUseImageMagick=true; //linux_only
 $wgDBtype="sqlite";
 //Database name
 $wgDBname="database";
-
 //SQLite database directory
 $wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta"; //windows_only
 $wgSQLiteDataDir="/web_data/PlavorEXITBeta"; //linux_only
