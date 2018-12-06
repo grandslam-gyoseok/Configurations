@@ -386,10 +386,6 @@ wfLoadSkin("Timeless");
 $wgEnableEmail=false;
 
 #System
-/*Server*/
-//Base URL of the server
-//$wgServer="http://exit.plavormind.tk:81";
-
 /*Entry point*/
 //Short URL
 $wgArticlePath="/page/$1";
