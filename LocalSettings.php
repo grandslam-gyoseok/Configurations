@@ -416,9 +416,10 @@ $wgFileCacheDirectory=$wgCacheDirectory;
 //Run 2 jobs per request
 $wgJobRunRate=2;
 
-/*Diff3*/ //windows_only
-//Path to Diff3 //windows_only
-$wgDiff3="C:/Program Files (x86)/GnuWin32/bin/diff3.exe"; //windows_only
+/*Diff3*/
+//Path to Diff3
+if (PHP_OS_FAMILY=="Windows")
+{$wgDiff3="C:/Program Files (x86)/GnuWin32/bin/diff3.exe";}
 
 /*ImageMagick*/ //linux_only
 //Enable ImageMagick //linux_only
@@ -430,12 +431,16 @@ $wgDBtype="sqlite";
 //Database name
 $wgDBname="database";
 //SQLite database directory
-$wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta"; //windows_only
-$wgSQLiteDataDir="/web_data/PlavorEXITBeta"; //linux_only
+if (PHP_OS_FAMILY=="Windows")
+{$wgSQLiteDataDir="C:/nginx/data/PlavorEXITBeta";}
+if (PHP_OS_FAMILY=="Linux")
+{$wgSQLiteDataDir="/web_data/PlavorEXITBeta";}
 
 /*Private settings*/
-include_once("C:/nginx/data/PlavorEXITBeta/PrivateSettings.php"); //windows_only
-include_once("/web_data/PlavorEXITBeta/PrivateSettings.php"); //linux_only
+if (PHP_OS_FAMILY=="Windows")
+{include_once("C:/nginx/data/PlavorEXITBeta/PrivateSettings.php");}
+if (PHP_OS_FAMILY=="Linux")
+{include_once("/web_data/PlavorEXITBeta/PrivateSettings.php");}
 
 #----
 /*Remove groups*/
