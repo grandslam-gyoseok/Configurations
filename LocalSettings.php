@@ -25,6 +25,12 @@ $wgLogo="$wgResourceBasePath/resources/assets/wiki.png";
 //Wiki name
 $wgSitename="PlavorPocketWiki";
 
+//Data folder
+if (PHP_OS_FAMILY=="Windows")
+{$data_folder="C:/nginx/data/$wgSitename";}
+if (PHP_OS_FAMILY=="Linux")
+{$data_folder="/web_data/$wgSitename";}
+
 #General
 
 /*Block*/
@@ -343,8 +349,7 @@ $wgDeleteRevisionsLimit=250;
 
 /*Cache*/
 //Cache folder
-if (PHP_OS_FAMILY=="Windows")
-{$wgCacheDirectory="C:/nginx/data/$wgSitename/cache";}
+$wgCacheDirectory="$data_folder/cache";
 //Localisation cache
 $wgLocalisationCacheConf["store"]="array";
 //Use APCu or WinCache for caching if available
@@ -367,8 +372,7 @@ $wgDBname="database";
 //Database type
 $wgDBtype="sqlite";
 //SQLite database folder
-if (PHP_OS_FAMILY=="Windows")
-{$wgSQLiteDataDir="C:/nginx/data/$wgSitename";}
+$wgSQLiteDataDir=$data_folder;
 
 /*Others*/
 //Changing this will log out all existing sessions.
@@ -377,13 +381,12 @@ $wgAuthenticationTokenVersion="0";
 $wgJobRunRate=2;
 
 //Include private settings
-if (PHP_OS_FAMILY=="Windows")
-{include_once("C:/nginx/data/$wgSitename/private.php");}
+include_once("$data_folder/private.php");
 
 #Extension
 
 /*Other extensions*/
-wfLoadExtensions(["PlavorMindTweaks"]);
+wfLoadExtension("PlavorMindTweaks");
 
 /*Inherit permissions*/
 $wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
@@ -394,7 +397,7 @@ $wgGroupPermissions["supervisor"]+=$wgGroupPermissions["admin"];
 #Skin
 
 /*Default skin*/
-$wgDefaultSkin="Buma";
+$wgDefaultSkin="Vector";
 
 /*Buma*/
 wfLoadSkin("Buma");
