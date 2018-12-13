@@ -25,9 +25,11 @@ $wgLogo="$wgResourceBasePath/resources/assets/wiki.png";
 //Wiki name
 $wgSitename="PlavorPocketWiki";
 
-//Data folder
+/*Data folder*/
+//Windows
 if (PHP_OS_FAMILY=="Windows")
 {$data_folder="C:/nginx/data/$wgSitename";}
+//Linux
 if (PHP_OS_FAMILY=="Linux")
 {$data_folder="/web_data/$wgSitename";}
 
