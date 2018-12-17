@@ -295,6 +295,14 @@ $wgAddGroups["supervisor"][]="admin";
 $wgRemoveGroups["supervisor"][]="staff";
 $wgRemoveGroups["supervisor"][]="admin";
 
+include_once("$IP/extra_settings.php");
+
+/*Inherit permissions*/
+$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
+$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
+$wgGroupPermissions["supervisor"]+=$wgGroupPermissions["admin"];
+//$wgGroupPermissions["root"]+=$wgGroupPermissions["supervisor"];
+
 /*Password policy*/
 $wgPasswordPolicy["policies"]=
 ["default"=>
@@ -386,27 +394,3 @@ $wgJobRunRate=2;
 
 //Include private settings
 include_once("$data_folder/private.php");
-
-#Extension
-
-/*Other extensions*/
-wfLoadExtension("PlavorMindTweaks");
-
-/*Inherit permissions*/
-$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
-$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
-$wgGroupPermissions["supervisor"]+=$wgGroupPermissions["admin"];
-//$wgGroupPermissions["root"]+=$wgGroupPermissions["supervisor"];
-
-#Skin
-
-/*Default skin*/
-$wgDefaultSkin="Vector";
-
-/*Buma*/
-wfLoadSkin("Buma");
-$wgResourceLoaderDebug=true;
-
-/*Vector*/
-wfLoadSkin("Vector");
-$wgVectorResponsive=true;
