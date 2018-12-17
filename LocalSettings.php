@@ -50,6 +50,8 @@ $wgBlockCIDRLimit=
 $wgCookieSetOnAutoblock=true;
 //Check DNS blacklist
 $wgEnableDnsBlacklist=true;
+//Enable partial blocks
+$wgEnablePartialBlocks=true;
 
 /*Copyright*/
 //Footer license icon
