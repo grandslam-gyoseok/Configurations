@@ -76,7 +76,7 @@ $wgEnablePartialBlocks=true;
 
 /*Copyright*/
 //Footer license icon
-$wgRightsIcon="$wgResourceBasePath/resources/assets/licenses/cc-by-sa.png";
+$wgRightsIcon="{$wgResourceBasePath}/resources/assets/licenses/cc-by-sa.png";
 //License page
 $wgRightsPage="";
 //License
@@ -374,7 +374,7 @@ $wgDeleteRevisionsLimit=250;
 
 /*Cache*/
 //Cache folder
-$wgCacheDirectory="$data_folder/cache";
+$wgCacheDirectory="{$data_folder}/cache";
 //Localisation cache
 $wgLocalisationCacheConf["store"]="array";
 //Use APCu or WinCache for caching if available
