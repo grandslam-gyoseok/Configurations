@@ -3,7 +3,7 @@
 if (!defined("MEDIAWIKI"))
 {http_response_code(403);
 $host=$_SERVER["HTTP_HOST"];
-header("Location: //$host/error/403.html");
+header("Location: //{$host}/error/403.html");
 exit;}
 
 #Extensions
