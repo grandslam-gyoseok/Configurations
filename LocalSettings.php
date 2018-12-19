@@ -3,7 +3,7 @@
 if (!defined("MEDIAWIKI"))
 {http_response_code(403);
 $host=$_SERVER["HTTP_HOST"];
-header("Location: //$host/error/403.html");
+header("Location: //{$host}/error/403.html");
 exit;}
 
 /*Debug
@@ -18,20 +18,41 @@ $wgShowSQLErrors=true;
 //Script path
 $wgScriptPath="/mediawiki";
 $wgResourceBasePath=$wgScriptPath;
+/*Short URL
+$wgArticlePath="/page/$1";
+$wgUsePathInfo=true;
+$actions=
+["delete",
+"edit",
+"history",
+"info",
+"markpatrolled",
+"protect",
+"purge",
+"render",
+"revert",
+"rollback",
+"submit",
+"unprotect",
+"unwatch",
+"watch"];
+foreach ($actions as $action)
+{$wgActionPaths[$action]="/{$action}/$1";}
+//*/
 
 /*Basic wiki information*/
 //Wiki logo
-$wgLogo="$wgResourceBasePath/resources/assets/wiki.png";
+$wgLogo="{$wgResourceBasePath}/resources/assets/wiki.png";
 //Wiki name
 $wgSitename="PlavorPocketWiki";
 
 /*Data folder*/
 //Windows
 if (PHP_OS_FAMILY=="Windows")
-{$data_folder="C:/nginx/data/$wgSitename";}
+{$data_folder="C:/nginx/data/{$wgSitename}";}
 //Linux
 if (PHP_OS_FAMILY=="Linux")
-{$data_folder="/web_data/$wgSitename";}
+{$data_folder="/web_data/{$wgSitename}";}
 
 #General
 
@@ -144,15 +165,15 @@ $wgRateLimits=array_merge_recursive($wgRateLimits,
   "newbie"=>[2,60],
   "user"=>[5,60]],
 "upload"=>
-  ["ip"=>[2,60],
-  "newbie"=>[2,60],
-  "user"=>[5,60]]
+  ["ip"=>[1,60],
+  "newbie"=>[1,60],
+  "user"=>[3,60]]
 ]);
 
 /*Reserved usernames*/
 //Prevent creating accounts with these usernames
 $wgReservedUsernames=array_merge($wgReservedUsernames,
-["Null"]);
+["Anonymous","Null"]);
 
 /*Robot policy*/
 //Default robot policy
@@ -284,6 +305,7 @@ $wgGroupPermissions=
   "writeapi"=>true]/*,
 "root"=>
   ["block"=>true,
+  "siteadmin"=>true,
   "unblockself"=>true,
   "userrights"=>true,
   "userrights-interwiki"=>true]
@@ -294,14 +316,6 @@ $wgAddGroups["supervisor"][]="staff";
 $wgAddGroups["supervisor"][]="admin";
 $wgRemoveGroups["supervisor"][]="staff";
 $wgRemoveGroups["supervisor"][]="admin";
-
-include_once("$IP/extra_settings.php");
-
-/*Inherit permissions*/
-$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
-$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
-$wgGroupPermissions["supervisor"]+=$wgGroupPermissions["admin"];
-//$wgGroupPermissions["root"]+=$wgGroupPermissions["supervisor"];
 
 /*Password policy*/
 $wgPasswordPolicy["policies"]=
@@ -330,7 +344,7 @@ $wgPasswordPolicy["policies"]=
 $wgCascadingRestrictionLevels=["staff-access","admin-access","supervisor-access"];
 $wgRestrictionLevels=["","user-access","autoconfirmed-access","staff-access","admin-access","supervisor-access"];
 $wgRestrictionTypes=["create","edit","move","upload","delete","protect"];
-$wgSemiprotectedRestrictionLevels=["user-access"];
+$wgSemiprotectedRestrictionLevels=["user-access","autoconfirmed-access"];
 //Namespace protection
 $wgNamespaceProtection=
 [NS_HELP=>["staff-access"],
@@ -347,14 +361,13 @@ unset($wgGroupPermissions["bureaucrat"]);
 unset($wgGroupPermissions["sysop"]);};
 //*/
 
-/*Temporary groups
+/*Temporary groups*/
 $wgGroupPermissions["bureaucrat"]["userrights"]=true;
 $wgGroupPermissions["interface-admin"]["read"]=true;
 $wgGroupPermissions["sysop"]["read"]=true;
-//*/
 
 /*Others*/
-//Bigdelete
+//Require "bigdelete" permission when deleting a page that has more revision than this
 $wgDeleteRevisionsLimit=250;
 
 #System
@@ -389,8 +402,19 @@ $wgSQLiteDataDir=$data_folder;
 /*Others*/
 //Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion="0";
+//Avoid errors when running update.php
+$wgCommentTableSchemaMigrationStage=MIGRATION_OLD;
 //Run 2 jobs per request
 $wgJobRunRate=2;
 
-//Include private settings
-include_once("$data_folder/private.php");
+//Load settings for extensions and skins
+include_once("{$IP}/extra_settings.php");
+
+/*Inherit permissions*/
+$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
+$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
+$wgGroupPermissions["supervisor"]+=$wgGroupPermissions["admin"];
+//$wgGroupPermissions["root"]+=$wgGroupPermissions["supervisor"];
+
+//Load private settings
+include_once("{$data_folder}/private.php");
