@@ -361,10 +361,11 @@ unset($wgGroupPermissions["bureaucrat"]);
 unset($wgGroupPermissions["sysop"]);};
 //*/
 
-/*Temporary groups*/
+/*Temporary groups
 $wgGroupPermissions["bureaucrat"]["userrights"]=true;
 $wgGroupPermissions["interface-admin"]["read"]=true;
 $wgGroupPermissions["sysop"]["read"]=true;
+//*/
 
 /*Others*/
 //Require "bigdelete" permission when deleting a page that has more revision than this
