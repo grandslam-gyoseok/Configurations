@@ -63,12 +63,6 @@ wfLoadExtension("DeletePagesForGood");
 //Bureaucrats (supervisor)
 $wgGroupPermissions["supervisor"]["deleteperm"]=true;
 
-/*DeleteUserPages*/
-wfLoadExtension("DeleteUserPages");
-//Users (user)
-$wgGroupPermissions["user"]["delete-rootuserpages"]=true;
-$wgGroupPermissions["user"]["delete-usersubpages"]=true;
-
 /*Echo
 wfLoadExtension("Echo");
 $wgEchoEnableEmailBatch=false;
