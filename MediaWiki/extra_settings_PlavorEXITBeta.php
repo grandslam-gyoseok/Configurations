@@ -150,8 +150,7 @@ $wgOnlyUserEditUserPage=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(
-["Cite",
+wfLoadExtensions(["Cite",
 "CodeEditor",
 "CodeMirror",
 "Highlightjs_Integration",
