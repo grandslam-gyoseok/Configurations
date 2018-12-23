@@ -194,6 +194,8 @@ $wgDisableAnonTalk=true;
 $wgEnableEmail=false;
 //Open external links in a new tab
 $wgExternalLinkTarget="_blank";
+//Disable RSS/Atom feeds
+$wgFeed=false;
 //Remove "Powered by MediaWiki" footer icon
 unset($wgFooterIcons["poweredby"]);
 //Prevent creating accounts with these characters
