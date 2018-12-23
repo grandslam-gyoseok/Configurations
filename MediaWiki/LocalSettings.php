@@ -396,11 +396,13 @@ $wgSessionCacheType=$wgMainCacheType;
 
 /*Database*/
 //Database name
-$wgDBname="database";
+$wgDBname="database"; //Needs review
+//Database prefix
+$wgDBprefix="ppw_"; //Per-wiki
 //Database type
 $wgDBtype="sqlite";
 //SQLite database folder
-$wgSQLiteDataDir=$data_folder;
+$wgSQLiteDataDir=$data_folder; //Needs review
 
 /*Others*/
 //Changing this will log out all existing sessions.
