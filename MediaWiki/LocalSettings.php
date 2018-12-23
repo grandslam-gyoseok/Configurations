@@ -42,9 +42,9 @@ foreach ($actions as $action)
 
 /*Basic wiki information*/
 //Wiki logo
-$wgLogo="{$wgResourceBasePath}/resources/assets/wiki.png"; //Per-wiki
+$wgLogo="{$wgResourceBasePath}/resources/assets/wiki.png";
 //Wiki name
-$wgSitename="PlavorPocketWiki"; //Per-wiki
+$wgSitename="PlavorPocketWiki";
 
 /*Data folder*/
 //Windows
@@ -76,13 +76,13 @@ $wgEnablePartialBlocks=true;
 
 /*Copyright*/
 //Footer license icon
-$wgRightsIcon="{$wgResourceBasePath}/resources/assets/licenses/cc-by-sa.png"; //Per-wiki
+$wgRightsIcon="{$wgResourceBasePath}/resources/assets/licenses/cc-by-sa.png";
 //License page
-$wgRightsPage=""; //Per-wiki
+$wgRightsPage="";
 //License
-$wgRightsText="CC BY-SA 4.0"; //Per-wiki
+$wgRightsText="CC BY-SA 4.0";
 //License URL
-$wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/"; //Per-wiki
+$wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/";
 
 /*CSS and JavaScript */
 //Apply CSS to Special:Preferences and Special:UserLogin page
@@ -396,19 +396,17 @@ $wgSessionCacheType=$wgMainCacheType;
 
 /*Database*/
 //Database name
-$wgDBname="database"; //Needs review
-//Database prefix
-$wgDBprefix="ppw_"; //Per-wiki
+$wgDBname="database";
 //Database type
 $wgDBtype="sqlite";
 //SQLite database folder
-$wgSQLiteDataDir=$data_folder; //Needs review
+$wgSQLiteDataDir=$data_folder;
 
 /*Others*/
 //Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion="0";
 //Avoid errors when running update.php
-$wgCommentTableSchemaMigrationStage=MIGRATION_OLD; //Needs review
+$wgCommentTableSchemaMigrationStage=MIGRATION_OLD;
 //Run 2 jobs per request
 $wgJobRunRate=2;
 
