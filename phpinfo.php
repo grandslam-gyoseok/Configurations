@@ -11,6 +11,8 @@ table
     </style>
   </head>
   <body style="font-family: 'Nanum Gothic',sans-serif;">
+
 <?php phpinfo(); ?>
+
   </body>
 </html>
