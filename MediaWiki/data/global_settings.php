@@ -22,7 +22,7 @@ $actions=["delete",
 "unwatch",
 "watch"];
 foreach ($actions as $action)
-{$wgActionPaths="/{$action}/$1";}
+{$wgActionPaths[$action]="/{$action}/$1";}
 $wgArticlePath="/page/$1";
 //Ignored on Windows
 $wgDirectoryMode=0755;
