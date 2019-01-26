@@ -338,12 +338,6 @@ $wgGroupPermissions=
 ];
 $wgRemoveGroups["bureaucrat"]=["staff","admin"];
 
-//Must be after $wgGroupPermissions
-$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
-$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
-$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
-$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
-
 #Cookies
 $wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
 
