@@ -23,7 +23,7 @@ $wgEnablePartialBlocks=true;
 
 /*Copyright*/
 $wgMaxCredits=10; //Added for test
-$wgRightsIcon="{$wgScriptPath}/resources/assets/licenses/cc-by-sa.png";
+$wgRightsIcon="{$IP}/resources/assets/licenses/cc-by-sa.png";
 $wgRightsText="CC BY-SA 4.0";
 $wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/";
 $wgUseCopyrightUpload=true;
@@ -337,7 +337,6 @@ $wgSharedTables=["user"];
 */
 
 /*Paths*/
-//Action paths
 $actions=["delete",
 "edit",
 "history",
@@ -354,7 +353,6 @@ $actions=["delete",
 "watch"];
 foreach ($actions as $action)
 {$wgActionPaths[$action]="/{$action}/$1";}
-//Other paths
 $wgArticlePath="/page/$1";
 $wgScriptPath="/mediawiki";
 $wgUsePathInfo=true;
