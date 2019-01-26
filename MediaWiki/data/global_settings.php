@@ -4,6 +4,10 @@
 if (!defined("MEDIAWIKI"))
 {die("You don't have permission to do that.");}
 
+##Prepending settings
+
+$wgScriptPath="/mediawiki";
+
 ##General
 
 /*Basic information*/
@@ -23,7 +27,7 @@ $wgEnablePartialBlocks=true;
 
 /*Copyright*/
 $wgMaxCredits=10; //Added for test
-$wgRightsIcon="{$IP}/resources/assets/licenses/cc-by-sa.png";
+$wgRightsIcon="{$wgScriptPath}/resources/assets/licenses/cc-by-sa.png";
 $wgRightsText="CC BY-SA 4.0";
 $wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/";
 $wgUseCopyrightUpload=true;
@@ -354,7 +358,6 @@ $actions=["delete",
 foreach ($actions as $action)
 {$wgActionPaths[$action]="/{$action}/$1";}
 $wgArticlePath="/page/$1";
-$wgScriptPath="/mediawiki";
 $wgUsePathInfo=true;
 
 /*Others*/
