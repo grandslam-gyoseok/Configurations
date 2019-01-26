@@ -71,7 +71,7 @@ $wgPasswordPolicy["policies"]=
 ];
 
 /*Preferences*/
-$wgDefaultUserOptions=array_merge_recursive($wgDefaultUserOptions,
+$wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 ["editfont"=>"sans-serif",
 "hidecategorization"=>0,
 "usenewrc"=>0,
