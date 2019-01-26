@@ -277,6 +277,7 @@ $wgGroupPermissions=
   "movefile"=>true,
   "purge"=>true,
   "reupload"=>true,
+  "user-access"=>true, //Patch for protection
   "upload_by_url"=>true],
 "staff"=> //Staffs
   ["staff-access"=>true,
@@ -337,6 +338,12 @@ $wgGroupPermissions=
 ];
 $wgRemoveGroups["bureaucrat"]=["staff","admin"];
 
+//Must be after $wgGroupPermissions
+$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
+$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
+$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
+$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
+
 #Cookies
 $wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
 
@@ -367,7 +374,9 @@ $wgCommandLineDarkBg=true; //Enabled for test
 $wgMemoryLimit="256M";
 
 #Undocumented
+$wgCascadingRestrictionLevels=["staff-access","admin-access","bureaucrat-access","steward-access"];
 $wgCookieSetOnIpBlock=true;
 $wgEnablePartialBlocks=true;
 //$wgResourceLoaderEnableJSProfiler=true; //Disabled for test
+$wgSemiprotectedRestrictionLevels=["user-access","autoconfirmed-access"];
 ?>
