@@ -1,9 +1,10 @@
 <?php
-/*Prevent web access*/
-if (!defined("MEDIAWIKI"))
-{exit;}
+##Prevent web access
 
-#Extensions
+if (!defined("MEDIAWIKI"))
+{die("You don't have permission to do that.");}
+
+##Extensions
 
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
@@ -14,17 +15,30 @@ $wgGroupPermissions["staff"]["unblockable"]=false;
 //Administrators
 $wgGroupPermissions["admin"]["unblockable"]=true;
 
+/*TorBlock*/
+wfLoadExtension("TorBlock");
+//Remove default value
+$wgTorAllowedActions=[];
+
 /*Other extensions*/
 wfLoadExtension("PlavorMindTweaks");
 
-#Skins
+##Skins
+
+/*Liberty*/
+wfLoadSkin("Liberty");
+$wgLibertyMainColor="#9933ff";
+$wgTwitterAccount="pseol2190";
 
 /*Vector*/
 wfLoadSkin("Vector");
 $wgVectorResponsive=true;
 
-#Permission inheritance
-//Must be after all settings
+/*Other skins*/
+wfLoadSkin("Timeless");
+
+##Permission inheritance
+
 $wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
 $wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
 $wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
