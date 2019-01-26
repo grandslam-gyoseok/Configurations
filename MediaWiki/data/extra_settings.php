@@ -19,6 +19,10 @@ $wgGroupPermissions["admin"]["unblockable"]=true;
 wfLoadExtension("TorBlock");
 //Remove default value
 $wgTorAllowedActions=[];
+//Users
+$wgGroupPermissions["user"]["torunblocked"]=false;
+//Stewards
+$wgGroupPermissions["steward"]["torunblocked"]=true;
 
 /*Other extensions*/
 wfLoadExtension("PlavorMindTweaks");
