@@ -37,7 +37,7 @@ include_once("{$data_dir}/{$wiki_code}/settings.php");
 $wgGroupPermissions["bot"]["read"]=true;
 $wgGroupPermissions["interface-admin"]["read"]=true;
 $wgGroupPermissions["sysop"]["read"]=true;
-$wgAddGroups["bureaucrat"][]="steward";
+$wgGroupPermissions["bureaucrat"]["userrights"]=true;
 //*/
 
 wfLoadExtension("PlavorMindTweaks");
