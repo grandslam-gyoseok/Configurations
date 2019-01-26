@@ -135,12 +135,13 @@ $wgCleanSignatures=false; //Added for test
 $wgDisableAnonTalk=true;
 $wgEditPageFrameOptions="SAMEORIGIN";
 $wgExternalLinkTarget="_blank";
+//Remove default value
+$wgFilterLogTypes=[];
+unset($wgFooterIcons["poweredby"]);
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 $wgMaxNameChars=20;
 $wgMaxTemplateDepth=10;
 $wgMaxTocLevel=5;
-//Remove default value
-$wgFilterLogTypes=[];
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
 $wgRCShowWatchingUsers=true; //Added for test
 $wgReservedUsernames=array_merge_recursive($wgReservedUsernames,
