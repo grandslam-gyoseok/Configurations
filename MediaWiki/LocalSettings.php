@@ -30,7 +30,8 @@ $central_wiki_code="central";
 $data_dir="{$IP}/data";
 $private_data_dir="{$IP}/private_data";
 
-include_once("{$data_dir}/global_settings.php");
+require_once("https://raw.githubusercontent.com/PlavorMind/Configurations/Main/MediaWiki/data/global_settings.php");
+require_once("https://raw.githubusercontent.com/PlavorMind/Configurations/Main/MediaWiki/data/extra_settings.php");
 include_once("{$data_dir}/{$wiki_code}/settings.php");
 
 /*
@@ -39,7 +40,4 @@ $wgGroupPermissions["interface-admin"]["read"]=true;
 $wgGroupPermissions["sysop"]["read"]=true;
 $wgGroupPermissions["bureaucrat"]["userrights"]=true;
 //*/
-
-wfLoadExtension("PlavorMindTweaks");
-wfLoadSkin("Vector");
 ?>
