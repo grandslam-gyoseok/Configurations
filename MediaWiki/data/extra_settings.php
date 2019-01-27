@@ -6,6 +6,10 @@ if (!defined("MEDIAWIKI"))
 
 ##Extensions
 
+/*MultimediaViewer*/
+wfLoadExtension("MultimediaViewer");
+$wgMediaViewerUseThumbnailGuessing=true;
+
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
