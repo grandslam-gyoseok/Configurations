@@ -6,6 +6,16 @@ if (!defined("MEDIAWIKI"))
 
 ##Extensions
 
+/*ConfirmEdit*/
+wfLoadExtension("ConfirmEdit");
+$wgCaptchaTriggers["create"]=true;
+$wgCaptchaTriggers["edit"]=true;
+$wgCaptchaTriggersOnNamespace=
+[NS_USER=>
+  ["create"=>false,
+  "edit"=>false]
+];
+
 /*MultimediaViewer*/
 wfLoadExtension("MultimediaViewer");
 $wgMediaViewerUseThumbnailGuessing=true;
