@@ -18,13 +18,12 @@ $wgReservedUsernames=array_merge_recursive($wgReservedUsernames,
 
 /*Basic information*/
 //Will fallback to default logo by try_files when logo does not exist
-$wgLogo="{$data_dir}/{$wiki_code}/logo.png";
+$wgLogo="{$wgScriptPath}/data/{$wiki_code}/logo.png";
 $wgSitename="Wiki";
 
 /*Blocking*/
 $wgApplyIpBlocksToXff=true;
 $wgAutoblockExpiry=60*60*24*365; //1 year
-$wgBlockAllowsUTEdit=false; //Added for test
 $wgBlockCIDRLimit=
 ["IPv4"=>8, //###.0.0.0/8
 "IPv6"=>16]; //####::/16
@@ -37,7 +36,6 @@ $wgMaxCredits=10; //Added for test
 $wgRightsIcon="{$wgScriptPath}/resources/assets/licenses/cc-by-sa.png";
 $wgRightsText="CC BY-SA 4.0";
 $wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/";
-$wgUseCopyrightUpload=true;
 
 /*CSS and JavaScript*/
 $wgAllowSiteCSSOnRestrictedPages=true;
@@ -151,7 +149,6 @@ $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
 $wgRCShowWatchingUsers=true; //Added for test
 $wgRestrictDisplayTitle=false; //Added for test
 $wgShowRollbackEditCount=20; //Set for test
-$wgSiteNotice="<b>Welcome to [[{{SITENAME}}]]!</b>";
 $wgUniversalEditButton=false;
 //Only allow HTTP and HTTPS protocol in links
 $wgUrlProtocols=["//","http://","https://"];
@@ -280,6 +277,7 @@ $wgCopyUploadsDomains=[]; //MUST SET!
 $wgEnableUploads=true;
 $wgHashedUploadDirectory=false;
 $wgMaxUploadSize=1024*1024*5; //5 MB
+$wgUseCopyrightUpload=true;
 //Automatically update outdated EXIF metadata
 $wgUpdateCompatibleMetadata=true;
 $wgUploadSizeWarning=1024*1024*3; //3 MB
