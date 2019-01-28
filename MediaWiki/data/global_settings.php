@@ -277,11 +277,12 @@ $wgCopyUploadsDomains=[]; //MUST SET!
 $wgEnableUploads=true;
 $wgHashedUploadDirectory=false;
 $wgMaxUploadSize=1024*1024*5; //5 MB
-$wgUseCopyrightUpload=true;
 //Automatically update outdated EXIF metadata
 $wgUpdateCompatibleMetadata=true;
 $wgUploadSizeWarning=1024*1024*3; //3 MB
 $wgUploadStashMaxAge=60*60; //1 hour
+$wgUseCopyrightUpload=true;
+$wgUseInstantCommons=true;
 
 /*Directory*/
 $wgDeletedDirectory="{$private_data_dir}/{$wiki_code}/deleted_files";
