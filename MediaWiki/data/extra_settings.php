@@ -22,6 +22,10 @@ $wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
 wfLoadExtension("MultimediaViewer");
 $wgMediaViewerUseThumbnailGuessing=true;
 
+/*SyntaxHighlight_GeSHi*/
+if (PHP_OS_FAMILY=="Linux")
+{wfLoadExtension("SyntaxHighlight_GeSHi");}
+
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
@@ -40,6 +44,12 @@ $wgGroupPermissions["user"]["torunblocked"]=false;
 //Stewards
 $wgGroupPermissions["steward"]["torunblocked"]=true;
 
+/*UserPageEditProtection*/
+//Add $wgOnlyUserEditUserPage=true; to per-wiki extra_settings.php to enable it
+include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
+//Staffs
+$wgGroupPermissions["staff"]["editalluserpages"]=true;
+
 /*Other extensions*/
 wfLoadExtension("PlavorMindTweaks");
 
@@ -57,8 +67,9 @@ $wgVectorResponsive=true;
 /*Other skins*/
 wfLoadSkin("Timeless");
 
-##Permission inheritance
+##Appending settings
 
+/*Permission inheritance*/
 $wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
 $wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
 $wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
