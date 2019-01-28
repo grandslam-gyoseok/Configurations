@@ -18,9 +18,22 @@ $wgCaptchaTriggersOnNamespace=
 //Autoconfirmed users
 $wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
 
+/*DeletePagesForGood*/
+wfLoadExtension("DeletePagesForGood");
+$wgDeletePagesForGoodNamespaces[NS_FILE]=false;
+$wgGroupPermissions["eliminator"]["deleteperm"]=true;
+
+/*Highlightjs_Integration*/
+if (PHP_OS_FAMILY=="Windows")
+{wfLoadExtension("Highlightjs_Integration");}
+
 /*MultimediaViewer*/
 wfLoadExtension("MultimediaViewer");
 $wgMediaViewerUseThumbnailGuessing=true;
+
+/*Nuke*/
+wfLoadExtension("Nuke");
+$wgGroupPermissions["bureaucrat"]["nuke"]=true;
 
 /*SyntaxHighlight_GeSHi*/
 if (PHP_OS_FAMILY=="Linux")
@@ -44,14 +57,8 @@ $wgGroupPermissions["user"]["torunblocked"]=false;
 //Stewards
 $wgGroupPermissions["steward"]["torunblocked"]=true;
 
-/*UserPageEditProtection*/
-//Add $wgOnlyUserEditUserPage=true; to per-wiki extra_settings.php to enable it
-include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
-//Staffs
-$wgGroupPermissions["staff"]["editalluserpages"]=true;
-
 /*Other extensions*/
-wfLoadExtension("PlavorMindTweaks");
+wfLoadExtensions(["Cite","PlavorMindTweaks"]);
 
 ##Skins
 
