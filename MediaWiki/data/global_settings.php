@@ -10,12 +10,19 @@ $wgScriptPath="/mediawiki";
 
 ##General
 
+/*Account*/
+$wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
+$wgMaxNameChars=20;
+$wgReservedUsernames=array_merge_recursive($wgReservedUsernames,
+["Anon","Anonymous","Default","Not logged in","Null"]);
+
 /*Basic information*/
 //Will fallback to default logo by try_files when logo does not exist
 $wgLogo="{$data_dir}/{$wiki_code}/logo.png";
 $wgSitename="Wiki";
 
 /*Blocking*/
+$wgApplyIpBlocksToXff=true;
 $wgAutoblockExpiry=60*60*24*365; //1 year
 $wgBlockAllowsUTEdit=false; //Added for test
 $wgBlockCIDRLimit=
@@ -138,14 +145,10 @@ $wgExternalLinkTarget="_blank";
 //Remove default value
 $wgFilterLogTypes=[];
 unset($wgFooterIcons["poweredby"]);
-$wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
-$wgMaxNameChars=20;
 $wgMaxTemplateDepth=10;
 $wgMaxTocLevel=5;
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
 $wgRCShowWatchingUsers=true; //Added for test
-$wgReservedUsernames=array_merge_recursive($wgReservedUsernames,
-["Anon","Anonymous","Not logged in","Null"]);
 $wgRestrictDisplayTitle=false; //Added for test
 $wgShowRollbackEditCount=20; //Set for test
 $wgSiteNotice="<b>Welcome to [[{{SITENAME}}]]!</b>";
