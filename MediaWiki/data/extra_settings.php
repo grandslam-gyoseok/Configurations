@@ -15,6 +15,8 @@ $wgCaptchaTriggersOnNamespace=
   ["create"=>false,
   "edit"=>false]
 ];
+//Autoconfirmed users
+$wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
 
 /*MultimediaViewer*/
 wfLoadExtension("MultimediaViewer");
