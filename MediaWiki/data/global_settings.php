@@ -343,7 +343,8 @@ $wgSharedTables=["user"];
 */
 
 /*Paths*/
-$actions=["delete",
+$actions=
+["delete",
 "edit",
 "history",
 "info",
