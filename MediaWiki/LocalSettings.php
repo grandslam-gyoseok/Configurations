@@ -40,6 +40,7 @@ $private_data_dir="{$IP}/private_data";
 /*Load settings*/
 //Global settings
 include_once("{$data_dir}/global_settings.php");
+include_once("{$private_data_dir}/global_settings.php");
 include_once("{$data_dir}/extra_settings.php");
 //Per-wiki settings
 include_once("{$data_dir}/{$wiki_code}/settings.php");
