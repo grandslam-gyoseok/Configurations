@@ -6,6 +6,20 @@ if (!defined("MEDIAWIKI"))
 
 ##Extensions
 
+/*AntiSpoof*/
+wfLoadExtension("AntiSpoof");
+//$wgSharedTables[]="spoofuser";
+
+/*CheckUser*/
+wfLoadExtension("CheckUser");
+$wgCheckUserCIDRLimit=$wgBlockCIDRLimit;
+$wgCheckUserMaxBlocks=100;
+//Stewards
+$wgGroupPermissions["steward"]["checkuser"]=true;
+$wgGroupPermissions["steward"]["checkuser-log"]=true;
+$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
+{unset($wgGroupPermissions["checkuser"]);};
+
 /*ConfirmEdit*/
 wfLoadExtension("ConfirmEdit");
 $wgCaptchaTriggers["create"]=true;
@@ -35,6 +49,17 @@ $wgMediaViewerUseThumbnailGuessing=true;
 wfLoadExtension("Nuke");
 $wgGroupPermissions["bureaucrat"]["nuke"]=true;
 
+/*PageImages*/
+wfLoadExtension("PageImages");
+$wgPageImagesBlacklistExpiry=60; //1 minute
+$wgPageImagesExpandOpenSearchXml=true;
+$wgPageImagesNamespaces=[NS_CATEGORY,NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];
+
+/*Popups*/
+wfLoadExtension("Popups");
+$wgPopupsOptInDefaultState="1";
+$wgPopupsHideOptInOnPreferencesPage=true;
+
 /*SyntaxHighlight_GeSHi*/
 if (PHP_OS_FAMILY=="Linux")
 {wfLoadExtension("SyntaxHighlight_GeSHi");}
@@ -48,6 +73,10 @@ $wgGroupPermissions["staff"]["unblockable"]=false;
 //Administrators
 $wgGroupPermissions["admin"]["unblockable"]=true;
 
+/*TextExtracts*/
+wfLoadExtension("TextExtracts");
+$wgExtractsExtendOpenSearchXml=true;
+
 /*TorBlock*/
 wfLoadExtension("TorBlock");
 //Remove default value
@@ -58,7 +87,7 @@ $wgGroupPermissions["user"]["torunblocked"]=false;
 $wgGroupPermissions["steward"]["torunblocked"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(["Cite","PlavorMindTweaks"]);
+wfLoadExtensions(["Cite","PlavorMindTweaks","TwoColConflict"]);
 
 ##Skins
 
