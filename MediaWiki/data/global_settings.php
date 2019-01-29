@@ -266,6 +266,11 @@ $wgGroupsRemoveFromSelf["admin"]=["staff","admin"];
 $wgAddGroups["bureaucrat"]=["staff","admin"];
 $wgRemoveGroups["bureaucrat"]=["staff","admin"];
 $wgGroupsRemoveFromSelf["bureaucrat"]=["bureaucrat"];
+//Inheritance
+$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
+$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
+$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
+$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
 
 /*Protection*/
 $wgCascadingRestrictionLevels=["staff-access","admin-access","bureaucrat-access","steward-access"];
