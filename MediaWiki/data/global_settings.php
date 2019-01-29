@@ -126,7 +126,7 @@ $wgRateLimits=array_merge_recursive($wgRateLimits,
 /*Robot policies*/
 $wgDefaultRobotPolicy="noindex,nofollow"; //Set for test
 //All namespaces
-$wgExemptFromUserRobotsControl=[-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; //Set for test
+$wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; //Set for test
 //Remove default value ("mediawiki.org")
 $wgNoFollowDomainExceptions=[];
 
@@ -258,8 +258,14 @@ $wgGroupPermissions=
   "viewsuppressed"=>true,
   "writeapi"=>true]
 ];
+//Staffs
+$wgGroupsRemoveFromSelf["staff"]=["staff"];
+//Administrators
+$wgGroupsRemoveFromSelf["admin"]=["staff","admin"];
+//Bureaucrats
 $wgAddGroups["bureaucrat"]=["staff","admin"];
 $wgRemoveGroups["bureaucrat"]=["staff","admin"];
+$wgGroupsRemoveFromSelf["bureaucrat"]=["bureaucrat"];
 
 /*Protection*/
 $wgCascadingRestrictionLevels=["staff-access","admin-access","bureaucrat-access","steward-access"];
