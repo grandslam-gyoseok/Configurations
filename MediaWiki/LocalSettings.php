@@ -19,19 +19,19 @@ if (!defined("MEDIAWIKI"))
 
 if ($wgCommandLineMode)
 {//For updating
-$wiki_code="central";}
+$wiki_code="exit";}
 else
 {switch ($_SERVER["SERVER_NAME"])
-  {//PlavorMindCentral (central)
-  case "central.plavormind.tk":
-  $wiki_code="central";
+  {//PlavorEXITBeta (exit)
+  case "exit.plavormind.tk":
+  $wiki_code="exit";
   break;
   default:
   die("You don't have permission to do that.");
   exit;}
 }
 
-$central_wiki_code="central";
+$central_wiki_code="exit";
 $data_dir="{$IP}/data";
 $private_data_dir="{$IP}/private_data";
 
