@@ -16,3 +16,11 @@ include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtect
 $wgOnlyUserEditUserPage=true;
 //Staffs
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
+
+##Appending settings
+
+/*Permission inheritance*/
+$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
+$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
+$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
+$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
