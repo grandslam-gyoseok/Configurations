@@ -383,6 +383,7 @@ $wgDirectoryMode=0755;
 $wgEnableDnsBlacklist=true;
 $wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
 $wgFeed=false;
+$wgGitBin=false;
 $wgJobRunRate=2;
 $wgMemoryLimit="256M";
 switch (PHP_OS_FAMILY)
