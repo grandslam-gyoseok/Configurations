@@ -86,6 +86,12 @@ $wgGroupPermissions["user"]["torunblocked"]=false;
 //Stewards
 $wgGroupPermissions["steward"]["torunblocked"]=true;
 
+/*UserMerge*/
+wfLoadExtension("UserMerge");
+$wgUserMergeProtectedGroups=["admin","bureaucrat","steward"];
+//Stewards
+$wgGroupPermissions["steward"]["usermerge"]=true;
+
 /*Other extensions*/
 wfLoadExtensions(["Cite","PlavorMindTweaks","TwoColConflict"]);
 
