@@ -93,7 +93,7 @@ $wgUserMergeProtectedGroups=["admin","bureaucrat","steward"];
 $wgGroupPermissions["steward"]["usermerge"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(["Cite","PlavorMindTweaks","TwoColConflict"]);
+wfLoadExtensions(["PlavorMindTweaks","TwoColConflict"]);
 
 ##Skins
 
