@@ -17,6 +17,11 @@ $wgOnlyUserEditUserPage=true;
 //Staffs
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
+##Skins
+
+/*Other skins*/
+wfLoadSkin("Anisa");
+
 ##Appending settings
 
 /*Permission inheritance*/
