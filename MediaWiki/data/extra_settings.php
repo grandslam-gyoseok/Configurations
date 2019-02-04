@@ -108,7 +108,6 @@ wfLoadExtensions(["PlavorMindTweaks","TwoColConflict"]);
 /*Liberty*/
 wfLoadSkin("Liberty");
 $wgLibertyMainColor="#9933ff";
-$wgTwitterAccount="pseol2190";
 
 /*Vector*/
 wfLoadSkin("Vector");
