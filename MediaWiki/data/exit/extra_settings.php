@@ -17,11 +17,6 @@ $wgOnlyUserEditUserPage=true;
 //Staffs
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
-##Skins
-
-/*Liberty*/
-$wgTwitterAccount="pseol2190";
-
 ##Appending settings
 
 /*Permission inheritance*/
