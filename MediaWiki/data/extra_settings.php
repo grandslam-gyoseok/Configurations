@@ -68,6 +68,11 @@ wfLoadExtension("Popups");
 $wgPopupsOptInDefaultState="1";
 $wgPopupsHideOptInOnPreferencesPage=true;
 
+/*Renameuser*/
+wfLoadExtension("Renameuser");
+$wgGroupPermissions["bureaucrat"]["renameuser"]=false;
+$wgGroupPermissions["steward"]["renameuser"]=true;
+
 /*SyntaxHighlight_GeSHi*/
 if (PHP_OS_FAMILY=="Linux")
 {wfLoadExtension("SyntaxHighlight_GeSHi");}
