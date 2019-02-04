@@ -148,7 +148,7 @@ $wgMaxTocLevel=5;
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
 $wgRCShowWatchingUsers=true; //Added for test
 $wgRestrictDisplayTitle=false; //Added for test
-$wgShowRollbackEditCount=20; //Set for test
+$wgShowRollbackEditCount=30;
 $wgUniversalEditButton=false;
 //Only allow HTTP and HTTPS protocol in links
 $wgUrlProtocols=["//","http://","https://"];
