@@ -6,11 +6,6 @@ if (!defined("MEDIAWIKI"))
 
 ##Extensions
 
-/*Renameuser*/
-wfLoadExtension("Renameuser");
-$wgGroupPermissions["bureaucrat"]["renameuser"]=false;
-$wgGroupPermissions["steward"]["renameuser"]=true;
-
 /*UserPageEditProtection*/
 include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
 $wgOnlyUserEditUserPage=true;
