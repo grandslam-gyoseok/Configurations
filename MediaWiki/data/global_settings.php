@@ -14,7 +14,7 @@ $wgScriptPath="/mediawiki";
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 $wgMaxNameChars=20;
 $wgReservedUsernames=array_merge_recursive($wgReservedUsernames,
-["Anon","Anonymous","Default","Not logged in","Null"]);
+["Account","Anon","Anonymous","Default","Error","ID","Not logged in","Null","Undefined","User"]);
 
 /*Basic information*/
 //Will fallback to default logo by try_files when logo does not exist
