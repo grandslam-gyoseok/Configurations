@@ -55,7 +55,7 @@ $wgMediaViewerUseThumbnailGuessing=true;
 
 /*Nuke*/
 wfLoadExtension("Nuke");
-$wgGroupPermissions["bureaucrat"]["nuke"]=true;
+$wgGroupPermissions["steward"]["nuke"]=true;
 
 /*PageImages*/
 wfLoadExtension("PageImages");
