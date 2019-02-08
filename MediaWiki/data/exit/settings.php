@@ -44,6 +44,8 @@ $wgNamespaceProtection=
   ["autoconfirmed-access"],
 NS_HELP=>
   ["staff-access"],
+NS_MEDIAWIKI_TALK=>
+  ["steward-access"],
 NS_PROJECT=>
   ["steward-access"],
 NS_TEMPLATE=>
