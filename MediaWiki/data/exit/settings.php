@@ -13,7 +13,6 @@ $wgSitename="PlavorEXITBeta";
 $wgBlockAllowsUTEdit=false; //Added for test
 
 /*Others*/
-$wgSiteNotice="<b>Welcome to [[{{SITENAME}}]]!</b>";
 $wgForceUIMsgAsContentMsg= //Added for test
 ["modifiedarticleprotection-comment",
 "protect-expiry-indefinite",
@@ -35,6 +34,8 @@ $wgForceUIMsgAsContentMsg= //Added for test
 "protect-level-admin-access",
 "protect-level-bureaucrat-access",
 "protect-level-steward-access"];
+$wgRestrictDisplayTitle=false; //Added for test
+$wgSiteNotice="<b>Welcome to [[{{SITENAME}}]]!</b>";
 
 ##Permissions
 
