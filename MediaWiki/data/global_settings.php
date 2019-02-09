@@ -43,6 +43,12 @@ $wgAllowUserCss=true;
 $wgAllowUserCssPrefs=true;
 $wgAllowUserJs=true;
 
+/*Interface*/
+$wgDisableAnonTalk=true;
+$wgMaxTocLevel=5;
+$wgRCShowWatchingUsers=true;
+$wgShowRollbackEditCount=30;
+
 /*Interwiki*/
 $wgEnableScaryTranscluding=true;
 $wgRedirectSources="https?:\\/\\/.*"; //Set for test
@@ -131,27 +137,21 @@ $wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; //Set fo
 $wgNoFollowDomainExceptions=[];
 
 /*Others*/
-$wgAdvancedSearchHighlighting=true; //Added for test
-$wgAllowSlowParserFunctions=true; //Added for test
 $wgActiveUserDays=7;
+$wgAllowSlowParserFunctions=true; //Added for test
 $wgBreakFrames=true;
 $wgCapitalLinks=false;
 $wgCleanSignatures=false; //Added for test
-$wgDisableAnonTalk=true;
 $wgEditPageFrameOptions="SAMEORIGIN";
 $wgExternalLinkTarget="_blank";
 //Remove default value
 $wgFilterLogTypes=[];
 unset($wgFooterIcons["poweredby"]);
 $wgMaxTemplateDepth=10;
-$wgMaxTocLevel=5;
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
-$wgRCShowWatchingUsers=true; //Added for test
-$wgShowRollbackEditCount=30;
 $wgUniversalEditButton=false;
 //Only allow HTTP and HTTPS protocol in links
 $wgUrlProtocols=["//","http://","https://"];
-$wgUseCategoryBrowser=true; //Added for test
 
 ##Permissions
 
@@ -390,5 +390,4 @@ switch (PHP_OS_FAMILY)
 $wgPhpCli="C:/PHP/php.exe";
 break;}
 //$wgResourceLoaderEnableJSProfiler=true; //Disabled for test
-$wgUseMediaWikiUIEverywhere=true;
 ?>
