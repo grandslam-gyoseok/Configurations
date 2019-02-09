@@ -10,9 +10,10 @@ if (!defined("MEDIAWIKI"))
 $wgSitename="PlavorEXITBeta";
 
 /*Blocking*/
-$wgBlockAllowsUTEdit=false; //Added for test
+//$wgBlockAllowsUTEdit=false; //Added for test
 
-/*Others*/
+/*Interface*/
+$wgAdvancedSearchHighlighting=true; //Added for test
 $wgForceUIMsgAsContentMsg= //Added for test
 ["modifiedarticleprotection-comment",
 "protect-expiry-indefinite",
@@ -34,8 +35,12 @@ $wgForceUIMsgAsContentMsg= //Added for test
 "protect-level-admin-access",
 "protect-level-bureaucrat-access",
 "protect-level-steward-access"];
-$wgRestrictDisplayTitle=false; //Added for test
 $wgSiteNotice="<b>Welcome to [[{{SITENAME}}]]!</b>";
+//$wgUseCategoryBrowser=true; //Added for test
+$wgUseMediaWikiUIEverywhere=true;
+
+/*Others*/
+$wgRestrictDisplayTitle=false; //Added for test
 
 ##Permissions
 
