@@ -44,6 +44,10 @@ $wgRestrictDisplayTitle=false; //Added for test
 
 ##Permissions
 
+/*Group permissions*/
+$wgGroupPermissions["bureaucrat"]["editinterface"]=false;
+$wgGroupPermissions["steward"]["editinterface"]=true;
+
 /*Protection*/
 $wgNamespaceProtection=
 [NS_CATEGORY=>
