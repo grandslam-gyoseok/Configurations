@@ -7,10 +7,8 @@ if (!defined("MEDIAWIKI"))
 ##General settings
 
 /*Basic information*/
+$wgLogo="{$wgScriptPath}/data/{$wiki_code}/logo.png";
 $wgSitename="PlavorEXITBeta";
-
-/*Blocking*/
-//$wgBlockAllowsUTEdit=false; //Added for test
 
 /*Interface*/
 $wgAdvancedSearchHighlighting=true; //Added for test
@@ -37,7 +35,7 @@ $wgForceUIMsgAsContentMsg= //Added for test
 "protect-level-steward-access"];
 $wgSiteNotice="<b>Welcome to [[{{SITENAME}}]]!</b>";
 //$wgUseCategoryBrowser=true; //Added for test
-$wgUseMediaWikiUIEverywhere=true;
+//$wgUseMediaWikiUIEverywhere=true;
 
 /*Others*/
 $wgRestrictDisplayTitle=false; //Added for test
