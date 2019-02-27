@@ -6,6 +6,34 @@ if (!defined("MEDIAWIKI"))
 
 ##Extensions
 
+/*AbuseFilter*/
+wfLoadExtension("AbuseFilter");
+$wgAbuseFilterActions=
+["disallow"=>true,
+"warn"=>true];
+//$wgAbuseFilterCentralDB="global_abusefilter";
+$wgAbuseFilterNotifications="rcandudp";
+$wgAbuseFilterNotificationsPrivate=$wgAbuseFilterNotifications;
+$wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
+["*"=>
+  ["abusefilter-log"=>false,
+  "abusefilter-view"=>false],
+"steward"=>
+  ["abusefilter-hide-log"=>true,
+  "abusefilter-hidden-log"=>true,
+  "abusefilter-log"=>true,
+  "abusefilter-log-detail"=>true,
+  "abusefilter-log-private"=>true,
+  "abusefilter-modify"=>true,
+  "abusefilter-modify-global"=>true,
+  "abusefilter-modify-restricted"=>true,
+  "abusefilter-private"=>true,
+  "abusefilter-private-log"=>true,
+  "abusefilter-revert"=>true,
+  "abusefilter-view"=>true,
+  "abusefilter-view-private"=>true]
+]);
+
 /*AntiSpoof*/
 wfLoadExtension("AntiSpoof");
 //$wgSharedTables[]="spoofuser";
