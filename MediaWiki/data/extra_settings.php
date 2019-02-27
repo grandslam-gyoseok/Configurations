@@ -55,6 +55,11 @@ $wgGroupPermissions["steward"]["gotoshell"]=true;
 if (PHP_OS_FAMILY=="Windows")
 {wfLoadExtension("Highlightjs_Integration");}
 
+/*MinimumNameLength*/
+wfLoadExtension("MinimumNameLength");
+//Only detects alphanumeric names
+$wgMinimumUsernameLength=4;
+
 /*MultimediaViewer*/
 wfLoadExtension("MultimediaViewer");
 $wgMediaViewerUseThumbnailGuessing=true;
@@ -95,6 +100,12 @@ $wgGroupPermissions["admin"]["unblockable"]=true;
 /*TextExtracts*/
 wfLoadExtension("TextExtracts");
 $wgExtractsExtendOpenSearchXml=true;
+
+/*TitleBlacklist*/
+wfLoadExtension("TitleBlacklist");
+//Stewards
+$wgGroupPermissions["steward"]["tboverride"]=true;
+$wgGroupPermissions["steward"]["titleblacklistlog"]=true;
 
 /*TorBlock*/
 wfLoadExtension("TorBlock");
