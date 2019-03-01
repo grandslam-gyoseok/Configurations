@@ -19,3 +19,4 @@ $wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
 $wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
 $wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
 $wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
+?>
