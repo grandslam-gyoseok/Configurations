@@ -59,4 +59,12 @@ NS_PROJECT=>
 NS_TEMPLATE=>
   ["admin-access"]
 ];
+
+##Appending settings
+
+/*Permission inheritance*/
+$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
+$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
+$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
+$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
 ?>
