@@ -23,7 +23,7 @@ $wiki_code="exit";}
 else
 {switch ($_SERVER["HTTP_HOST"])
   {//PlavorEXITBeta (exit)
-  case "exit.plavormind.tk":
+  case "exit.plavormind.tk:{$_SERVER["SERVER_PORT"]}":
   $wiki_code="exit";
   break;
   default:
