@@ -53,10 +53,11 @@ include_once("{$data_dir}/{$wiki_code}/extra_settings.php");
 ##Appending settings
 
 /*Groups*/
-//Remove groups
+//*Remove groups
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 {unset($wgGroupPermissions["bot"]);
 unset($wgGroupPermissions["sysop"]);};
+//*/
 //Temporary groups
 $wgGroupPermissions["bot"]["read"]=true;
 $wgGroupPermissions["sysop"]["read"]=true;
