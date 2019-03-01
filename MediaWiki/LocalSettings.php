@@ -21,7 +21,7 @@ if ($wgCommandLineMode)
 {//For updating
 $wiki_code="exit";}
 else
-{switch ($_SERVER["SERVER_NAME"])
+{switch ($_SERVER["HTTP_HOST"])
   {//PlavorEXITBeta (exit)
   case "exit.plavormind.tk":
   $wiki_code="exit";
