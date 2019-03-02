@@ -26,10 +26,6 @@ else
   case "exit.plavormind.tk:{$_SERVER["SERVER_PORT"]}":
   $wiki_code="exit";
   break;
-  //PlavorMindTest (test)
-  case "test.plavormind.tk:{$_SERVER["SERVER_PORT"]}":
-  $wiki_code="test";
-  break;
   default:
   die("You don't have permission to do that.");
   exit;}
