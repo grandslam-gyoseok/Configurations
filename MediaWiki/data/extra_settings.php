@@ -151,7 +151,7 @@ $wgUserMergeProtectedGroups=["admin","bureaucrat","steward"];
 $wgGroupPermissions["steward"]["usermerge"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(["AccountInfo","PlavorMindTweaks","TwoColConflict"]);
+wfLoadExtensions(["AccountInfo","CodeEditor","PlavorMindTweaks","TwoColConflict","WikiEditor"]);
 
 ##Skins
 
