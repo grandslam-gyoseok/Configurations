@@ -16,8 +16,7 @@ $wgAbuseFilterNotifications="rcandudp";
 $wgAbuseFilterNotificationsPrivate=$wgAbuseFilterNotifications;
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ["*"=>
-  ["abusefilter-log"=>false,
-  "abusefilter-view"=>false],
+  ["abusefilter-log"=>false],
 "steward"=>
   ["abusefilter-hide-log"=>true,
   "abusefilter-hidden-log"=>true,
@@ -30,7 +29,6 @@ $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
   "abusefilter-private"=>true,
   "abusefilter-private-log"=>true,
   "abusefilter-revert"=>true,
-  "abusefilter-view"=>true,
   "abusefilter-view-private"=>true]
 ]);
 
