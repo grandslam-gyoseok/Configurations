@@ -258,7 +258,7 @@ $wgGroupPermissions=
 //Staffs
 $wgGroupsRemoveFromSelf["staff"]=["staff"];
 //Administrators
-$wgGroupsRemoveFromSelf["admin"]=["staff","admin"];
+$wgGroupsRemoveFromSelf["admin"]=["admin"];
 //Bureaucrats
 $wgAddGroups["bureaucrat"]=["staff","admin"];
 $wgRemoveGroups["bureaucrat"]=["staff","admin"];
