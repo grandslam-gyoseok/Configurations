@@ -6,11 +6,8 @@ if (!defined("MEDIAWIKI"))
 
 ##Extensions
 
-/*UserPageEditProtection*/
-include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
-$wgOnlyUserEditUserPage=true;
-//Staffs
-$wgGroupPermissions["staff"]["editalluserpages"]=true;
+/*Other extensions*/
+wfLoadExtensions(["CodeEditor","WikiEditor"]);
 
 ##Appending settings
 
