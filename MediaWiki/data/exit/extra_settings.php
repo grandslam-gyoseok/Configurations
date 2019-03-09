@@ -9,6 +9,11 @@ if (!defined("MEDIAWIKI"))
 /*Other extensions*/
 wfLoadExtensions(["CodeEditor","WikiEditor"]);
 
+##Skins
+
+/*Default skin*/
+$wgDefaultSkin="Timeless";
+
 ##Appending settings
 
 /*Permission inheritance*/
