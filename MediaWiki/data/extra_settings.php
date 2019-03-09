@@ -150,8 +150,14 @@ $wgUserMergeProtectedGroups=["admin","bureaucrat","steward"];
 //Stewards
 $wgGroupPermissions["steward"]["usermerge"]=true;
 
+/*UserPageEditProtection*/
+include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
+$wgOnlyUserEditUserPage=true;
+//Staffs
+$wgGroupPermissions["staff"]["editalluserpages"]=true;
+
 /*Other extensions*/
-wfLoadExtensions(["AccountInfo","CodeEditor","PlavorMindTweaks","TwoColConflict","WikiEditor"]);
+wfLoadExtensions(["AccountInfo","PlavorMindTweaks","TwoColConflict"]);
 
 ##Skins
 
