@@ -34,8 +34,6 @@ $wgForceUIMsgAsContentMsg= //Added for test
 "protect-level-bureaucrat-access",
 "protect-level-steward-access"];
 $wgSiteNotice="<b>Welcome to [[{{SITENAME}}]]!</b>";
-//$wgUseCategoryBrowser=true; //Added for test
-//$wgUseMediaWikiUIEverywhere=true;
 
 /*Others*/
 $wgRestrictDisplayTitle=false; //Added for test
