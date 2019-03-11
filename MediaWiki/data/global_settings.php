@@ -14,7 +14,7 @@ $wgScriptPath="/mediawiki";
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 $wgMaxNameChars=20;
 $wgReservedUsernames=array_merge_recursive($wgReservedUsernames,
-["Account","Anon","Anonymous","Default","Error","Example","ID","Not logged in","Null","Undefined","User"]);
+["Account","Anon","Anonymous","Default","Error","Example","ID","Not logged in","Null","Undefined","User","Username"]);
 
 /*Basic information*/
 $wgSitename="Wiki";
@@ -30,7 +30,7 @@ $wgCookieSetOnIpBlock=true;
 $wgEnablePartialBlocks=true;
 
 /*Copyright*/
-$wgMaxCredits=10; //Added for test
+$wgMaxCredits=10;
 $wgRightsIcon="{$wgScriptPath}/resources/assets/licenses/cc-by-sa.png";
 $wgRightsText="CC BY-SA 4.0";
 $wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/";
@@ -49,7 +49,7 @@ $wgShowRollbackEditCount=30;
 
 /*Interwiki*/
 $wgEnableScaryTranscluding=true;
-$wgRedirectSources="https?:\\/\\/.*"; //Set for test
+$wgRedirectSources="https?:\\/\\/.+"; //Set for test
 
 /*Namespaces*/
 //Exclude File namespace
@@ -154,10 +154,11 @@ $wgUrlProtocols=["//","http://","https://"];
 ##Permissions
 
 /*Autoconfirm*/
-$wgAutoConfirmAge=60*60*24*14; //2 weeks
+$wgAutoConfirmAge=60*60*24*7; //1 week
 $wgAutoConfirmCount=15;
 
 /*Group permissions*/
+$wgAddGroups["bureaucrat"]=["staff","admin"];
 $wgGroupPermissions=
 ["*"=>
   ["autocreateaccount"=>true,
@@ -166,7 +167,7 @@ $wgGroupPermissions=
   "patrolmarks"=>true,
   "read"=>true,
   "unwatchedpages"=>true],
-"user"=> //Users
+"user"=>
   ["user-access"=>true,
 
   "applychangetags"=>true,
@@ -185,20 +186,19 @@ $wgGroupPermissions=
   "upload"=>true,
   "viewmyprivateinfo"=>true,
   "viewmywatchlist"=>true],
-"autoconfirmed"=> //Autoconfirmed users
+"autoconfirmed"=>
   ["autoconfirmed-access"=>true,
 
   "autoconfirmed"=>true,
   "move"=>true,
   "move-categorypages"=>true,
   "move-rootuserpages"=>true,
-  "move-subpages"=>true,
   "movefile"=>true,
   "purge"=>true,
   "reupload"=>true,
   "user-access"=>true, //Patch for protection
   "upload_by_url"=>true],
-"staff"=> //Staffs
+"staff"=>
   ["staff-access"=>true,
 
   "autopatrol"=>true,
@@ -208,12 +208,13 @@ $wgGroupPermissions=
   "delete"=>true,
   "deletedtext"=>true,
   "deleterevision"=>true,
+  "move-subpages"=>true,
   "protect"=>true,
   "reupload-shared"=>true,
   "rollback"=>true,
   "suppressredirect"=>true,
   "undelete"=>true],
-"admin"=> //Administrators
+"admin"=>
   ["admin-access"=>true,
 
   "changetags"=>true,
@@ -223,7 +224,7 @@ $wgGroupPermissions=
   "ipblock-exempt"=>true,
   "pagelang"=>true,
   "patrol"=>true],
-"bureaucrat"=> //Bureaucrats
+"bureaucrat"=>
   ["bureaucrat-access"=>true,
 
   "editinterface"=>true,
@@ -233,7 +234,7 @@ $wgGroupPermissions=
   "edituserjson"=>true,
   "managechangetags"=>true,
   "mergehistory"=>true],
-"steward"=> //Stewards
+"steward"=>
   ["steward-access"=>true,
 
   "apihighlimits"=>true,
@@ -255,14 +256,15 @@ $wgGroupPermissions=
   "viewsuppressed"=>true,
   "writeapi"=>true]
 ];
-//Staffs
-$wgGroupsRemoveFromSelf["staff"]=["staff"];
-//Administrators
-$wgGroupsRemoveFromSelf["admin"]=["admin"];
-//Bureaucrats
-$wgAddGroups["bureaucrat"]=["staff","admin"];
+$wgGroupsRemoveFromSelf=
+["staff"=>
+  ["staff"],
+"admin"=>
+  ["admin"],
+"bureaucrat"=>
+  ["bureaucrat"]
+];
 $wgRemoveGroups["bureaucrat"]=["staff","admin"];
-$wgGroupsRemoveFromSelf["bureaucrat"]=["bureaucrat"];
 //Inheritance
 $wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
 $wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
@@ -280,18 +282,6 @@ $wgDeleteRevisionsLimit=250;
 
 ##Uploads
 
-$wgAllowCopyUploads=true;
-$wgCopyUploadsDomains=[]; //MUST SET!
-$wgEnableUploads=true;
-$wgHashedUploadDirectory=false;
-$wgMaxUploadSize=1024*1024*5; //5 MB
-//Automatically update outdated EXIF metadata
-$wgUpdateCompatibleMetadata=true;
-$wgUploadSizeWarning=1024*1024*3; //3 MB
-$wgUploadStashMaxAge=60*60; //1 hour
-$wgUseCopyrightUpload=true;
-$wgUseInstantCommons=true;
-
 /*Directory*/
 $wgDeletedDirectory="{$private_data_dir}/{$wiki_code}/deleted_files";
 $wgUploadDirectory="{$private_data_dir}/{$wiki_code}/files";
@@ -300,6 +290,22 @@ $wgUploadPath="{$wgScriptPath}/img_auth.php";
 /*Thumbnail*/
 $wgGenerateThumbnailOnParse=false;
 $wgThumbnailScriptPath="{$wgScriptPath}/thumb.php";
+
+/*Others*/
+$wgAllowCopyUploads=true;
+$wgCopyUploadsDomains=["openclipart.org"];
+$wgCopyUploadsFromSpecialUpload=true; //Added for test
+$wgEnableUploads=true;
+$wgHashedUploadDirectory=false;
+$wgMaxUploadSize=
+["*"=>1024*1024*5, //5 MB
+"url"=>1024*1024*3]; //3 MB
+//Automatically update outdated EXIF metadata
+$wgUpdateCompatibleMetadata=true;
+$wgUploadSizeWarning=1024*1024*3; //3 MB
+$wgUploadStashMaxAge=60*60; //1 hour
+$wgUseCopyrightUpload=true;
+$wgUseInstantCommons=true;
 
 ##Email
 
@@ -374,7 +380,6 @@ $wgUsePathInfo=true;
 
 /*Others*/
 $wgAuthenticationTokenVersion="1";
-$wgCommandLineDarkBg=true; //Added for test
 //Ignored on Windows
 $wgDirectoryMode=0755;
 $wgEnableDnsBlacklist=true;
