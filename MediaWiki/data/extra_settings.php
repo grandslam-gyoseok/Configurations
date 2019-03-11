@@ -63,20 +63,6 @@ wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 $wgGroupPermissions["eliminator"]["deleteperm"]=true;
 
-/*GoToShell*/
-include_once("{$wgExtensionDirectory}/GoToShell/GoToShell.php");
-switch (PHP_OS_FAMILY)
-{case "Linux":
-$wgGoToShellCommand="rm -frv {$private_data_dir}/{$wiki_code}/cache/*";
-break;
-case "Windows":
-$wgGoToShellCommand="powershell -Command Remove-Item {$private_data_dir}/{$wiki_code}/cache/* -Force -Recurse";
-break;}
-//Bureaucrats
-$wgGroupPermissions["bureaucrat"]["gotoshell"]=false;
-//Stewards
-$wgGroupPermissions["steward"]["gotoshell"]=true;
-
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows")
 {wfLoadExtension("Highlightjs_Integration");}
