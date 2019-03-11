@@ -277,6 +277,20 @@ $wgRestrictionLevels=["","user-access","autoconfirmed-access","staff-access","ad
 $wgRestrictionTypes=["create","edit","move","upload","delete","protect"];
 $wgSemiprotectedRestrictionLevels=["user-access","autoconfirmed-access"];
 
+/*Remove groups*/
+//*
+$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
+{unset($wgGroupPermissions["bot"]);
+unset($wgGroupPermissions["sysop"]);};
+//*/
+//Temporary groups
+/*
+$wgAddGroups["bureaucrat"]=["steward"];
+$wgGroupPermissions["interface-admin"]["read"]=true;
+$wgGroupPermissions["sysop"]["read"]=true;
+$wgRemoveGroups["bureaucrat"]=["bot","interface-admin","sysop"];
+//*/
+
 /*Others*/
 $wgDeleteRevisionsLimit=250;
 
