@@ -119,15 +119,6 @@ wfLoadExtension("TitleBlacklist");
 $wgGroupPermissions["steward"]["tboverride"]=true;
 $wgGroupPermissions["steward"]["titleblacklistlog"]=true;
 
-/*TorBlock*/
-wfLoadExtension("TorBlock");
-//Remove default value
-$wgTorAllowedActions=[];
-//Users
-$wgGroupPermissions["user"]["torunblocked"]=false;
-//Stewards
-$wgGroupPermissions["steward"]["torunblocked"]=true;
-
 /*UserMerge*/
 wfLoadExtension("UserMerge");
 $wgUserMergeProtectedGroups=["admin","bureaucrat","steward"];
