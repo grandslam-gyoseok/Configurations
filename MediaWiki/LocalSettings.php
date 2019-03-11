@@ -18,8 +18,7 @@ if (!defined("MEDIAWIKI"))
 ##Wiki selector
 
 if ($wgCommandLineMode)
-{//For updating
-$wiki_code="exit";}
+{$wiki_code="exit";}
 else
 {switch ($_SERVER["HTTP_HOST"])
   {//PlavorEXITBeta (exit)
@@ -44,21 +43,4 @@ include_once("{$private_data_dir}/global_settings.php");
 include_once("{$data_dir}/extra_settings.php");
 //Per-wiki settings
 include_once("{$data_dir}/{$wiki_code}/settings.php");
-
-##Appending settings
-
-/*Groups*/
-//*Remove groups
-$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
-{unset($wgGroupPermissions["bot"]);
-unset($wgGroupPermissions["sysop"]);};
-//*/
-//Temporary groups
-$wgGroupPermissions["bot"]["read"]=true;
-$wgGroupPermissions["sysop"]["read"]=true;
-/*
-$wgGroupPermissions["interface-admin"]["read"]=true;
-$wgAddGroups["bureaucrat"]=["steward"];
-$wgRemoveGroups["bureaucrat"]=["bot","interface-admin","sysop"];
-//*/
 ?>
