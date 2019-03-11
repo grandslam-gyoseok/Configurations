@@ -63,6 +63,13 @@ wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 $wgGroupPermissions["eliminator"]["deleteperm"]=true;
 
+/*DiscordNotifications*/
+wfLoadExtension("DiscordNotifications");
+$wgDiscordFromName=$wgSitename;
+$wgDiscordIncomingWebhookUrl="https://canary.discordapp.com/api/webhooks/554663318674079745/rCc41NArrYACznBkjTgOLyAtgO85j5g2aDcn8wZCOTqI4JrF1qhNcJWNjrKoyc0gRQgO";
+$wgWikiUrl="{$wgServer}/";
+$wgWikiUrlEnding="page/";
+
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows")
 {wfLoadExtension("Highlightjs_Integration");}
@@ -132,7 +139,7 @@ $wgOnlyUserEditUserPage=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(["AccountInfo","PlavorMindTweaks","TwoColConflict"]);
+wfLoadExtensions(["AccountInfo","Cite","PlavorMindTweaks","TwoColConflict"]);
 
 ##Skins
 
