@@ -63,15 +63,6 @@ wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 $wgGroupPermissions["eliminator"]["deleteperm"]=true;
 
-/*DiscordNotifications*/
-wfLoadExtension("DiscordNotifications");
-$wgDiscordFromName=$wgSitename;
-$wgDiscordIncomingWebhookUrl="https://canary.discordapp.com/api/webhooks/554663318674079745/rCc41NArrYACznBkjTgOLyAtgO85j5g2aDcn8wZCOTqI4JrF1qhNcJWNjrKoyc0gRQgO";
-$wgWikiUrl="{$wgServer}/";
-$wgWikiUrlEnding="page/";
-$wgWikiUrlEndingUserRights="Special:UserRights/";
-
-
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows")
 {wfLoadExtension("Highlightjs_Integration");}
@@ -105,10 +96,6 @@ wfLoadExtension("Renameuser");
 $wgGroupPermissions["bureaucrat"]["renameuser"]=false;
 $wgGroupPermissions["steward"]["renameuser"]=true;
 
-/*SyntaxHighlight_GeSHi*/
-if (PHP_OS_FAMILY=="Linux")
-{wfLoadExtension("SyntaxHighlight_GeSHi");}
-
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
@@ -117,6 +104,10 @@ $wgStaffPowersStewardGroupName="staff";
 $wgGroupPermissions["staff"]["unblockable"]=false;
 //Administrators
 $wgGroupPermissions["admin"]["unblockable"]=true;
+
+/*SyntaxHighlight_GeSHi*/
+if (PHP_OS_FAMILY=="Linux")
+{wfLoadExtension("SyntaxHighlight_GeSHi");}
 
 /*TextExtracts*/
 wfLoadExtension("TextExtracts");
@@ -141,7 +132,7 @@ $wgOnlyUserEditUserPage=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*Other extensions*/
-wfLoadExtensions(["AccountInfo","Cite","PlavorMindTweaks","TwoColConflict"]);
+wfLoadExtensions(["AccountInfo","Cite","CodeEditor","PlavorMindTweaks","SimpleMathJax","TwoColConflict","WikiEditor"]);
 
 ##Skins
 
