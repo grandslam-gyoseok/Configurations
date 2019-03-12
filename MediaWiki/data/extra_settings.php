@@ -69,6 +69,8 @@ $wgDiscordFromName=$wgSitename;
 $wgDiscordIncomingWebhookUrl="https://canary.discordapp.com/api/webhooks/554663318674079745/rCc41NArrYACznBkjTgOLyAtgO85j5g2aDcn8wZCOTqI4JrF1qhNcJWNjrKoyc0gRQgO";
 $wgWikiUrl="{$wgServer}/";
 $wgWikiUrlEnding="page/";
+$wgWikiUrlEndingUserRights="Special:UserRights/";
+
 
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows")
