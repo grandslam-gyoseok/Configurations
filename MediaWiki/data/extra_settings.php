@@ -63,6 +63,11 @@ wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 $wgGroupPermissions["eliminator"]["deleteperm"]=true;
 
+/*Discord*/
+wfLoadExtension("Discord");
+$wgDiscordNoBots=false; //Added for test
+$wgDiscordWebhookURL="https://canary.discordapp.com/api/webhooks/554663318674079745/rCc41NArrYACznBkjTgOLyAtgO85j5g2aDcn8wZCOTqI4JrF1qhNcJWNjrKoyc0gRQgO";
+
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows")
 {wfLoadExtension("Highlightjs_Integration");}
