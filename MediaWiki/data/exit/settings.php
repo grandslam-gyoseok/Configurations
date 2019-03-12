@@ -58,16 +58,6 @@ NS_TEMPLATE=>
   ["admin-access"]
 ];
 
-##Extensions
-
-/*Other extensions*/
-wfLoadExtensions(["CodeEditor","WikiEditor"]);
-
-##Skins
-
-/*Default skin*/
-$wgDefaultSkin="Timeless";
-
 ##Appending settings
 
 /*Permission inheritance*/
