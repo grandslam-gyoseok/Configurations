@@ -66,7 +66,7 @@ $wgGroupPermissions["eliminator"]["deleteperm"]=true;
 /*DiscordNotifications*/
 wfLoadExtension("DiscordNotifications");
 $wgDiscordFromName=$wgSitename;
-$wgWikiUrl="{$wgServer}/";
+$wgWikiUrl="{$wgServer}/mediawiki/";
 $wgWikiUrlEndingUserRights="Special:UserRights/";
 
 /*Highlightjs_Integration*/
