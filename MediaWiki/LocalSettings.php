@@ -41,5 +41,6 @@ include_once("{$data_dir}/global_settings.php");
 include_once("{$private_data_dir}/global_settings.php");
 include_once("{$data_dir}/{$wiki_code}/settings.php"); //Per-wiki
 include_once("{$data_dir}/extra_settings.php");
+include_once("{$private_data_dir}/extra_settings.php");
 include_once("{$data_dir}/{$wiki_code}/extra_settings.php"); //Per-wiki
 ?>
