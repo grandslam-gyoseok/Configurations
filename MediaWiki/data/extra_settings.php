@@ -63,6 +63,12 @@ wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 $wgGroupPermissions["eliminator"]["deleteperm"]=true;
 
+/*DiscordNotifications*/
+wfLoadExtension("DiscordNotifications");
+$wgDiscordFromName=$wgSitename;
+$wgWikiUrl="{$wgServer}/";
+$wgWikiUrlEndingUserRights="Special:UserRights/";
+
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows")
 {wfLoadExtension("Highlightjs_Integration");}
