@@ -17,12 +17,20 @@ if (!defined("MEDIAWIKI"))
 
 ##Wiki selector
 
+$central_wiki_code="exit";
+$data_dir="{$IP}/data";
+$private_data_dir="{$IP}/private_data";
+
 if ($wgCommandLineMode)
-{$wiki_code="exit";}
+{if (defined("MW_DB"))
+  {$wiki_code=MW_DB;}
 else
-{switch ($_SERVER["HTTP_HOST"])
+  {$wiki_code=$central_wiki_code;}
+}
+else
+{switch (parse_url($wgServer,PHP_URL_HOST))
   {//PlavorEXITBeta (exit)
-  case "exit.plavormind.tk:{$_SERVER["SERVER_PORT"]}":
+  case "exit.plavormind.tk":
   $wiki_code="exit";
   break;
   default:
@@ -30,11 +38,7 @@ else
   exit;}
 }
 
-$central_wiki_code="exit";
-$data_dir="{$IP}/data";
-$private_data_dir="{$IP}/private_data";
-
-##Settings
+##Appending settings
 
 /*Load settings*/
 include_once("{$data_dir}/global_settings.php");
