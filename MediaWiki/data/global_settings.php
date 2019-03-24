@@ -114,17 +114,29 @@ $wgPasswordAttemptThrottle=
 ];
 $wgRateLimits=array_merge_recursive($wgRateLimits,
 ["edit"=>
-  ["ip"=>[5,60],
-  "newbie"=>[5,60],
-  "user"=>[10,60]],
+  ["ip"=>
+    [5,60],
+  "newbie"=>
+    [5,60],
+  "user"=>
+    [10,60]
+  ],
 "move"=>
-  ["ip"=>[2,60],
-  "newbie"=>[2,60],
-  "user"=>[5,60]],
+  ["ip"=>
+    [2,60],
+  "newbie"=>
+    [2,60],
+  "user"=>
+    [5,60]
+  ],
 "upload"=>
-  ["ip"=>[1,60],
-  "newbie"=>[1,60],
-  "user"=>[3,60]]
+  ["ip"=>
+    [1,60],
+  "newbie"=>
+    [1,60],
+  "user"=>
+    [3,60]
+  ]
 ]);
 
 /*Robot policies*/
@@ -132,7 +144,7 @@ $wgDefaultRobotPolicy="noindex,nofollow"; //Set for test
 //All namespaces
 $wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; //Set for test
 //Remove default value ("mediawiki.org")
-$wgNoFollowDomainExceptions=[];
+$wgNoFollowDomainExceptions=["plavormind.tk"]; //Set for test
 
 /*Others*/
 $wgActiveUserDays=7;
@@ -256,6 +268,11 @@ $wgGroupPermissions=
   "viewsuppressed"=>true,
   "writeapi"=>true]
 ];
+//Inheritance
+$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
+$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
+$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
+$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
 $wgGroupsRemoveFromSelf=
 ["staff"=>
   ["staff"],
@@ -265,17 +282,31 @@ $wgGroupsRemoveFromSelf=
   ["bureaucrat"]
 ];
 $wgRemoveGroups["bureaucrat"]=["staff","admin"];
-//Inheritance
-$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
-$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
-$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
-$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
 
 /*Protection*/
-$wgCascadingRestrictionLevels=["staff-access","admin-access","bureaucrat-access","steward-access"];
-$wgRestrictionLevels=["","user-access","autoconfirmed-access","staff-access","admin-access","bureaucrat-access","steward-access"];
-$wgRestrictionTypes=["create","edit","move","upload","delete","protect"];
-$wgSemiprotectedRestrictionLevels=["user-access","autoconfirmed-access"];
+$wgCascadingRestrictionLevels=
+["staff-access",
+"admin-access",
+"bureaucrat-access",
+"steward-access"];
+$wgRestrictionLevels=
+["",
+"user-access",
+"autoconfirmed-access",
+"staff-access",
+"admin-access",
+"bureaucrat-access",
+"steward-access"];
+$wgRestrictionTypes=
+["create",
+"edit",
+"move",
+"upload",
+"delete",
+"protect"];
+$wgSemiprotectedRestrictionLevels=
+["user-access",
+"autoconfirmed-access"];
 
 /*Remove groups*/
 //*
@@ -313,10 +344,9 @@ $wgEnableUploads=true;
 $wgHashedUploadDirectory=false;
 $wgMaxUploadSize=
 ["*"=>1024*1024*5, //5 MB
-"url"=>1024*1024*3]; //3 MB
-//Automatically update outdated EXIF metadata
+"url"=>1024*1024*2]; //2 MB
 $wgUpdateCompatibleMetadata=true;
-$wgUploadSizeWarning=1024*1024*3; //3 MB
+$wgUploadSizeWarning=1024*1024*4; //4 MB
 $wgUploadStashMaxAge=60*60; //1 hour
 $wgUseCopyrightUpload=true;
 $wgUseInstantCommons=true;
