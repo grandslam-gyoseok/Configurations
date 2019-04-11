@@ -32,6 +32,10 @@ $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
   "abusefilter-view-private"=>true]
 ]);
 
+/*AccountInfo*/
+if ($extension_enable_AccountInfo)
+{wfLoadExtension("AccountInfo");}
+
 /*AntiSpoof*/
 wfLoadExtension("AntiSpoof");
 //$wgSharedTables[]="spoofuser";
@@ -45,6 +49,14 @@ $wgGroupPermissions["steward"]["checkuser"]=true;
 $wgGroupPermissions["steward"]["checkuser-log"]=true;
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 {unset($wgGroupPermissions["checkuser"]);};
+
+/*Cite*/
+if ($extension_enable_Cite)
+{wfLoadExtension("Cite");}
+
+/*CodeEditor*/
+if ($extension_enable_CodeEditor&&$extension_enable_WikiEditor)
+{wfLoadExtension("CodeEditor");}
 
 /*ConfirmEdit*/
 wfLoadExtension("ConfirmEdit");
@@ -63,12 +75,6 @@ wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 $wgGroupPermissions["eliminator"]["deleteperm"]=true;
 
-/*DiscordNotifications*/
-wfLoadExtension("DiscordNotifications");
-$wgDiscordFromName=$wgSitename;
-$wgWikiUrl="{$wgServer}/mediawiki/";
-$wgWikiUrlEndingUserRights="Special:UserRights/";
-
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows")
 {wfLoadExtension("Highlightjs_Integration");}
@@ -79,12 +85,13 @@ wfLoadExtension("MinimumNameLength");
 $wgMinimumUsernameLength=4;
 
 /*MultimediaViewer*/
-wfLoadExtension("MultimediaViewer");
-$wgMediaViewerUseThumbnailGuessing=true;
+if ($extension_enable_MultimediaViewer)
+{wfLoadExtension("MultimediaViewer");
+$wgMediaViewerUseThumbnailGuessing=true;}
 
 /*Nuke*/
 wfLoadExtension("Nuke");
-$wgGroupPermissions["steward"]["nuke"]=true;
+$wgGroupPermissions["bureaucrat"]["nuke"]=true;
 
 /*PageImages*/
 wfLoadExtension("PageImages");
@@ -93,22 +100,25 @@ $wgPageImagesExpandOpenSearchXml=true;
 $wgPageImagesNamespaces=[NS_CATEGORY,NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];
 
 /*Popups*/
-wfLoadExtension("Popups");
+if ($extension_enable_Popups)
+{wfLoadExtension("Popups");
 $wgPopupsOptInDefaultState="1";
-$wgPopupsHideOptInOnPreferencesPage=true;
+$wgPopupsHideOptInOnPreferencesPage=true;}
 
 /*Renameuser*/
 wfLoadExtension("Renameuser");
 $wgGroupPermissions["bureaucrat"]["renameuser"]=false;
 $wgGroupPermissions["steward"]["renameuser"]=true;
 
+/*SimpleMathJax*/
+if ($extension_enable_SimpleMathJax)
+{wfLoadExtension("SimpleMathJax");}
+
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
 $wgStaffPowersStewardGroupName="staff";
-//Staffs
 $wgGroupPermissions["staff"]["unblockable"]=false;
-//Administrators
 $wgGroupPermissions["admin"]["unblockable"]=true;
 
 /*SyntaxHighlight_GeSHi*/
@@ -125,6 +135,10 @@ wfLoadExtension("TitleBlacklist");
 $wgGroupPermissions["steward"]["tboverride"]=true;
 $wgGroupPermissions["steward"]["titleblacklistlog"]=true;
 
+/*TwoColConflict*/
+if ($extension_enable_TwoColConflict)
+{wfLoadExtension("TwoColConflict");}
+
 /*UserMerge*/
 wfLoadExtension("UserMerge");
 $wgUserMergeProtectedGroups=["admin","bureaucrat","steward"];
@@ -132,20 +146,25 @@ $wgUserMergeProtectedGroups=["admin","bureaucrat","steward"];
 $wgGroupPermissions["steward"]["usermerge"]=true;
 
 /*UserPageEditProtection*/
-include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
+if ($extension_enable_UserPageEditProtection)
+{include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
 $wgOnlyUserEditUserPage=true;
 //Staffs
-$wgGroupPermissions["staff"]["editalluserpages"]=true;
+$wgGroupPermissions["staff"]["editalluserpages"]=true;}
+
+/*WikiEditor*/
+if ($extension_enable_WikiEditor)
+{wfLoadExtension("WikiEditor");}
 
 /*Other extensions*/
-wfLoadExtensions(["AccountInfo","Cite","CodeEditor","PlavorMindTweaks","SimpleMathJax","TwoColConflict","WikiEditor"]);
+wfLoadExtension("PlavorMindTweaks");
 
 ##Skins
 
 /*Liberty*/
 wfLoadSkin("Liberty");
 $wgLibertyMainColor="#9933ff";
-$wgTwitterAccount="pseol2190";
+$wgTwitterAccount="PlavorSeol";
 
 /*Vector*/
 wfLoadSkin("Vector");
