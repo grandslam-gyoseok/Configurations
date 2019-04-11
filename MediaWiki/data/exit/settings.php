@@ -4,14 +4,13 @@
 if (!defined("MEDIAWIKI"))
 {die("You don't have permission to do that.");}
 
-##General settings
+##General
 
 /*Basic information*/
-$wgLogo="{$wgScriptPath}/data/{$wiki_code}/logo.png";
+$wgLogo="{$wgScriptPath}/data/{$wiki_id}/logo.png";
 $wgSitename="PlavorEXITBeta";
 
 /*Interface*/
-$wgAdvancedSearchHighlighting=true; //Added for test
 $wgForceUIMsgAsContentMsg= //Added for test
 ["modifiedarticleprotection-comment",
 "protect-expiry-indefinite",
@@ -58,11 +57,10 @@ NS_TEMPLATE=>
   ["admin-access"]
 ];
 
-##Appending settings
+##Extensions
 
-/*Permission inheritance*/
-$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
-$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
-$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
-$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
+/*Extensions usage*/
+$extension_enable_AccountInfo=true;
+$extension_enable_CodeEditor=true;
+$extension_enable_Popups=true;
 ?>
