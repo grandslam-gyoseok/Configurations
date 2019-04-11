@@ -7,6 +7,7 @@ if (!defined("MEDIAWIKI"))
 ##Prepending settings
 
 $wgScriptPath="/mediawiki";
+$wiki_id=$wiki_code; //Temporary
 
 ##General
 
@@ -42,6 +43,7 @@ $wgAllowUserCssPrefs=true;
 $wgAllowUserJs=true;
 
 /*Interface*/
+$wgAdvancedSearchHighlighting=true;
 $wgDisableAnonTalk=true;
 $wgMaxTocLevel=5;
 $wgRCShowWatchingUsers=true;
@@ -220,7 +222,6 @@ $wgGroupPermissions=
   "delete"=>true,
   "deletedtext"=>true,
   "deleterevision"=>true,
-  "move-subpages"=>true,
   "protect"=>true,
   "reupload-shared"=>true,
   "rollback"=>true,
@@ -230,10 +231,10 @@ $wgGroupPermissions=
   ["admin-access"=>true,
 
   "changetags"=>true,
-  "deletechangetags"=>true,
   "deletelogentry"=>true,
   "editcontentmodel"=>true,
   "ipblock-exempt"=>true,
+  "move-subpages"=>true,
   "pagelang"=>true,
   "patrol"=>true],
 "bureaucrat"=>
@@ -241,8 +242,10 @@ $wgGroupPermissions=
 
   "editinterface"=>true,
   "editsitecss"=>true,
+  "editsitejs"=>true,
   "editsitejson"=>true,
   "editusercss"=>true,
+  "edituserjs"=>true,
   "edituserjson"=>true,
   "managechangetags"=>true,
   "mergehistory"=>true],
@@ -251,8 +254,7 @@ $wgGroupPermissions=
 
   "apihighlimits"=>true,
   "bigdelete"=>true,
-  "editsitejs"=>true,
-  "edituserjs"=>true,
+  "deletechangetags"=>true, //Very dangerous
   "hideuser"=>true,
   "import"=>true,
   "importupload"=>true,
@@ -309,18 +311,9 @@ $wgSemiprotectedRestrictionLevels=
 "autoconfirmed-access"];
 
 /*Remove groups*/
-//*
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 {unset($wgGroupPermissions["bot"]);
 unset($wgGroupPermissions["sysop"]);};
-//*/
-//Temporary groups
-/*
-$wgAddGroups["bureaucrat"]=["steward"];
-$wgGroupPermissions["interface-admin"]["read"]=true;
-$wgGroupPermissions["sysop"]["read"]=true;
-$wgRemoveGroups["bureaucrat"]=["bot","interface-admin","sysop"];
-//*/
 
 /*Others*/
 $wgDeleteRevisionsLimit=250;
@@ -328,8 +321,8 @@ $wgDeleteRevisionsLimit=250;
 ##Uploads
 
 /*Directory*/
-$wgDeletedDirectory="{$private_data_dir}/{$wiki_code}/deleted_files";
-$wgUploadDirectory="{$private_data_dir}/{$wiki_code}/files";
+$wgDeletedDirectory="{$private_data_dir}/{$wiki_id}/deleted_files";
+$wgUploadDirectory="{$private_data_dir}/{$wiki_id}/files";
 $wgUploadPath="{$wgScriptPath}/img_auth.php";
 
 /*Thumbnail*/
@@ -359,7 +352,7 @@ $wgEnableEmail=false;
 ##Caching
 
 /*Basic cache settings*/
-$wgCacheDirectory="{$private_data_dir}/{$wiki_code}/cache";
+$wgCacheDirectory="{$private_data_dir}/{$wiki_id}/cache";
 //Disable client side caching
 $wgCachePages=false;
 $wgMainCacheType=CACHE_ACCEL;
@@ -390,7 +383,7 @@ $wgTranscludeCacheExpiry=60;
 ##System
 
 /*Database*/
-$wgDBname="{$wiki_code}_db";
+$wgDBname="{$wiki_id}_db";
 $wgDBtype="sqlite";
 //SQLite-only
 $wgSQLiteDataDir="{$private_data_dir}/databases";
@@ -437,4 +430,17 @@ switch (PHP_OS_FAMILY)
 $wgPhpCli="C:/PHP/php.exe";
 break;}
 //$wgResourceLoaderEnableJSProfiler=true; //Disabled for test
+
+##Extensions
+
+/*Extensions usage*/
+$extension_enable_AccountInfo=false;
+$extension_enable_Cite=true;
+$extension_enable_CodeEditor=false;
+$extension_enable_MultimediaViewer=true;
+$extension_enable_Popups=false;
+$extension_enable_SimpleMathJax=false;
+$extension_enable_TwoColConflict=true;
+$extension_enable_UserPageEditProtection=true;
+$extension_enable_WikiEditor=true;
 ?>
