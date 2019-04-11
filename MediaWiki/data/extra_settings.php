@@ -40,6 +40,17 @@ if ($extension_enable_AccountInfo)
 wfLoadExtension("AntiSpoof");
 //$wgSharedTables[]="spoofuser";
 
+/*CentralNotice*/
+wfLoadExtension("CentralNotice");
+$wgCentralHost="//exit.plavormind.tk:81";
+$wgNoticeInfrastructure=false;
+$wgNoticeProject=$wiki_id;
+$wgNoticeProjects=["exit"];
+
+$wgCentralBannerRecorder="{$wgCentralHost}/page/Special:RecordImpression";
+$wgCentralNoticeApiUrl="{$wgCentralHost}/mediawiki/api.php";
+$wgCentralSelectedBannerDispatcher="{$wgCentralHost}/page/Special:BannerLoader";
+
 /*CheckUser*/
 wfLoadExtension("CheckUser");
 $wgCheckUserCIDRLimit=$wgBlockCIDRLimit;
@@ -74,6 +85,12 @@ $wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
 wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 $wgGroupPermissions["eliminator"]["deleteperm"]=true;
+
+/*GlobalUserPage*/
+wfLoadExtension("GlobalUserPage");
+$wgGlobalUserPageAPIUrl="//exit.plavormind.tk:81/mediawiki/api.php";
+$wgGlobalUserPageCacheExpiry=60;
+$wgGlobalUserPageDBname="{$central_wiki}_db";
 
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows")
