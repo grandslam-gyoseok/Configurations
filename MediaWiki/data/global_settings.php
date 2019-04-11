@@ -7,7 +7,6 @@ if (!defined("MEDIAWIKI"))
 ##Prepending settings
 
 $wgScriptPath="/mediawiki";
-$wiki_id=$wiki_code; //Temporary
 
 ##General
 
