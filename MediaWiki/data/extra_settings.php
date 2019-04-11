@@ -172,12 +172,4 @@ $wgVectorResponsive=true;
 
 /*Other skins*/
 wfLoadSkins(["PlavorMindView","Timeless"]);
-
-##Appending settings
-
-/*Permission inheritance*/
-$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
-$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
-$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
-$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
 ?>
