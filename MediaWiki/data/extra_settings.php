@@ -90,7 +90,7 @@ $wgGroupPermissions["eliminator"]["deleteperm"]=true;
 wfLoadExtension("GlobalUserPage");
 $wgGlobalUserPageAPIUrl="//exit.plavormind.tk:81/mediawiki/api.php";
 $wgGlobalUserPageCacheExpiry=60;
-$wgGlobalUserPageDBname="{$central_wiki}_db";
+$wgGlobalUserPageDBname="wiki_{$central_wiki}";
 
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows")
