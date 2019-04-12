@@ -14,6 +14,7 @@ $wgAbuseFilterActions=
 //$wgAbuseFilterCentralDB="global_abusefilter";
 $wgAbuseFilterNotifications="rcandudp";
 $wgAbuseFilterNotificationsPrivate=$wgAbuseFilterNotifications;
+//Permissions
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ["*"=>
   ["abusefilter-log"=>false],
@@ -47,15 +48,21 @@ $wgNoticeInfrastructure=false;
 $wgNoticeProject=$wiki_id;
 $wgNoticeProjects=["exit"];
 
+//Must be after $wgCentralHost
 $wgCentralBannerRecorder="{$wgCentralHost}/page/Special:RecordImpression";
 $wgCentralNoticeApiUrl="{$wgCentralHost}/mediawiki/api.php";
 $wgCentralSelectedBannerDispatcher="{$wgCentralHost}/page/Special:BannerLoader";
+
+/*ChangeAuthor*/
+wfLoadExtension("ChangeAuthor");
+//Permissions
+$wgGroupPermissions["steward"]["changeauthor"]=true;
 
 /*CheckUser*/
 wfLoadExtension("CheckUser");
 $wgCheckUserCIDRLimit=$wgBlockCIDRLimit;
 $wgCheckUserMaxBlocks=100;
-//Stewards
+//Permissions
 $wgGroupPermissions["steward"]["checkuser"]=true;
 $wgGroupPermissions["steward"]["checkuser-log"]=true;
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
@@ -78,12 +85,13 @@ $wgCaptchaTriggersOnNamespace=
   ["create"=>false,
   "edit"=>false]
 ];
-//Autoconfirmed users
+//Permissions
 $wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
 
 /*DeletePagesForGood*/
 wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
+//Permissions
 $wgGroupPermissions["eliminator"]["deleteperm"]=true;
 
 /*GlobalUserPage*/
@@ -108,6 +116,7 @@ $wgMediaViewerUseThumbnailGuessing=true;}
 
 /*Nuke*/
 wfLoadExtension("Nuke");
+//Permissions
 $wgGroupPermissions["bureaucrat"]["nuke"]=true;
 
 /*PageImages*/
@@ -124,6 +133,7 @@ $wgPopupsHideOptInOnPreferencesPage=true;}
 
 /*Renameuser*/
 wfLoadExtension("Renameuser");
+//Permissions
 $wgGroupPermissions["bureaucrat"]["renameuser"]=false;
 $wgGroupPermissions["steward"]["renameuser"]=true;
 
@@ -135,6 +145,7 @@ if ($extension_enable_SimpleMathJax)
 wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
 $wgStaffPowersStewardGroupName="staff";
+//Permissions
 $wgGroupPermissions["staff"]["unblockable"]=false;
 $wgGroupPermissions["admin"]["unblockable"]=true;
 
@@ -148,7 +159,7 @@ $wgExtractsExtendOpenSearchXml=true;
 
 /*TitleBlacklist*/
 wfLoadExtension("TitleBlacklist");
-//Stewards
+//Permissions
 $wgGroupPermissions["steward"]["tboverride"]=true;
 $wgGroupPermissions["steward"]["titleblacklistlog"]=true;
 
@@ -159,14 +170,14 @@ if ($extension_enable_TwoColConflict)
 /*UserMerge*/
 wfLoadExtension("UserMerge");
 $wgUserMergeProtectedGroups=["admin","bureaucrat","steward"];
-//Stewards
+//Permissions
 $wgGroupPermissions["steward"]["usermerge"]=true;
 
 /*UserPageEditProtection*/
 if ($extension_enable_UserPageEditProtection)
 {include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
 $wgOnlyUserEditUserPage=true;
-//Staffs
+//Permissions
 $wgGroupPermissions["staff"]["editalluserpages"]=true;}
 
 /*WikiEditor*/
