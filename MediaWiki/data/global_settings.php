@@ -382,14 +382,13 @@ $wgTranscludeCacheExpiry=60;
 ##System
 
 /*Database*/
-$wgDBname="{$wiki_id}_db";
+$wgDBname="wiki_{$wiki_id}";
 $wgDBtype="sqlite";
 //SQLite-only
 $wgSQLiteDataDir="{$private_data_dir}/databases";
 
 /*
-$wgSharedDB="{$central_wiki_code}_db";
-//$wgSharedPrefix="shared_"; //Enabled for test
+$wgSharedDB="wiki_{$central_wiki}";
 $wgSharedTables=["user"];
 */
 
