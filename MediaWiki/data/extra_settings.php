@@ -185,7 +185,7 @@ if ($extension_enable_WikiEditor)
 {wfLoadExtension("WikiEditor");}
 
 /*Other extensions*/
-wfLoadExtension("PlavorMindTweaks");
+wfLoadExtensions(["CommonsMetadata","PlavorMindTweaks"]);
 
 ##Skins
 
