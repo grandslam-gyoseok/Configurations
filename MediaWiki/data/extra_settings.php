@@ -42,7 +42,7 @@ wfLoadExtension("AntiSpoof");
 //$wgSharedTables[]="spoofuser";
 
 /*CentralNotice*/
-wfLoadExtension("CentralNotice");
+//wfLoadExtension("CentralNotice"); //Disabled due to low speed of wiki
 $wgCentralHost="//exit.plavormind.tk:81";
 $wgNoticeInfrastructure=false;
 $wgNoticeProject=$wiki_id;
@@ -95,7 +95,7 @@ $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 $wgGroupPermissions["eliminator"]["deleteperm"]=true;
 
 /*GlobalUserPage*/
-wfLoadExtension("GlobalUserPage");
+//wfLoadExtension("GlobalUserPage"); //Disabled due to low speed of wiki
 $wgGlobalUserPageAPIUrl="//exit.plavormind.tk:81/mediawiki/api.php";
 $wgGlobalUserPageCacheExpiry=60;
 $wgGlobalUserPageDBname="wiki_{$central_wiki}";
