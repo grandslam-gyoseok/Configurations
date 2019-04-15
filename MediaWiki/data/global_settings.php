@@ -32,18 +32,19 @@ $wgEnablePartialBlocks=true;
 /*Copyright*/
 $wgMaxCredits=10;
 $wgRightsIcon="{$wgScriptPath}/resources/assets/licenses/cc-by-sa.png";
-$wgRightsText="CC BY-SA 4.0";
+$wgRightsText="Creative Commons Attribution-ShareAlike 4.0 International";
 $wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/";
 
 /*CSS and JavaScript*/
 $wgAllowSiteCSSOnRestrictedPages=true;
 $wgAllowUserCss=true;
-$wgAllowUserCssPrefs=true;
 $wgAllowUserJs=true;
 
 /*Interface*/
 $wgAdvancedSearchHighlighting=true;
+$wgAmericanDates=true; //Added for test
 $wgDisableAnonTalk=true;
+$wgEdititis=true; //Added for test
 $wgMaxTocLevel=5;
 $wgRCShowWatchingUsers=true;
 $wgShowRollbackEditCount=30;
@@ -342,6 +343,7 @@ $wgUploadSizeWarning=1024*1024*4; //4 MB
 $wgUploadStashMaxAge=60*60; //1 hour
 $wgUseCopyrightUpload=true;
 $wgUseInstantCommons=true;
+$wgUseTinyRGBForJPGThumbnails=true; //Added for test
 
 ##Email
 
@@ -361,6 +363,10 @@ $wgFileCacheDepth=0;
 $wgFileCacheDirectory=$wgCacheDirectory;
 $wgUseFileCache=true;
 
+/*Interwiki cache*/
+$wgInterwikiCache=true;
+$wgInterwikiExpiry=60;
+
 /*Message cache*/
 $wgAdaptiveMessageCache=true;
 $wgLocalisationCacheConf["store"]="array";
@@ -371,6 +377,7 @@ $wgEnableSidebarCache=true;
 $wgSidebarCacheExpiry=60;
 
 /*Others*/
+$wgAdaptiveMessageCache=true; //Added for test
 $wgLanguageConverterCacheType=$wgMainCacheType;
 $wgMsgCacheExpiry=60;
 $wgObjectCacheSessionExpiry=60;
@@ -414,6 +421,7 @@ $wgArticlePath="/page/$1";
 $wgUsePathInfo=true;
 
 /*Others*/
+$wgApiFrameOptions="SAMEORIGIN";
 $wgAuthenticationTokenVersion="1";
 //Ignored on Windows
 $wgDirectoryMode=0755;
