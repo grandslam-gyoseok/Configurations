@@ -8,4 +8,7 @@ if (!defined("MEDIAWIKI"))
 
 /*CentralNotice*/
 $wgNoticeInfrastructure=true;
+
+/*UserPageEditProtection*/
+$wgOnlyUserEditUserPage=true;
 ?>
