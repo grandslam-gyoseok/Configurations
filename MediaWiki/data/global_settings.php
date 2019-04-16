@@ -439,14 +439,25 @@ break;}
 
 ##Extensions
 
+/*Guidelines
+1. Do not add extensions that require update.php.
+2. Do not add global extensions here.
+3. Do not add administration tools here.
+4. Do not add PlavorMindTweaks extension here.
+5. Always check dependencies on extra_settings.php when enabling per-wiki extension.*/
+
 /*Extensions usage*/
-$extension_enable_AccountInfo=false;
-$extension_enable_Cite=true;
-$extension_enable_CodeEditor=false;
-$extension_enable_MultimediaViewer=true;
-$extension_enable_Popups=false;
-$extension_enable_SimpleMathJax=false;
-$extension_enable_TwoColConflict=true;
-$extension_enable_UserPageEditProtection=true;
-$extension_enable_WikiEditor=true;
+$extension_AccountInfo=false;
+$extension_Cite=false;
+$extension_CodeEditor=false;
+$extension_CommonsMetadata=false;
+$extension_Highlightjs_Integration=false;
+$extension_MultimediaViewer=false;
+$extension_PageImages=false;
+$extension_Popups=false;
+$extension_SimpleMathJax=false;
+$extension_SyntaxHighlight_GeSHi=false;
+$extension_TextExtracts=false;
+$extension_TwoColConflict=false;
+$extension_WikiEditor=false;
 ?>
