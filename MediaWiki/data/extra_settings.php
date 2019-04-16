@@ -34,7 +34,7 @@ $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ]);
 
 /*AccountInfo*/
-if ($extension_enable_AccountInfo)
+if ($extension_AccountInfo)
 {wfLoadExtension("AccountInfo");}
 
 /*AntiSpoof*/
@@ -69,12 +69,16 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 {unset($wgGroupPermissions["checkuser"]);};
 
 /*Cite*/
-if ($extension_enable_Cite)
+if ($extension_Cite)
 {wfLoadExtension("Cite");}
 
 /*CodeEditor*/
-if ($extension_enable_CodeEditor&&$extension_enable_WikiEditor)
+if ($extension_CodeEditor&&$extension_WikiEditor)
 {wfLoadExtension("CodeEditor");}
+
+/*CommonsMetadata*/
+if ($extension_CommonsMetadata)
+{wfLoadExtension("CommonsMetadata");}
 
 /*ConfirmEdit*/
 wfLoadExtension("ConfirmEdit");
@@ -101,7 +105,7 @@ $wgGlobalUserPageCacheExpiry=60;
 $wgGlobalUserPageDBname="wiki_{$central_wiki}";
 
 /*Highlightjs_Integration*/
-if (PHP_OS_FAMILY=="Windows")
+if (PHP_OS_FAMILY=="Windows"&&$extension_Highlightjs_Integration)
 {wfLoadExtension("Highlightjs_Integration");}
 
 /*MinimumNameLength*/
@@ -110,7 +114,7 @@ wfLoadExtension("MinimumNameLength");
 $wgMinimumUsernameLength=4;
 
 /*MultimediaViewer*/
-if ($extension_enable_MultimediaViewer)
+if ($extension_MultimediaViewer)
 {wfLoadExtension("MultimediaViewer");
 $wgMediaViewerUseThumbnailGuessing=true;}
 
@@ -120,13 +124,14 @@ wfLoadExtension("Nuke");
 $wgGroupPermissions["bureaucrat"]["nuke"]=true;
 
 /*PageImages*/
-wfLoadExtension("PageImages");
+if ($extension_PageImages)
+{wfLoadExtension("PageImages");
 $wgPageImagesBlacklistExpiry=60; //1 minute
 $wgPageImagesExpandOpenSearchXml=true;
-$wgPageImagesNamespaces=[NS_CATEGORY,NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];
+$wgPageImagesNamespaces=[NS_CATEGORY,NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];}
 
 /*Popups*/
-if ($extension_enable_Popups)
+if ($extension_PageImages&&$extension_Popups&&$extension_TextExtracts)
 {wfLoadExtension("Popups");
 $wgPopupsOptInDefaultState="1";
 $wgPopupsHideOptInOnPreferencesPage=true;}
@@ -138,7 +143,7 @@ $wgGroupPermissions["bureaucrat"]["renameuser"]=false;
 $wgGroupPermissions["steward"]["renameuser"]=true;
 
 /*SimpleMathJax*/
-if ($extension_enable_SimpleMathJax)
+if ($extension_SimpleMathJax)
 {wfLoadExtension("SimpleMathJax");}
 
 /*StaffPowers*/
@@ -150,12 +155,13 @@ $wgGroupPermissions["staff"]["unblockable"]=false;
 $wgGroupPermissions["admin"]["unblockable"]=true;
 
 /*SyntaxHighlight_GeSHi*/
-if (PHP_OS_FAMILY=="Linux")
+if (PHP_OS_FAMILY=="Linux"&&$extension_SyntaxHighlight_GeSHi)
 {wfLoadExtension("SyntaxHighlight_GeSHi");}
 
 /*TextExtracts*/
-wfLoadExtension("TextExtracts");
-$wgExtractsExtendOpenSearchXml=true;
+if ($extension_TextExtracts)
+{wfLoadExtension("TextExtracts");
+$wgExtractsExtendOpenSearchXml=true;}
 
 /*TitleBlacklist*/
 wfLoadExtension("TitleBlacklist");
@@ -164,7 +170,7 @@ $wgGroupPermissions["steward"]["tboverride"]=true;
 $wgGroupPermissions["steward"]["titleblacklistlog"]=true;
 
 /*TwoColConflict*/
-if ($extension_enable_TwoColConflict)
+if ($extension_TwoColConflict)
 {wfLoadExtension("TwoColConflict");}
 
 /*UserMerge*/
@@ -174,18 +180,17 @@ $wgUserMergeProtectedGroups=["admin","bureaucrat","steward"];
 $wgGroupPermissions["steward"]["usermerge"]=true;
 
 /*UserPageEditProtection*/
-if ($extension_enable_UserPageEditProtection)
-{include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
-$wgOnlyUserEditUserPage=true;
+//Add "$wgOnlyUserEditUserPage=true;" to enable this extension.
+include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
 //Permissions
-$wgGroupPermissions["staff"]["editalluserpages"]=true;}
+$wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*WikiEditor*/
-if ($extension_enable_WikiEditor)
+if ($extension_WikiEditor)
 {wfLoadExtension("WikiEditor");}
 
 /*Other extensions*/
-wfLoadExtensions(["CommonsMetadata","PlavorMindTweaks"]);
+wfLoadExtension("PlavorMindTweaks");
 
 ##Skins
 
