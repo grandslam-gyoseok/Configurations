@@ -60,7 +60,14 @@ NS_TEMPLATE=>
 ##Extensions
 
 /*Extensions usage*/
-$extension_enable_AccountInfo=true;
-$extension_enable_CodeEditor=true;
-$extension_enable_Popups=true;
+$extension_AccountInfo=true;
+$extension_CodeEditor=true;
+$extension_Highlightjs_Integration=true;
+$extension_MultimediaViewer=true;
+$extension_PageImages=true;
+$extension_Popups=true;
+$extension_SyntaxHighlight_GeSHi=true;
+$extension_TextExtracts=true;
+$extension_TwoColConflict=true;
+$extension_WikiEditor=true;
 ?>
