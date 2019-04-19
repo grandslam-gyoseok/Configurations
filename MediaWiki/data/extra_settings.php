@@ -78,6 +78,10 @@ if ($extension_Cite)
 if ($extension_CodeEditor&&$extension_WikiEditor)
 {wfLoadExtension("CodeEditor");}
 
+/*CollapsibleVector*/
+if ($extension_CollapsibleVector)
+{wfLoadExtension("CollapsibleVector");}
+
 /*CommonsMetadata*/
 if ($extension_CommonsMetadata)
 {wfLoadExtension("CommonsMetadata");}
