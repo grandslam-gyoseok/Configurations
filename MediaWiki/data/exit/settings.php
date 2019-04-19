@@ -62,6 +62,7 @@ NS_TEMPLATE=>
 /*Extensions usage*/
 $extension_AccountInfo=true;
 $extension_CodeEditor=true;
+$extension_CommonsMetadata=true;
 $extension_Highlightjs_Integration=true;
 $extension_MultimediaViewer=true;
 $extension_PageImages=true;
