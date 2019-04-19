@@ -40,8 +40,16 @@ $wgRestrictDisplayTitle=false; //Added for test
 ##Permissions
 
 /*Group permissions*/
-$wgGroupPermissions["bureaucrat"]["editinterface"]=false;
-$wgGroupPermissions["steward"]["editinterface"]=true;
+$wgGroupPermissions=array_merge($wgGroupPermissions,
+["bureaucrat"=>
+  ["editinterface"=>false,
+  "editsitecss"=>false,
+  "editsitejs"=>false,
+  "editsitejson"=>false,
+  "editusercss"=>false,
+  "edituserjs"=>false,
+  "edituserjson"=>false]
+]);
 
 /*Protection*/
 $wgNamespaceProtection=
@@ -62,6 +70,7 @@ NS_TEMPLATE=>
 /*Extensions usage*/
 $extension_AccountInfo=true;
 $extension_CodeEditor=true;
+$extension_CollapsibleVector=true;
 $extension_CommonsMetadata=true;
 $extension_Highlightjs_Integration=true;
 $extension_MultimediaViewer=true;
