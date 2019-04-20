@@ -13,7 +13,7 @@ $wgScriptPath="/mediawiki";
 /*Account*/
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 $wgMaxNameChars=20;
-$wgReservedUsernames=array_merge_recursive($wgReservedUsernames,
+$wgReservedUsernames=array_merge($wgReservedUsernames,
 ["Account","Anon","Anonymous","Default","Error","Example","ID","Not logged in","Null","Undefined","User","Username"]);
 
 /*Basic information*/
@@ -21,7 +21,7 @@ $wgSitename="Wiki";
 
 /*Blocking*/
 $wgApplyIpBlocksToXff=true;
-$wgAutoblockExpiry=60*60*24*365; //1 year
+$wgAutoblockExpiry=60*60*24*365*10; //10 years
 $wgBlockCIDRLimit=
 ["IPv4"=>8, //###.0.0.0/8
 "IPv6"=>16]; //####::/16
@@ -131,7 +131,7 @@ $wgPasswordAttemptThrottle=
   ["count"=>50,
   "seconds"=>60*60*24]
 ];
-$wgRateLimits=array_merge_recursive($wgRateLimits,
+$wgRateLimits=array_merge($wgRateLimits,
 ["edit"=>
   ["ip"=>
     [5,60],
@@ -178,9 +178,11 @@ $wgEnableMagicLinks= //Added for test
 "RFC"=>true];
 $wgExternalLinkTarget="_blank";
 //Remove default value
-$wgFilterLogTypes=[];
+$wgFilterLogTypes=[]; //MUSET CHANGED!
 $wgFragmentMode=["html5"]; //Added for test
 unset($wgFooterIcons["poweredby"]);
+$wgHideUserContribLimit=500; //Added for test
+$wgMaxSigChars=100; //Added for test
 $wgMaxTemplateDepth=10;
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
 $wgUniversalEditButton=false;
@@ -387,7 +389,7 @@ $wgUseFileCache=true;
 
 /*Interwiki cache*/
 $wgInterwikiCache=true;
-$wgInterwikiExpiry=60;
+$wgInterwikiExpiry=60; //1 minute
 
 /*Message cache*/
 $wgAdaptiveMessageCache=true;
@@ -396,17 +398,18 @@ $wgUseLocalMessageCache=true;
 
 /*Sidebar cache*/
 $wgEnableSidebarCache=true;
-$wgSidebarCacheExpiry=60;
-$wgTranscludeCacheExpiry=60;
+$wgSidebarCacheExpiry=60; //1 minute
+$wgTranscludeCacheExpiry=60; //1 minute
 
 /*Others*/
 $wgAdaptiveMessageCache=true; //Added for test
 $wgLanguageConverterCacheType=$wgMainCacheType;
-$wgMsgCacheExpiry=60;
-$wgObjectCacheSessionExpiry=60;
-$wgParserCacheExpireTime=60;
-$wgRevisionCacheExpiry=60;
-$wgSearchSuggestCacheExpiry=60;
+$wgMsgCacheExpiry=60; //1 minute
+$wgObjectCacheSessionExpiry=60; //1 minute
+$wgParserCacheExpireTime=60; //1 minute
+$wgRCWatchCategoryMembership=true; //Added for test
+$wgRevisionCacheExpiry=60; //1 minute
+$wgSearchSuggestCacheExpiry=60; //1 minute
 $wgSessionCacheType=$wgMainCacheType;
 
 ##System
@@ -444,22 +447,40 @@ $wgArticlePath="/page/$1";
 $wgUsePathInfo=true;
 
 /*Others*/
+$wgAllowSecuritySensitiveOperationIfCannotReauthenticate["default"]=false; //Added for test
 $wgApiFrameOptions="SAMEORIGIN";
 $wgAuthenticationTokenVersion="1";
 //Ignored on Windows
+$wgDeleteRevisionsBatchSize=500; //Added for test
 $wgDirectoryMode=0755;
+//$wgEnableBlockNoticeStats = false; //MUST SET!
 $wgEnableDnsBlacklist=true;
+$wgEnableOpenSearchSuggest=false; //Added for test
 $wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
 $wgFeed=false;
 $wgGitBin=false;
 $wgJobRunRate=2;
 $wgJpegTran=false;
 $wgMemoryLimit="256M";
+$wgPasswordResetRoutes["username"]=false; //Added for test
 switch (PHP_OS_FAMILY)
 {case "Windows":
 $wgPhpCli="C:/PHP/php.exe";
 break;}
+//$wgRCFilterByAge = false; //MUST SET!
+$wgReauthenticateTime["default"]=60*10; //10 minutes //Added for test
 //$wgResourceLoaderEnableJSProfiler=true; //Disabled for test
+$wgSpecialVersionShowHooks=true; //Added for test
+//$wgUnwatchedPageSecret = 1; //MUST SET!
+//$wgUnwatchedPageThreshold = false; //MUST SET!
+//$wgWatchersMaxAge = 180 * 24 * 3600; //MUST SET!
+
+/*MUST SET!
+$wgLearnerEdits = 10;
+$wgLearnerMemberSince = 4; # days
+$wgExperiencedUserEdits = 500;
+$wgExperiencedUserMemberSince = 30; # days
+*/
 
 ##Extensions
 
