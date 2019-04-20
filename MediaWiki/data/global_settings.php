@@ -64,26 +64,28 @@ $wgPasswordPolicy["policies"]=
   ["MaximalPasswordLength"=>20,
   "MinimalPasswordLength"=>6,
   "MinimumPasswordLengthToLogin"=>1,
-  "PasswordCannotBePopular"=>100,
+  "PasswordCannotBePopular"=>50,
   "PasswordCannotMatchBlacklist"=>true,
-  "PasswordCannotMatchUsername"=>true],
+  "PasswordCannotMatchUsername"=>true,
+  "PasswordNotInLargeBlacklist"=>true],
 "staff"=>
-  ["MinimalPasswordLength"=>8,
-  "MinimumPasswordLengthToLogin"=>6,
-  "PasswordCannotBePopular"=>75],
+  ["MinimumPasswordLengthToLogin"=>6,
+  "PasswordCannotBePopular"=>100],
 "admin"=>
   ["MinimalPasswordLength"=>8,
   "MinimumPasswordLengthToLogin"=>6,
-  "PasswordCannotBePopular"=>50],
+  "PasswordCannotBePopular"=>200],
 "bureaucrat"=>
   ["MinimalPasswordLength"=>10,
   "MinimumPasswordLengthToLogin"=>8,
-  "PasswordCannotBePopular"=>50],
+  "PasswordCannotBePopular"=>400],
 "steward"=>
-  ["MinimalPasswordLength"=>10,
-  "MinimumPasswordLengthToLogin"=>8,
-  "PasswordCannotBePopular"=>25]
+  ["MinimalPasswordLength"=>12,
+  "MinimumPasswordLengthToLogin"=>10,
+  "PasswordCannotBePopular"=>1000]
 ];
+//Inheritance
+$wgPasswordPolicy["policies"]["eliminator"]=$wgPasswordPolicy["policies"]["steward"];
 
 /*Preferences*/
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
