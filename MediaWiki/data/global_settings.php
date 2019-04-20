@@ -63,13 +63,28 @@ $wgNamespacesWithSubpages[NS_MAIN]=true;
 /*Password policies*/
 $wgPasswordPolicy["policies"]=
 ["default"=>
-  ["MaximalPasswordLength"=>20,
-  "MinimalPasswordLength"=>6,
-  "MinimumPasswordLengthToLogin"=>1,
-  "PasswordCannotBePopular"=>50,
-  "PasswordCannotMatchBlacklist"=>true,
-  "PasswordCannotMatchUsername"=>true,
-  "PasswordNotInLargeBlacklist"=>true],
+  ["MaximalPasswordLength"=>
+    ["forceChange"=>true,
+    "value"=>20],
+  "MinimalPasswordLength"=>
+    ["forceChange"=>true,
+    "value"=>6],
+  "MinimumPasswordLengthToLogin"=>
+    ["forceChange"=>true,
+    "value"=>1],
+  "PasswordCannotBePopular"=>
+    ["forceChange"=>true,
+    "value"=>50],
+  "PasswordCannotMatchBlacklist"=>
+    ["forceChange"=>true,
+    "value"=>true],
+  "PasswordCannotMatchUsername"=>
+    ["forceChange"=>true,
+    "value"=>true],
+  "PasswordNotInLargeBlacklist"=>
+    ["forceChange"=>true,
+    "value"=>true]
+  ],
 "staff"=>
   ["MinimumPasswordLengthToLogin"=>6,
   "PasswordCannotBePopular"=>100],
@@ -86,8 +101,6 @@ $wgPasswordPolicy["policies"]=
   "MinimumPasswordLengthToLogin"=>10,
   "PasswordCannotBePopular"=>1000]
 ];
-//Inheritance
-$wgPasswordPolicy["policies"]["eliminator"]=$wgPasswordPolicy["policies"]["steward"];
 
 /*Preferences*/
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
