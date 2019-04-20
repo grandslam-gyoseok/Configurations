@@ -51,6 +51,8 @@ $wgShowRollbackEditCount=30;
 
 /*Interwiki*/
 $wgEnableScaryTranscluding=true;
+$wgExternalInterwikiFragmentMode="html5"; //Added for test
+$wgLocalInterwikis=[$wiki_id]; //Added for test
 $wgRedirectSources="https?:\\/\\/.+"; //Set for test
 
 /*Namespaces*/
@@ -157,9 +159,14 @@ $wgBreakFrames=true;
 $wgCapitalLinks=false;
 $wgCleanSignatures=false; //Added for test
 $wgEditPageFrameOptions="SAMEORIGIN";
+$wgEnableMagicLinks= //Added for test
+["ISBN"=>true,
+"PMID"=>true,
+"RFC"=>true];
 $wgExternalLinkTarget="_blank";
 //Remove default value
 $wgFilterLogTypes=[];
+$wgFragmentMode=["html5"]; //Added for test
 unset($wgFooterIcons["poweredby"]);
 $wgMaxTemplateDepth=10;
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
@@ -377,6 +384,7 @@ $wgUseLocalMessageCache=true;
 /*Sidebar cache*/
 $wgEnableSidebarCache=true;
 $wgSidebarCacheExpiry=60;
+$wgTranscludeCacheExpiry=60;
 
 /*Others*/
 $wgAdaptiveMessageCache=true; //Added for test
@@ -384,9 +392,9 @@ $wgLanguageConverterCacheType=$wgMainCacheType;
 $wgMsgCacheExpiry=60;
 $wgObjectCacheSessionExpiry=60;
 $wgParserCacheExpireTime=60;
+$wgRevisionCacheExpiry=60;
 $wgSearchSuggestCacheExpiry=60;
 $wgSessionCacheType=$wgMainCacheType;
-$wgTranscludeCacheExpiry=60;
 
 ##System
 
@@ -432,6 +440,7 @@ $wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
 $wgFeed=false;
 $wgGitBin=false;
 $wgJobRunRate=2;
+$wgJpegTran=false;
 $wgMemoryLimit="256M";
 switch (PHP_OS_FAMILY)
 {case "Windows":
