@@ -47,6 +47,7 @@ $wgDisableAnonTalk=true;
 $wgEdititis=true;
 $wgMaxTocLevel=5;
 $wgShowRollbackEditCount=30;
+$wgSpecialVersionShowHooks=true;
 
 /*Interwiki*/
 $wgEnableScaryTranscluding=true;
@@ -164,12 +165,12 @@ $wgRCFilterByAge=true; //Added for test
 $wgRCShowWatchingUsers=true;
 $wgRCWatchCategoryMembership=true; //Added for test
 //Disable hiding (active) page watchers to users without "unwatchedpages" permission
-$wgUnwatchedPageSecret=-1; //Added for test
-$wgUnwatchedPageThreshold=0; //Added for test
+$wgUnwatchedPageSecret=-1;
+$wgUnwatchedPageThreshold=0;
 $wgWatchersMaxAge=60*60*24*7; //1 week //Added for test
 
 /*Robot policies*/
-$wgDefaultRobotPolicy="noindex,nofollow"; //Set for test
+$wgDefaultRobotPolicy="noindex,nofollow";
 //All namespaces
 $wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; //Set for test
 //Remove default value ("mediawiki.org")
@@ -460,7 +461,7 @@ $wgAuthenticationTokenVersion="1";
 //Ignored on Windows
 $wgDeleteRevisionsBatchSize=500; //Added for test
 $wgDirectoryMode=0755;
-//$wgEnableBlockNoticeStats = false; //??? //MUST SET!
+//$wgEnableBlockNoticeStats=false; //??? //MUST SET!
 $wgEnableDnsBlacklist=true;
 $wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
 $wgFeed=false;
@@ -474,15 +475,6 @@ switch (PHP_OS_FAMILY)
 $wgPhpCli="C:/PHP/php.exe";
 break;}
 $wgReauthenticateTime["default"]=60*10; //10 minutes //Added for test
-//$wgResourceLoaderEnableJSProfiler=true; //Disabled for test
-$wgSpecialVersionShowHooks=true;
-
-/*MUST SET!
-$wgLearnerEdits = 10;
-$wgLearnerMemberSince = 4; # days
-$wgExperiencedUserEdits = 500;
-$wgExperiencedUserMemberSince = 30; # days
-*/
 
 ##Extensions
 
