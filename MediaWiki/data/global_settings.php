@@ -498,7 +498,6 @@ $extension_Popups=false;
 $extension_SimpleMathJax=false;
 $extension_SyntaxHighlight_GeSHi=false;
 $extension_TextExtracts=false;
-$extension_Theme=false;
 $extension_TwoColConflict=false;
 $extension_WikiEditor=false;
 ?>
