@@ -78,6 +78,7 @@ $extension_PageImages=true;
 $extension_Popups=true;
 $extension_SyntaxHighlight_GeSHi=true;
 $extension_TextExtracts=true;
+$extension_Theme=true;
 $extension_TwoColConflict=true;
 $extension_WikiEditor=true;
 ?>
