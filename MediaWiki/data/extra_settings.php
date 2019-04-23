@@ -171,6 +171,10 @@ if ($extension_TextExtracts)
 {wfLoadExtension("TextExtracts");
 $wgExtractsExtendOpenSearchXml=true;}
 
+/*Theme*/
+if ($extension_Theme)
+{wfLoadExtension("Theme");}
+
 /*TitleBlacklist*/
 wfLoadExtension("TitleBlacklist");
 //Permissions
