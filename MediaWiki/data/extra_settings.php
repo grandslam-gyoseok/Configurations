@@ -41,6 +41,24 @@ if ($extension_AccountInfo)
 wfLoadExtension("AntiSpoof");
 //$wgSharedTables[]="spoofuser";
 
+/*ApprovedRevs*/
+wfLoadExtension("ApprovedRevs");
+$egApprovedRevsBlankIfUnapproved=true;
+//Disable default namespaces
+$egApprovedRevsEnabledNamespaces=
+[NS_FILE=>false,
+NS_HELP=>false,
+NS_MAIN=>false,
+NS_PROJECT=>false,
+NS_TEMPLATE=>false,
+NS_USER=>false];
+$egApprovedRevsShowNotApprovedMessage=true;
+//Permissions
+$wgGroupPermissions["*"]["viewlinktolatest"]=false;
+$wgGroupPermissions["steward"]["approverevisions"]=true;
+$wgGroupPermissions["steward"]["viewapprover"]=true;
+$wgGroupPermissions["steward"]["viewlinktolatest"]=true;
+
 /*CentralNotice
 //Disabled due to low speed of wiki
 wfLoadExtension("CentralNotice");
