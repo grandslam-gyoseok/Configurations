@@ -122,6 +122,13 @@ $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 //Permissions
 $wgGroupPermissions["eliminator"]["deleteperm"]=true;
 
+/*DeleteUserPages*/
+if ($extension_DeleteUserPages)
+{wfLoadExtension("DeleteUserPages");
+//Permissions
+$wgGroupPermissions["user"]["delete-rootuserpages"]=true;
+$wgGroupPermissions["user"]["delete-usersubpages"]=true;}
+
 /*GlobalUserPage
 //Disabled due to low speed of wiki
 //wfLoadExtension("GlobalUserPage");
@@ -145,9 +152,10 @@ if ($extension_MultimediaViewer)
 $wgMediaViewerUseThumbnailGuessing=true;}
 
 /*Nuke*/
-wfLoadExtension("Nuke");
+if ($extension_Nuke)
+{wfLoadExtension("Nuke");
 //Permissions
-$wgGroupPermissions["bureaucrat"]["nuke"]=true;
+$wgGroupPermissions["bureaucrat"]["nuke"]=true;}
 
 /*PageImages*/
 if ($extension_PageImages)
