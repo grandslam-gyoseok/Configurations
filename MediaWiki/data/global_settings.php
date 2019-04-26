@@ -484,9 +484,8 @@ $wgReauthenticateTime["default"]=60*10; //10 minutes //Added for test
 /*Guidelines
 1. Do not add extensions that require update.php.
 2. Do not add global extensions here.
-3. Do not add administration tools here.
-4. Do not add PlavorMindTweaks extension here.
-5. Always check dependencies on extra_settings.php when enabling per-wiki extension.*/
+3. Do not add PlavorMindTweaks extension here.
+4. Always check dependencies on extra_settings.php when enabling per-wiki extension.*/
 
 /*Extensions usage*/
 $extension_AccountInfo=false;
@@ -494,8 +493,10 @@ $extension_Cite=false;
 $extension_CodeEditor=false;
 $extension_CollapsibleVector=false;
 $extension_CommonsMetadata=false;
+$extension_DeleteUserPages=false;
 $extension_Highlightjs_Integration=false;
 $extension_MultimediaViewer=false;
+$extension_Nuke=false;
 $extension_PageImages=false;
 $extension_Popups=false;
 $extension_SimpleMathJax=false;
