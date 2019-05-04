@@ -224,7 +224,7 @@ if ($extension_WikiEditor)
 {wfLoadExtension("WikiEditor");}
 
 /*Other extensions*/
-wfLoadExtension("PlavorMindTweaks");
+wfLoadExtension("PlavorMindTools");
 
 ##Skins
 
