@@ -32,7 +32,7 @@ $wgForceUIMsgAsContentMsg= //Added for test
 "protect-level-admin-access",
 "protect-level-bureaucrat-access",
 "protect-level-steward-access"];
-$wgSiteNotice="Current [[MediaWiki]] version: {{CURRENTVERSION}}";
+$wgSiteNotice="Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]";
 
 /*Others*/
 $wgRestrictDisplayTitle=false; //Added for test
