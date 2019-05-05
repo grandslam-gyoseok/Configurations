@@ -36,7 +36,6 @@ $wgRightsText="Creative Commons Attribution-ShareAlike 4.0 International";
 $wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/";
 
 /*CSS and JavaScript*/
-$wgAllowSiteCSSOnRestrictedPages=true;
 $wgAllowUserCss=true;
 $wgAllowUserJs=true;
 
@@ -163,7 +162,7 @@ $wgLearnerEdits=15; //Added for test
 $wgLearnerMemberSince=7; //1 week //Added for test
 $wgRCFilterByAge=true; //Added for test
 $wgRCShowWatchingUsers=true;
-$wgRCWatchCategoryMembership=true; //Added for test
+$wgRCWatchCategoryMembership=true;
 //Disable hiding (active) page watchers to users without "unwatchedpages" permission
 $wgUnwatchedPageSecret=-1;
 $wgUnwatchedPageThreshold=0;
