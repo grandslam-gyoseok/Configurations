@@ -492,6 +492,7 @@ $extension_Cite=false;
 $extension_CodeEditor=false;
 $extension_CollapsibleVector=false;
 $extension_CommonsMetadata=false;
+$extension_DeletePagesForGood=false;
 $extension_DeleteUserPages=false;
 $extension_Highlightjs_Integration=false;
 $extension_MultimediaViewer=false;
