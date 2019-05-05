@@ -10,6 +10,9 @@ if (!defined("MEDIAWIKI"))
 $wgLogo="{$wgScriptPath}/data/{$wiki_id}/logo.png";
 $wgSitename="PlavorEXITBeta";
 
+/*CSS and JavaScript*/
+$wgAllowSiteCSSOnRestrictedPages=true;
+
 /*Interface*/
 $wgForceUIMsgAsContentMsg= //Added for test
 ["modifiedarticleprotection-comment",
