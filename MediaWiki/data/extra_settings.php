@@ -54,10 +54,8 @@ NS_TEMPLATE=>false,
 NS_USER=>false];
 $egApprovedRevsShowNotApprovedMessage=true;
 //Permissions
-$wgGroupPermissions["*"]["viewlinktolatest"]=false;
-$wgGroupPermissions["steward"]["approverevisions"]=true;
-$wgGroupPermissions["steward"]["viewapprover"]=true;
-$wgGroupPermissions["steward"]["viewlinktolatest"]=true;
+$wgGroupPermissions["*"]["viewapprover"]=true;
+$wgGroupPermissions["staff"]["approverevisions"]=true;
 
 /*CentralNotice
 //Disabled due to low speed of wiki
@@ -117,10 +115,11 @@ $wgCaptchaTriggersOnNamespace=
 $wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
 
 /*DeletePagesForGood*/
-wfLoadExtension("DeletePagesForGood");
+if ($extension_DeletePagesForGood)
+{wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 //Permissions
-$wgGroupPermissions["eliminator"]["deleteperm"]=true;
+$wgGroupPermissions["steward"]["deleteperm"]=true;}
 
 /*DeleteUserPages*/
 if ($extension_DeleteUserPages)
