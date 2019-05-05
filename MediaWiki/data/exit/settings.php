@@ -14,7 +14,7 @@ $wgSitename="PlavorEXITBeta";
 $wgAllowSiteCSSOnRestrictedPages=true;
 
 /*Interface*/
-$wgForceUIMsgAsContentMsg= //Added for test
+$wgForceUIMsgAsContentMsg=
 ["modifiedarticleprotection-comment",
 "protect-expiry-indefinite",
 "protect-fallback",
@@ -58,8 +58,10 @@ $wgGroupPermissions=array_merge($wgGroupPermissions,
 $wgNamespaceProtection=
 [NS_CATEGORY=>
   ["autoconfirmed-access"],
+/*
 NS_HELP=>
   ["staff-access"],
+*/
 NS_MEDIAWIKI_TALK=>
   ["steward-access"],
 NS_PROJECT=>
