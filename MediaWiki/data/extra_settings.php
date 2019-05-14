@@ -121,13 +121,6 @@ $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 //Permissions
 $wgGroupPermissions["steward"]["deleteperm"]=true;}
 
-/*DeleteUserPages*/
-if ($extension_DeleteUserPages)
-{wfLoadExtension("DeleteUserPages");
-//Permissions
-$wgGroupPermissions["user"]["delete-rootuserpages"]=true;
-$wgGroupPermissions["user"]["delete-usersubpages"]=true;}
-
 /*GlobalUserPage
 //Disabled due to low speed of wiki
 //wfLoadExtension("GlobalUserPage");
