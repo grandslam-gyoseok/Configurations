@@ -163,6 +163,10 @@ $wgPageImagesBlacklistExpiry=60; //1 minute
 $wgPageImagesExpandOpenSearchXml=true;
 $wgPageImagesNamespaces=[NS_CATEGORY,NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];}
 
+/*PlavorMindTools*/
+wfLoadExtension("PlavorMindTools");
+$wgPMTReplaceMsgForPlavorMind=true;
+
 /*Popups*/
 if ($extension_PageImages&&$extension_Popups&&$extension_TextExtracts)
 {wfLoadExtension("Popups");
@@ -221,9 +225,6 @@ $wgGroupPermissions["staff"]["editalluserpages"]=true;
 /*WikiEditor*/
 if ($extension_WikiEditor)
 {wfLoadExtension("WikiEditor");}
-
-/*Other extensions*/
-wfLoadExtension("PlavorMindTools");
 
 ##Skins
 
