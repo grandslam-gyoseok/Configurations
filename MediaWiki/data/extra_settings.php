@@ -8,21 +8,29 @@ if (!defined("MEDIAWIKI"))
 
 /*AbuseFilter*/
 wfLoadExtension("AbuseFilter");
-$wgAbuseFilterActions=
-["disallow"=>true,
-"warn"=>true];
+$wgAbuseFilterActions= //Added for test
+["block"=>false,
+"blockautopromote"=>false,
+"degroup"=>false,
+"disallow"=>false,
+"flag"=>false,
+"rangeblock"=>false,
+"tag"=>false,
+"throttle"=>false,
+"warn"=>false];
 //$wgAbuseFilterCentralDB="global_abusefilter";
 $wgAbuseFilterNotifications="rcandudp";
 $wgAbuseFilterNotificationsPrivate=$wgAbuseFilterNotifications;
+$wgAbuseFilterRestrictions=
+["blockautopromote"=>true,
+"degroup"=>true];
 //Permissions
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
-["*"=>
-  ["abusefilter-log"=>false],
+["bureaucrat"=>
+  ["abusefilter-log-detail"=>true],
 "steward"=>
   ["abusefilter-hide-log"=>true,
   "abusefilter-hidden-log"=>true,
-  "abusefilter-log"=>true,
-  "abusefilter-log-detail"=>true,
   "abusefilter-log-private"=>true,
   "abusefilter-modify"=>true,
   "abusefilter-modify-global"=>true,
