@@ -74,6 +74,7 @@ NS_TEMPLATE=>
 $extension_AccountInfo=true;
 $extension_Babel=true;
 $extension_CodeEditor=true;
+$extension_CodeMirror=true;
 $extension_CollapsibleVector=true;
 $extension_CommonsMetadata=true;
 $extension_Highlightjs_Integration=true;
