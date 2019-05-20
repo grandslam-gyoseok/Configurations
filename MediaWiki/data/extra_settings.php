@@ -40,6 +40,9 @@ if ($extension_AccountInfo)
 /*AntiSpoof*/
 wfLoadExtension("AntiSpoof");
 //$wgSharedTables[]="spoofuser";
+//Permissions
+$wgGroupPermissions["bureaucrat"]["override-antispoof"]=false;
+$wgGroupPermissions["steward"]["override-antispoof"]=true;
 
 /*ApprovedRevs*/
 wfLoadExtension("ApprovedRevs");
@@ -56,6 +59,20 @@ $egApprovedRevsShowNotApprovedMessage=true;
 //Permissions
 $wgGroupPermissions["*"]["viewapprover"]=true;
 $wgGroupPermissions["staff"]["approverevisions"]=true;
+
+/*Babel*/
+if ($extension_Babel)
+{wfLoadExtension("Babel");
+$wgBabelCategoryNames=
+["0"=>false,
+"1"=>false,
+"2"=>false,
+"3"=>false,
+"4"=>false,
+"5"=>false,
+"N"=>false];
+$wgBabelMainCategory=false;
+$wgBabelUseUserLanguage=true;}
 
 /*CentralNotice
 //Disabled due to low speed of wiki
