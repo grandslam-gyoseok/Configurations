@@ -488,6 +488,7 @@ $wgReauthenticateTime["default"]=60*10; //10 minutes //Added for test
 
 /*Extensions usage*/
 $extension_AccountInfo=false;
+$extension_Babel=false;
 $extension_Cite=false;
 $extension_CodeEditor=false;
 $extension_CollapsibleVector=false;
