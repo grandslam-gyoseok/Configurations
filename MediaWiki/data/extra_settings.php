@@ -111,6 +111,10 @@ if ($extension_Cite)
 if ($extension_CodeEditor&&$extension_WikiEditor)
 {wfLoadExtension("CodeEditor");}
 
+/*CodeMirror*/
+if ($extension_CodeMirror)
+{wfLoadExtension("CodeMirror");}
+
 /*CollapsibleVector*/
 if ($extension_CollapsibleVector)
 {wfLoadExtension("CollapsibleVector");}
