@@ -58,10 +58,8 @@ $wgGroupPermissions=array_merge($wgGroupPermissions,
 $wgNamespaceProtection=
 [NS_CATEGORY=>
   ["autoconfirmed-access"],
-/*
 NS_HELP=>
-  ["staff-access"],
-*/
+  ["autoconfirmed-access"],
 NS_MEDIAWIKI_TALK=>
   ["steward-access"],
 NS_PROJECT=>
@@ -74,10 +72,10 @@ NS_TEMPLATE=>
 
 /*Extensions usage*/
 $extension_AccountInfo=true;
+$extension_Babel=true;
 $extension_CodeEditor=true;
 $extension_CollapsibleVector=true;
 $extension_CommonsMetadata=true;
-$extension_DeleteUserPages=true;
 $extension_Highlightjs_Integration=true;
 $extension_MultimediaViewer=true;
 $extension_Nuke=true;
