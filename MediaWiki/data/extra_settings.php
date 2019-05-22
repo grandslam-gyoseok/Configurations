@@ -41,10 +41,6 @@ $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
   "abusefilter-view-private"=>true]
 ]);
 
-/*AccountInfo*/
-if ($extension_AccountInfo)
-{wfLoadExtension("AccountInfo");}
-
 /*AntiSpoof*/
 wfLoadExtension("AntiSpoof");
 //$wgSharedTables[]="spoofuser";
@@ -53,7 +49,8 @@ $wgGroupPermissions["bureaucrat"]["override-antispoof"]=false;
 $wgGroupPermissions["steward"]["override-antispoof"]=true;
 
 /*ApprovedRevs*/
-wfLoadExtension("ApprovedRevs");
+if ($extension_ApprovedRevs||$wgCommandLineMode)
+{wfLoadExtension("ApprovedRevs");
 $egApprovedRevsBlankIfUnapproved=true;
 //Disable default namespaces
 $egApprovedRevsEnabledNamespaces=
@@ -66,7 +63,7 @@ NS_USER=>false];
 $egApprovedRevsShowNotApprovedMessage=true;
 //Permissions
 $wgGroupPermissions["*"]["viewapprover"]=true;
-$wgGroupPermissions["staff"]["approverevisions"]=true;
+$wgGroupPermissions["staff"]["approverevisions"]=true;}
 
 /*Babel*/
 if ($extension_Babel)
