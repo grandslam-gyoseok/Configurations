@@ -17,7 +17,7 @@ $wgReservedUsernames=array_merge($wgReservedUsernames,
 ["Account","Anon","Anonymous","Default","Error","Example","ID","Not logged in","Null","Undefined","User","Username"]);
 
 /*Basic information*/
-$wgSitename="Wiki";
+$wgSitename="Unnamed Wiki";
 
 /*Blocking*/
 $wgApplyIpBlocksToXff=true;
@@ -487,7 +487,7 @@ $wgReauthenticateTime["default"]=60*10; //10 minutes //Added for test
 4. Always check dependencies on extra_settings.php when enabling per-wiki extension.*/
 
 /*Extensions usage*/
-$extension_AccountInfo=false;
+$extension_ApprovedRevs=false;
 $extension_Babel=false;
 $extension_Cite=false;
 $extension_CodeEditor=false;
