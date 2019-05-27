@@ -257,5 +257,5 @@ wfLoadSkin("Vector");
 $wgVectorResponsive=true;
 
 /*Other skins*/
-wfLoadSkins(["PlavorMindView","Timeless"]);
+wfLoadSkin("Timeless");
 ?>
