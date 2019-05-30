@@ -38,6 +38,7 @@ $wgForceUIMsgAsContentMsg=
 $wgSiteNotice="Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]";
 
 /*Others*/
+$wgMetaNamespace="PlavorMind";
 $wgRestrictDisplayTitle=false; //Added for test
 
 ##Permissions
