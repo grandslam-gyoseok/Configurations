@@ -8,16 +8,16 @@ if (!defined("MEDIAWIKI"))
 
 /*AbuseFilter*/
 wfLoadExtension("AbuseFilter");
-$wgAbuseFilterActions= //Added for test
+$wgAbuseFilterActions=
 ["block"=>false,
 "blockautopromote"=>false,
 "degroup"=>false,
-"disallow"=>false,
+"disallow"=>true,
 "flag"=>false,
 "rangeblock"=>false,
 "tag"=>false,
 "throttle"=>false,
-"warn"=>false];
+"warn"=>true];
 //$wgAbuseFilterCentralDB="global_abusefilter";
 $wgAbuseFilterNotifications="rcandudp";
 $wgAbuseFilterNotificationsPrivate=$wgAbuseFilterNotifications;
