@@ -6,9 +6,6 @@ if (!defined("MEDIAWIKI"))
 
 ##Extensions
 
-/*ApprovedRevs*/
-$egApprovedRevsEnabledNamespaces[NS_HELP]=true;
-
 /*CentralNotice*/
 $wgNoticeInfrastructure=true;
 
