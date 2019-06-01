@@ -291,6 +291,7 @@ $wgGroupPermissions=
   "edituserjs"=>true,
   "edituserjson"=>true,
   "import"=>true,
+  "importupload"=>true,
   "managechangetags"=>true,
   "mergehistory"=>true],
 "steward"=>
@@ -300,7 +301,6 @@ $wgGroupPermissions=
   "bigdelete"=>true,
   "deletechangetags"=>true, //Very dangerous
   "hideuser"=>true,
-  //"importupload"=>true, //Disabled for test
   "markbotedits"=>true,
   "nominornewtalk"=>true,
   "noratelimit"=>true,
@@ -313,11 +313,6 @@ $wgGroupPermissions=
   //"viewsuppressed"=>true, //Disabled for test
   "writeapi"=>true]
 ];
-//Inheritance
-$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
-$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
-$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
-$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
 $wgGroupsRemoveFromSelf=
 ["staff"=>
   ["staff"],
