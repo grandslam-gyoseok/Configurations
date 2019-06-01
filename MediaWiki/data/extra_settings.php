@@ -48,23 +48,6 @@ wfLoadExtension("AntiSpoof");
 $wgGroupPermissions["bureaucrat"]["override-antispoof"]=false;
 $wgGroupPermissions["steward"]["override-antispoof"]=true;
 
-/*ApprovedRevs*/
-if ($extension_ApprovedRevs||$wgCommandLineMode)
-{wfLoadExtension("ApprovedRevs");
-$egApprovedRevsBlankIfUnapproved=true;
-//Disable default namespaces
-$egApprovedRevsEnabledNamespaces=
-[NS_FILE=>false,
-NS_HELP=>false,
-NS_MAIN=>false,
-NS_PROJECT=>false,
-NS_TEMPLATE=>false,
-NS_USER=>false];
-$egApprovedRevsShowNotApprovedMessage=true;
-//Permissions
-$wgGroupPermissions["*"]["viewapprover"]=true;
-$wgGroupPermissions["staff"]["approverevisions"]=true;}
-
 /*Babel*/
 if ($extension_Babel)
 {wfLoadExtension("Babel");
