@@ -52,6 +52,14 @@ $wgGroupPermissions["bureaucrat"]=array_merge($wgGroupPermissions["bureaucrat"],
 "editusercss"=>false,
 "edituserjs"=>false,
 "edituserjson"=>false]);
+$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
+["editinterface"=>true,
+"editsitecss"=>true,
+"editsitejs"=>true,
+"editsitejson"=>true,
+"editusercss"=>true,
+"edituserjs"=>true,
+"edituserjson"=>true]);
 
 /*Protection*/
 $wgNamespaceProtection=
