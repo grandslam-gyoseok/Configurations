@@ -44,16 +44,14 @@ $wgRestrictDisplayTitle=false; //Added for test
 ##Permissions
 
 /*Group permissions*/
-$wgGroupPermissions=array_merge($wgGroupPermissions,
-["bureaucrat"=>
-  ["editinterface"=>false,
-  "editsitecss"=>false,
-  "editsitejs"=>false,
-  "editsitejson"=>false,
-  "editusercss"=>false,
-  "edituserjs"=>false,
-  "edituserjson"=>false]
-]);
+$wgGroupPermissions["bureaucrat"]=array_merge($wgGroupPermissions["bureaucrat"],
+["editinterface"=>false,
+"editsitecss"=>false,
+"editsitejs"=>false,
+"editsitejson"=>false,
+"editusercss"=>false,
+"edituserjs"=>false,
+"edituserjson"=>false]);
 
 /*Protection*/
 $wgNamespaceProtection=
