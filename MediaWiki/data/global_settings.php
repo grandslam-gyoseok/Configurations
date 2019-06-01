@@ -184,7 +184,6 @@ $wgWatchersMaxAge=60*60*24*7; //1 week //Added for test
 $wgDefaultRobotPolicy="noindex,nofollow";
 //All namespaces
 $wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; //Set for test
-//Remove default value ("mediawiki.org")
 $wgNoFollowDomainExceptions=["plavormind.tk"]; //Set for test
 
 /*Others*/
@@ -205,6 +204,8 @@ $wgHideUserContribLimit=500; //Added for test
 $wgMaxSigChars=100; //Added for test
 $wgMaxTemplateDepth=10;
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
+//Remove default value
+$wgRawHtmlMessages=[];
 $wgUniversalEditButton=false;
 //Only allow HTTP and HTTPS protocol in links
 $wgUrlProtocols=["//","http://","https://"];
