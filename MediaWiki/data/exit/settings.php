@@ -60,7 +60,7 @@ $wgNamespaceProtection=
 [NS_CATEGORY=>
   ["autoconfirmed-access"],
 NS_HELP=>
-  ["autoconfirmed-access"],
+  ["staff-access"],
 NS_MEDIAWIKI_TALK=>
   ["steward-access"],
 NS_PROJECT=>
@@ -72,7 +72,6 @@ NS_TEMPLATE=>
 ##Extensions
 
 /*Extensions usage*/
-$extension_ApprovedRevs=true;
 $extension_Babel=true;
 $extension_CodeEditor=true;
 $extension_CodeMirror=true;
