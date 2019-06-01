@@ -14,10 +14,22 @@ $wgScriptPath="/mediawiki";
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 $wgMaxNameChars=20;
 $wgReservedUsernames=array_merge($wgReservedUsernames,
-["Account","Anon","Anonymous","Default","Error","Example","ID","Not logged in","Null","Undefined","User","Username"]);
+["Account",
+"Anon",
+"Anonymous",
+"Default",
+"Error",
+"Example",
+"ID",
+"Not logged in",
+"Null",
+"Undefined",
+"Unknown",
+"User",
+"Username"]);
 
 /*Basic information*/
-$wgSitename="Unnamed Wiki";
+$wgSitename="Nameless";
 
 /*Blocking*/
 $wgApplyIpBlocksToXff=true;
@@ -105,8 +117,8 @@ $wgPasswordPolicy["policies"]=
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 ["editfont"=>"sans-serif",
 "hidecategorization"=>0,
-"usenewrc"=>0,
 "rememberpassword"=>1,
+"usenewrc"=>0,
 "watchcreations"=>0,
 "watchdefault"=>0,
 "watchlisthidecategorization"=>0,
@@ -227,9 +239,7 @@ $wgGroupPermissions=
   "editmyuserjson"=>true,
   "editmywatchlist"=>true,
   "minoredit"=>true,
-  "reupload-own"=>true,
   "sendemail"=>true,
-  "upload"=>true,
   "viewmyprivateinfo"=>true,
   "viewmywatchlist"=>true],
 "autoconfirmed"=>
@@ -242,8 +252,8 @@ $wgGroupPermissions=
   "movefile"=>true,
   "purge"=>true,
   "reupload"=>true,
-  "user-access"=>true, //Patch for protection
-  "upload_by_url"=>true],
+  "upload"=>true,
+  "user-access"=>true], //Patch for protection
 "staff"=>
   ["staff-access"=>true,
 
@@ -258,7 +268,8 @@ $wgGroupPermissions=
   "reupload-shared"=>true,
   "rollback"=>true,
   "suppressredirect"=>true,
-  "undelete"=>true],
+  "undelete"=>true,
+  "upload_by_url"=>true],
 "admin"=>
   ["admin-access"=>true,
 
@@ -289,7 +300,7 @@ $wgGroupPermissions=
   "bigdelete"=>true,
   "deletechangetags"=>true, //Very dangerous
   "hideuser"=>true,
-  "importupload"=>true,
+  //"importupload"=>true, //Disabled for test
   "markbotedits"=>true,
   "nominornewtalk"=>true,
   "noratelimit"=>true,
@@ -299,7 +310,7 @@ $wgGroupPermissions=
   "unblockself"=>true,
   "userrights"=>true,
   "userrights-interwiki"=>true,
-  "viewsuppressed"=>true,
+  //"viewsuppressed"=>true, //Disabled for test
   "writeapi"=>true]
 ];
 //Inheritance
@@ -444,6 +455,7 @@ $actions=
 "markpatrolled",
 "protect",
 "purge",
+"raw", //Added for test
 "render",
 "revert",
 "rollback",
