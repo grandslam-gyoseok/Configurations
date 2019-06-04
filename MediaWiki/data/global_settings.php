@@ -221,6 +221,7 @@ $wgAddGroups["bureaucrat"]=["staff","admin"];
 $wgGroupPermissions=
 ["*"=>
   ["autocreateaccount"=>true,
+  "browsearchive"=>true,
   "createaccount"=>true,
   "deletedhistory"=>true,
   "patrolmarks"=>true,
@@ -261,7 +262,6 @@ $wgGroupPermissions=
   "autopatrol"=>true,
   "block"=>true,
   "blockemail"=>true,
-  "browsearchive"=>true,
   "delete"=>true,
   "deletedtext"=>true,
   "deleterevision"=>true,
@@ -385,7 +385,7 @@ $wgUploadSizeWarning=1024*1024*4; //4 MB
 $wgUploadStashMaxAge=60*60; //1 hour
 $wgUseCopyrightUpload=true;
 $wgUseInstantCommons=true;
-$wgUseTinyRGBForJPGThumbnails=true; //Added for test
+$wgUseTinyRGBForJPGThumbnails=true;
 
 ##Email
 
@@ -451,7 +451,7 @@ $actions=
 "markpatrolled",
 "protect",
 "purge",
-"raw", //Added for test
+"raw",
 "render",
 "revert",
 "rollback",
