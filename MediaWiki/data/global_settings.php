@@ -184,14 +184,14 @@ $wgWatchersMaxAge=60*60*24*7; //1 week //Added for test
 $wgDefaultRobotPolicy="noindex,nofollow";
 //All namespaces
 $wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; //Set for test
-$wgNoFollowDomainExceptions=["plavormind.tk"]; //Set for test
+$wgNoFollowDomainExceptions=["plavormind.tk"];
 
 /*Others*/
 $wgActiveUserDays=7; //1 week
 $wgAllowSlowParserFunctions=true; //Added for test
 $wgBreakFrames=true;
 $wgCapitalLinks=false;
-$wgCleanSignatures=false; //Added for test
+$wgCleanSignatures=false;
 $wgEditPageFrameOptions="SAMEORIGIN";
 $wgEnableMagicLinks= //Added for test
 ["ISBN"=>true,
@@ -201,7 +201,7 @@ $wgExternalLinkTarget="_blank";
 $wgFragmentMode=["html5"]; //Added for test
 unset($wgFooterIcons["poweredby"]);
 $wgHideUserContribLimit=500; //Added for test
-$wgMaxSigChars=100; //Added for test
+$wgMaxSigChars=200;
 $wgMaxTemplateDepth=10;
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
 //Remove default value
