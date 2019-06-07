@@ -127,6 +127,7 @@ $wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
 if ($extension_DeletePagesForGood)
 {wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
+$wgPlavorBumaTabIcons["delete_page_permanently"]="fas fa-trash-alt";
 //Permissions
 $wgGroupPermissions["steward"]["deleteperm"]=true;}
 
