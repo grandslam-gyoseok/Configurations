@@ -170,20 +170,20 @@ $wgRateLimits=array_merge($wgRateLimits,
 ]);
 
 /*Recent changes and watchlist*/
-$wgLearnerEdits=15; //Added for test
-$wgLearnerMemberSince=7; //1 week //Added for test
-$wgRCFilterByAge=true; //Added for test
+$wgLearnerEdits=15;
+$wgLearnerMemberSince=7; //1 week
+$wgRCFilterByAge=true;
 $wgRCShowWatchingUsers=true;
 $wgRCWatchCategoryMembership=true;
 //Disable hiding (active) page watchers to users without "unwatchedpages" permission
 $wgUnwatchedPageSecret=-1;
 $wgUnwatchedPageThreshold=0;
-$wgWatchersMaxAge=60*60*24*7; //1 week //Added for test
+$wgWatchersMaxAge=60*60*24*7; //1 week
 
 /*Robot policies*/
 $wgDefaultRobotPolicy="noindex,nofollow";
 //All namespaces
-$wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; //Set for test
+$wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 $wgNoFollowDomainExceptions=["plavormind.tk"];
 
 /*Others*/
@@ -200,7 +200,7 @@ $wgEnableMagicLinks= //Added for test
 $wgExternalLinkTarget="_blank";
 $wgFragmentMode=["html5"]; //Added for test
 unset($wgFooterIcons["poweredby"]);
-$wgHideUserContribLimit=500; //Added for test
+$wgHideUserContribLimit=500;
 $wgMaxSigChars=200;
 $wgMaxTemplateDepth=10;
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
@@ -418,7 +418,7 @@ $wgSidebarCacheExpiry=60; //1 minute
 $wgTranscludeCacheExpiry=60; //1 minute
 
 /*Others*/
-$wgAdaptiveMessageCache=true; //Added for test
+$wgAdaptiveMessageCache=true;
 $wgLanguageConverterCacheType=$wgMainCacheType;
 $wgMsgCacheExpiry=60; //1 minute
 $wgObjectCacheSessionExpiry=60; //1 minute
@@ -474,10 +474,10 @@ $wgEnableDnsBlacklist=true;
 $wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
 $wgFeed=false;
 $wgGitBin=false;
-$wgJobRunRate=2;
+//$wgJobRunRate=2; //Disabled for test
 $wgJpegTran=false;
 $wgMemoryLimit="256M";
-$wgPasswordResetRoutes["username"]=false; //Added for test
+$wgPasswordResetRoutes["username"]=false;
 switch (PHP_OS_FAMILY)
 {case "Windows":
 $wgPhpCli="C:/PHP/php.exe";
