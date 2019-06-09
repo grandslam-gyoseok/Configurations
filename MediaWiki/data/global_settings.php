@@ -474,7 +474,6 @@ $wgEnableDnsBlacklist=true;
 $wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
 $wgFeed=false;
 $wgGitBin=false;
-//$wgJobRunRate=2; //Disabled for test
 $wgJpegTran=false;
 $wgMemoryLimit="256M";
 $wgPasswordResetRoutes["username"]=false;
