@@ -370,16 +370,14 @@ $wgThumbnailScriptPath="{$wgScriptPath}/thumb.php";
 
 /*Others*/
 $wgAllowCopyUploads=true;
-$wgAllowTitlesInSVG=true; //Added for test
+$wgAllowTitlesInSVG=true;
 $wgCopyUploadsDomains=["openclipart.org"];
 $wgCopyUploadsFromSpecialUpload=true;
 $wgEnableUploads=true;
-$wgFileExtensions[]="svg";
 $wgHashedUploadDirectory=false;
 $wgMaxUploadSize=
 ["*"=>1024*1024*5, //5 MB
 "url"=>1024*1024*2]; //2 MB
-$wgSVGConverter="ImagickExt"; //Added for test
 $wgUpdateCompatibleMetadata=true;
 $wgUploadSizeWarning=1024*1024*4; //4 MB
 $wgUploadStashMaxAge=60*60; //1 hour
