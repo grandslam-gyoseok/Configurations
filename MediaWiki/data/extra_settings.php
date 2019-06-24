@@ -131,6 +131,11 @@ $wgPlavorBumaTabIcons["delete_page_permanently"]="fas fa-trash-alt";
 //Permissions
 $wgGroupPermissions["steward"]["deleteperm"]=true;}
 
+/*Echo*/
+wfLoadExtension("Echo");
+$wgEchoEnableEmailBatch=false;
+$wgEchoPerUserBlacklist=true;
+
 /*GlobalUserPage
 //Disabled due to low speed of wiki
 //wfLoadExtension("GlobalUserPage");
