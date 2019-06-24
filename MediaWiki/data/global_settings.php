@@ -479,7 +479,7 @@ $wgMemoryLimit="256M";
 $wgPasswordResetRoutes["username"]=false;
 switch (PHP_OS_FAMILY)
 {case "Windows":
-$wgPhpCli="C:/PHP/php.exe";
+$wgPhpCli="C:/plavormind/php/php.exe";
 break;}
 $wgReauthenticateTime["default"]=60*10; //10 minutes //Added for test
 
