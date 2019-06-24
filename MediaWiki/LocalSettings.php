@@ -18,7 +18,15 @@ if (!defined("MEDIAWIKI"))
 
 /*Directory*/
 $data_dir="{$IP}/data";
-$private_data_dir="{$IP}/private_data";
+switch (PHP_OS_FAMILY)
+{case "Linux":
+$private_data_dir="/plavormind/web_data/mediawiki";
+break;
+case "Windows":
+$private_data_dir="C:/plavormind/web_data/mediawiki";
+break;
+default:
+$private_data_dir="{$IP}/private_data";}
 
 /*Wiki selector*/
 $central_wiki="exit";
