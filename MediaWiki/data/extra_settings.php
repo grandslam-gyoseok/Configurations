@@ -133,8 +133,22 @@ $wgGroupPermissions["steward"]["deleteperm"]=true;}
 
 /*Echo*/
 wfLoadExtension("Echo");
-$wgEchoEnableEmailBatch=false;
+$wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
+["echo-email-frequency"=>-1,
+"echo-subscriptions-email-user-rights"=>false,
+"echo-subscriptions-web-thank-you-edit"=>false]);
+$wgEchoMentionStatusNotifications=true;
 $wgEchoPerUserBlacklist=true;
+$wgNotifyTypeAvailabilityByCategory=
+["article-linked"=>
+  ["email"=>true],
+"mention-failure"=>
+  ["email"=>true],
+"mention-success"=>
+  ["email"=>true],
+"thank-you-edit"=>
+  ["email"=>true]
+];
 
 /*GlobalUserPage
 //Disabled due to low speed of wiki
