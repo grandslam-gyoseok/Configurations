@@ -502,6 +502,7 @@ $extension_Highlightjs_Integration=false;
 $extension_MultimediaViewer=false;
 $extension_Nuke=false;
 $extension_PageImages=false;
+$extension_PerformanceInspector=false;
 $extension_Popups=false;
 $extension_SimpleMathJax=false;
 $extension_SyntaxHighlight_GeSHi=false;
