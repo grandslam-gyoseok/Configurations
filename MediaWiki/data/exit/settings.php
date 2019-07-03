@@ -90,6 +90,7 @@ $extension_PageImages=true;
 $extension_PerformanceInspector=true;
 $extension_Popups=true;
 $extension_SyntaxHighlight_GeSHi=true;
+$extension_TemplateData=true;
 $extension_TextExtracts=true;
 $extension_TwoColConflict=true;
 $extension_WikiEditor=true;
