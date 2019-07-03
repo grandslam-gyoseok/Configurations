@@ -27,12 +27,12 @@ $wgAbuseFilterRestrictions=
 //Permissions
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ["bureaucrat"=>
-  ["abusefilter-log-detail"=>true],
+  ["abusefilter-log-detail"=>true,
+  "abusefilter-modify"=>true],
 "steward"=>
   ["abusefilter-hide-log"=>true,
   "abusefilter-hidden-log"=>true,
   "abusefilter-log-private"=>true,
-  "abusefilter-modify"=>true,
   "abusefilter-modify-global"=>true,
   "abusefilter-modify-restricted"=>true,
   "abusefilter-private"=>true,
@@ -184,6 +184,11 @@ if ($extension_PageImages)
 $wgPageImagesBlacklistExpiry=60; //1 minute
 $wgPageImagesExpandOpenSearchXml=true;
 $wgPageImagesNamespaces=[NS_CATEGORY,NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];}
+
+/*PerformanceInspector*/
+if ($extension_PerformanceInspector)
+{wfLoadExtension("PerformanceInspector");
+$wgDefaultUserOptions["performanceinspector"]=true;}
 
 /*PlavorMindTools*/
 wfLoadExtension("PlavorMindTools");
