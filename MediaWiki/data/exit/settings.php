@@ -87,6 +87,7 @@ $extension_Highlightjs_Integration=true;
 $extension_MultimediaViewer=true;
 $extension_Nuke=true;
 $extension_PageImages=true;
+$extension_PerformanceInspector=true;
 $extension_Popups=true;
 $extension_SyntaxHighlight_GeSHi=true;
 $extension_TextExtracts=true;
