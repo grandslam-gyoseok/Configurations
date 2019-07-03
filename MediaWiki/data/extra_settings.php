@@ -222,6 +222,10 @@ $wgGroupPermissions["admin"]["unblockable"]=true;
 if (PHP_OS_FAMILY=="Linux"&&$extension_SyntaxHighlight_GeSHi)
 {wfLoadExtension("SyntaxHighlight_GeSHi");}
 
+/*TemplateData*/
+if ($extension_TemplateData)
+{wfLoadExtension("TemplateData");}
+
 /*TextExtracts*/
 if ($extension_TextExtracts)
 {wfLoadExtension("TextExtracts");
