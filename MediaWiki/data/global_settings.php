@@ -481,6 +481,7 @@ switch (PHP_OS_FAMILY)
 {case "Windows":
 $wgPhpCli="C:/plavormind/php/php.exe";
 break;}
+$wgReadOnlyFile="{$data_dir}/readonly.txt";
 $wgReauthenticateTime["default"]=60*10; //10 minutes //Added for test
 
 ##Extensions
