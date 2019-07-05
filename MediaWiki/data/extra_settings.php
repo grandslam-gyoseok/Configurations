@@ -65,7 +65,7 @@ $wgBabelUseUserLanguage=true;}
 /*CentralNotice
 //Disabled due to low speed of wiki
 wfLoadExtension("CentralNotice");
-$wgCentralHost="//exit.plavormind.tk:81";
+$wgCentralHost="//{$central_wiki}.plavormind.tk:81";
 $wgNoticeInfrastructure=false;
 $wgNoticeProject=$wiki_id;
 $wgNoticeProjects=["exit"];
@@ -153,9 +153,9 @@ $wgNotifyTypeAvailabilityByCategory=
 /*GlobalUserPage
 //Disabled due to low speed of wiki
 //wfLoadExtension("GlobalUserPage");
-$wgGlobalUserPageAPIUrl="//exit.plavormind.tk:81/mediawiki/api.php";
+$wgGlobalUserPageAPIUrl="//{$central_wiki}.plavormind.tk:81/mediawiki/api.php";
 $wgGlobalUserPageCacheExpiry=60;
-$wgGlobalUserPageDBname="wiki_{$central_wiki}";
+$wgGlobalUserPageDBname="{$central_wiki}_wiki";
 */
 
 /*Highlightjs_Integration*/
