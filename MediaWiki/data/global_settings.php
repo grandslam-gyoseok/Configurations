@@ -431,7 +431,6 @@ $wgSessionCacheType=$wgMainCacheType;
 
 /*Database*/
 $wgDBname="{$wiki_id}_wiki";
-$wgDBtype="sqlite";
 /*
 //Shared database
 $wgSharedDB="{$central_wiki}_wiki";
