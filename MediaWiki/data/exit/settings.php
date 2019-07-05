@@ -8,7 +8,7 @@ if (!defined("MEDIAWIKI"))
 
 /*Basic information*/
 $wgLogo="{$wgScriptPath}/data/{$wiki_id}/logo.png";
-$wgSitename="PlavorEXITBeta";
+$wgSitename="PlavorMindBeta";
 
 /*CSS and JavaScript*/
 $wgAllowSiteCSSOnRestrictedPages=true;
