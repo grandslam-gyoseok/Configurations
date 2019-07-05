@@ -49,7 +49,7 @@ $wgGroupPermissions["bureaucrat"]["override-antispoof"]=false;
 $wgGroupPermissions["steward"]["override-antispoof"]=true;
 
 /*Babel*/
-if ($extension_Babel)
+if ($extension_Babel||$wgCommandLineMode)
 {wfLoadExtension("Babel");
 $wgBabelCategoryNames=
 ["0"=>false,
@@ -158,6 +158,40 @@ $wgNotifyTypeAvailabilityByCategory=
   ["email"=>true]
 ];
 
+/*Flow*/
+//DRAFT
+/*
+//Exclude MediaWiki talk namespace
+$wgNamespaceContentModels=array_merge($wgNamespaceContentModels,
+[NS_CATEGORY_TALK=>"flow-board",
+NS_FILE_TALK=>"flow-board",
+NS_HELP_TALK=>"flow-board",
+NS_PROJECT_TALK=>"flow-board",
+NS_TALK=>"flow-board",
+NS_TEMPLATE_TALK=>"flow-board",
+NS_USER_TALK=>"flow-board"]);
+$wgFlowCacheTime=60; //1 minute
+$wgFlowEditorList=["wikitext"];
+$wgFlowMaxMentionCount=10;
+$wgFlowSearchEnabled=true;
+//Permissions
+$wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
+["*"=>
+  ["flow-hide"=>false],
+"user"=>
+  ["flow-lock"=>false],
+"staff"=>
+  ["flow-edit-post"=>true,
+  "flow-hide"=>true,
+  "flow-lock"=>true],
+"admin"=>
+  ["flow-delete"=>true],
+"steward"=>
+  ["flow-create-board"=>true,
+  "flow-suppress"=>true]
+]);
+*/
+
 /*GlobalUserPage
 //Disabled due to low speed of wiki
 //wfLoadExtension("GlobalUserPage");
@@ -173,7 +207,7 @@ if (PHP_OS_FAMILY=="Windows"&&$extension_Highlightjs_Integration)
 /*MinimumNameLength*/
 wfLoadExtension("MinimumNameLength");
 //Only detects alphanumeric names
-$wgMinimumUsernameLength=4;
+$wgMinimumUsernameLength=3;
 
 /*MultimediaViewer*/
 if ($extension_MultimediaViewer)
