@@ -38,7 +38,7 @@ else
 }
 else
 {switch (parse_url($wgServer,PHP_URL_HOST))
-  {//PlavorEXITBeta (exit)
+  {//PlavorMindBeta (exit)
   case "exit.plavormind.tk":
   $wiki_id="exit";
   break;
