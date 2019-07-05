@@ -133,7 +133,7 @@ $wgGroupPermissions["steward"]["deleteperm"]=true;}
 
 /*DiscordNotifications*/
 wfLoadExtension("DiscordNotifications");
-$wgDiscordFromName=$wgSitename;
+$wgDiscordFromName="{$wgSitename} ({$_SERVER["HTTP_HOST"]}) @ PlavorMind";
 $wgDiscordSendMethod="file_get_contents";
 $wgWikiUrl="{$wgServer}/";
 $wgWikiUrlEndingUserRights="Special:UserRights/";
