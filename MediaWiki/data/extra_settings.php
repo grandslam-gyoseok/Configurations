@@ -159,8 +159,8 @@ $wgNotifyTypeAvailabilityByCategory=
 ];
 
 /*Flow*/
-//DRAFT
-/*
+if ($extension_Flow)
+{//DRAFT
 //Exclude MediaWiki talk namespace
 $wgNamespaceContentModels=array_merge($wgNamespaceContentModels,
 [NS_CATEGORY_TALK=>"flow-board",
@@ -189,8 +189,7 @@ $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 "steward"=>
   ["flow-create-board"=>true,
   "flow-suppress"=>true]
-]);
-*/
+]);}
 
 /*GlobalUserPage
 //Disabled due to low speed of wiki
