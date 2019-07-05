@@ -136,6 +136,7 @@ wfLoadExtension("DiscordNotifications");
 $wgDiscordFromName="{$wgSitename} ({$_SERVER["HTTP_HOST"]}) @ PlavorMind";
 $wgDiscordSendMethod="file_get_contents";
 $wgWikiUrl="{$wgServer}/";
+$wgWikiUrlEnding="mediawiki/index.php?title=";
 $wgWikiUrlEndingUserRights="Special:UserRights/";
 
 /*Echo*/
