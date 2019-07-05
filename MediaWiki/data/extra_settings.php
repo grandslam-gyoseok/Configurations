@@ -131,6 +131,13 @@ $wgPlavorBumaTabIcons["delete_page_permanently"]="fas fa-trash-alt";
 //Permissions
 $wgGroupPermissions["steward"]["deleteperm"]=true;}
 
+/*DiscordNotifications*/
+wfLoadExtension("DiscordNotifications");
+$wgDiscordFromName=$wgSitename;
+$wgDiscordSendMethod="file_get_contents";
+$wgWikiUrl="{$wgServer}/";
+$wgWikiUrlEndingUserRights="Special:UserRights/";
+
 /*Echo*/
 wfLoadExtension("Echo");
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
