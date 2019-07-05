@@ -430,11 +430,11 @@ $wgSessionCacheType=$wgMainCacheType;
 ##System
 
 /*Database*/
-$wgDBname="wiki_{$wiki_id}";
+$wgDBname="{$wiki_id}_wiki";
 $wgDBtype="sqlite";
 /*
 //Shared database
-$wgSharedDB="wiki_{$central_wiki}";
+$wgSharedDB="{$central_wiki}_wiki";
 $wgSharedTables=["user"];
 */
 //SQLite-only
@@ -469,7 +469,6 @@ $wgAuthenticationTokenVersion="1";
 //Ignored on Windows
 $wgDeleteRevisionsBatchSize=500; //Added for test
 $wgDirectoryMode=0755;
-//$wgEnableBlockNoticeStats=false; //??? //MUST SET!
 $wgEnableDnsBlacklist=true;
 $wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
 $wgFeed=false;
