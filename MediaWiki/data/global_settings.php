@@ -497,6 +497,7 @@ $extension_CodeMirror=false;
 $extension_CollapsibleVector=false;
 $extension_CommonsMetadata=false;
 $extension_DeletePagesForGood=false;
+$extension_Flow=false; //Dangerous
 $extension_Highlightjs_Integration=false;
 $extension_MultimediaViewer=false;
 $extension_Nuke=false;
