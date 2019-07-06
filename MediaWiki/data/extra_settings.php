@@ -7,6 +7,7 @@ if (!defined("MEDIAWIKI"))
 ##Extensions
 
 /*AbuseFilter*/
+//Requires update.php
 wfLoadExtension("AbuseFilter");
 $wgAbuseFilterActions=
 ["block"=>false,
@@ -42,6 +43,7 @@ $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ]);
 
 /*AntiSpoof*/
+//Requires update.php
 wfLoadExtension("AntiSpoof");
 //$wgSharedTables[]="spoofuser";
 //Permissions
@@ -82,6 +84,7 @@ wfLoadExtension("ChangeAuthor");
 $wgGroupPermissions["steward"]["changeauthor"]=true;
 
 /*CheckUser*/
+//Requires update.php
 wfLoadExtension("CheckUser");
 $wgCheckUserCIDRLimit=$wgBlockCIDRLimit;
 $wgCheckUserMaxBlocks=100;
@@ -113,12 +116,13 @@ if ($extension_CommonsMetadata)
 
 /*ConfirmEdit*/
 wfLoadExtension("ConfirmEdit");
+$wgCaptchaBadLoginExpiration=60*60; //1 hour
 $wgCaptchaTriggers["create"]=true;
-$wgCaptchaTriggers["edit"]=true;
 $wgCaptchaTriggersOnNamespace=
 [NS_USER=>
-  ["create"=>false,
-  "edit"=>false]
+  ["create"=>false],
+NS_FILE=>
+  ["edit"=>true]
 ];
 //Permissions
 $wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
@@ -140,6 +144,7 @@ $wgWikiUrlEnding="mediawiki/index.php?title=";
 $wgWikiUrlEndingUserRights="Special:UserRights/";
 
 /*Echo*/
+//Requires update.php
 wfLoadExtension("Echo");
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 ["echo-email-frequency"=>-1,
@@ -159,6 +164,7 @@ $wgNotifyTypeAvailabilityByCategory=
 ];
 
 /*Flow*/
+//Requires update.php
 if ($extension_Flow)
 {//DRAFT
 //Exclude MediaWiki talk namespace
