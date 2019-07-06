@@ -203,6 +203,15 @@ unset($wgFooterIcons["poweredby"]);
 $wgHideUserContribLimit=500;
 $wgMaxSigChars=200;
 $wgMaxTemplateDepth=10;
+$wgNonincludableNamespaces= //Added for test
+[NS_CATEGORY_TALK,
+NS_FILE_TALK,
+NS_HELP_TALK,
+NS_MEDIAWIKI_TALK,
+NS_PROJECT_TALK,
+NS_TALK,
+NS_TEMPLATE_TALK,
+NS_USER_TALK];
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
 //Remove default value
 $wgRawHtmlMessages=[];
