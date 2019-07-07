@@ -83,6 +83,7 @@ $extension_CodeEditor=true;
 $extension_CodeMirror=true;
 $extension_CollapsibleVector=true;
 $extension_CommonsMetadata=true;
+$extension_Flow=true;
 $extension_Highlightjs_Integration=true;
 $extension_MultimediaViewer=true;
 $extension_Nuke=true;
