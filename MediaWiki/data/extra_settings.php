@@ -169,19 +169,19 @@ $wgNotifyTypeAvailabilityByCategory=
 //Requires update.php
 if ($extension_Flow)
 {wfLoadExtension("Flow");
-//Exclude MediaWiki talk namespace
-$wgNamespaceContentModels=array_merge($wgNamespaceContentModels,
-[NS_CATEGORY_TALK=>"flow-board",
-NS_FILE_TALK=>"flow-board",
-NS_HELP_TALK=>"flow-board",
-NS_PROJECT_TALK=>"flow-board",
-NS_TALK=>"flow-board",
-NS_TEMPLATE_TALK=>"flow-board",
-NS_USER_TALK=>"flow-board"]);
 $wgFlowCacheTime=60; //1 minute
 $wgFlowEditorList=["wikitext"];
 $wgFlowMaxMentionCount=10;
 $wgFlowSearchEnabled=true;
+//Exclude MediaWiki talk namespace
+//array_merge should not be used due to a bug
+$wgNamespaceContentModels[NS_CATEGORY_TALK]="flow-board";
+$wgNamespaceContentModels[NS_FILE_TALK]="flow-board";
+$wgNamespaceContentModels[NS_HELP_TALK]="flow-board";
+$wgNamespaceContentModels[NS_PROJECT_TALK]="flow-board";
+$wgNamespaceContentModels[NS_TALK]="flow-board";
+$wgNamespaceContentModels[NS_TEMPLATE_TALK]="flow-board";
+$wgNamespaceContentModels[NS_USER_TALK]="flow-board";
 //Permissions
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ["*"=>
