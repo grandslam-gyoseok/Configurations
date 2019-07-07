@@ -137,7 +137,9 @@ $wgGroupPermissions["steward"]["deleteperm"]=true;}
 
 /*DiscordNotifications*/
 wfLoadExtension("DiscordNotifications");
-$wgDiscordFromName="{$wgSitename} ({$_SERVER["HTTP_HOST"]}) @ PlavorMind";
+//Added to avoid errors on command line scripts
+if (!$wgCommandLineMode)
+{$wgDiscordFromName="{$wgSitename} ({$_SERVER["HTTP_HOST"]}) @ PlavorMind";}
 $wgDiscordSendMethod="file_get_contents";
 $wgWikiUrl="{$wgServer}/";
 $wgWikiUrlEnding="mediawiki/index.php?title=";
@@ -166,7 +168,7 @@ $wgNotifyTypeAvailabilityByCategory=
 /*Flow*/
 //Requires update.php
 if ($extension_Flow)
-{//DRAFT
+{wfLoadExtension("Flow");
 //Exclude MediaWiki talk namespace
 $wgNamespaceContentModels=array_merge($wgNamespaceContentModels,
 [NS_CATEGORY_TALK=>"flow-board",
@@ -195,7 +197,11 @@ $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 "steward"=>
   ["flow-create-board"=>true,
   "flow-suppress"=>true]
-]);}
+]);
+$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
+  {unset($wgGroupPermissions["flow-bot"]);
+  unset($wgGroupPermissions["oversight"]);};
+}
 
 /*GlobalUserPage
 //Disabled due to low speed of wiki
