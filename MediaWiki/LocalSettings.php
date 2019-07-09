@@ -50,11 +50,16 @@ else
 ##Appending settings
 
 /*Load settings*/
-include_once("{$data_dir}/global_settings.php");
-include_once("{$data_dir}/{$wiki_id}/settings.php");
-include_once("{$data_dir}/extra_settings.php");
-include_once("{$data_dir}/{$wiki_id}/extra_settings.php");
-include_once("{$private_data_dir}/global_settings.php");
+if (file_exists("{$data_dir}/general_settings.php"))
+{include_once("{$data_dir}/general_settings.php");}
+if (file_exists("{$data_dir}/{$wiki_id}/general_settings.php"))
+{include_once("{$data_dir}/{$wiki_id}/general_settings.php");}
+if (file_exists("{$data_dir}/extra_settings.php"))
+{include_once("{$data_dir}/extra_settings.php");}
+if (file_exists("{$data_dir}/{$wiki_id}/extra_settings.php"))
+{include_once("{$data_dir}/{$wiki_id}/extra_settings.php");}
+if (file_exists("{$private_data_dir}/settings.php"))
+include_once("{$private_data_dir}/settings.php");
 
 /*Permission inheritance*/
 $wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
