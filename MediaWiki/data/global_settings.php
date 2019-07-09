@@ -440,11 +440,9 @@ $wgSessionCacheType=$wgMainCacheType;
 
 /*Database*/
 $wgDBname="{$wiki_id}_wiki";
-/*
 //Shared database
 $wgSharedDB="{$central_wiki}_wiki";
-$wgSharedTables=["user"];
-*/
+$wgSharedTables=["actor","interwiki","user"];
 //SQLite-only
 $wgSQLiteDataDir="{$private_data_dir}/databases";
 
