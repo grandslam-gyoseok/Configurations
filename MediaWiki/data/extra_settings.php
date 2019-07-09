@@ -215,6 +215,11 @@ $wgGlobalUserPageDBname="{$central_wiki}_wiki";
 if (PHP_OS_FAMILY=="Windows"&&$extension_Highlightjs_Integration)
 {wfLoadExtension("Highlightjs_Integration");}
 
+/*Interwiki*/
+wfLoadExtension("Interwiki");
+//Permissions
+$wgGroupPermissions["steward"]["interwiki"]=true;
+
 /*MinimumNameLength*/
 wfLoadExtension("MinimumNameLength");
 //Only detects alphanumeric names
