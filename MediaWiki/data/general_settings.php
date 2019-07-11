@@ -10,19 +10,16 @@ if (!defined("MEDIAWIKI"))
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 $wgMaxNameChars=20;
 $wgReservedUsernames=array_merge($wgReservedUsernames,
-["Account",
-"Anon",
+["Abuse filter",
 "Anonymous",
-"Default",
-"Error",
 "Example",
-"ID",
-"Not logged in",
-"Null",
+"Flow talk page manager",
+"MediaWiki message delivery",
 "Undefined",
 "Unknown",
 "User",
-"Username"]);
+"Username",
+"편집 필터"]);
 
 /*Basic information*/
 $wgSitename="Nameless";
