@@ -83,7 +83,7 @@ $wgConf->settings=
 ["wgScriptPath"=>
   ["default"=>"/mediawiki"],
 "wgServer"=>
-  ["default"=>"{$_SERVER["REQUEST_SCHEME"]}://{$wiki_id}.plavormind.tk:81"] //$lang is undefined
+  ["default"=>"//{$wiki_id}.plavormind.tk:81"] //$lang is undefined
 ];
 
 /*extractAllGlobals (priority: last)*/
