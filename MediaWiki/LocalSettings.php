@@ -2,21 +2,21 @@
 ##Debugging
 
 /*
+error_reporting(-1);
+ini_set("display_errors",1);
 $wgShowDBErrorBacktrace=true;
 $wgShowExceptionDetails=true;
 $wgShowSQLErrors=true;
-error_reporting(-1);
-ini_set("display_errors",1);
 //*/
 
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{die("You don't have permission to do that.");}
+{exit("You don't have permission to do that.");}
 
-##System
+##System (priority: 1)
 
-/*Directory*/
+/*Directory (priority: 1)*/
 $data_dir="{$IP}/data";
 switch (PHP_OS_FAMILY)
 {case "Linux":
@@ -28,7 +28,7 @@ break;
 default:
 $private_data_dir="{$IP}/private_data";}
 
-/*Wiki selector*/
+/*Wiki selector (priority: 1)*/
 $central_wiki="exit";
 if ($wgCommandLineMode)
 {if (defined("MW_DB"))
@@ -36,18 +36,19 @@ if ($wgCommandLineMode)
 else
   {$wiki_id=$central_wiki;}
 }
+elseif (preg_match("/(.+)\.plavormind\.tk/i",parse_url($_SERVER["HTTP_HOST"],PHP_URL_HOST),$matches))
+{$wiki_id=$matches[1];}
 else
-{switch (parse_url($wgServer,PHP_URL_HOST))
-  {//PlavorMindBeta (exit)
-  case "exit.plavormind.tk":
-  $wiki_id="exit";
-  break;
-  default:
-  die("You don't have permission to do that.");
-  exit;}
-}
+{exit("Cannot find this wiki.");}
 
-##Appending settings
+/*Database (priority: 2)*/
+$wgDBname="{$wiki_id}_wiki";
+//Local databases (required by $wgConf)
+$wgLocalDatabases=["exit_wiki"];
+if (!in_array($wgDBname,$wgLocalDatabases))
+{exit("Cannot find this wiki.");}
+
+##Wiki settings (priority: last)
 
 /*Load settings*/
 if (file_exists("{$data_dir}/general_settings.php"))
