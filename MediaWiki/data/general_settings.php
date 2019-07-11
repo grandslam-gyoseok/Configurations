@@ -439,7 +439,6 @@ $wgSessionCacheType=$wgMainCacheType;
 ##System
 
 /*Database*/
-$wgDBname="{$wiki_id}_wiki";
 //Shared database
 $wgSharedDB="{$central_wiki}_wiki";
 $wgSharedTables=["actor","interwiki","user"];
