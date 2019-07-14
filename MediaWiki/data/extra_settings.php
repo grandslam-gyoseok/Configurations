@@ -284,6 +284,10 @@ if (PHP_OS_FAMILY=="Linux"&&$extension_SyntaxHighlight_GeSHi)
 if ($extension_TemplateData)
 {wfLoadExtension("TemplateData");}
 
+/*TemplateWizard*/
+if ($extension_TemplateData&&$extension_TemplateWizard&&$extension_WikiEditor)
+{wfLoadExtension("TemplateWizard");}
+
 /*TextExtracts*/
 if ($extension_TextExtracts)
 {wfLoadExtension("TextExtracts");
