@@ -2,7 +2,7 @@
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{die("You don't have permission to do that.");}
+{exit("You don't have permission to do that.");}
 
 ##General
 
@@ -92,6 +92,7 @@ $extension_PerformanceInspector=true;
 $extension_Popups=true;
 $extension_SyntaxHighlight_GeSHi=true;
 $extension_TemplateData=true;
+$extension_TemplateWizard=true;
 $extension_TextExtracts=true;
 $extension_TwoColConflict=true;
 $extension_WikiEditor=true;
