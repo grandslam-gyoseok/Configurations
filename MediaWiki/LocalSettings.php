@@ -12,7 +12,7 @@ $wgShowSQLErrors=true;
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{exit("You don't have permission to do that.");}
+{exit("You don't have permission to access to this page.");}
 
 ##System (priority: 1)
 
@@ -83,12 +83,8 @@ $wgConf->settings=
 ["wgScriptPath"=>
   ["default"=>"/mediawiki"],
 "wgServer"=>
-  ["default"=>"{$_SERVER["REQUEST_SCHEME"]}://{$central_wiki}.plavormind.tk:81"] //$lang is undefined
+  ["default"=>$_SERVER["REQUEST_SCHEME"].'://$lang.plavormind.tk:81'] //Always use single quotes with $lang
 ];
-//Workaround for $wgServer
-foreach ($wgLocalDatabases as $local_wiki)
-{$subdomain=substr($local_wiki,0,-strlen("_wiki"));
-$wgConf->settings["wgServer"][$local_wiki]="{$_SERVER["REQUEST_SCHEME"]}://{$subdomain}.plavormind.tk:81";}
 
 /*extractAllGlobals (priority: last)*/
 $wgConf->extractAllGlobals($wgDBname);
