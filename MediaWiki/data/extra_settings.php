@@ -265,10 +265,11 @@ $wgGroupPermissions["bureaucrat"]["renameuser"]=false;
 $wgGroupPermissions["steward"]["renameuser"]=true;
 
 /*SecurePoll*/
+//Requires update.php
 if ($extension_SecurePoll)
 {wfLoadExtension("SecurePoll");
 //Permissions
-$wgGroupPermissions["steward"]["securepoll-create-poll"]=true;}
+$wgGroupPermissions["bureaucrat"]["securepoll-create-poll"]=true;}
 
 /*SimpleMathJax*/
 if ($extension_SimpleMathJax)
