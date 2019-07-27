@@ -2,7 +2,7 @@
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{exit("You don't have permission to do that.");}
+{exit("You don't have permission to access to this page.");}
 
 ##General
 
@@ -90,6 +90,7 @@ $extension_Nuke=true;
 $extension_PageImages=true;
 $extension_PerformanceInspector=true;
 $extension_Popups=true;
+$extension_SecurePoll=true;
 $extension_SyntaxHighlight_GeSHi=true;
 $extension_TemplateData=true;
 $extension_TemplateWizard=true;
