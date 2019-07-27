@@ -2,7 +2,7 @@
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{exit("You don't have permission to do that.");}
+{exit("You don't have permission to access to this page.");}
 
 ##General
 
@@ -433,8 +433,10 @@ $wgSessionCacheType=$wgMainCacheType;
 
 /*Database*/
 //Shared database
+/*
 $wgSharedDB="{$central_wiki}_wiki";
 $wgSharedTables=["actor","interwiki","user"];
+*/
 //SQLite-only
 $wgSQLiteDataDir="{$private_data_dir}/databases";
 
@@ -503,6 +505,7 @@ $extension_Nuke=false;
 $extension_PageImages=false;
 $extension_PerformanceInspector=false;
 $extension_Popups=false;
+$extension_SecurePoll=false;
 $extension_SimpleMathJax=false;
 $extension_SyntaxHighlight_GeSHi=false;
 $extension_TemplateData=false;
