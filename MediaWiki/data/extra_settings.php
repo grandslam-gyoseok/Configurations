@@ -2,7 +2,7 @@
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{exit("You don't have permission to do that.");}
+{exit("You don't have permission to access to this page.");}
 
 ##Extensions
 
@@ -263,6 +263,12 @@ wfLoadExtension("Renameuser");
 //Permissions
 $wgGroupPermissions["bureaucrat"]["renameuser"]=false;
 $wgGroupPermissions["steward"]["renameuser"]=true;
+
+/*SecurePoll*/
+if ($extension_SecurePoll)
+{wfLoadExtension("SecurePoll");
+//Permissions
+$wgGroupPermissions["steward"]["securepoll-create-poll"]=true;}
 
 /*SimpleMathJax*/
 if ($extension_SimpleMathJax)
