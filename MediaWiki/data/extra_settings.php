@@ -338,5 +338,5 @@ wfLoadSkin("Vector");
 $wgVectorResponsive=true;
 
 /*Other skins*/
-wfLoadSkin("Timeless");
+wfLoadSkins(["PlavorBuma","Timeless"]);
 ?>
