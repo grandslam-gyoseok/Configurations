@@ -14,7 +14,7 @@ $wgShowSQLErrors=true;
 if (!defined("MEDIAWIKI"))
 {exit("You don't have permission to access to this page.");}
 
-##System (priority: 1)
+##System
 
 /*Directory (priority: 1)*/
 $data_dir="{$IP}/data";
@@ -48,48 +48,7 @@ $wgLocalDatabases=["exit_wiki"];
 if (!in_array($wgDBname,$wgLocalDatabases))
 {exit("Cannot find this wiki.");}
 
-##$wgConf (priority: 2)
-
-/*efGetSiteParams callback function (priority: 1)*/
-function efGetSiteParams($conf,$wiki)
-{$lang=null;
-$site=null;
-foreach($conf->suffixes as $suffix)
-  {if (substr($wiki,-strlen($suffix))==$suffix)
-    {$lang=substr($wiki,0,-strlen($suffix));
-    $site=$suffix;
-    break;}
-  }
-return
-  ["lang"=>$lang,
-  "params"=>
-    ["lang"=>$lang,
-    "site"=>$site,
-    "wiki"=>$wiki],
-  "suffix"=>$site,
-  "tags"=>
-    []
-  ];
-}
-
-/*General (priority: 1)*/
-$wgConf->localVHosts=["localhost"];
-$wgConf->siteParamsCallback="efGetSiteParams";
-$wgConf->suffixes=["_wiki"];
-$wgConf->wikis=$wgLocalDatabases;
-
-/*Settings (priority: 1)*/
-$wgConf->settings=
-["wgScriptPath"=>
-  ["default"=>"/mediawiki"],
-"wgServer"=>
-  ["default"=>$_SERVER["REQUEST_SCHEME"].'://$lang.plavormind.tk:81'] //Always use single quotes with $lang
-];
-
-/*extractAllGlobals (priority: last)*/
-$wgConf->extractAllGlobals($wgDBname);
-
-##Wiki settings (priority: last)
+##Wiki settings
 
 /*Load settings*/
 if (file_exists("{$data_dir}/general_settings.php"))
