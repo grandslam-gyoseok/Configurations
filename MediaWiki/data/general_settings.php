@@ -4,6 +4,41 @@
 if (!defined("MEDIAWIKI"))
 {exit("You don't have permission to access to this page.");}
 
+##Initialize
+
+/*$wgConf*/
+function efGetSiteParams($conf,$wiki)
+{$lang=null;
+$site=null;
+foreach($conf->suffixes as $suffix)
+  {if (substr($wiki,-strlen($suffix))==$suffix)
+    {$lang=substr($wiki,0,-strlen($suffix));
+    $site=$suffix;
+    break;}
+  }
+return
+  ["lang"=>$lang,
+  "params"=>
+    ["lang"=>$lang,
+    "site"=>$site,
+    "wiki"=>$wiki],
+  "suffix"=>$site,
+  "tags"=>
+    []
+  ];
+}
+$wgConf->localVHosts=["localhost"];
+$wgConf->siteParamsCallback="efGetSiteParams";
+$wgConf->suffixes=["_wiki"];
+$wgConf->wikis=$wgLocalDatabases;
+$wgConf->settings=
+["wgScriptPath"=>
+  ["default"=>"/mediawiki"],
+"wgServer"=>
+  ["default"=>$_SERVER["REQUEST_SCHEME"].'://$lang.plavormind.tk:81'] //Always use single quotes with $lang
+];
+$wgConf->extractAllGlobals($wgDBname);
+
 ##General
 
 /*Account*/
