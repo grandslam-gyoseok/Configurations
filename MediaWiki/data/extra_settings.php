@@ -51,7 +51,7 @@ $wgGroupPermissions["bureaucrat"]["override-antispoof"]=false;
 $wgGroupPermissions["steward"]["override-antispoof"]=true;
 
 /*Babel*/
-if ($extension_Babel||$wgCommandLineMode)
+if ($extension_Babel)
 {wfLoadExtension("Babel");
 $wgBabelCategoryNames=
 ["0"=>false,
@@ -140,7 +140,6 @@ wfLoadExtension("DiscordNotifications");
 //Added to avoid errors on command line scripts
 if (!$wgCommandLineMode)
 {$wgDiscordFromName="{$wgSitename} ({$_SERVER["HTTP_HOST"]}) @ PlavorMind";}
-$wgDiscordSendMethod="file_get_contents";
 $wgWikiUrl="{$wgServer}/";
 $wgWikiUrlEnding="mediawiki/index.php?title=";
 $wgWikiUrlEndingUserRights="Special:UserRights/";
