@@ -64,6 +64,14 @@ $wgBabelCategoryNames=
 $wgBabelMainCategory=false;
 $wgBabelUseUserLanguage=true;}
 
+/*CentralAuth
+wfLoadExtension("CentralAuth");
+$wgCentralAuthAutoMigrate=true;
+$wgCentralAuthCreateOnView=true;
+$wgCentralAuthDatabase="centralauth";
+$wgDisableUnmergedEditing=true;
+*/
+
 /*CentralNotice
 //Disabled due to low speed of wiki
 wfLoadExtension("CentralNotice");
