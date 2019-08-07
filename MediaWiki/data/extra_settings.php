@@ -215,13 +215,12 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
   unset($wgGroupPermissions["oversight"]);};
 }
 
-/*GlobalUserPage
+/*GlobalUserPage*/
 //Disabled due to low speed of wiki
-//wfLoadExtension("GlobalUserPage");
-$wgGlobalUserPageAPIUrl="//{$central_wiki}.plavormind.tk:81/mediawiki/api.php";
+wfLoadExtension("GlobalUserPage");
+$wgGlobalUserPageAPIUrl="//{$central_wiki}.plavormind.tk:81{$wgScriptPath}/api.php";
 $wgGlobalUserPageCacheExpiry=60;
 $wgGlobalUserPageDBname="{$central_wiki}_wiki";
-*/
 
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows"&&$extension_Highlightjs_Integration)
