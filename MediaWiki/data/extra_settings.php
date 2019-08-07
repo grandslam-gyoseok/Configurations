@@ -315,10 +315,11 @@ $wgExtractsExtendOpenSearchXml=true;}
 /*TitleBlacklist*/
 wfLoadExtension("TitleBlacklist");
 $wgTitleBlacklistSources=
-[
+["global"=>
   ["src"=>"{$private_data_dir}/titleblacklist.txt",
   "type"=>"file"]
 ];
+$wgTitleBlacklistUsernameSources=["global"];
 //Permissions
 $wgGroupPermissions["steward"]["tboverride"]=true;
 $wgGroupPermissions["steward"]["titleblacklistlog"]=true;
