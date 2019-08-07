@@ -314,6 +314,11 @@ $wgExtractsExtendOpenSearchXml=true;}
 
 /*TitleBlacklist*/
 wfLoadExtension("TitleBlacklist");
+$wgTitleBlacklistSources=
+[
+  ["src"=>"{$private_data_dir}/titleblacklist.txt",
+  "type"=>"file"]
+];
 //Permissions
 $wgGroupPermissions["steward"]["tboverride"]=true;
 $wgGroupPermissions["steward"]["titleblacklistlog"]=true;
