@@ -32,7 +32,9 @@ $wgConf->siteParamsCallback="efGetSiteParams";
 $wgConf->suffixes=["_wiki"];
 $wgConf->wikis=$wgLocalDatabases;
 $wgConf->settings=
-["wgScriptPath"=>
+["wgArticlePath"=>
+  ["default"=>"/page/$1"],
+"wgScriptPath"=>
   ["default"=>"/mediawiki"],
 "wgServer"=>
   ["default"=>$_SERVER["REQUEST_SCHEME"].'://$lang.plavormind.tk:81'] //Always use single quotes with $lang
@@ -494,7 +496,6 @@ $actions=
 "watch"];
 foreach ($actions as $action)
 {$wgActionPaths[$action]="/{$action}/$1";}
-$wgArticlePath="/page/$1";
 $wgUsePathInfo=true;
 
 /*Others*/
