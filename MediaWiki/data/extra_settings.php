@@ -322,6 +322,7 @@ $wgTitleBlacklistSources=
 $wgTitleBlacklistUsernameSources=["global"];
 //Permissions
 $wgGroupPermissions["steward"]["tboverride"]=true;
+//$wgGroupPermissions["steward"]["tboverride-account"]=true; //Disabled for test
 $wgGroupPermissions["steward"]["titleblacklistlog"]=true;
 
 /*TwoColConflict*/
