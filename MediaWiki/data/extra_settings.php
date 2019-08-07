@@ -68,7 +68,7 @@ $wgBabelUseUserLanguage=true;}
 wfLoadExtension("CentralAuth");
 $wgCentralAuthAutoMigrate=true;
 $wgCentralAuthCreateOnView=true;
-$wgCentralAuthDatabase="centralauth";
+$wgCentralAuthDatabase="wiki_centralauth";
 $wgDisableUnmergedEditing=true;
 */
 
