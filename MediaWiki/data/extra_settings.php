@@ -6,8 +6,9 @@ if (!defined("MEDIAWIKI"))
 
 ##Extensions
 
-/*AbuseFilter*/
+/*AbuseFilter
 //Requires update.php
+//Disabled due to conflict with global accounts
 wfLoadExtension("AbuseFilter");
 $wgAbuseFilterActions=
 ["block"=>false,
@@ -41,6 +42,7 @@ $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
   "abusefilter-revert"=>true,
   "abusefilter-view-private"=>true]
 ]);
+*/
 
 /*AntiSpoof*/
 //Requires update.php
@@ -67,8 +69,11 @@ $wgBabelUseUserLanguage=true;}
 /*CentralAuth
 wfLoadExtension("CentralAuth");
 $wgCentralAuthAutoMigrate=true;
+$wgCentralAuthAutoMigrateNonGlobalAccounts=true;
 $wgCentralAuthCreateOnView=true;
 $wgCentralAuthDatabase="wiki_centralauth";
+$wgCentralAuthEnableUserMerge=true;
+$wgCentralAuthPreventUnattached=true;
 $wgDisableUnmergedEditing=true;
 */
 
