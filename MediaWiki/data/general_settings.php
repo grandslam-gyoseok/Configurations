@@ -45,7 +45,7 @@ $wgConf->extractAllGlobals($wgDBname);
 
 /*Account*/
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
-$wgMaxNameChars=20;
+$wgMaxNameChars=25;
 $wgReservedUsernames=array_merge($wgReservedUsernames,
 ["Abuse filter",
 "Anonymous",
@@ -92,8 +92,7 @@ $wgSpecialVersionShowHooks=true;
 
 /*Interwiki*/
 $wgEnableScaryTranscluding=true;
-$wgExternalInterwikiFragmentMode="html5"; //Added for test
-$wgLocalInterwikis=[$wiki_id]; //Added for test
+$wgExternalInterwikiFragmentMode="html5";
 $wgRedirectSources="https?:\\/\\/.+"; //Set for test
 
 /*Namespaces*/
@@ -443,7 +442,6 @@ $wgFileCacheDirectory=$wgCacheDirectory;
 $wgUseFileCache=true;
 
 /*Interwiki cache*/
-$wgInterwikiCache=true;
 $wgInterwikiExpiry=60; //1 minute
 
 /*Message cache*/
