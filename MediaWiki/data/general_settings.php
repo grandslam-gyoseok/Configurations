@@ -287,6 +287,7 @@ $wgGroupPermissions=
   ["autoconfirmed-access"=>true,
 
   "autoconfirmed"=>true,
+  "editprotected-user"=>true, //Patch for protection
   "editsemiprotected"=>true,
   "move"=>true,
   "move-categorypages"=>true,
