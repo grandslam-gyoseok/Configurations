@@ -261,7 +261,6 @@ $wgDefaultUserOptions["performanceinspector"]=true;}
 
 /*PlavorMindTools*/
 wfLoadExtension("PlavorMindTools");
-$wgPMTReplaceMsgForPlavorMind=true;
 
 /*Popups*/
 if ($extension_PageImages&&$extension_Popups&&$extension_TextExtracts)
@@ -338,6 +337,7 @@ $wgGroupPermissions["steward"]["usermerge"]=true;
 //Add "$wgOnlyUserEditUserPage=true;" to enable this extension.
 include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
 //Permissions
+$wgGroupPermissions["protectedpageeditor"]["editalluserpages"]=true;
 $wgGroupPermissions["staff"]["editalluserpages"]=true;
 
 /*WikiEditor*/
