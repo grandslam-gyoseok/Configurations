@@ -58,15 +58,15 @@ $wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
 /*Protection*/
 $wgNamespaceProtection=
 [NS_CATEGORY=>
-  ["autoconfirmed-access"],
+  ["editsemiprotected"],
 NS_HELP=>
-  ["staff-access"],
+  ["editprotected-staff"],
 NS_MEDIAWIKI_TALK=>
-  ["steward-access"],
+  ["editprotected-steward"],
 NS_PROJECT=>
-  ["steward-access"],
+  ["editprotected-steward"],
 NS_TEMPLATE=>
-  ["admin-access"]
+  ["editprotected"]
 ];
 
 ##Extensions
