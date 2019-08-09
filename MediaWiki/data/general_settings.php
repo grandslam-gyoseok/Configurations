@@ -266,9 +266,7 @@ $wgGroupPermissions=
   "read"=>true,
   "unwatchedpages"=>true],
 "user"=>
-  ["user-access"=>true,
-
-  "applychangetags"=>true,
+  ["applychangetags"=>true,
   "createpage"=>true,
   "createtalk"=>true,
   "edit"=>true,
@@ -297,9 +295,7 @@ $wgGroupPermissions=
   "reupload"=>true,
   "upload"=>true],
 "staff"=>
-  ["staff-access"=>true,
-
-  "autopatrol"=>true,
+  ["autopatrol"=>true,
   "block"=>true,
   "blockemail"=>true,
   "delete"=>true,
@@ -313,9 +309,7 @@ $wgGroupPermissions=
   "undelete"=>true,
   "upload_by_url"=>true],
 "admin"=>
-  ["admin-access"=>true,
-
-  "changetags"=>true,
+  ["changetags"=>true,
   "deletelogentry"=>true,
   "editcontentmodel"=>true,
   "editprotected"=>true,
@@ -324,9 +318,7 @@ $wgGroupPermissions=
   "pagelang"=>true,
   "patrol"=>true],
 "bureaucrat"=>
-  ["bureaucrat-access"=>true,
-
-  "editinterface"=>true,
+  ["editinterface"=>true,
   "editprotected-bureaucrat"=>true,
   "editsitecss"=>true,
   "editsitejs"=>true,
@@ -370,17 +362,17 @@ $wgRemoveGroups["bureaucrat"]=["staff","admin"];
 
 /*Protection*/
 $wgCascadingRestrictionLevels=
-["staff-access",
-"admin-access",
-"bureaucrat-access",
+["editprotected-staff",
+"editprotected",
+"editprotected-bureaucrat",
 "steward-access"];
 $wgRestrictionLevels=
 ["",
-"user-access",
+"editprotected-user",
 "autoconfirmed-access",
-"staff-access",
-"admin-access",
-"bureaucrat-access",
+"editprotected-staff",
+"editprotected",
+"editprotected-bureaucrat",
 "steward-access"];
 $wgRestrictionTypes=
 ["create",
@@ -390,7 +382,7 @@ $wgRestrictionTypes=
 "delete",
 "protect"];
 $wgSemiprotectedRestrictionLevels=
-["user-access",
+["editprotected-user",
 "autoconfirmed-access"];
 
 /*Remove groups*/
