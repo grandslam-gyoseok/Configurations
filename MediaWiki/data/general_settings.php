@@ -350,14 +350,6 @@ $wgGroupPermissions=
   //"viewsuppressed"=>true, //Disabled for test
   "writeapi"=>true]
 ];
-$wgGroupsRemoveFromSelf=
-["staff"=>
-  ["staff"],
-"admin"=>
-  ["admin"],
-"bureaucrat"=>
-  ["bureaucrat"]
-];
 $wgRemoveGroups["bureaucrat"]=["staff","admin"];
 
 /*Protection*/
