@@ -331,9 +331,7 @@ $wgGroupPermissions=
   "managechangetags"=>true,
   "mergehistory"=>true],
 "steward"=>
-  ["steward-access"=>true,
-
-  "apihighlimits"=>true,
+  ["apihighlimits"=>true,
   "bigdelete"=>true,
   "deletechangetags"=>true,
   "editprotected-steward"=>true,
@@ -357,7 +355,7 @@ $wgCascadingRestrictionLevels=
 ["editprotected-staff",
 "editprotected",
 "editprotected-bureaucrat",
-"steward-access"];
+"editprotected-steward"];
 $wgRestrictionLevels=
 ["",
 "editprotected-user",
@@ -365,7 +363,7 @@ $wgRestrictionLevels=
 "editprotected-staff",
 "editprotected",
 "editprotected-bureaucrat",
-"steward-access"];
+"editprotected-steward"];
 $wgRestrictionTypes=
 ["create",
 "edit",
