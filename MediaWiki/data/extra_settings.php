@@ -219,8 +219,12 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
   unset($wgGroupPermissions["oversight"]);};
 }
 
+/*GlobalBlocking
+wfLoadExtension("GlobalBlocking");
+$wgGlobalBlockingDatabase="wiki_globalblocking";
+*/
+
 /*GlobalUserPage*/
-//Disabled due to low speed of wiki
 wfLoadExtension("GlobalUserPage");
 $wgGlobalUserPageAPIUrl="//{$central_wiki}.plavormind.tk:81{$wgScriptPath}/api.php";
 $wgGlobalUserPageCacheExpiry=60;
