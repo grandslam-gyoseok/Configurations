@@ -335,7 +335,6 @@ if ($extension_TwoColConflict)
 
 /*UserMerge*/
 wfLoadExtension("UserMerge");
-$wgUserMergeEnableDelete=false; //Added for test
 //Remove default value ("sysop")
 $wgUserMergeProtectedGroups=[];
 //Permissions
