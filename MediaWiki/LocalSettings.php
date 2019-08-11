@@ -66,5 +66,6 @@ include_once("{$private_data_dir}/settings.php");
 $wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
 $wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
 $wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
-$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];
+if (!isset($wgCentralAuthAutoMigrate)) //Patch for CentralAuth
+{$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];}
 ?>
