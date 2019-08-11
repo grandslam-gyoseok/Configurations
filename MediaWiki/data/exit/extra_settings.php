@@ -9,7 +9,14 @@ if (!defined("MEDIAWIKI"))
 /*CentralAuth*/
 //Permissions
 if (isset($wgCentralAuthAutoMigrate))
-{unset($wgGroupPermissions["steward"]);} //Check later and change to $wgGroupPermissions["steward"]=[];
+{//All permissions of local stewards should be set here
+$wgGroupPermissions["steward"]=
+["centralauth-rename"=>true,
+"centralauth-usermerge"=>true,
+"globalgroupmembership"=>true,
+"globalgrouppermissions"=>true,
+"userrights"=>true,
+"userrights-interwiki"=>true];}
 
 /*CentralNotice*/
 $wgNoticeInfrastructure=true;
