@@ -47,7 +47,6 @@ $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 /*AntiSpoof*/
 //Requires update.php
 wfLoadExtension("AntiSpoof");
-//$wgSharedTables[]="spoofuser";
 //Permissions
 $wgGroupPermissions["bureaucrat"]["override-antispoof"]=false;
 $wgGroupPermissions["steward"]["override-antispoof"]=true;
@@ -220,7 +219,7 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 wfLoadExtension("GlobalUserPage");
 $wgGlobalUserPageAPIUrl="//{$central_wiki}.plavormind.tk:81{$wgScriptPath}/api.php";
 $wgGlobalUserPageCacheExpiry=60;
-$wgGlobalUserPageDBname="{$central_wiki}_wiki";
+$wgGlobalUserPageDBname="{$central_wiki}wiki";
 
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows"&&$extension_Highlightjs_Integration)
@@ -261,6 +260,13 @@ $wgDefaultUserOptions["performanceinspector"]=true;}
 
 /*PlavorMindTools*/
 wfLoadExtension("PlavorMindTools");
+//Permissions
+$wgAddGroups=array_merge($wgAddGroups,
+["admin"=>
+  ["protectedpageeditor"],
+"bureaucrat"=>
+  ["protectedpageeditor"]
+]);
 
 /*Popups*/
 if ($extension_PageImages&&$extension_Popups&&$extension_TextExtracts)
@@ -329,7 +335,9 @@ if ($extension_TwoColConflict)
 
 /*UserMerge*/
 wfLoadExtension("UserMerge");
-$wgUserMergeProtectedGroups=["admin","bureaucrat","steward"];
+$wgUserMergeEnableDelete=false; //Added for test
+//Remove default value ("sysop")
+$wgUserMergeProtectedGroups=[];
 //Permissions
 $wgGroupPermissions["steward"]["usermerge"]=true;
 
