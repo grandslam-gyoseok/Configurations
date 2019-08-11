@@ -65,7 +65,7 @@ $wgBabelCategoryNames=
 $wgBabelMainCategory=false;
 $wgBabelUseUserLanguage=true;}
 
-/*CentralAuth
+/*CentralAuth*/
 wfLoadExtension("CentralAuth");
 $wgCentralAuthAutoMigrate=true;
 $wgCentralAuthAutoMigrateNonGlobalAccounts=true;
@@ -79,7 +79,6 @@ if ($wiki_id!=$central_wiki)
 {$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
   {unset($wgGroupPermissions["steward"]);};
 }
-*/
 
 /*CentralNotice
 //Disabled due to low speed of wiki
