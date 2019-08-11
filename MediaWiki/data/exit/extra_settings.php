@@ -6,6 +6,11 @@ if (!defined("MEDIAWIKI"))
 
 ##Extensions
 
+/*CentralAuth*/
+//Permissions
+if (isset($wgCentralAuthAutoMigrate))
+{unset($wgGroupPermissions["steward"]);} //Check later and change to $wgGroupPermissions["steward"]=[];
+
 /*CentralNotice*/
 $wgNoticeInfrastructure=true;
 
