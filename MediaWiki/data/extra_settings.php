@@ -74,6 +74,11 @@ $wgCentralAuthDatabase="wiki_centralauth";
 $wgCentralAuthEnableUserMerge=true;
 $wgCentralAuthPreventUnattached=true;
 $wgDisableUnmergedEditing=true;
+//Permissions
+if ($wiki_id!=$central_wiki)
+{$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
+  {unset($wgGroupPermissions["steward"]);};
+}
 */
 
 /*CentralNotice
@@ -261,7 +266,13 @@ $wgDefaultUserOptions["performanceinspector"]=true;}
 /*PlavorMindTools*/
 wfLoadExtension("PlavorMindTools");
 //Permissions
-$wgAddGroups=array_merge($wgAddGroups,
+$wgAddGroups=array_merge_recursive($wgAddGroups,
+["admin"=>
+  ["protectedpageeditor"],
+"bureaucrat"=>
+  ["protectedpageeditor"]
+]);
+$wgRemoveGroups=array_merge_recursive($wgRemoveGroups,
 ["admin"=>
   ["protectedpageeditor"],
 "bureaucrat"=>
