@@ -15,9 +15,19 @@ $wgAllowSiteCSSOnRestrictedPages=true;
 
 /*Interface*/
 $wgForceUIMsgAsContentMsg=
-["modifiedarticleprotection-comment",
+["excontent",
+"excontentauthor",
+"modifiedarticleprotection-comment",
 "protect-expiry-indefinite",
 "protect-fallback",
+"protect-level-editprotected",
+"protect-level-editprotected-admin",
+"protect-level-editprotected-autoconfirmed",
+"protect-level-editprotected-bureaucrat",
+"protect-level-editprotected-staff",
+"protect-level-editprotected-steward",
+"protect-level-editprotected-user",
+"protect-level-editsemiprotected",
 "protect-summary-cascade",
 "protect-summary-desc",
 "protectedarticle-comment",
@@ -27,14 +37,7 @@ $wgForceUIMsgAsContentMsg=
 "restriction-protect",
 "restriction-upload",
 "undo-summary",
-"unprotectedarticle-comment",
-
-"protect-level-user-access",
-"protect-level-autoconfirmed-access",
-"protect-level-staff-access",
-"protect-level-admin-access",
-"protect-level-bureaucrat-access",
-"protect-level-steward-access"];
+"unprotectedarticle-comment"];
 $wgSiteNotice="Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]";
 
 /*Others*/
@@ -84,7 +87,6 @@ $extension_Nuke=true;
 $extension_PageImages=true;
 $extension_PerformanceInspector=true;
 $extension_Popups=true;
-$extension_SecurePoll=true;
 $extension_SyntaxHighlight_GeSHi=true;
 $extension_TemplateData=true;
 $extension_TemplateWizard=true;
