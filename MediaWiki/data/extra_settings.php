@@ -218,10 +218,9 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
   unset($wgGroupPermissions["oversight"]);};
 }
 
-/*GlobalBlocking
+/*GlobalBlocking*/
 wfLoadExtension("GlobalBlocking");
 $wgGlobalBlockingDatabase="wiki_globalblocking";
-*/
 
 /*GlobalUserPage*/
 wfLoadExtension("GlobalUserPage");
