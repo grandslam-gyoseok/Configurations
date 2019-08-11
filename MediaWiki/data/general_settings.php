@@ -29,7 +29,7 @@ return
 }
 $wgConf->localVHosts=["localhost"];
 $wgConf->siteParamsCallback="efGetSiteParams";
-$wgConf->suffixes=["_wiki"];
+$wgConf->suffixes=["wiki"];
 $wgConf->wikis=$wgLocalDatabases;
 $wgConf->settings=
 ["wgArticlePath"=>
@@ -282,9 +282,7 @@ $wgGroupPermissions=
   "viewmyprivateinfo"=>true,
   "viewmywatchlist"=>true],
 "autoconfirmed"=>
-  ["autoconfirmed-access"=>true,
-
-  "autoconfirmed"=>true,
+  ["autoconfirmed"=>true,
   "editprotected-user"=>true, //Patch for protection
   "editsemiprotected"=>true,
   "move"=>true,
@@ -359,7 +357,7 @@ $wgCascadingRestrictionLevels=
 $wgRestrictionLevels=
 ["",
 "editprotected-user",
-"autoconfirmed-access",
+"editsemiprotected",
 "editprotected-staff",
 "editprotected",
 "editprotected-bureaucrat",
@@ -373,7 +371,7 @@ $wgRestrictionTypes=
 "protect"];
 $wgSemiprotectedRestrictionLevels=
 ["editprotected-user",
-"autoconfirmed-access"];
+"editsemiprotected"];
 
 /*Remove groups*/
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
@@ -429,9 +427,6 @@ $wgFileCacheDepth=0;
 $wgFileCacheDirectory=$wgCacheDirectory;
 $wgUseFileCache=true;
 
-/*Interwiki cache*/
-$wgInterwikiExpiry=60; //1 minute
-
 /*Message cache*/
 $wgAdaptiveMessageCache=true;
 $wgLocalisationCacheConf["store"]="array";
@@ -444,6 +439,7 @@ $wgTranscludeCacheExpiry=60; //1 minute
 
 /*Others*/
 $wgAdaptiveMessageCache=true;
+$wgInterwikiExpiry=60; //1 minute
 $wgLanguageConverterCacheType=$wgMainCacheType;
 $wgMsgCacheExpiry=60; //1 minute
 $wgObjectCacheSessionExpiry=60; //1 minute
