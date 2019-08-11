@@ -232,7 +232,7 @@ unset($wgFooterIcons["poweredby"]);
 $wgHideUserContribLimit=500;
 $wgMaxSigChars=200;
 $wgMaxTemplateDepth=10;
-$wgNonincludableNamespaces= //Added for test
+$wgNonincludableNamespaces=
 [NS_CATEGORY_TALK,
 NS_FILE_TALK,
 NS_HELP_TALK,
@@ -343,7 +343,6 @@ $wgGroupPermissions=
   "unblockself"=>true,
   "userrights"=>true,
   "userrights-interwiki"=>true,
-  //"viewsuppressed"=>true, //Disabled for test
   "writeapi"=>true]
 ];
 $wgRemoveGroups["bureaucrat"]=["staff","admin"];
