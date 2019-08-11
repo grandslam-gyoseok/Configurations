@@ -42,9 +42,9 @@ else
 {exit("Cannot find this wiki.");}
 
 /*Database (priority: 2)*/
-$wgDBname="{$wiki_id}_wiki";
+$wgDBname="{$wiki_id}wiki";
 //Local databases (required by $wgConf)
-$wgLocalDatabases=["exit_wiki"];
+$wgLocalDatabases=["exitwiki"];
 if (!in_array($wgDBname,$wgLocalDatabases))
 {exit("Cannot find this wiki.");}
 
