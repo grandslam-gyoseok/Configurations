@@ -44,7 +44,7 @@ else
 /*Database (priority: 2)*/
 $wgDBname="{$wiki_id}wiki";
 //Local databases (required by $wgConf)
-$wgLocalDatabases=["exitwiki","livewiki"];
+$wgLocalDatabases=["exitwiki","livewiki","osawiki"];
 if (!in_array($wgDBname,$wgLocalDatabases))
 {exit("Cannot find this wiki.");}
 
