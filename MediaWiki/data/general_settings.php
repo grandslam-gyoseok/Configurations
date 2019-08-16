@@ -512,6 +512,7 @@ $extension_CommonsMetadata=false;
 $extension_DeletePagesForGood=false;
 $extension_Flow=false;
 $extension_Highlightjs_Integration=false;
+$extension_MassEditRegex=false;
 $extension_MultimediaViewer=false;
 $extension_Nuke=false;
 $extension_PageImages=false;
