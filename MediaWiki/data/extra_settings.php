@@ -69,6 +69,8 @@ $wgBabelUseUserLanguage=true;}
 wfLoadExtension("CentralAuth");
 $wgCentralAuthAutoMigrate=true;
 $wgCentralAuthAutoMigrateNonGlobalAccounts=true;
+$wgCentralAuthCookieDomain=".plavormind.tk";
+$wgCentralAuthCookies=true;
 $wgCentralAuthCreateOnView=true;
 $wgCentralAuthDatabase="wiki_centralauth";
 $wgCentralAuthEnableUserMerge=true;
@@ -236,6 +238,12 @@ if (PHP_OS_FAMILY=="Windows"&&$extension_Highlightjs_Integration)
 wfLoadExtension("Interwiki");
 //Permissions
 $wgGroupPermissions["steward"]["interwiki"]=true;
+
+/*MassEditRegex*/
+if ($extension_MassEditRegex)
+{include_once("{$wgExtensionDirectory}/MassEditRegex/MassEditRegex.php");
+//Permissions
+$wgGroupPermissions["bureaucrat"]["masseditregex"]=true;}
 
 /*MinimumNameLength*/
 wfLoadExtension("MinimumNameLength");
