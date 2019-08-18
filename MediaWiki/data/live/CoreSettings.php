@@ -2,7 +2,7 @@
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{exit("You don't have permission to access to this page.");}
+{exit("This is not a valid entry point.");}
 
 ##General
 
@@ -38,5 +38,7 @@ $wgForceUIMsgAsContentMsg=
 ##Extensions
 
 /*Extensions usage*/
-$extension_Babel=true;
+$wmgExtensionBabel=true;
+$wmgExtensionCite=true;
+$wmgExtensionReplaceText=true;
 ?>
