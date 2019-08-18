@@ -12,38 +12,43 @@ $wgShowSQLErrors=true;
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{exit("You don't have permission to access to this page.");}
+{exit("This is not a valid entry point.");}
 
-##System
+##Initialize
 
-/*Directory (priority: 1)*/
-$data_dir="{$IP}/data";
+/*Directory*/
+$wmgDataDirectory="{$IP}/data";
 switch (PHP_OS_FAMILY)
 {case "Linux":
-$private_data_dir="/plavormind/web_data/mediawiki";
+$wmgPrivateDataDirectory="/plavormind/web_data/mediawiki";
 break;
 case "Windows":
-$private_data_dir="C:/plavormind/web_data/mediawiki";
+$wmgPrivateDataDirectory="C:/plavormind/web_data/mediawiki";
 break;
 default:
-$private_data_dir="{$IP}/private_data";}
+$wmgPrivateDataDirectory="{$IP}/private_data";}
 
-/*Wiki selector (priority: 1)*/
-$central_wiki="exit";
+/*Variable*/
+//Should be one of "", "centralauth" and "shared-database"
+$wmgGlobalAccountMode="centralauth";
+
+/*Wiki*/
+$wmgCentralWiki="exit";
 if ($wgCommandLineMode)
 {if (defined("MW_DB"))
-  {$wiki_id=MW_DB;}
+  {$wmgWiki=MW_DB;}
 else
-  {$wiki_id=$central_wiki;}
+  {exit("Wiki is not specified.");}
 }
-elseif (preg_match("/(.+)\.plavormind\.tk/i",parse_url($_SERVER["HTTP_HOST"],PHP_URL_HOST),$matches))
-{$wiki_id=$matches[1];}
+elseif (preg_match("/^([\-\dA-Za-z]+)(?:\.[\-\dA-Za-z]+){2}$/i",parse_url($_SERVER["HTTP_HOST"],PHP_URL_HOST),$matches))
+{$wmgWiki=$matches[1];}
 else
 {exit("Cannot find this wiki.");}
 
-/*Database (priority: 2)*/
-$wgDBname="{$wiki_id}wiki";
-//Local databases (required by $wgConf)
+##System
+
+/*Database*/
+$wgDBname="{$wmgWiki}wiki";
 $wgLocalDatabases=["exitwiki","livewiki","osawiki"];
 if (!in_array($wgDBname,$wgLocalDatabases))
 {exit("Cannot find this wiki.");}
@@ -51,21 +56,24 @@ if (!in_array($wgDBname,$wgLocalDatabases))
 ##Wiki settings
 
 /*Load settings*/
-if (file_exists("{$data_dir}/general_settings.php"))
-{include_once("{$data_dir}/general_settings.php");}
-if (file_exists("{$data_dir}/{$wiki_id}/general_settings.php"))
-{include_once("{$data_dir}/{$wiki_id}/general_settings.php");}
-if (file_exists("{$data_dir}/extra_settings.php"))
-{include_once("{$data_dir}/extra_settings.php");}
-if (file_exists("{$data_dir}/{$wiki_id}/extra_settings.php"))
-{include_once("{$data_dir}/{$wiki_id}/extra_settings.php");}
-if (file_exists("{$private_data_dir}/settings.php"))
-include_once("{$private_data_dir}/settings.php");
+//Core settings
+if (file_exists("{$wmgDataDirectory}/GlobalCoreSettings.php"))
+{include_once("{$wmgDataDirectory}/GlobalCoreSettings.php");}
+if (file_exists("{$wmgDataDirectory}/{$wmgWiki}/CoreSettings.php"))
+{include_once("{$wmgDataDirectory}/{$wmgWiki}/CoreSettings.php");}
+//Extensions and skins settings
+if (file_exists("{$wmgDataDirectory}/GlobalExtraSettings.php"))
+{include_once("{$wmgDataDirectory}/GlobalExtraSettings.php");}
+if (file_exists("{$wmgDataDirectory}/{$wmgWiki}/ExtraSettings.php"))
+{include_once("{$wmgDataDirectory}/{$wmgWiki}/ExtraSettings.php");}
+//Private settings
+if (file_exists("{$wmgPrivateDataDirectory}/PrivateSettings.php"))
+include_once("{$wmgPrivateDataDirectory}/PrivateSettings.php");
 
 /*Permission inheritance*/
 $wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
 $wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
 $wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
-if (!isset($wgCentralAuthAutoMigrate)) //Patch for CentralAuth
+if ($wmgGlobalAccountMode!="centralauth")
 {$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];}
 ?>
