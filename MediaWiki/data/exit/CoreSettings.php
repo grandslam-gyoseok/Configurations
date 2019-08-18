@@ -2,12 +2,12 @@
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{exit("You don't have permission to access to this page.");}
+{exit("This is not a valid entry point.");}
 
 ##General
 
 /*Basic information*/
-$wgLogo="{$wgScriptPath}/data/{$wiki_id}/logo.png";
+$wgLogo="{$wgScriptPath}/data/{$wmgWiki}/logo.png";
 $wgSitename="PlavorMindBeta";
 
 /*CSS and JavaScript*/
@@ -56,7 +56,10 @@ $wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
 ["editinterface"=>true,
 "editsitecss"=>true,
 "editsitejs"=>true,
-"editsitejson"=>true]);
+"editsitejson"=>true,
+"siteadmin"=>true,
+"userrights"=>true,
+"userrights-interwiki"=>true]);
 
 /*Protection*/
 $wgNamespaceProtection=
@@ -75,22 +78,25 @@ NS_TEMPLATE=>
 ##Extensions
 
 /*Extensions usage*/
-$extension_Babel=true;
-$extension_CodeEditor=true;
-$extension_CodeMirror=true;
-$extension_CollapsibleVector=true;
-$extension_CommonsMetadata=true;
-$extension_Flow=true;
-$extension_Highlightjs_Integration=true;
-$extension_MultimediaViewer=true;
-$extension_Nuke=true;
-$extension_PageImages=true;
-$extension_PerformanceInspector=true;
-$extension_Popups=true;
-$extension_SyntaxHighlight_GeSHi=true;
-$extension_TemplateData=true;
-$extension_TemplateWizard=true;
-$extension_TextExtracts=true;
-$extension_TwoColConflict=true;
-$extension_WikiEditor=true;
+$wmgExtensionBabel=true;
+$wmgExtensionCite=true;
+$wmgExtensionCodeEditor=true;
+$wmgExtensionCodeMirror=true;
+$wmgExtensionCollapsibleVector=true;
+$wmgExtensionCommonsMetadata=true;
+$wmgExtensionFlow=true;
+$wmgExtensionHighlightjs_Integration=true;
+$wmgExtensionMultimediaViewer=true;
+$wmgExtensionNuke=true;
+$wmgExtensionPageImages=true;
+$wmgExtensionPerformanceInspector=true;
+$wmgExtensionPopups=true;
+$wmgExtensionRenameuser=true; //This should always be enabled on central wiki
+$wmgExtensionReplaceText=true;
+$wmgExtensionSyntaxHighlight_GeSHi=true;
+$wmgExtensionTemplateData=true;
+$wmgExtensionTemplateWizard=true;
+$wmgExtensionTextExtracts=true;
+$wmgExtensionTwoColConflict=true;
+$wmgExtensionWikiEditor=true;
 ?>
