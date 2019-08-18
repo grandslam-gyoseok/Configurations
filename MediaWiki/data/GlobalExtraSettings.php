@@ -79,7 +79,11 @@ $wgCentralAuthCreateOnView=true;
 $wgCentralAuthDatabase="wiki_centralauth";
 $wgCentralAuthEnableUserMerge=true;
 $wgCentralAuthPreventUnattached=true;
-$wgDisableUnmergedEditing=true;}
+$wgDisableUnmergedEditing=true;
+//Permissions
+$wgGroupPermissions["steward"]["centralauth-lock"]=false;
+$wgGroupPermissions["steward"]["centralauth-oversight"]=false;
+$wgGroupPermissions["steward"]["centralauth-unmerge"]=false;}
 
 /*CentralNotice
 //Disabled due to low speed of wiki
@@ -229,7 +233,12 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 /*GlobalBlocking*/
 if ($wmgGlobalAccountMode!="")
 {wfLoadExtension("GlobalBlocking");
-$wgGlobalBlockingDatabase="wiki_globalblocking";}
+$wgGlobalBlockingDatabase="wiki_globalblocking";
+//Permissions
+$wgGroupPermissions["steward"]["globalblock"]=false;
+if ($wmgGlobalAccountMode!="centralauth")
+  {$wgGroupPermissions["steward"]["globalblock-exempt"]=true;}
+}
 
 /*GlobalUserPage*/
 if ($wmgGlobalAccountMode!="")
@@ -365,9 +374,10 @@ $wgTitleBlacklistSources=
 if ($wmgGlobalAccountMode!="")
 {$wgTitleBlacklistUsernameSources=["global"];}
 //Permissions
-$wgGroupPermissions["steward"]["tboverride"]=true;
+if ($wmgGlobalAccountMode!="centralauth")
+{$wgGroupPermissions["steward"]["tboverride"]=true;
 //$wgGroupPermissions["steward"]["tboverride-account"]=true; //Disabled for test
-$wgGroupPermissions["steward"]["titleblacklistlog"]=true;
+$wgGroupPermissions["steward"]["titleblacklistlog"]=true;}
 
 /*TwoColConflict*/
 if ($wmgExtensionTwoColConflict)
