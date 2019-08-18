@@ -163,7 +163,7 @@ if ($wmgGlobalAccountMode!="centralauth")
 /*DiscordNotifications*/
 wfLoadExtension("DiscordNotifications");
 if ($wgCommandLineMode)
-{$wgDiscordFromName="{$wgSitename} @ PlavorMind";}
+{$wgDiscordFromName="{$wgSitename} ({$wmgWiki}) @ PlavorMind";}
 else
 {$wgDiscordFromName="{$wgSitename} ({$_SERVER["HTTP_HOST"]}) @ PlavorMind";}
 $wgWikiUrl="{$wgServer}/";
