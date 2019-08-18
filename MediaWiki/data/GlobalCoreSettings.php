@@ -2,50 +2,57 @@
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{exit("You don't have permission to access to this page.");}
+{exit("This is not a valid entry point.");}
 
 ##Initialize
 
 /*$wgConf*/
-function efGetSiteParams($conf,$wiki)
-{$lang=null;
-$site=null;
-foreach($conf->suffixes as $suffix)
-  {if (substr($wiki,-strlen($suffix))==$suffix)
-    {$lang=substr($wiki,0,-strlen($suffix));
-    $site=$suffix;
-    break;}
-  }
-return
-  ["lang"=>$lang,
-  "params"=>
+if ($wmgGlobalAccountMode=="centralauth")
+{function efGetSiteParams($conf,$wiki)
+  {$lang=null;
+  $site=null;
+  foreach($conf->suffixes as $suffix)
+    {if (substr($wiki,-strlen($suffix))==$suffix)
+      {$lang=substr($wiki,0,-strlen($suffix));
+      $site=$suffix;
+      break;}
+    }
+  return
     ["lang"=>$lang,
-    "site"=>$site,
-    "wiki"=>$wiki],
-  "suffix"=>$site,
-  "tags"=>
-    []
-  ];
-}
+    "params"=>
+      ["lang"=>$lang,
+      "site"=>$site,
+      "wiki"=>$wiki],
+    "suffix"=>$site,
+    "tags"=>
+      []
+    ];
+  }
 $wgConf->localVHosts=["localhost"];
-$wgConf->siteParamsCallback="efGetSiteParams";
-$wgConf->suffixes=["wiki"];
-$wgConf->wikis=$wgLocalDatabases;
 $wgConf->settings=
 ["wgArticlePath"=>
   ["default"=>"/page/$1"],
 "wgScriptPath"=>
-  ["default"=>"/mediawiki"],
-"wgServer"=>
-  ["default"=>$_SERVER["REQUEST_SCHEME"].'://$lang.plavormind.tk:81'] //Always use single quotes with $lang
+  ["default"=>"/mediawiki"]
 ];
-$wgConf->extractAllGlobals($wgDBname);
+if ($wgCommandLineMode)
+{$wgConf->settings["wgServer"]["default"]='http://$lang.plavormind.tk:81';}
+else
+{$wgConf->settings["wgServer"]["default"]=$_SERVER["REQUEST_SCHEME"].'://$lang.plavormind.tk:81';}
+$wgConf->siteParamsCallback="efGetSiteParams";
+$wgConf->suffixes=["wiki"];
+$wgConf->wikis=$wgLocalDatabases;
+$wgConf->extractAllGlobals($wgDBname);}
+
+/*Path*/
+//Must be set before settings using $wgScriptPath
+$wgScriptPath="/mediawiki";
 
 ##General
 
 /*Account*/
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
-$wgMaxNameChars=25;
+$wgMaxNameChars=30;
 $wgReservedUsernames=array_merge($wgReservedUsernames,
 ["Abuse filter",
 "Anonymous",
@@ -93,7 +100,7 @@ $wgSpecialVersionShowHooks=true;
 /*Interwiki*/
 $wgEnableScaryTranscluding=true;
 $wgExternalInterwikiFragmentMode="html5";
-$wgRedirectSources="https?:\\/\\/.+"; //Set for test
+$wgRedirectSources="https?:\\/\\/.+";
 
 /*Namespaces*/
 //Exclude File namespace
@@ -144,8 +151,7 @@ $wgPasswordPolicy["policies"]=
 
 /*Preferences*/
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
-["editfont"=>"sans-serif",
-"hidecategorization"=>0,
+["hidecategorization"=>0,
 "rememberpassword"=>1,
 "usenewrc"=>0,
 "watchcreations"=>0,
@@ -165,16 +171,16 @@ $wgAccountCreationThrottle=
 ];
 $wgPasswordAttemptThrottle=
 [//Per minute
-  ["count"=>3,
+  ["count"=>5,
   "seconds"=>60],
 //Per day
-  ["count"=>50,
+  ["count"=>30,
   "seconds"=>60*60*24]
 ];
 $wgRateLimits=array_merge($wgRateLimits,
 ["edit"=>
   ["ip"=>
-    [5,60],
+    [3,60],
   "newbie"=>
     [5,60],
   "user"=>
@@ -182,7 +188,7 @@ $wgRateLimits=array_merge($wgRateLimits,
   ],
 "move"=>
   ["ip"=>
-    [2,60],
+    [1,60],
   "newbie"=>
     [2,60],
   "user"=>
@@ -227,7 +233,7 @@ $wgEnableMagicLinks= //Added for test
 "PMID"=>true,
 "RFC"=>true];
 $wgExternalLinkTarget="_blank";
-$wgFragmentMode=["html5"]; //Added for test
+$wgFragmentMode=["html5"];
 unset($wgFooterIcons["poweredby"]);
 $wgHideUserContribLimit=500;
 $wgMaxSigChars=200;
@@ -311,6 +317,7 @@ $wgGroupPermissions=
   "deletelogentry"=>true,
   "editcontentmodel"=>true,
   "editprotected"=>true,
+  "import"=>true,
   "ipblock-exempt"=>true,
   "move-subpages"=>true,
   "pagelang"=>true,
@@ -324,7 +331,6 @@ $wgGroupPermissions=
   "editusercss"=>true,
   "edituserjs"=>true,
   "edituserjson"=>true,
-  "import"=>true,
   "importupload"=>true,
   "managechangetags"=>true,
   "mergehistory"=>true],
@@ -337,14 +343,13 @@ $wgGroupPermissions=
   "markbotedits"=>true,
   "nominornewtalk"=>true,
   "noratelimit"=>true,
-  "siteadmin"=>true,
   "suppressionlog"=>true,
   "suppressrevision"=>true,
   "unblockself"=>true,
-  "userrights"=>true,
-  "userrights-interwiki"=>true,
   "writeapi"=>true]
 ];
+if ($wmgGlobalAccountMode=="centralauth")
+{$wgGroupPermissions["steward"]=[];}
 $wgRemoveGroups["bureaucrat"]=["staff","admin"];
 
 /*Protection*/
@@ -353,6 +358,7 @@ $wgCascadingRestrictionLevels=
 "editprotected",
 "editprotected-bureaucrat",
 "editprotected-steward"];
+$wgNamespaceProtection[NS_USER]=["editprotected-user"];
 $wgRestrictionLevels=
 ["",
 "editprotected-user",
@@ -383,8 +389,8 @@ $wgDeleteRevisionsLimit=250;
 ##Uploads
 
 /*Directory*/
-$wgDeletedDirectory="{$private_data_dir}/{$wiki_id}/deleted_files";
-$wgUploadDirectory="{$private_data_dir}/{$wiki_id}/files";
+$wgDeletedDirectory="{$wmgPrivateDataDirectory}/{$wmgWiki}/deleted_files";
+$wgUploadDirectory="{$wmgPrivateDataDirectory}/{$wmgWiki}/files";
 $wgUploadPath="{$wgScriptPath}/img_auth.php";
 
 /*Thumbnail*/
@@ -416,7 +422,7 @@ $wgEnableEmail=false;
 ##Caching
 
 /*Basic cache settings*/
-$wgCacheDirectory="{$private_data_dir}/{$wiki_id}/cache";
+$wgCacheDirectory="{$wmgPrivateDataDirectory}/{$wmgWiki}/cache";
 //Disable client side caching
 $wgCachePages=false;
 $wgMainCacheType=CACHE_ACCEL;
@@ -450,10 +456,13 @@ $wgSessionCacheType=$wgMainCacheType;
 ##System
 
 /*Database*/
+if ($wmgGlobalAccountMode=="shared-database")
+{$wgSharedDB="{$wmgCentralWiki}wiki";
+$wgSharedTables=["actor","interwiki","user"];}
 //SQLite-only
-$wgSQLiteDataDir="{$private_data_dir}/databases";
+$wgSQLiteDataDir="{$wmgPrivateDataDirectory}/databases";
 
-/*Paths*/
+/*Path*/
 $actions=
 ["delete",
 "edit",
@@ -472,6 +481,7 @@ $actions=
 "watch"];
 foreach ($actions as $action)
 {$wgActionPaths[$action]="/{$action}/$1";}
+$wgArticlePath="/page/$1";
 $wgUsePathInfo=true;
 
 /*Others*/
@@ -492,7 +502,7 @@ switch (PHP_OS_FAMILY)
 {case "Windows":
 $wgPhpCli="C:/plavormind/php/php.exe";
 break;}
-$wgReadOnlyFile="{$data_dir}/readonly.txt";
+$wgReadOnlyFile="{$wmgDataDirectory}/readonly.txt";
 $wgReauthenticateTime["default"]=60*10; //10 minutes //Added for test
 
 ##Extensions
@@ -503,27 +513,31 @@ $wgReauthenticateTime["default"]=60*10; //10 minutes //Added for test
 3. Always check dependencies on extra_settings.php when enabling per-wiki extension.*/
 
 /*Extensions usage*/
-$extension_Babel=false;
-$extension_Cite=false;
-$extension_CodeEditor=false;
-$extension_CodeMirror=false;
-$extension_CollapsibleVector=false;
-$extension_CommonsMetadata=false;
-$extension_DeletePagesForGood=false;
-$extension_Flow=false;
-$extension_Highlightjs_Integration=false;
-$extension_MassEditRegex=false;
-$extension_MultimediaViewer=false;
-$extension_Nuke=false;
-$extension_PageImages=false;
-$extension_PerformanceInspector=false;
-$extension_Popups=false;
-$extension_SecurePoll=false;
-$extension_SimpleMathJax=false;
-$extension_SyntaxHighlight_GeSHi=false;
-$extension_TemplateData=false;
-$extension_TemplateWizard=false;
-$extension_TextExtracts=false;
-$extension_TwoColConflict=false;
-$extension_WikiEditor=false;
+$wmgExtensionBabel=false;
+$wmgExtensionCite=false;
+$wmgExtensionCodeEditor=false;
+$wmgExtensionCodeMirror=false;
+$wmgExtensionCollapsibleVector=false;
+$wmgExtensionCommonsMetadata=false;
+$wmgExtensionDeletePagesForGood=false;
+$wmgExtensionFlow=false;
+$wmgExtensionHighlightjs_Integration=false;
+$wmgExtensionMultimediaViewer=false;
+$wmgExtensionNuke=false;
+$wmgExtensionPageImages=false;
+$wmgExtensionPerformanceInspector=false;
+$wmgExtensionPopups=false;
+if ($wmgGlobalAccountMode=="centralauth")
+{$wmgExtensionRenameuser=true;}
+else
+{$wmgExtensionRenameuser=false;}
+$wmgExtensionReplaceText=false;
+$wmgExtensionSecurePoll=false;
+$wmgExtensionSimpleMathJax=false;
+$wmgExtensionSyntaxHighlight_GeSHi=false;
+$wmgExtensionTemplateData=false;
+$wmgExtensionTemplateWizard=false;
+$wmgExtensionTextExtracts=false;
+$wmgExtensionTwoColConflict=false;
+$wmgExtensionWikiEditor=false;
 ?>
