@@ -52,14 +52,15 @@ $wgGroupPermissions["bureaucrat"]=array_merge($wgGroupPermissions["bureaucrat"],
 "editsitecss"=>false,
 "editsitejs"=>false,
 "editsitejson"=>false]);
-$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
+if ($wmgGlobalAccountMode!="centralauth")
+{$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
 ["editinterface"=>true,
 "editsitecss"=>true,
 "editsitejs"=>true,
-"editsitejson"=>true,
-"siteadmin"=>true,
-"userrights"=>true,
-"userrights-interwiki"=>true]);
+"editsitejson"=>true]);}
+$wgGroupPermissions["steward"]["siteadmin"]=true;
+$wgGroupPermissions["steward"]["userrights"]=true;
+$wgGroupPermissions["steward"]["userrights-interwiki"]=true;
 
 /*Protection*/
 $wgNamespaceProtection=
