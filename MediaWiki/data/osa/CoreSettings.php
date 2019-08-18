@@ -2,7 +2,7 @@
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{exit("You don't have permission to access to this page.");}
+{exit("This is not a valid entry point.");}
 
 ##General
 
@@ -17,8 +17,9 @@ $wgGroupPermissions["user"]["edit"]=false;
 ##Extensions
 
 /*Extensions usage*/
-$extension_Cite=true;
-$extension_MassEditRegex=true;
+$wmgExtensionCite=true;
+$wmgExtensionReplaceText=true;
+$wmgExtensionSimpleMathJax=true;
 
 ##Skins
 
