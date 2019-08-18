@@ -2,21 +2,18 @@
 ##Prevent web access
 
 if (!defined("MEDIAWIKI"))
-{exit("You don't have permission to access to this page.");}
+{exit("This is not a valid entry point.");}
 
 ##Extensions
 
 /*CentralAuth*/
-//Permissions
-if (isset($wgCentralAuthAutoMigrate))
-{//All permissions of local stewards should be set here
-$wgGroupPermissions["steward"]=
+if ($wmgGlobalAccountMode=="centralauth")
+{//Permissions
+$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
 ["centralauth-rename"=>true,
 "centralauth-usermerge"=>true,
 "globalgroupmembership"=>true,
-"globalgrouppermissions"=>true,
-"userrights"=>true,
-"userrights-interwiki"=>true];}
+"globalgrouppermissions"=>true]);}
 
 /*CentralNotice*/
 $wgNoticeInfrastructure=true;
