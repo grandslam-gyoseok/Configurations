@@ -10,13 +10,21 @@ if (!defined("MEDIAWIKI"))
 if ($wmgGlobalAccountMode=="centralauth")
 {//Permissions
 $wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
-["centralauth-rename"=>true,
+["centralauth-lock"=>true,
+"centralauth-oversight"=>true,
+"centralauth-rename"=>true,
+"centralauth-unmerge"=>true,
 "centralauth-usermerge"=>true,
 "globalgroupmembership"=>true,
 "globalgrouppermissions"=>true]);}
 
 /*CentralNotice*/
 $wgNoticeInfrastructure=true;
+
+/*GlobalBlocking*/
+if ($wmgGlobalAccountMode!="")
+{//Permissions
+$wgGroupPermissions["steward"]["globalblock"]=true;}
 
 /*UserPageEditProtection*/
 $wgOnlyUserEditUserPage=true;
