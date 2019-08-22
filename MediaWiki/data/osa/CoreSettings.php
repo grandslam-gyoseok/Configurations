@@ -7,6 +7,7 @@ if (!defined("MEDIAWIKI"))
 ##General
 
 /*Basic information*/
+$wgLogo="{$wgScriptPath}/data/{$wmgWiki}/logo.png";
 $wgSitename="오사위키덤프";
 
 ##Permissions
