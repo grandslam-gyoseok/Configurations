@@ -486,6 +486,7 @@ $wgUsePathInfo=true;
 /*Others*/
 $wgAllowSecuritySensitiveOperationIfCannotReauthenticate["default"]=false; //Added for test
 $wgApiFrameOptions="SAMEORIGIN";
+$wgAsyncHTTPTimeout=30;
 $wgAuthenticationTokenVersion="1";
 //Ignored on Windows
 $wgDeleteRevisionsBatchSize=500; //Added for test
@@ -494,6 +495,7 @@ $wgEnableDnsBlacklist=true;
 $wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
 $wgFeed=false;
 $wgGitBin=false;
+$wgHTTPTimeout=30;
 $wgJpegTran=false;
 $wgMemoryLimit="256M";
 $wgPasswordResetRoutes["username"]=false;
