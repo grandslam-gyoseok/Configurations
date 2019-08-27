@@ -399,8 +399,7 @@ $wgThumbnailScriptPath="{$wgScriptPath}/thumb.php";
 
 /*Others*/
 $wgAllowCopyUploads=true;
-$wgAllowTitlesInSVG=true;
-$wgCopyUploadsDomains=["openclipart.org"];
+$wgCopyUploadsDomains=[]; //openclipart.org is inaccessible
 $wgCopyUploadsFromSpecialUpload=true;
 $wgEnableUploads=true;
 $wgHashedUploadDirectory=false;
