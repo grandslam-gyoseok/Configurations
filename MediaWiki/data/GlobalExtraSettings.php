@@ -108,7 +108,20 @@ if ($wmgGlobalAccountMode!="centralauth")
 /*CheckUser*/
 //Requires update.php
 wfLoadExtension("CheckUser");
+$wgCheckUserCAMultiLock=
+["centralDB"=>"{$wmgCentralWiki}wiki",
+"groups"=>
+  ["steward"]
+];
+$wgCheckUserCAtoollink="{$wmgCentralWiki}wiki";
 $wgCheckUserCIDRLimit=$wgBlockCIDRLimit;
+$wgCheckUserForceSummary=true;
+$wgCheckUserGBtoollink=
+["centralDB"=>"{$wmgCentralWiki}wiki",
+"groups"=>
+  ["steward"]
+];
+$wgCheckUserLogLogins=true;
 $wgCheckUserMaxBlocks=100;
 //Permissions
 if ($wmgGlobalAccountMode!="centralauth")
