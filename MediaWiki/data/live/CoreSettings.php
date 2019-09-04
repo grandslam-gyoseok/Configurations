@@ -38,7 +38,6 @@ $wgForceUIMsgAsContentMsg=
 ##Extensions
 
 /*Extensions usage*/
-$wmgExtensionBabel=true;
 $wmgExtensionCite=true;
 $wmgExtensionReplaceText=true;
 ?>
