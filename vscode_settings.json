@@ -1,5 +1,6 @@
 {"editor.autoIndent":false,
 "editor.detectIndentation":false,
 "editor.fontFamily":"'D2Coding','Consolas',monospace",
+"editor.tabSize":2,
 "editor.wordWrap":"on",
 "powershell.powerShellExePath":"C:/Program Files/PowerShell/7-preview/pwsh.exe"}
