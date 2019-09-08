@@ -29,6 +29,7 @@ default:
 $wmgPrivateDataDirectory="{$IP}/private_data";}
 
 /*Variable*/
+$wmgCacheExpiry=60; //1 minute
 //Should be one of "", "centralauth" and "shared-database"
 $wmgGlobalAccountMode="centralauth";
 
