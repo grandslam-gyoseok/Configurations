@@ -31,14 +31,12 @@ if ($wmgGlobalAccountMode=="centralauth")
 $wgConf->localVHosts=["localhost"];
 $wgConf->settings=
 ["wgArticlePath"=>
-  ["default"=>"/page/$1"],
-"wgScriptPath"=>
-  ["default"=>"/mediawiki"]
+  ["default"=>"/page/$1"]
 ];
 if ($wgCommandLineMode)
-{$wgConf->settings["wgServer"]["default"]='http://$lang.plavormind.tk:81';}
+  {$wgConf->settings["wgServer"]["default"]='http://$lang.plavormind.tk:81';}
 else
-{$wgConf->settings["wgServer"]["default"]=$_SERVER["REQUEST_SCHEME"].'://$lang.plavormind.tk:81';}
+  {$wgConf->settings["wgServer"]["default"]=$_SERVER["REQUEST_SCHEME"].'://$lang.plavormind.tk:81';}
 $wgConf->siteParamsCallback="efGetSiteParams";
 $wgConf->suffixes=["wiki"];
 $wgConf->wikis=$wgLocalDatabases;
@@ -526,6 +524,7 @@ $wmgExtensionHighlightjs_Integration=false;
 $wmgExtensionMultimediaViewer=false;
 $wmgExtensionNuke=false;
 $wmgExtensionPageImages=false;
+$wmgExtensionParserFunctions=false;
 $wmgExtensionPerformanceInspector=false;
 $wmgExtensionPopups=false;
 if ($wmgGlobalAccountMode=="centralauth")
