@@ -293,6 +293,11 @@ $wgPageImagesBlacklistExpiry=60; //1 minute
 $wgPageImagesExpandOpenSearchXml=true;
 $wgPageImagesNamespaces=[NS_CATEGORY,NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];}
 
+/*ParserFunctions*/
+if ($wmgExtensionParserFunctions)
+{wfLoadExtension("ParserFunctions");
+$wgPFEnableStringFunctions=true;}
+
 /*PerformanceInspector*/
 if ($wmgExtensionPerformanceInspector)
 {wfLoadExtension("PerformanceInspector");
