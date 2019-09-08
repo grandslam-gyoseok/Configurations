@@ -422,7 +422,7 @@ $wgEnableEmail=false;
 $wgCacheDirectory="{$wmgPrivateDataDirectory}/{$wmgWiki}/cache";
 //Disable client side caching
 $wgCachePages=false;
-$wgMainCacheType=CACHE_ACCEL;
+$wgMainCacheType=CACHE_ANYTHING;
 
 /*File cache*/
 $wgFileCacheDepth=0;
@@ -436,19 +436,21 @@ $wgUseLocalMessageCache=true;
 
 /*Sidebar cache*/
 $wgEnableSidebarCache=true;
-$wgSidebarCacheExpiry=60; //1 minute
-$wgTranscludeCacheExpiry=60; //1 minute
+$wgSidebarCacheExpiry=$wmgCacheExpiry;
+$wgTranscludeCacheExpiry=$wmgCacheExpiry;
 
 /*Others*/
 $wgAdaptiveMessageCache=true;
-$wgInterwikiExpiry=60; //1 minute
+$wgInterwikiExpiry=$wmgCacheExpiry;
 $wgLanguageConverterCacheType=$wgMainCacheType;
-$wgMsgCacheExpiry=60; //1 minute
-$wgObjectCacheSessionExpiry=60; //1 minute
-$wgParserCacheExpireTime=60; //1 minute
-$wgRevisionCacheExpiry=60; //1 minute
-$wgSearchSuggestCacheExpiry=60; //1 minute
-$wgSessionCacheType=$wgMainCacheType;
+$wgMessageCacheType=$wgMainCacheType;
+$wgMsgCacheExpiry=$wmgCacheExpiry;
+$wgObjectCacheSessionExpiry=$wmgCacheExpiry;
+$wgParserCacheExpireTime=$wmgCacheExpiry;
+$wgParserCacheType=$wgMainCacheType;
+$wgRevisionCacheExpiry=$wmgCacheExpiry;
+$wgSearchSuggestCacheExpiry=$wmgCacheExpiry;
+//$wgSessionCacheType=$wgMainCacheType; //This one should use different cache type than others
 
 ##System
 
