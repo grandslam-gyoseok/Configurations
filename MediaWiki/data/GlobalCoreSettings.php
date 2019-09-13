@@ -422,7 +422,7 @@ $wgEnableEmail=false;
 $wgCacheDirectory="{$wmgPrivateDataDirectory}/{$wmgWiki}/cache";
 //Disable client side caching
 $wgCachePages=false;
-$wgMainCacheType=CACHE_DB;
+$wgMainCacheType=CACHE_ACCEL;
 
 /*File cache*/
 $wgFileCacheDepth=0;
@@ -450,7 +450,7 @@ $wgParserCacheExpireTime=$wmgCacheExpiry;
 $wgParserCacheType=$wgMainCacheType;
 $wgRevisionCacheExpiry=$wmgCacheExpiry;
 $wgSearchSuggestCacheExpiry=$wmgCacheExpiry;
-$wgSessionCacheType=CACHE_DB; //This one should always use cache
+$wgSessionCacheType=CACHE_ACCEL; //This one should always use cache
 
 ##System
 
