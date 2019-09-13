@@ -85,7 +85,6 @@ $wmgExtensionCodeEditor=true;
 $wmgExtensionCodeMirror=true;
 $wmgExtensionCollapsibleVector=true;
 $wmgExtensionCommonsMetadata=true;
-$wmgExtensionFlow=true;
 $wmgExtensionHighlightjs_Integration=true;
 $wmgExtensionMultimediaViewer=true;
 $wmgExtensionNuke=true;
