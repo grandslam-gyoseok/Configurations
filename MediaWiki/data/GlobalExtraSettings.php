@@ -209,7 +209,8 @@ $wgNotifyTypeAvailabilityByCategory=
 //Requires update.php
 if ($wmgExtensionFlow)
 {wfLoadExtension("Flow");
-$wgFlowCacheTime=60; //1 minute
+$wgFlowCacheTime=$wmgCacheExpiry;
+$wgFlowCoreActionWhitelist[]="delete_page_permanently";
 $wgFlowEditorList=["wikitext"];
 $wgFlowMaxMentionCount=10;
 $wgFlowSearchEnabled=true;
@@ -239,8 +240,8 @@ if ($wmgGlobalAccountMode!="centralauth")
   {$wgGroupPermissions["steward"]["flow-create-board"]=true;
   $wgGroupPermissions["steward"]["flow-suppress"]=true;}
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
-  {//unset($wgGroupPermissions["flow-bot"]); //May cause bug
-  unset($wgGroupPermissions["oversight"]);};
+  {unset($wgGroupPermissions["flow-bot"]);
+  unset($wgGroupPermissions["suppress"]);};
 }
 
 /*GlobalBlocking*/
