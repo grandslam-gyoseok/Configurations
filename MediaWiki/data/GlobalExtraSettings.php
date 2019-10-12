@@ -44,6 +44,10 @@ $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ]);
 */
 
+/*AlwaysBlueCategory*/
+if ($wmgExtensionAlwaysBlueCategory)
+{wfLoadExtension("AlwaysBlueCategory");}
+
 /*AntiSpoof*/
 //Requires update.php
 wfLoadExtension("AntiSpoof");
