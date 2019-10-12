@@ -79,6 +79,7 @@ NS_TEMPLATE=>
 ##Extensions
 
 /*Extensions usage*/
+$wmgExtensionAlwaysBlueCategory=true;
 $wmgExtensionBabel=true;
 $wmgExtensionCite=true;
 $wmgExtensionCodeEditor=true;
