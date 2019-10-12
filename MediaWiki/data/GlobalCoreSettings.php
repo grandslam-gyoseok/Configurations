@@ -514,6 +514,7 @@ $wgReauthenticateTime["default"]=60*10; //10 minutes //Added for test
 3. Always check dependencies on extra_settings.php when enabling per-wiki extension.*/
 
 /*Extensions usage*/
+$wmgExtensionAlwaysBlueCategory=false;
 $wmgExtensionBabel=false;
 $wmgExtensionCite=false;
 $wmgExtensionCodeEditor=false;
