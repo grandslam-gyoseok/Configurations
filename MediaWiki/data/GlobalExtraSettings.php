@@ -1,10 +1,8 @@
 <?php
-##Prevent web access
-
 if (!defined("MEDIAWIKI"))
 {exit("This is not a valid entry point.");}
 
-##Extensions
+#Extensions
 
 /*AbuseFilter
 //Requires update.php
@@ -59,6 +57,7 @@ if ($wmgGlobalAccountMode!="centralauth")
 {$wgGroupPermissions["steward"]["override-antispoof"]=true;}
 
 /*Babel*/
+//Requires update.php
 if ($wmgExtensionBabel)
 {wfLoadExtension("Babel");
 $wgBabelCategoryNames=
@@ -73,6 +72,7 @@ $wgBabelMainCategory=false;
 $wgBabelUseUserLanguage=true;}
 
 /*CentralAuth*/
+//Requires update.php
 if ($wmgGlobalAccountMode=="centralauth")
 {wfLoadExtension("CentralAuth");
 $wgCentralAuthAutoMigrate=true;
@@ -113,15 +113,15 @@ if ($wmgGlobalAccountMode!="centralauth")
 //Requires update.php
 wfLoadExtension("CheckUser");
 $wgCheckUserCAMultiLock=
-["centralDB"=>"{$wmgCentralWiki}wiki",
+["centralDB"=>$wmgCentralWiki."wiki",
 "groups"=>
   ["steward"]
 ];
-$wgCheckUserCAtoollink="{$wmgCentralWiki}wiki";
+$wgCheckUserCAtoollink=$wmgCentralWiki."wiki";
 $wgCheckUserCIDRLimit=$wgBlockCIDRLimit;
 $wgCheckUserForceSummary=true;
 $wgCheckUserGBtoollink=
-["centralDB"=>"{$wmgCentralWiki}wiki",
+["centralDB"=>$wmgCentralWiki."wiki",
 "groups"=>
   ["steward"]
 ];
