@@ -466,7 +466,7 @@ switch (PHP_OS_FAMILY)
 {case "Windows":
 $wgPhpCli="C:/plavormind/php/php.exe";
 break;}
-$wgReadOnlyFile="{$wmgDataDirectory}/readonly.txt";
+$wgReadOnlyFile=$wmgDataDirectory."/readonly.txt";
 
 #Caching
 
