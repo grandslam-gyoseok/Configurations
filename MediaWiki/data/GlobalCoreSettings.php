@@ -22,12 +22,10 @@ if ($wmgGlobalAccountMode!="")
 {$wgConf->localVHosts=["localhost"];
 $wgConf->settings=
 ["wgArticlePath"=>
-  ["default"=>"/page/$1"]
+  ["default"=>"/page/$1"],
+"wgServer"=>
+  ["default"=>'http://$lang.plavormind.tk:81']
 ];
-if ($wgCommandLineMode)
-  {$wgConf->settings["wgServer"]["default"]='http://$lang.plavormind.tk:81';}
-else
-  {$wgConf->settings["wgServer"]["default"]=$_SERVER["REQUEST_SCHEME"].'://$lang.plavormind.tk:81';}
 $wgConf->siteParamsCallback="efGetSiteParams";
 $wgConf->suffixes=["wiki"];
 $wgConf->wikis=$wgLocalDatabases;
@@ -402,15 +400,77 @@ $wgUseCopyrightUpload=true;
 $wgUseInstantCommons=true;
 $wgUseTinyRGBForJPGThumbnails=true;
 
-##Email
+#Email
 
 //Server does not support e-mail services
 $wgEnableEmail=false;
 
-##Caching
+#System
 
-/*Basic cache settings*/
-$wgCacheDirectory="{$wmgPrivateDataDirectory}/{$wmgWiki}/cache";
+/*Authentication and sessions*/
+$wgAllowSecuritySensitiveOperationIfCannotReauthenticate=
+["default"=>false,
+"LinkAccounts"=>true,
+"UnlinkAccount"=>true];
+$wgAuthenticationTokenVersion="1";
+$wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
+$wgPasswordResetRoutes["username"]=false;
+$wgReauthenticateTime=
+["default"=>60*10, //10 minutes
+"ChangeCredentials"=>60, //1 minute
+"RemoveCredentials"=>60]; //1 minute
+
+/*Databases*/
+if ($wmgGlobalAccountMode=="shared-database")
+{$wgSharedDB=$wmgCentralWiki."wiki";
+$wgSharedTables=["actor","interwiki","user"];}
+//SQLite-only
+$wgSQLiteDataDir=$wmgPrivateDataDirectory."/databases";
+
+/*Paths*/
+$actions=
+["delete",
+"edit",
+"history",
+"info",
+"markpatrolled",
+"protect",
+"purge",
+"raw",
+"render",
+"revert",
+"rollback",
+"submit",
+"unprotect",
+"unwatch",
+"watch"];
+foreach ($actions as $action)
+{$wgActionPaths[$action]="/".$action."/$1";}
+unset($action,$actions);
+$wgArticlePath="/page/$1";
+$wgUsePathInfo=true;
+
+/*Others*/
+$wgApiFrameOptions="SAMEORIGIN";
+$wgAsyncHTTPTimeout=30;
+$wgDeleteRevisionsBatchSize=500;
+//Ignored on Windows
+$wgDirectoryMode=0755;
+$wgEnableDnsBlacklist=true;
+$wgFeed=false;
+$wgGitBin=false;
+$wgHTTPTimeout=30;
+$wgJpegTran=false;
+$wgMemoryLimit="256M";
+switch (PHP_OS_FAMILY)
+{case "Windows":
+$wgPhpCli="C:/plavormind/php/php.exe";
+break;}
+$wgReadOnlyFile="{$wmgDataDirectory}/readonly.txt";
+
+#Caching
+
+$wgCacheDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/cache";
 //Disable client side caching
 $wgCachePages=false;
 $wgMainCacheType=CACHE_ACCEL;
@@ -443,67 +503,7 @@ $wgRevisionCacheExpiry=$wmgCacheExpiry;
 $wgSearchSuggestCacheExpiry=$wmgCacheExpiry;
 $wgSessionCacheType=CACHE_ACCEL; //This one should always use cache
 
-#System
-
-/*Database*/
-if ($wmgGlobalAccountMode=="shared-database")
-{$wgSharedDB="{$wmgCentralWiki}wiki";
-$wgSharedTables=["actor","interwiki","user"];}
-//SQLite-only
-$wgSQLiteDataDir="{$wmgPrivateDataDirectory}/databases";
-
-/*Path*/
-$actions=
-["delete",
-"edit",
-"history",
-"info",
-"markpatrolled",
-"protect",
-"purge",
-"raw",
-"render",
-"revert",
-"rollback",
-"submit",
-"unprotect",
-"unwatch",
-"watch"];
-foreach ($actions as $action)
-{$wgActionPaths[$action]="/{$action}/$1";}
-unset($action,$actions);
-$wgArticlePath="/page/$1";
-$wgUsePathInfo=true;
-
-/*Others*/
-$wgAllowSecuritySensitiveOperationIfCannotReauthenticate["default"]=false; //Experimental
-$wgApiFrameOptions="SAMEORIGIN";
-$wgAsyncHTTPTimeout=30;
-$wgAuthenticationTokenVersion="1";
-$wgDeleteRevisionsBatchSize=500; //Experimental
-//Ignored on Windows
-$wgDirectoryMode=0755;
-$wgEnableDnsBlacklist=true;
-$wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
-$wgFeed=false;
-$wgGitBin=false;
-$wgHTTPTimeout=30;
-$wgJpegTran=false;
-$wgMemoryLimit="256M";
-$wgPasswordResetRoutes["username"]=false;
-switch (PHP_OS_FAMILY)
-{case "Windows":
-$wgPhpCli="C:/plavormind/php/php.exe";
-break;}
-$wgReadOnlyFile="{$wmgDataDirectory}/readonly.txt";
-$wgReauthenticateTime["default"]=60*10; //10 minutes //Experimental
-
-##Extensions
-
-/*Guidelines
-1. Do not add global extensions here.
-2. Do not add PlavorMindTools extension here.
-3. Always check dependencies on extra_settings.php when enabling per-wiki extension.*/
+#Extensions
 
 /*Extensions usage*/
 $wmgExtensionAlwaysBlueCategory=false;
