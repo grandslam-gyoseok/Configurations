@@ -214,10 +214,6 @@ $wgBreakFrames=true;
 $wgCapitalLinks=false;
 $wgCleanSignatures=false;
 $wgEditPageFrameOptions="SAMEORIGIN";
-$wgEnableMagicLinks= //Experimental
-["ISBN"=>true,
-"PMID"=>true,
-"RFC"=>true];
 $wgExternalLinkTarget="_blank";
 $wgFragmentMode=["html5"];
 unset($wgFooterIcons["poweredby"]);
