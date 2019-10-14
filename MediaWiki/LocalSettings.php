@@ -36,7 +36,7 @@ return
 /*Variables*/
 $wmgCacheExpiry=60; //1 minute
 $wmgCentralWiki="wiki";
-$wmgDataDirectory="{$IP}/data";
+$wmgDataDirectory=$IP."/data";
 $wmgGlobalAccountExemptWikis=[];
 //Should be one of "", "centralauth" and "shared-database"
 $wmgGlobalAccountMode="";
@@ -48,7 +48,7 @@ case "Windows":
 $wmgPrivateDataDirectory="C:/plavormind/web_data/mediawiki";
 break;
 default:
-$wmgPrivateDataDirectory="{$IP}/private_data";}
+$wmgPrivateDataDirectory=$IP."/private_data";}
 $wmgWiki="wiki";
 
 /*Wiki selector*/
