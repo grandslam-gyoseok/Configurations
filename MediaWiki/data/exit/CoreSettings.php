@@ -1,14 +1,17 @@
 <?php
-##Prevent web access
-
 if (!defined("MEDIAWIKI"))
 {exit("This is not a valid entry point.");}
 
-##General
+#General
 
 /*Basic information*/
-$wgLogo="{$wgScriptPath}/data/{$wmgWiki}/logo.png";
+$wgLogo=$wgScriptPath."/data/".$wmgWiki."/logo.png";
 $wgSitename="PlavorMindCentral";
+
+/*Copyright*/
+$wgRightsIcon=null;
+$wgRightsText="Free Art License 1.3";
+$wgRightsUrl="https://artlibre.org/licence/lal/en/";
 
 /*CSS and JavaScript*/
 $wgAllowSiteCSSOnRestrictedPages=true;
