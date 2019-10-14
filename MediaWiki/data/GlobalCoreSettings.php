@@ -1,34 +1,25 @@
 <?php
-##Prevent web access
-
 if (!defined("MEDIAWIKI"))
 {exit("This is not a valid entry point.");}
 
-##Initialize
+#Initialize
 
-/*$wgConf*/
-if ($wmgGlobalAccountMode=="centralauth")
-{function efGetSiteParams($conf,$wiki)
-  {$lang=null;
-  $site=null;
-  foreach($conf->suffixes as $suffix)
-    {if (substr($wiki,-strlen($suffix))==$suffix)
-      {$lang=substr($wiki,0,-strlen($suffix));
-      $site=$suffix;
-      break;}
-    }
-  return
-    ["lang"=>$lang,
-    "params"=>
-      ["lang"=>$lang,
-      "site"=>$site,
-      "wiki"=>$wiki],
-    "suffix"=>$site,
-    "tags"=>
-      []
-    ];
-  }
-$wgConf->localVHosts=["localhost"];
+/*Databases*/
+$wgDBname=$wmgWiki."wiki";
+$wgLocalDatabases=["exitwiki","livewiki","osawiki"];
+if (!in_array($wgDBname,$wgLocalDatabases))
+{exit("Cannot find this wiki.");}
+
+/*Variables*/
+$wmgCentralWiki="exit";
+$wmgGlobalAccountExemptWikis=["pocket"];
+$wmgGlobalAccountMode="centralauth";
+if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
+{$wmgGlobalAccountMode="";}
+
+/*Others*/
+if ($wmgGlobalAccountMode!="")
+{$wgConf->localVHosts=["localhost"];
 $wgConf->settings=
 ["wgArticlePath"=>
   ["default"=>"/page/$1"]
@@ -41,12 +32,10 @@ $wgConf->siteParamsCallback="efGetSiteParams";
 $wgConf->suffixes=["wiki"];
 $wgConf->wikis=$wgLocalDatabases;
 $wgConf->extractAllGlobals($wgDBname);}
-
-/*Path*/
-//Must be set before settings using $wgScriptPath
+//Should be defined before variables using $wgScriptPath
 $wgScriptPath="/mediawiki";
 
-##General
+#General
 
 /*Account*/
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
@@ -252,7 +241,7 @@ $wgUniversalEditButton=false;
 //Only allow HTTP and HTTPS protocol in links
 $wgUrlProtocols=["//","http://","https://"];
 
-##Permissions
+#Permissions
 
 /*Autoconfirm*/
 $wgAutoConfirmAge=60*60*24*$wgLearnerMemberSince;
@@ -346,8 +335,6 @@ $wgGroupPermissions=
   "unblockself"=>true,
   "writeapi"=>true]
 ];
-if ($wmgGlobalAccountMode=="centralauth")
-{$wgGroupPermissions["steward"]=[];}
 $wgRemoveGroups["bureaucrat"]=["staff","admin"];
 
 /*Protection*/
@@ -376,13 +363,19 @@ $wgSemiprotectedRestrictionLevels=
 ["editprotected-user",
 "editsemiprotected"];
 
-/*Remove groups*/
+/*Removal of groups*/
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
-{unset($wgGroupPermissions["bot"]);
-unset($wgGroupPermissions["sysop"]);};
+{unset($wgGroupPermissions["bot"],$wgGroupPermissions["sysop"]);};
 
 /*Others*/
 $wgDeleteRevisionsLimit=250;
+$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
+$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
+$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
+if ($wmgGlobalAccountMode=="centralauth")
+{unset($wgGroupPermissions["steward"]);}
+else
+{$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];}
 
 ##Uploads
 
@@ -452,7 +445,7 @@ $wgRevisionCacheExpiry=$wmgCacheExpiry;
 $wgSearchSuggestCacheExpiry=$wmgCacheExpiry;
 $wgSessionCacheType=CACHE_ACCEL; //This one should always use cache
 
-##System
+#System
 
 /*Database*/
 if ($wmgGlobalAccountMode=="shared-database")
@@ -480,6 +473,7 @@ $actions=
 "watch"];
 foreach ($actions as $action)
 {$wgActionPaths[$action]="/{$action}/$1";}
+unset($action,$actions);
 $wgArticlePath="/page/$1";
 $wgUsePathInfo=true;
 
