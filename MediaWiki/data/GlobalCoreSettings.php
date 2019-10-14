@@ -210,12 +210,11 @@ $wgNoFollowDomainExceptions=["plavormind.tk"];
 
 /*Others*/
 $wgActiveUserDays=7; //1 week
-$wgAllowSlowParserFunctions=true; //Added for test
 $wgBreakFrames=true;
 $wgCapitalLinks=false;
 $wgCleanSignatures=false;
 $wgEditPageFrameOptions="SAMEORIGIN";
-$wgEnableMagicLinks= //Added for test
+$wgEnableMagicLinks= //Experimental
 ["ISBN"=>true,
 "PMID"=>true,
 "RFC"=>true];
@@ -478,12 +477,12 @@ $wgArticlePath="/page/$1";
 $wgUsePathInfo=true;
 
 /*Others*/
-$wgAllowSecuritySensitiveOperationIfCannotReauthenticate["default"]=false; //Added for test
+$wgAllowSecuritySensitiveOperationIfCannotReauthenticate["default"]=false; //Experimental
 $wgApiFrameOptions="SAMEORIGIN";
 $wgAsyncHTTPTimeout=30;
 $wgAuthenticationTokenVersion="1";
+$wgDeleteRevisionsBatchSize=500; //Experimental
 //Ignored on Windows
-$wgDeleteRevisionsBatchSize=500; //Added for test
 $wgDirectoryMode=0755;
 $wgEnableDnsBlacklist=true;
 $wgExtendedLoginCookieExpiration=60*60*24*90; //3 months
@@ -498,7 +497,7 @@ switch (PHP_OS_FAMILY)
 $wgPhpCli="C:/plavormind/php/php.exe";
 break;}
 $wgReadOnlyFile="{$wmgDataDirectory}/readonly.txt";
-$wgReauthenticateTime["default"]=60*10; //10 minutes //Added for test
+$wgReauthenticateTime["default"]=60*10; //10 minutes //Experimental
 
 ##Extensions
 
