@@ -364,6 +364,7 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 
 /*Others*/
 $wgDeleteRevisionsLimit=250;
+//Permission inheritance
 $wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
 $wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
 $wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
@@ -372,21 +373,23 @@ if ($wmgGlobalAccountMode=="centralauth")
 else
 {$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];}
 
-##Uploads
+#Images and uploads
 
-/*Directory*/
-$wgDeletedDirectory="{$wmgPrivateDataDirectory}/{$wmgWiki}/deleted_files";
-$wgUploadDirectory="{$wmgPrivateDataDirectory}/{$wmgWiki}/files";
-$wgUploadPath="{$wgScriptPath}/img_auth.php";
+/*Directories*/
+$wgDeletedDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/deleted_files";
+$wgUploadDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/files";
+$wgUploadPath=$wgScriptPath."/img_auth.php";
 
-/*Thumbnail*/
+/*Thumbnails*/
 $wgGenerateThumbnailOnParse=false;
-$wgThumbnailScriptPath="{$wgScriptPath}/thumb.php";
+$wgThumbnailScriptPath=$wgScriptPath."/thumb.php";
 
-/*Others*/
+/*Uploading from URL*/
 $wgAllowCopyUploads=true;
 $wgCopyUploadsDomains=[]; //openclipart.org is inaccessible
 $wgCopyUploadsFromSpecialUpload=true;
+
+/*Others*/
 $wgEnableUploads=true;
 $wgHashedUploadDirectory=false;
 $wgMaxUploadSize=
