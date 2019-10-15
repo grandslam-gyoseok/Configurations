@@ -16,9 +16,6 @@ $wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
 "globalgroupmembership"=>true,
 "globalgrouppermissions"=>true]);}
 
-/*CentralNotice*/
-$wgNoticeInfrastructure=true;
-
 /*GlobalBlocking*/
 if ($wmgGlobalAccountMode!="")
 {//Permissions
