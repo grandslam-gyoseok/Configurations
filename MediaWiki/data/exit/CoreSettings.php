@@ -77,7 +77,7 @@ NS_MEDIAWIKI_TALK=>
 NS_PROJECT=>
   ["editprotected-steward"],
 NS_TEMPLATE=>
-  ["editprotected"]
+  ["editprotected-admin"]
 ];
 
 #Extensions
