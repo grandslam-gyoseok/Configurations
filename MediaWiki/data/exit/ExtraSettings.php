@@ -1,10 +1,8 @@
 <?php
-##Prevent web access
-
 if (!defined("MEDIAWIKI"))
 {exit("This is not a valid entry point.");}
 
-##Extensions
+#Extensions
 
 /*CentralAuth*/
 if ($wmgGlobalAccountMode=="centralauth")
