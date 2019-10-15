@@ -168,7 +168,7 @@ NS_FILE=>
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ["autoconfirmed"=>
   ["skipcaptcha"=>true],
-"staff"=>
+"moderator"=>
   ["skipcaptcha"=>true],
 "admin"=>
   ["skipcaptcha"=>true],
@@ -301,7 +301,10 @@ $wgMediaViewerUseThumbnailGuessing=true;}
 if ($wmgExtensionNuke)
 {wfLoadExtension("Nuke");
 //Permissions
-$wgGroupPermissions["bureaucrat"]["nuke"]=true;}
+$wgGroupPermissions["bureaucrat"]["nuke"]=true;
+if ($wmgGlobalAccountMode!="centralauth")
+  {$wgGroupPermissions["steward"]["nuke"]=true;}
+}
 
 /*PageImages*/
 if ($wmgExtensionPageImages)
@@ -322,19 +325,6 @@ $wgDefaultUserOptions["performanceinspector"]=true;}
 
 /*PlavorMindTools*/
 wfLoadExtension("PlavorMindTools");
-//Permissions
-$wgAddGroups=array_merge_recursive($wgAddGroups,
-["admin"=>
-  ["protectedpageeditor"],
-"bureaucrat"=>
-  ["protectedpageeditor"]
-]);
-$wgRemoveGroups=array_merge_recursive($wgRemoveGroups,
-["admin"=>
-  ["protectedpageeditor"],
-"bureaucrat"=>
-  ["protectedpageeditor"]
-]);
 
 /*Popups*/
 if ($wmgExtensionPageImages&&$wmgExtensionPopups&&$wmgExtensionTextExtracts)
@@ -364,7 +354,10 @@ if ($wmgGlobalAccountMode!="centralauth")
 if ($wmgExtensionSecurePoll)
 {wfLoadExtension("SecurePoll");
 //Permissions
-$wgGroupPermissions["bureaucrat"]["securepoll-create-poll"]=true;}
+$wgGroupPermissions["bureaucrat"]["securepoll-create-poll"]=true;
+if ($wmgGlobalAccountMode!="centralauth")
+  {$wgGroupPermissions["steward"]["securepoll-create-poll"]=true;}
+}
 
 /*SimpleMathJax*/
 if ($wmgExtensionSimpleMathJax)
@@ -373,14 +366,21 @@ if ($wmgExtensionSimpleMathJax)
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
-$wgStaffPowersStewardGroupName="staff";
+$wgStaffPowersStewardGroupName="moderator";
 //Permissions
 $wgGroupPermissions["staff"]["unblockable"]=false;
-$wgGroupPermissions["admin"]["unblockable"]=true;
+$wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
+["admin"=>
+  ["unblockable"=>true],
+"bureaucrat"=>
+  ["unblockable"=>true]
+]);
+if ($wmgGlobalAccountMode!="centralauth")
+{$wgGroupPermissions["steward"]["unblockable"]=true;}
 
 /*StalkerLog*/
 //Requires update.php
-include_once("{$wgExtensionDirectory}/StalkerLog/StalkerLog.php");
+require_once($wgExtensionDirectory."/StalkerLog/StalkerLog.php");
 
 /*SyntaxHighlight_GeSHi*/
 if (PHP_OS_FAMILY=="Linux"&&$wmgExtensionSyntaxHighlight_GeSHi)
@@ -403,7 +403,7 @@ $wgExtractsExtendOpenSearchXml=true;}
 wfLoadExtension("TitleBlacklist");
 $wgTitleBlacklistSources=
 ["global"=>
-  ["src"=>"{$wmgPrivateDataDirectory}/titleblacklist.txt",
+  ["src"=>$wmgPrivateDataDirectory."/titleblacklist.txt",
   "type"=>"file"]
 ];
 if ($wmgGlobalAccountMode!="")
@@ -411,7 +411,7 @@ if ($wmgGlobalAccountMode!="")
 //Permissions
 if ($wmgGlobalAccountMode!="centralauth")
 {$wgGroupPermissions["steward"]["tboverride"]=true;
-//$wgGroupPermissions["steward"]["tboverride-account"]=true; //Disabled for test
+$wgGroupPermissions["steward"]["tboverride-account"]=true;
 $wgGroupPermissions["steward"]["titleblacklistlog"]=true;}
 
 /*TwoColConflict*/
@@ -430,10 +430,18 @@ if ($wmgGlobalAccountMode!="centralauth")
 
 /*UserPageEditProtection*/
 //Add "$wgOnlyUserEditUserPage=true;" to enable this extension.
-include_once("{$wgExtensionDirectory}/UserPageEditProtection/UserPageEditProtection.php");
+require_once($wgExtensionDirectory."/UserPageEditProtection/UserPageEditProtection.php");
 //Permissions
-$wgGroupPermissions["staff"]["editalluserpages"]=true;
-$wgGroupPermissions["protectedpageeditor"]["editalluserpages"]=true;
+$wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
+["moderator"=>
+  ["editalluserpages"=>true],
+"admin"=>
+  ["editalluserpages"=>true],
+"bureaucrat"=>
+  ["editalluserpages"=>true]
+]);
+if ($wmgGlobalAccountMode!="centralauth")
+{$wgGroupPermissions["steward"]["editalluserpages"]=true;}
 
 /*WikiEditor*/
 if ($wmgExtensionWikiEditor)
