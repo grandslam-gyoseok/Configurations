@@ -48,7 +48,7 @@ $wgAllowSlowParserFunctions=true; //Experimental
 $wgMetaNamespace="PlavorMind";
 $wgRestrictDisplayTitle=false; //Experimental
 
-##Permissions
+#Permissions
 
 /*Group permissions*/
 $wgGroupPermissions["bureaucrat"]=array_merge($wgGroupPermissions["bureaucrat"],
@@ -71,7 +71,7 @@ $wgNamespaceProtection=
 [NS_CATEGORY=>
   ["editsemiprotected"],
 NS_HELP=>
-  ["editprotected-staff"],
+  ["editprotected-moderator"],
 NS_MEDIAWIKI_TALK=>
   ["editprotected-steward"],
 NS_PROJECT=>
@@ -80,7 +80,7 @@ NS_TEMPLATE=>
   ["editprotected"]
 ];
 
-##Extensions
+#Extensions
 
 /*Extensions usage*/
 $wmgExtensionAlwaysBlueCategory=true;
