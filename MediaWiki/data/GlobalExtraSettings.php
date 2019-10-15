@@ -18,7 +18,7 @@ $wgAbuseFilterActions=
 "tag"=>false,
 "throttle"=>false,
 "warn"=>true];
-//$wgAbuseFilterCentralDB="global_abusefilter";
+//$wgAbuseFilterCentralDB="wiki_abusefilter";
 $wgAbuseFilterNotifications="rcandudp";
 $wgAbuseFilterNotificationsPrivate=$wgAbuseFilterNotifications;
 $wgAbuseFilterRestrictions=
@@ -28,18 +28,19 @@ $wgAbuseFilterRestrictions=
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ["bureaucrat"=>
   ["abusefilter-log-detail"=>true,
-  "abusefilter-modify"=>true],
-"steward"=>
-  ["abusefilter-hide-log"=>true,
-  "abusefilter-hidden-log"=>true,
-  "abusefilter-log-private"=>true,
-  "abusefilter-modify-global"=>true,
-  "abusefilter-modify-restricted"=>true,
-  "abusefilter-private"=>true,
-  "abusefilter-private-log"=>true,
-  "abusefilter-revert"=>true,
-  "abusefilter-view-private"=>true]
+  "abusefilter-modify"=>true]
 ]);
+if ($wmgGlobalAccountMode!="centralauth")
+{$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
+["abusefilter-hide-log"=>true,
+"abusefilter-hidden-log"=>true,
+"abusefilter-log-private"=>true,
+"abusefilter-modify-global"=>true,
+"abusefilter-modify-restricted"=>true,
+"abusefilter-private"=>true,
+"abusefilter-private-log"=>true,
+"abusefilter-revert"=>true,
+"abusefilter-view-private"=>true]);}
 */
 
 /*AlwaysBlueCategory*/
