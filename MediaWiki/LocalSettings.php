@@ -73,10 +73,4 @@ if (file_exists($wmgDataDirectory."/".$wmgWiki."/ExtraSettings.php"))
 {include_once($wmgDataDirectory."/".$wmgWiki."/ExtraSettings.php");}
 if (file_exists($wmgPrivateDataDirectory."/PrivateSettings.php"))
 {include_once($wmgPrivateDataDirectory."/PrivateSettings.php");}
-//Permission inheritance
-$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
-$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
-$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
-if ($wmgGlobalAccountMode!="centralauth")
-{$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];}
 ?>
