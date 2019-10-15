@@ -332,7 +332,7 @@ $wgRemoveGroups["bureaucrat"]=["staff","admin"];
 
 /*Protection*/
 $wgCascadingRestrictionLevels=
-["editprotected-staff",
+["editprotected-moderator",
 "editprotected",
 "editprotected-bureaucrat",
 "editprotected-steward"];
@@ -341,7 +341,7 @@ $wgRestrictionLevels=
 ["",
 "editprotected-user",
 "editsemiprotected",
-"editprotected-staff",
+"editprotected-moderator",
 "editprotected",
 "editprotected-bureaucrat",
 "editprotected-steward"];
