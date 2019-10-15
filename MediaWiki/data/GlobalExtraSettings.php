@@ -165,13 +165,24 @@ NS_FILE=>
   ["edit"=>true]
 ];
 //Permissions
-$wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
+$wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
+["autoconfirmed"=>
+  ["skipcaptcha"=>true],
+"staff"=>
+  ["skipcaptcha"=>true],
+"admin"=>
+  ["skipcaptcha"=>true],
+"bureaucrat"=>
+  ["skipcaptcha"=>true]
+]);
+if ($wmgGlobalAccountMode!="centralauth")
+{$wgGroupPermissions["steward"]["skipcaptcha"]=true;}
 
 /*DeletePagesForGood*/
 if ($wmgExtensionDeletePagesForGood)
 {wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
-$wgPlavorBumaTabIcons["delete_page_permanently"]="fas fa-trash-alt";
+$wgPBTabIcons["delete_page_permanently"]="fas fa-trash-alt";
 //Permissions
 if ($wmgGlobalAccountMode!="centralauth")
   {$wgGroupPermissions["steward"]["deleteperm"]=true;}
@@ -180,9 +191,9 @@ if ($wmgGlobalAccountMode!="centralauth")
 /*DiscordNotifications*/
 wfLoadExtension("DiscordNotifications");
 if ($wgCommandLineMode)
-{$wgDiscordFromName="{$wgSitename} ({$wmgWiki}) @ PlavorMind";}
+{$wgDiscordFromName=$wgSitename." (".$wmgWiki.")";}
 else
-{$wgDiscordFromName="{$wgSitename} ({$_SERVER["HTTP_HOST"]}) @ PlavorMind";}
+{$wgDiscordFromName=$wgSitename." (".$_SERVER["HTTP_HOST"].")";}
 $wgWikiUrl="{$wgServer}/";
 $wgWikiUrlEnding="mediawiki/index.php?title=";
 $wgWikiUrlEndingUserRights="Special:UserRights/";
@@ -209,7 +220,7 @@ $wgNotifyTypeAvailabilityByCategory=
 ];
 */
 
-/*Flow*/
+/*Flow
 //Requires update.php
 if ($wmgExtensionFlow)
 {wfLoadExtension("Flow");
@@ -247,6 +258,7 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
   {unset($wgGroupPermissions["flow-bot"]);
   unset($wgGroupPermissions["suppress"]);};
 }
+*/
 
 /*GlobalBlocking*/
 if ($wmgGlobalAccountMode!="")
@@ -261,9 +273,9 @@ if ($wmgGlobalAccountMode!="centralauth")
 /*GlobalUserPage*/
 if ($wmgGlobalAccountMode!="")
 wfLoadExtension("GlobalUserPage");
-{$wgGlobalUserPageAPIUrl="//{$wmgCentralWiki}.plavormind.tk:81{$wgScriptPath}/api.php";
-$wgGlobalUserPageCacheExpiry=60;
-$wgGlobalUserPageDBname="{$wmgCentralWiki}wiki";}
+{$wgGlobalUserPageAPIUrl="http://".$wmgCentralWiki.".plavormind.tk:81".$wgScriptPath."/api.php";
+$wgGlobalUserPageCacheExpiry=$wmgCacheExpiry;
+$wgGlobalUserPageDBname=$wmgCentralWiki."wiki";}
 
 /*Highlightjs_Integration*/
 if (PHP_OS_FAMILY=="Windows"&&$wmgExtensionHighlightjs_Integration)
