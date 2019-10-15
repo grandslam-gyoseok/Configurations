@@ -89,20 +89,6 @@ $wgGroupPermissions["steward"]["centralauth-lock"]=false;
 $wgGroupPermissions["steward"]["centralauth-oversight"]=false;
 $wgGroupPermissions["steward"]["centralauth-unmerge"]=false;}
 
-/*CentralNotice
-//Disabled due to low speed of wiki
-wfLoadExtension("CentralNotice");
-$wgCentralHost="//{$wmgCentralWiki}.plavormind.tk:81";
-$wgNoticeInfrastructure=false;
-$wgNoticeProject=$wmgWiki;
-$wgNoticeProjects=["exit"];
-
-//Must be after $wgCentralHost
-$wgCentralBannerRecorder="{$wgCentralHost}/page/Special:RecordImpression";
-$wgCentralNoticeApiUrl="{$wgCentralHost}/mediawiki/api.php";
-$wgCentralSelectedBannerDispatcher="{$wgCentralHost}/page/Special:BannerLoader";
-*/
-
 /*ChangeAuthor*/
 wfLoadExtension("ChangeAuthor");
 //Permissions
@@ -368,7 +354,6 @@ wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
 $wgStaffPowersStewardGroupName="moderator";
 //Permissions
-//$wgGroupPermissions["staff"]["unblockable"]=false;
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ["admin"=>
   ["unblockable"=>true],
