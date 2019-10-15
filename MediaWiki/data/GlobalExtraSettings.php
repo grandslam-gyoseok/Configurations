@@ -368,7 +368,7 @@ wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
 $wgStaffPowersStewardGroupName="moderator";
 //Permissions
-$wgGroupPermissions["staff"]["unblockable"]=false;
+//$wgGroupPermissions["staff"]["unblockable"]=false;
 $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ["admin"=>
   ["unblockable"=>true],
@@ -377,6 +377,8 @@ $wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
 ]);
 if ($wmgGlobalAccountMode!="centralauth")
 {$wgGroupPermissions["steward"]["unblockable"]=true;}
+$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
+{unset($wgGroupPermissions["staff"]);};
 
 /*StalkerLog*/
 //Requires update.php
