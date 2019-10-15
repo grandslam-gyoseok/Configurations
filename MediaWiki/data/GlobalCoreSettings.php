@@ -241,7 +241,7 @@ $wgAutoConfirmAge=60*60*24*$wgLearnerMemberSince;
 $wgAutoConfirmCount=$wgLearnerEdits;
 
 /*Group permissions*/
-$wgAddGroups["bureaucrat"]=["staff","admin"];
+$wgAddGroups["bureaucrat"]=["moderator","admin"];
 $wgGroupPermissions=
 ["*"=>
   ["autocreateaccount"=>true,
@@ -285,7 +285,7 @@ $wgGroupPermissions=
   "delete"=>true,
   "deletedtext"=>true,
   "deleterevision"=>true,
-  "editprotected-staff"=>true,
+  "editprotected-moderator"=>true,
   "protect"=>true,
   "reupload-shared"=>true,
   "rollback"=>true,
@@ -296,7 +296,7 @@ $wgGroupPermissions=
   ["changetags"=>true,
   "deletelogentry"=>true,
   "editcontentmodel"=>true,
-  "editprotected"=>true,
+  "editprotected-admin"=>true,
   "import"=>true,
   "ipblock-exempt"=>true,
   "move-subpages"=>true,
@@ -328,12 +328,12 @@ $wgGroupPermissions=
   "unblockself"=>true,
   "writeapi"=>true]
 ];
-$wgRemoveGroups["bureaucrat"]=["staff","admin"];
+$wgRemoveGroups["bureaucrat"]=["moderator","admin"];
 
 /*Protection*/
 $wgCascadingRestrictionLevels=
 ["editprotected-moderator",
-"editprotected",
+"editprotected-admin",
 "editprotected-bureaucrat",
 "editprotected-steward"];
 $wgNamespaceProtection[NS_USER]=["editprotected-user"];
@@ -342,7 +342,7 @@ $wgRestrictionLevels=
 "editprotected-user",
 "editsemiprotected",
 "editprotected-moderator",
-"editprotected",
+"editprotected-admin",
 "editprotected-bureaucrat",
 "editprotected-steward"];
 $wgRestrictionTypes=
