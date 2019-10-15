@@ -117,7 +117,7 @@ $wgPasswordPolicy["policies"]=
     ["forceChange"=>true,
     "value"=>true]
   ],
-"staff"=>
+"moderator"=>
   ["MinimumPasswordLengthToLogin"=>6,
   "PasswordCannotBePopular"=>100],
 "admin"=>
@@ -278,7 +278,7 @@ $wgGroupPermissions=
   "purge"=>true,
   "reupload"=>true,
   "upload"=>true],
-"staff"=>
+"moderator"=>
   ["autopatrol"=>true,
   "block"=>true,
   "blockemail"=>true,
@@ -363,8 +363,8 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 /*Others*/
 $wgDeleteRevisionsLimit=250;
 //Permission inheritance
-$wgGroupPermissions["staff"]+=$wgGroupPermissions["autoconfirmed"];
-$wgGroupPermissions["admin"]+=$wgGroupPermissions["staff"];
+$wgGroupPermissions["moderator"]+=$wgGroupPermissions["autoconfirmed"];
+$wgGroupPermissions["admin"]+=$wgGroupPermissions["moderator"];
 $wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
 if ($wmgGlobalAccountMode=="centralauth")
 {unset($wgGroupPermissions["steward"]);}
