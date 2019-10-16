@@ -435,7 +435,7 @@ if ($wmgGlobalAccountMode!="centralauth")
 if ($wmgExtensionWikiEditor)
 {wfLoadExtension("WikiEditor");}
 
-##Skins
+#Skins
 
 /*Liberty*/
 wfLoadSkin("Liberty");
