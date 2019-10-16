@@ -6,7 +6,7 @@ if (!defined("MEDIAWIKI"))
 
 /*Databases*/
 $wgDBname=$wmgWiki."wiki";
-$wgLocalDatabases=["exitwiki","livewiki","osawiki"];
+$wgLocalDatabases=["exitwiki","osawiki"];
 if (!in_array($wgDBname,$wgLocalDatabases))
 {exit("Cannot find this wiki.");}
 
@@ -65,7 +65,7 @@ $wgEnablePartialBlocks=true;
 
 /*Copyright*/
 $wgMaxCredits=10;
-$wgRightsIcon="{$wgScriptPath}/resources/assets/licenses/cc-by-sa.png";
+$wgRightsIcon=$wgScriptPath."/resources/assets/licenses/cc-by-sa.png";
 $wgRightsText="Creative Commons Attribution-ShareAlike 4.0 International";
 $wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/";
 
