@@ -1,10 +1,8 @@
 <?php
-##Prevent web access
-
 if (!defined("MEDIAWIKI"))
 {exit("This is not a valid entry point.");}
 
-##General
+#General
 
 /*Basic information*/
 $wgSitename="Live위키";
@@ -35,7 +33,7 @@ $wgForceUIMsgAsContentMsg=
 "undo-summary",
 "unprotectedarticle-comment"];
 
-##Extensions
+#Extensions
 
 /*Extensions usage*/
 $wmgExtensionCite=true;
