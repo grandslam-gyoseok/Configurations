@@ -16,7 +16,7 @@ $wmgGlobalAccountExemptWikis=["pocket"];
 $wmgGlobalAccountMode="centralauth";
 if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
 {$wmgGlobalAccountMode="";}
-$wmgRootDomain="plavormind.tk";
+$wmgRootHost="plavormind.tk:81";
 
 /*Others*/
 if ($wmgGlobalAccountMode!="")
@@ -25,9 +25,8 @@ $wgConf->settings=
 ["wgArticlePath"=>
   ["default"=>"/page/$1"],
 "wgServer"=>
-  ["default"=>'http://$lang.'.$wmgRootDomain.':81']
+  ["default"=>'http://$lang.'.$wmgRootHost]
 ];
-$wgConf->siteParamsCallback="efGetSiteParams";
 $wgConf->suffixes=["wiki"];
 $wgConf->wikis=$wgLocalDatabases;
 $wgConf->extractAllGlobals($wgDBname);}
@@ -205,7 +204,7 @@ $wgWatchersMaxAge=60*60*24*7; //1 week
 $wgDefaultRobotPolicy="noindex,nofollow";
 //All namespaces
 $wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-$wgNoFollowDomainExceptions=[$wmgRootDomain];
+$wgNoFollowDomainExceptions=[parse_url($wmgRootHost,PHP_URL_HOST)];
 
 /*Others*/
 $wgActiveUserDays=7; //1 week
