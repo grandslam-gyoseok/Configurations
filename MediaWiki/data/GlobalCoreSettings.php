@@ -522,10 +522,6 @@ $wmgExtensionPageImages=false;
 $wmgExtensionParserFunctions=false;
 $wmgExtensionPerformanceInspector=false;
 $wmgExtensionPopups=false;
-if ($wmgGlobalAccountMode=="centralauth")
-{$wmgExtensionRenameuser=true;}
-else
-{$wmgExtensionRenameuser=false;}
 $wmgExtensionReplaceText=false;
 $wmgExtensionSecurePoll=false;
 $wmgExtensionSimpleMathJax=false;
