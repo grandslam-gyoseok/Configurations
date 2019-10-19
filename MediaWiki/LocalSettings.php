@@ -32,6 +32,7 @@ return
     []
   ];
 }
+$wgConf->siteParamsCallback="efGetSiteParams";
 
 /*Variables*/
 $wmgCacheExpiry=60; //1 minute
@@ -49,7 +50,7 @@ $wmgPrivateDataDirectory="C:/plavormind/web_data/mediawiki";
 break;
 default:
 $wmgPrivateDataDirectory=$IP."/private_data";}
-$wmgRootDomain="example.com";
+$wmgRootHost="example.com";
 $wmgWiki="wiki";
 
 /*Wiki selector*/
