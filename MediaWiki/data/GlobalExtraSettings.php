@@ -78,7 +78,7 @@ if ($wmgGlobalAccountMode=="centralauth")
 {wfLoadExtension("CentralAuth");
 $wgCentralAuthAutoMigrate=true;
 $wgCentralAuthAutoMigrateNonGlobalAccounts=true;
-$wgCentralAuthCookieDomain=".plavormind.tk";
+$wgCentralAuthCookieDomain=".".$wmgRootDomain;
 $wgCentralAuthCookies=true;
 $wgCentralAuthCreateOnView=true;
 $wgCentralAuthDatabase="wiki_centralauth";
@@ -260,7 +260,7 @@ if ($wmgGlobalAccountMode!="centralauth")
 /*GlobalUserPage*/
 if ($wmgGlobalAccountMode!="")
 wfLoadExtension("GlobalUserPage");
-{$wgGlobalUserPageAPIUrl="http://".$wmgCentralWiki.".plavormind.tk:81".$wgScriptPath."/api.php";
+{$wgGlobalUserPageAPIUrl="http://".$wmgCentralWiki.".".$wmgRootDomain.":81".$wgScriptPath."/api.php";
 $wgGlobalUserPageCacheExpiry=$wmgCacheExpiry;
 $wgGlobalUserPageDBname=$wmgCentralWiki."wiki";}
 
