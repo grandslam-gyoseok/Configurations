@@ -21,6 +21,10 @@ if ($wmgGlobalAccountMode!="")
 {//Permissions
 $wgGroupPermissions["steward"]["globalblock"]=true;}
 
+/*Interwiki*/
+//Permissions
+$wgGroupPermissions["bureaucrat"]["interwiki"]=false;
+
 /*UserPageEditProtection*/
 $wgOnlyUserEditUserPage=true;
 ?>
