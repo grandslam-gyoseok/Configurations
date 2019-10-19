@@ -96,7 +96,6 @@ $wmgExtensionNuke=true;
 $wmgExtensionPageImages=true;
 $wmgExtensionPerformanceInspector=true;
 $wmgExtensionPopups=true;
-$wmgExtensionRenameuser=true; //This should always be enabled on central wiki
 $wmgExtensionReplaceText=true;
 $wmgExtensionSyntaxHighlight_GeSHi=true;
 $wmgExtensionTemplateData=true;
