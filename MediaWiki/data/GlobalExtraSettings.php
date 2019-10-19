@@ -281,6 +281,7 @@ wfLoadExtension("Interwiki");
 if ($wmgGlobalAccountMode!="")
 {$wgInterwikiCentralDB=$wmgCentralWiki."wiki";}
 //Permissions
+$wgGroupPermissions["bureaucrat"]["interwiki"]=true;
 if ($wmgGlobalAccountMode!="centralauth")
 {$wgGroupPermissions["steward"]["interwiki"]=true;}
 
