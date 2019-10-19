@@ -331,13 +331,11 @@ $wgPopupsOptInDefaultState="1";
 $wgPopupsHideOptInOnPreferencesPage=true;}
 
 /*Renameuser*/
-if ($wmgExtensionRenameuser)
-{wfLoadExtension("Renameuser");
+wfLoadExtension("Renameuser");
 //Permissions
 $wgGroupPermissions["bureaucrat"]["renameuser"]=false;
 if ($wmgGlobalAccountMode!="centralauth")
-  {$wgGroupPermissions["steward"]["renameuser"]=true;}
-}
+{$wgGroupPermissions["steward"]["renameuser"]=true;}
 
 /*ReplaceText*/
 if ($wmgExtensionReplaceText)
