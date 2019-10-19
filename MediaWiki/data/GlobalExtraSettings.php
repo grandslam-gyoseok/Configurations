@@ -257,6 +257,14 @@ if ($wmgGlobalAccountMode!="centralauth")
   {$wgGroupPermissions["steward"]["globalblock-exempt"]=true;}
 }
 
+/*GlobalPreferences*/
+//Requires update.php
+if ($wmgGlobalAccountMode!="")
+{wfLoadExtension("GlobalPreferences");
+if ($wmgGlobalAccountMode=="centralauth")
+  {$wgGlobalPreferencesDB="wiki_globalpreferences";}
+}
+
 /*GlobalUserPage*/
 if ($wmgGlobalAccountMode!="")
 wfLoadExtension("GlobalUserPage");
