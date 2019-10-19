@@ -49,6 +49,7 @@ $wmgPrivateDataDirectory="C:/plavormind/web_data/mediawiki";
 break;
 default:
 $wmgPrivateDataDirectory=$IP."/private_data";}
+$wmgRootDomain="example.com";
 $wmgWiki="wiki";
 
 /*Wiki selector*/
