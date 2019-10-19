@@ -78,7 +78,7 @@ if ($wmgGlobalAccountMode=="centralauth")
 {wfLoadExtension("CentralAuth");
 $wgCentralAuthAutoMigrate=true;
 $wgCentralAuthAutoMigrateNonGlobalAccounts=true;
-$wgCentralAuthCookieDomain=".".$wmgRootDomain;
+$wgCentralAuthCookieDomain=".".parse_url($wmgRootHost,PHP_URL_HOST);
 $wgCentralAuthCookies=true;
 $wgCentralAuthCreateOnView=true;
 $wgCentralAuthDatabase="wiki_centralauth";
@@ -181,7 +181,7 @@ if ($wgCommandLineMode)
 {$wgDiscordFromName=$wgSitename." (".$wmgWiki.")";}
 else
 {$wgDiscordFromName=$wgSitename." (".$_SERVER["HTTP_HOST"].")";}
-$wgWikiUrl="{$wgServer}/";
+$wgWikiUrl=$wgServer."/";
 $wgWikiUrlEnding="mediawiki/index.php?title=";
 $wgWikiUrlEndingUserRights="Special:UserRights/";
 
@@ -268,7 +268,7 @@ if ($wmgGlobalAccountMode=="centralauth")
 /*GlobalUserPage*/
 if ($wmgGlobalAccountMode!="")
 wfLoadExtension("GlobalUserPage");
-{$wgGlobalUserPageAPIUrl="http://".$wmgCentralWiki.".".$wmgRootDomain.":81".$wgScriptPath."/api.php";
+{$wgGlobalUserPageAPIUrl="http://".$wmgCentralWiki.".".$wmgRootHost.$wgScriptPath."/api.php";
 $wgGlobalUserPageCacheExpiry=$wmgCacheExpiry;
 $wgGlobalUserPageDBname=$wmgCentralWiki."wiki";}
 
@@ -278,6 +278,8 @@ if (PHP_OS_FAMILY=="Windows"&&$wmgExtensionHighlightjs_Integration)
 
 /*Interwiki*/
 wfLoadExtension("Interwiki");
+if ($wmgGlobalAccountMode!="")
+{$wgInterwikiCentralDB=$wmgCentralWiki."wiki";}
 //Permissions
 if ($wmgGlobalAccountMode!="centralauth")
 {$wgGroupPermissions["steward"]["interwiki"]=true;}
