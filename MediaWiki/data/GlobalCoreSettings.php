@@ -381,7 +381,8 @@ $wgUploadPath=$wgScriptPath."/img_auth.php";
 /*ImageMagick*/
 if (PHP_OS_FAMILY=="Windows")
 {$wgImageMagickConvertCommand="C:/Program Files/ImageMagick-7.0.8-Q16-HDRI/convert.exe";
-$wgSVGConverters["ImageMagick"]=$wgImageMagickConvertCommand.' -background none -thumbnail $widthx$height\! $input $output';}
+//"!" should not be escaped on Windows
+$wgSVGConverters["ImageMagick"]=$wgImageMagickConvertCommand.' -background none -thumbnail $widthx$height! $input $output';}
 if (file_exists($wgImageMagickConvertCommand))
 {$wgUseImageMagick=true;}
 
