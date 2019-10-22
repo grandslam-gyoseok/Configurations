@@ -43,10 +43,6 @@ if ($wmgGlobalAccountMode!="centralauth")
 "abusefilter-view-private"=>true]);}
 */
 
-/*AlwaysBlueCategory*/
-if ($wmgExtensionAlwaysBlueCategory)
-{wfLoadExtension("AlwaysBlueCategory");}
-
 /*AntiSpoof*/
 //Requires update.php
 wfLoadExtension("AntiSpoof");
