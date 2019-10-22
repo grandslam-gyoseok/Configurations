@@ -319,6 +319,9 @@ $wgDefaultUserOptions["performanceinspector"]=true;}
 
 /*PlavorMindTools*/
 wfLoadExtension("PlavorMindTools");
+$wgPMTEnabledTools=["bluecategorylinks","pmtmsg"];
+$wgPMTEnglishSystemUsers=true;
+$wgPMTPlavorMindMessages=true;
 
 /*Popups*/
 if ($wmgExtensionPageImages&&$wmgExtensionPopups&&$wmgExtensionTextExtracts)
