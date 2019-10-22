@@ -269,8 +269,8 @@ $wgGroupPermissions=
   "viewmywatchlist"=>true],
 "autoconfirmed"=>
   ["autoconfirmed"=>true,
+  "editprotected-autoconfirmed"=>true,
   "editprotected-user"=>true, //Patch for protection
-  "editsemiprotected"=>true,
   "move"=>true,
   "move-categorypages"=>true,
   "move-rootuserpages"=>true,
@@ -340,7 +340,7 @@ $wgNamespaceProtection[NS_USER]=["editprotected-user"];
 $wgRestrictionLevels=
 ["",
 "editprotected-user",
-"editsemiprotected",
+"editprotected-autoconfirmed",
 "editprotected-moderator",
 "editprotected-admin",
 "editprotected-bureaucrat",
@@ -354,7 +354,7 @@ $wgRestrictionTypes=
 "protect"];
 $wgSemiprotectedRestrictionLevels=
 ["editprotected-user",
-"editsemiprotected"];
+"editprotected-autoconfirmed"];
 
 /*Removal of groups*/
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
