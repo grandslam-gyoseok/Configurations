@@ -25,6 +25,9 @@ $wgGroupPermissions["steward"]["globalblock"]=true;}
 //Permissions
 $wgGroupPermissions["bureaucrat"]["interwiki"]=false;
 
+/*PlavorMindTools*/
+$wgPMTEnabledTools[]="bluecategorylinks";
+
 /*UserPageEditProtection*/
 $wgOnlyUserEditUserPage=true;
 ?>
