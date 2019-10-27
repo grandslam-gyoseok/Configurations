@@ -534,6 +534,7 @@ $wmgExtensionSecurePoll=false;
 $wmgExtensionSimpleMathJax=false;
 $wmgExtensionSyntaxHighlight_GeSHi=false;
 $wmgExtensionTemplateData=false;
+$wmgExtensionTemplateStyles=false;
 $wmgExtensionTemplateWizard=false;
 $wmgExtensionTextExtracts=false;
 $wmgExtensionTwoColConflict=false;
