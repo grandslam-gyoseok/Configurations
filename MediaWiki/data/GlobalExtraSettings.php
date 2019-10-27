@@ -54,7 +54,6 @@ if ($wmgGlobalAccountMode!="centralauth")
 {$wgGroupPermissions["steward"]["override-antispoof"]=true;}
 
 /*Babel*/
-//Requires update.php
 if ($wmgExtensionBabel)
 {wfLoadExtension("Babel");
 $wgBabelCategoryNames=
