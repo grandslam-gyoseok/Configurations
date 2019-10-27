@@ -244,6 +244,7 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 */
 
 /*GlobalBlocking*/
+//Requires update.php
 if ($wmgGlobalAccountMode!="")
 {wfLoadExtension("GlobalBlocking");
 $wgGlobalBlockingDatabase="wiki_globalblocking";
@@ -381,6 +382,12 @@ if (PHP_OS_FAMILY=="Linux"&&$wmgExtensionSyntaxHighlight_GeSHi)
 /*TemplateData*/
 if ($wmgExtensionTemplateData)
 {wfLoadExtension("TemplateData");}
+
+/*TemplateStyles*/
+if ($wmgExtensionTemplateStyles)
+{wfLoadExtension("TemplateStyles");
+//Remove default value
+$wgTemplateStylesAllowedUrls=[];}
 
 /*TemplateWizard*/
 if ($wmgExtensionTemplateData&&$wmgExtensionTemplateWizard&&$wmgExtensionWikiEditor)
