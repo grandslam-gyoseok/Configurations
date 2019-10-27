@@ -98,6 +98,7 @@ $wmgExtensionPopups=true;
 $wmgExtensionReplaceText=true;
 $wmgExtensionSyntaxHighlight_GeSHi=true;
 $wmgExtensionTemplateData=true;
+$wmgExtensionTemplateStyles=true;
 $wmgExtensionTemplateWizard=true;
 $wmgExtensionTextExtracts=true;
 $wmgExtensionTwoColConflict=true;
