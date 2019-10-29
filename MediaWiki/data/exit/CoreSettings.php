@@ -96,6 +96,7 @@ $wmgExtensionPageImages=true;
 $wmgExtensionPerformanceInspector=true;
 $wmgExtensionPopups=true;
 $wmgExtensionReplaceText=true;
+$wmgExtensionRevisionSlider=true;
 $wmgExtensionSyntaxHighlight_GeSHi=true;
 $wmgExtensionTemplateData=true;
 $wmgExtensionTemplateStyles=true;
