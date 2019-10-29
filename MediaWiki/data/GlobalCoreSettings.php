@@ -530,6 +530,7 @@ $wmgExtensionParserFunctions=false;
 $wmgExtensionPerformanceInspector=false;
 $wmgExtensionPopups=false;
 $wmgExtensionReplaceText=false;
+$wmgExtensionRevisionSlider=false;
 $wmgExtensionSecurePoll=false;
 $wmgExtensionSimpleMathJax=false;
 $wmgExtensionSyntaxHighlight_GeSHi=false;
