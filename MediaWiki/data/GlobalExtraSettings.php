@@ -344,6 +344,10 @@ if ($wmgGlobalAccountMode!="centralauth")
   {$wgGroupPermissions["steward"]["replacetext"]=true;}
 }
 
+/*RevisionSlider*/
+if ($wmgExtensionRevisionSlider)
+{wfLoadExtension("RevisionSlider");}
+
 /*SecurePoll*/
 //Requires update.php
 if ($wmgExtensionSecurePoll)
