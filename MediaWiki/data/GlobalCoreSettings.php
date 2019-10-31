@@ -11,12 +11,8 @@ if (!in_array($wgDBname,$wgLocalDatabases))
 {exit("Cannot find this wiki.");}
 
 /*Variables*/
-$wmgCentralWiki="exit";
-$wmgGlobalAccountExemptWikis=["pocket"];
-$wmgGlobalAccountMode="centralauth";
 if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
 {$wmgGlobalAccountMode="";}
-$wmgRootHost="plavormind.tk:81";
 
 /*Others*/
 if ($wmgGlobalAccountMode!="")
