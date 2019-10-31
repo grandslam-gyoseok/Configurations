@@ -36,11 +36,11 @@ $wgConf->siteParamsCallback="efGetSiteParams";
 
 /*Variables*/
 $wmgCacheExpiry=60; //1 minute
-$wmgCentralWiki="wiki";
+$wmgCentralWiki="exit";
 $wmgDataDirectory=$IP."/data";
-$wmgGlobalAccountExemptWikis=[];
+$wmgGlobalAccountExemptWikis=["pocket"];
 //Should be one of "", "centralauth" and "shared-database"
-$wmgGlobalAccountMode="";
+$wmgGlobalAccountMode="centralauth";
 switch (PHP_OS_FAMILY)
 {case "Linux":
 $wmgPrivateDataDirectory="/plavormind/web_data/mediawiki";
@@ -50,7 +50,7 @@ $wmgPrivateDataDirectory="C:/plavormind/web_data/mediawiki";
 break;
 default:
 $wmgPrivateDataDirectory=$IP."/private_data";}
-$wmgRootHost="example.com";
+$wmgRootHost="plavormind.tk:81";
 $wmgWiki="wiki";
 
 /*Wiki selector*/
