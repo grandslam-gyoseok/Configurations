@@ -137,8 +137,9 @@ if ($wmgExtensionCommonsMetadata)
 {wfLoadExtension("CommonsMetadata");}
 
 /*ConfirmEdit*/
-wfLoadExtension("ConfirmEdit");
+wfLoadExtensions(["ConfirmEdit","ConfirmEdit/ReCaptchaNoCaptcha"]);
 $wgCaptchaBadLoginExpiration=60*60; //1 hour
+$wgCaptchaClass="ReCaptchaNoCaptcha";
 $wgCaptchaTriggers["create"]=true;
 $wgCaptchaTriggersOnNamespace=
 [NS_USER=>
