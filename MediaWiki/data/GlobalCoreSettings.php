@@ -156,32 +156,141 @@ $wgPasswordAttemptThrottle=
   ["count"=>30,
   "seconds"=>60*60*24]
 ];
-$wgRateLimits=array_merge($wgRateLimits,
+$wgRateLimits=
+//"anon" aggregates all non-logged in users (not per-IP basis)
 ["edit"=>
   ["ip"=>
-    [3,60],
+    [5,60], //5/min
   "newbie"=>
-    [5,60],
+    [5,60], //5/min
   "user"=>
-    [10,60]
+    [10,60] //10/min
   ],
 "move"=>
   ["ip"=>
-    [1,60],
+    [2,60], //2/min
   "newbie"=>
-    [2,60],
+    [2,60], //2/min
   "user"=>
-    [5,60]
+    [5,60] //5/min
   ],
 "upload"=>
   ["ip"=>
-    [1,60],
+    [1,60], //1/min
   "newbie"=>
-    [1,60],
+    [1,60], //1/min
   "user"=>
-    [3,60]
+    [3,60] //3/min
+  ],
+"rollback"=>
+  ["ip"=>
+    [5,60], //5/min
+  "newbie"=>
+    [5,60], //5/min
+  "user"=>
+    [10,60] //10/min
+  ],
+"mailpassword"=>
+  ["ip"=>
+    [5,60*60*24] //5/day
+  ],
+"emailuser"=>
+  ["&can-bypass"=>false,
+  "ip"=>
+    [3,60*60], //3/h
+  "newbie"=>
+    [3,60*60], //3/h
+  "user"=>
+    [10,60*60] //10/h
+  ],
+"changeemail"=>
+  ["&can-bypass"=>false,
+  "ip"=>
+    [3,60*60*24], //3/day
+  "newbie"=>
+    [3,60*60*24], //3/day
+  "user"=>
+    [6,60*60*24] //6/day
+  ],
+"confirmemail"=>
+  ["&can-bypass"=>false,
+  "ip"=>
+    [3,60*60*24], //3/day
+  "newbie"=>
+    [3,60*60*24], //3/day
+  "user"=>
+    [6,60*60*24] //6/day
+  ],
+"purge"=>
+  ["&can-bypass"=>false,
+  "anon"=>
+    [2,1], //2/s
+  "ip"=>
+    [6,60], //6/min
+  "newbie"=>
+    [3,60], //3/min
+  "user"=>
+    [10,60] //10/min
+  ],
+"linkpurge"=>
+  ["&can-bypass"=>false,
+  "anon"=>
+    [2,1], //2/s
+  "ip"=>
+    [6,60], //6/min
+  "newbie"=>
+    [3,60], //3/min
+  "user"=>
+    [10,60] //10/min
+  ],
+"renderfile"=>
+  ["&can-bypass"=>false,
+  "anon"=>
+    [30,1], //30/s
+  "ip"=>
+    [60,60], //60/min
+  "newbie"=>
+    [30,60], //30/min
+  "user"=>
+    [60,60] //60/min
+  ],
+"renderfile-nonstandard"=>
+  ["&can-bypass"=>false,
+  "anon"=>
+    [10,1], //10/s
+  "ip"=>
+    [30,60], //30/min
+  "newbie"=>
+    [15,60], //15/min
+  "user"=>
+    [40,60] //40/min
+  ],
+"stashedit"=>
+  ["&can-bypass"=>false,
+  "ip"=>
+    [15,60], //15/min
+  "newbie"=>
+    [15,60], //15/min
+  "user"=>
+    [30,60] //30/min
+  ],
+"changetag"=>
+  ["ip"=>
+    [5,60], //5/min
+  "newbie"=>
+    [5,60], //5/min
+  "user"=>
+    [10,60] //10/min
+  ],
+"editcontentmodel"=>
+  ["ip"=>
+    [1,60], //1/min
+  "newbie"=>
+    [1,60], //1/min
+  "user"=>
+    [3,60] //3/min
   ]
-]);
+];
 
 /*Recent changes and watchlist*/
 $wgLearnerEdits=15;
