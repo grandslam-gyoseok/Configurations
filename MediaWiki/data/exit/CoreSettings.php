@@ -9,7 +9,7 @@ $wgLogo=$wgScriptPath."/data/".$wmgWiki."/logo.png";
 $wgSitename="PlavorMindCentral";
 
 /*Copyright*/
-$wgRightsIcon=null;
+$wgRightsIcon="https://upload.wikimedia.org/wikipedia/commons/2/28/Licence_Art_Libre.svg";
 $wgRightsText="Free Art License 1.3";
 $wgRightsUrl="https://artlibre.org/licence/lal/en/";
 
