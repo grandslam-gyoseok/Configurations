@@ -499,7 +499,6 @@ $wgAdaptiveMessageCache=true;
 $wgInterwikiExpiry=$wmgCacheExpiry;
 $wgLanguageConverterCacheType=$wgMainCacheType;
 $wgMessageCacheType=$wgMainCacheType;
-$wgMsgCacheExpiry=$wmgCacheExpiry;
 $wgObjectCacheSessionExpiry=$wmgCacheExpiry;
 $wgParserCacheExpireTime=$wmgCacheExpiry;
 $wgParserCacheType=$wgMainCacheType;
