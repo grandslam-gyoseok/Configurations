@@ -148,16 +148,10 @@ NS_FILE=>
   ["edit"=>true]
 ];
 //Permissions
-$wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
-["autoconfirmed"=>
-  ["skipcaptcha"=>true],
-"moderator"=>
-  ["skipcaptcha"=>true],
-"admin"=>
-  ["skipcaptcha"=>true],
-"bureaucrat"=>
-  ["skipcaptcha"=>true]
-]);
+$wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
+$wgGroupPermissions["moderator"]["skipcaptcha"]=true;
+$wgGroupPermissions["admin"]["skipcaptcha"]=true;
+$wgGroupPermissions["bureaucrat"]["skipcaptcha"]=true;
 if ($wmgGlobalAccountMode!="centralauth")
 {$wgGroupPermissions["steward"]["skipcaptcha"]=true;}
 
@@ -304,9 +298,9 @@ if ($wmgGlobalAccountMode!="centralauth")
 /*PageImages*/
 if ($wmgExtensionPageImages)
 {wfLoadExtension("PageImages");
-$wgPageImagesBlacklistExpiry=60; //1 minute
+$wgPageImagesBlacklistExpiry=$wmgCacheExpiry;
 $wgPageImagesExpandOpenSearchXml=true;
-$wgPageImagesNamespaces=[NS_CATEGORY,NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];}
+$wgPageImagesNamespaces=[NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];}
 
 /*ParserFunctions*/
 if ($wmgExtensionParserFunctions)
@@ -435,14 +429,9 @@ if ($wmgGlobalAccountMode!="centralauth")
 //Add "$wgOnlyUserEditUserPage=true;" to enable this extension.
 require_once($wgExtensionDirectory."/UserPageEditProtection/UserPageEditProtection.php");
 //Permissions
-$wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
-["moderator"=>
-  ["editalluserpages"=>true],
-"admin"=>
-  ["editalluserpages"=>true],
-"bureaucrat"=>
-  ["editalluserpages"=>true]
-]);
+$wgGroupPermissions["moderator"]["editalluserpages"]=true;
+$wgGroupPermissions["admin"]["editalluserpages"]=true;
+$wgGroupPermissions["bureaucrat"]["editalluserpages"]=true;
 if ($wmgGlobalAccountMode!="centralauth")
 {$wgGroupPermissions["steward"]["editalluserpages"]=true;}
 
