@@ -1,4 +1,6 @@
-{"editor.autoIndent":false,
+{"C_Cpp.default.compilerPath":"\"C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/g++.exe\"",
+"C_Cpp.default.intelliSenseMode":"gcc-x64",
+"editor.autoIndent":false,
 "editor.detectIndentation":false,
 "editor.fontFamily":"'D2Coding','Consolas',monospace",
 "editor.tabSize":2,
