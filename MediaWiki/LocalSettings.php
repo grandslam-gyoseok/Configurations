@@ -43,10 +43,10 @@ $wmgGlobalAccountExemptWikis=["pocket"];
 $wmgGlobalAccountMode="centralauth";
 switch (PHP_OS_FAMILY)
 {case "Linux":
-$wmgPrivateDataDirectory="/plavormind/web_data/mediawiki";
+$wmgPrivateDataDirectory="/plavormind/web/data/mediawiki";
 break;
 case "Windows":
-$wmgPrivateDataDirectory="C:/plavormind/web_data/mediawiki";
+$wmgPrivateDataDirectory="C:/plavormind/web/data/mediawiki";
 break;
 default:
 $wmgPrivateDataDirectory=$IP."/private_data";}
