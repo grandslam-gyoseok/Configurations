@@ -13,9 +13,9 @@ $Messages=
 ["en"=>
   ["error-403"=>"403 Forbidden",
   "error-403-description-blockedip"=>"Your IP address might be blocked.",
-  "error-403-description-blockedpath"=>"Access to some paths is restricted for security reasons.",
   "error-403-description-directoryindex"=>"Directory indexing is disabled by default and not available in most directories. As such, accessing to directory that is missing index file may cause an error.",
   "error-403-description-emptyuseragent"=>"We don't accept requests with empty user agent.",
+  "error-403-description-restrictedpath"=>"Access to some paths is restricted for security reasons.",
   "error-403-subtitle"=>"You don't have permission to access to this page.",
   "error-404"=>"404 Not Found",
   "error-404-subtitle"=>"Cannot find requested page.",
@@ -28,9 +28,9 @@ $Messages=
   "error-page-title"=>"Error"],
 "ko"=>
   ["error-403-description-blockedip"=>"IP 주소가 차단되었을 수 있습니다.",
-  "error-403-description-blockedpath"=>"일부 경로는 보안상의 이유로 접근이 제한되어 있습니다.",
   "error-403-description-directoryindex"=>"Directory indexing은 기본적으로 비활성화되어 있으며 대부분의 디렉토리에서 사용할 수 없습니다. 따라서 index 파일이 없는 디렉토리에 접근할 경우 오류가 발생할 수 있습니다.",
   "error-403-description-emptyuseragent"=>"사용자 에이전트에 빈 문자열을 사용하는 요청을 허용하지 않습니다.",
+  "error-403-description-restrictedpath"=>"일부 경로는 보안상의 이유로 접근이 제한되어 있습니다.",
   "error-403-subtitle"=>"이 페이지에 접근할 권한이 없습니다.",
   "error-404-subtitle"=>"요청한 페이지를 찾을 수 없습니다.",
   "error-description-rationale"=>"왜 이 오류가 발생했습니까?",
@@ -76,9 +76,9 @@ switch ($response)
 echo("<h1>".get_message("error-description-rationale")."</h1>");
 echo("<ul>");
 echo("<li>".get_message("error-403-description-blockedip")."</li>");
-echo("<li>".get_message("error-403-description-blockedpath")."</li>");
 echo("<li>".get_message("error-403-description-directoryindex")."</li>");
 echo("<li>".get_message("error-403-description-emptyuseragent")."</li>");
+echo("<li>".get_message("error-403-description-restrictedpath")."</li>");
 echo("</ul>");
 break;
 case "invalid":
