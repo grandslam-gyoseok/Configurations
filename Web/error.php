@@ -82,7 +82,7 @@ echo("<li>".get_message("error-403-description-restrictedpath")."</li>");
 echo("</ul>");
 break;
 case "invalid":
-echo(get_message("error-invalid-description",$Language));
+echo(get_message("error-invalid-description"));
 echo("<div style='text-align: center;'><a href='/'>".get_message("error-gotorootpage")."</a></div>");
 break;}
 ?>
