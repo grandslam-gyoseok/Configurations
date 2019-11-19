@@ -534,7 +534,7 @@ $wgReauthenticateTime=
 /*Databases*/
 if ($wmgGlobalAccountMode=="shared-database")
 {$wgSharedDB=$wmgCentralWiki."wiki";
-$wgSharedTables=["actor","interwiki","user"];}
+$wgSharedTables=["actor","user"];}
 //SQLite-only
 $wgSQLiteDataDir=$wmgPrivateDataDirectory."/databases";
 
@@ -575,7 +575,7 @@ $wgJpegTran=false;
 $wgMemoryLimit="256M";
 switch (PHP_OS_FAMILY)
 {case "Windows":
-$wgPhpCli="C:/plavormind/php/php.exe";
+$wgPhpCli="C:/plavormind/php-nts/php.exe";
 break;}
 $wgReadOnlyFile=$wmgDataDirectory."/readonly.txt";
 
