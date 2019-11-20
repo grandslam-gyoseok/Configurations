@@ -39,6 +39,7 @@ $wgForceUIMsgAsContentMsg=
 "restriction-move",
 "restriction-protect",
 "restriction-upload",
+"revertpage",
 "undo-summary",
 "unprotectedarticle-comment"];
 $wgSiteNotice="Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]";
