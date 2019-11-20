@@ -27,7 +27,7 @@ $wgForceUIMsgAsContentMsg=
 "protect-level-editprotected-admin",
 "protect-level-editprotected-autoconfirmed",
 "protect-level-editprotected-bureaucrat",
-"protect-level-editprotected-staff",
+"protect-level-editprotected-moderator",
 "protect-level-editprotected-steward",
 "protect-level-editprotected-user",
 "protect-level-editsemiprotected",
@@ -69,7 +69,7 @@ $wgGroupPermissions["steward"]["userrights-interwiki"]=true;
 /*Protection*/
 $wgNamespaceProtection=
 [NS_CATEGORY=>
-  ["editsemiprotected"],
+  ["editprotected-autoconfirmed"],
 NS_HELP=>
   ["editprotected-moderator"],
 NS_MEDIAWIKI_TALK=>
