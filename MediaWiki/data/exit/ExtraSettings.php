@@ -27,7 +27,4 @@ $wgGroupPermissions["bureaucrat"]["interwiki"]=false;
 
 /*PlavorMindTools*/
 $wgPMTEnabledTools[]="bluecategorylinks";
-
-/*UserPageEditProtection*/
-$wgOnlyUserEditUserPage=true;
 ?>
