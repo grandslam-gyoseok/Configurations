@@ -79,7 +79,6 @@ $wgSpecialVersionShowHooks=true;
 /*Interwiki*/
 $wgEnableScaryTranscluding=true;
 $wgExternalInterwikiFragmentMode="html5";
-$wgRedirectSources="https?:\\/\\/.+";
 
 /*Namespaces*/
 //Exclude File namespace
