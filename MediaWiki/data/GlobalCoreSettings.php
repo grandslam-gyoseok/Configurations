@@ -483,11 +483,17 @@ $wgUploadPath=$wgScriptPath."/img_auth.php";
 
 /*ImageMagick*/
 if (PHP_OS_FAMILY=="Windows")
-{$wgImageMagickConvertCommand="C:/Program Files/ImageMagick-7.0.8-Q16-HDRI/convert.exe";
-//"!" should not be escaped on Windows
-$wgSVGConverters["ImageMagick"]=$wgImageMagickConvertCommand.' -background none -thumbnail $widthx$height! $input $output';}
+{$wgImageMagickConvertCommand="C:/Program Files/ImageMagick-7.0.8-Q16-HDRI/convert.exe";}
 if (file_exists($wgImageMagickConvertCommand))
 {$wgUseImageMagick=true;}
+
+/*SVG*/
+$wgSVGConverter="inkscape";
+if (PHP_OS_FAMILY=="Windows")
+{$wgSVGConverters=array_merge($wgSVGConverters,
+//"!" should not be escaped on Windows
+["ImageMagick"=>$wgImageMagickConvertCommand.' -background none -thumbnail $widthx$height! $input $output',
+"inkscape"=>'"C:/Program Files/Inkscape/inkscape.exe" --export-height=$height --export-png=$output --export-width=$width --file=$input --without-gui']);}
 
 /*Thumbnails*/
 $wgGenerateThumbnailOnParse=false;
@@ -500,6 +506,7 @@ $wgCopyUploadsFromSpecialUpload=true;
 
 /*Others*/
 $wgEnableUploads=true;
+$wgFileExtensions=["gif","jpg","png","svg","webp"];
 $wgHashedUploadDirectory=false;
 $wgMaxUploadSize=
 ["*"=>1024*1024*5, //5 MB
