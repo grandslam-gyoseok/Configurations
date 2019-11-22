@@ -319,6 +319,12 @@ wfLoadExtension("PlavorMindTools");
 $wgPMTEnabledTools=["pmtmsg"];
 $wgPMTEnglishSystemUsers=true;
 $wgPMTPlavorMindMessages=true;
+//Permissions
+$wgGroupPermissions["moderator"]["editotheruserpages"]=true;
+$wgGroupPermissions["admin"]["editotheruserpages"]=true;
+$wgGroupPermissions["bureaucrat"]["editotheruserpages"]=true;
+if ($wmgGlobalAccountMode!="centralauth")
+{$wgGroupPermissions["steward"]["editotheruserpages"]=true;}
 
 /*Popups*/
 if ($wmgExtensionPageImages&&$wmgExtensionPopups&&$wmgExtensionTextExtracts)
