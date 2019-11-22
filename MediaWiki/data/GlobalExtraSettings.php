@@ -86,10 +86,12 @@ $wgGroupPermissions["steward"]["centralauth-oversight"]=false;
 $wgGroupPermissions["steward"]["centralauth-unmerge"]=false;}
 
 /*ChangeAuthor*/
-wfLoadExtension("ChangeAuthor");
+if ($wmgExtensionChangeAuthor)
+{wfLoadExtension("ChangeAuthor");
 //Permissions
 if ($wmgGlobalAccountMode!="centralauth")
-{$wgGroupPermissions["steward"]["changeauthor"]=true;}
+  {$wgGroupPermissions["steward"]["changeauthor"]=true;}
+}
 
 /*CheckUser*/
 //Requires update.php
@@ -424,16 +426,6 @@ $wgUserMergeProtectedGroups=[];
 if ($wmgGlobalAccountMode!="centralauth")
   {$wgGroupPermissions["steward"]["usermerge"]=true;}
 }
-
-/*UserPageEditProtection*/
-//Add "$wgOnlyUserEditUserPage=true;" to enable this extension.
-require_once($wgExtensionDirectory."/UserPageEditProtection/UserPageEditProtection.php");
-//Permissions
-$wgGroupPermissions["moderator"]["editalluserpages"]=true;
-$wgGroupPermissions["admin"]["editalluserpages"]=true;
-$wgGroupPermissions["bureaucrat"]["editalluserpages"]=true;
-if ($wmgGlobalAccountMode!="centralauth")
-{$wgGroupPermissions["steward"]["editalluserpages"]=true;}
 
 /*WikiEditor*/
 if ($wmgExtensionWikiEditor)
