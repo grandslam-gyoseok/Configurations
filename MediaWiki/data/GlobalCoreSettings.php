@@ -649,6 +649,5 @@ $wmgExtensionTemplateStyles=false;
 $wmgExtensionTemplateWizard=false;
 $wmgExtensionTextExtracts=false;
 $wmgExtensionTwoColConflict=false;
-$wmgExtensionUserPageEditProtection=false;
 $wmgExtensionWikiEditor=false;
 ?>
