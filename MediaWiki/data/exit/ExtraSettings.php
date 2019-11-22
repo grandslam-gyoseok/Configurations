@@ -26,5 +26,5 @@ $wgGroupPermissions["steward"]["globalblock"]=true;}
 $wgGroupPermissions["bureaucrat"]["interwiki"]=false;
 
 /*PlavorMindTools*/
-$wgPMTEnabledTools[]="bluecategorylinks";
+$wgPMTEnabledTools=array_merge($wgPMTEnabledTools,["bluecategorylinks","protectuserpages"])
 ?>
