@@ -144,10 +144,10 @@ $wgCaptchaBadLoginExpiration=60*60; //1 hour
 $wgCaptchaClass="ReCaptchaNoCaptcha";
 $wgCaptchaTriggers["create"]=true;
 $wgCaptchaTriggersOnNamespace=
-[NS_USER=>
-  ["create"=>false],
-NS_FILE=>
-  ["edit"=>true]
+[NS_FILE=>
+  ["edit"=>true],
+NS_USER=>
+  ["create"=>false]
 ];
 //Permissions
 $wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
@@ -423,6 +423,10 @@ $wgGroupPermissions["steward"]["titleblacklistlog"]=true;}
 if ($wmgExtensionTwoColConflict)
 {wfLoadExtension("TwoColConflict");}
 
+/*UploadsLink*/
+if ($wmgExtensionUploadsLink)
+{wfLoadExtension("UploadsLink");}
+
 /*UserMerge*/
 if ($wmgGlobalAccountMode!="shared-database")
 {wfLoadExtension("UserMerge");
@@ -436,6 +440,9 @@ if ($wmgGlobalAccountMode!="centralauth")
 /*WikiEditor*/
 if ($wmgExtensionWikiEditor)
 {wfLoadExtension("WikiEditor");}
+
+/*Other extensions*/
+wfLoadExtension("SecureLinkFixer");
 
 #Skins
 
