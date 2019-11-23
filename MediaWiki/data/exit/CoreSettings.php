@@ -104,5 +104,6 @@ $wmgExtensionTemplateStyles=true;
 $wmgExtensionTemplateWizard=true;
 $wmgExtensionTextExtracts=true;
 $wmgExtensionTwoColConflict=true;
+$wmgExtensionUploadsLink=true;
 $wmgExtensionWikiEditor=true;
 ?>
