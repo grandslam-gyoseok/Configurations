@@ -483,7 +483,7 @@ $wgUploadPath=$wgScriptPath."/img_auth.php";
 
 /*ImageMagick*/
 if (PHP_OS_FAMILY=="Windows")
-{$wgImageMagickConvertCommand="C:/Program Files/ImageMagick-7.0.8-Q16-HDRI/convert.exe";}
+{$wgImageMagickConvertCommand="C:/Program Files/ImageMagick-7.0.9-Q16-HDRI/convert.exe";}
 if (file_exists($wgImageMagickConvertCommand))
 {$wgUseImageMagick=true;}
 
