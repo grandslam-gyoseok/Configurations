@@ -5,5 +5,6 @@
 "editor.fontFamily":"'D2Coding','Consolas',monospace",
 "editor.tabSize":2,
 "editor.wordWrap":"on",
-"php.validate.executablePath":"C:/plavormind/php-nts/php.exe",
-"powershell.powerShellExePath":"C:/Program Files/PowerShell/7-preview/pwsh.exe"}
+"php.validate.executablePath":"C:/plavormind/php-ts/php.exe",
+"powershell.powerShellExePath":"C:/Program Files/PowerShell/7-preview/pwsh.exe",
+"window.restoreWindows":"none"}
