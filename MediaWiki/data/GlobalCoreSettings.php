@@ -641,6 +641,7 @@ $wmgExtensionPerformanceInspector=false;
 $wmgExtensionPopups=false;
 $wmgExtensionReplaceText=false;
 $wmgExtensionRevisionSlider=false;
+$wmgExtensionScribunto=false;
 $wmgExtensionSecurePoll=false;
 $wmgExtensionSimpleMathJax=false;
 $wmgExtensionSyntaxHighlight_GeSHi=false;
