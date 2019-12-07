@@ -351,6 +351,10 @@ if ($wmgGlobalAccountMode!="centralauth")
 if ($wmgExtensionRevisionSlider)
 {wfLoadExtension("RevisionSlider");}
 
+/*Scribunto*/
+if ($wmgExtensionScribunto)
+{wfLoadExtension("Scribunto");}
+
 /*SecurePoll*/
 //Requires update.php
 if ($wmgExtensionSecurePoll)
