@@ -452,6 +452,7 @@ wfLoadExtension("SecureLinkFixer");
 
 /*Liberty*/
 wfLoadSkin("Liberty");
+$wgLibertyEnableLiveRC=false;
 $wgLibertyMainColor="#9933ff";
 $wgTwitterAccount="PlavorSeol";
 
