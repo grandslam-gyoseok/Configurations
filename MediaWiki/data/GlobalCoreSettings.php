@@ -345,6 +345,13 @@ $wgAutoConfirmCount=$wgLearnerEdits;
 
 /*Group permissions*/
 $wgAddGroups["bureaucrat"]=["moderator","admin"];
+$wgAvailableRights=array_merge($wgAvailableRights,
+["editprotected-user",
+"editprotected-autoconfirmed",
+"editprotected-moderator",
+"editprotected-admin",
+"editprotected-bureaucrat",
+"editprotected-steward"]);
 $wgGroupPermissions=
 ["*"=>
   ["autocreateaccount"=>true,
@@ -492,7 +499,7 @@ $wgSVGConverter="inkscape";
 if (PHP_OS_FAMILY=="Windows")
 {$wgSVGConverters=array_merge($wgSVGConverters,
 //"!" should not be escaped on Windows
-["ImageMagick"=>$wgImageMagickConvertCommand.' -background none -thumbnail $widthx$height! $input $output',
+["ImageMagick"=>'"'.$wgImageMagickConvertCommand.'" -background none -thumbnail $widthx$height! $input $output',
 "inkscape"=>'"C:/Program Files/Inkscape/inkscape.exe" --export-height=$height --export-png=$output --export-width=$width --file=$input --without-gui']);}
 
 /*Thumbnails*/
