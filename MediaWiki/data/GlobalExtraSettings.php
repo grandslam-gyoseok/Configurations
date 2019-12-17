@@ -316,7 +316,7 @@ $wgDefaultUserOptions["performanceinspector"]=true;}
 
 /*PlavorMindTools*/
 wfLoadExtension("PlavorMindTools");
-$wgPMTEnabledTools=["pmtmsg"];
+$wgPMTEnableTools["pmtmsg"]=true;
 $wgPMTEnglishSystemUsers=true;
 $wgPMTPlavorMindMessages=true;
 //Permissions
