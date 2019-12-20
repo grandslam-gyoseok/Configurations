@@ -513,7 +513,7 @@ $wgCopyUploadsFromSpecialUpload=true;
 
 /*Others*/
 $wgEnableUploads=true;
-$wgFileExtensions=["gif","jpg","png","svg","webp"];
+$wgFileExtensions=["gif","jpg","png","webp"];
 $wgHashedUploadDirectory=false;
 $wgMaxUploadSize=
 ["*"=>1024*1024*5, //5 MB
@@ -603,7 +603,7 @@ $wgMainCacheType=CACHE_ACCEL;
 /*File cache*/
 $wgFileCacheDepth=0;
 $wgFileCacheDirectory=$wgCacheDirectory;
-$wgUseFileCache=true;
+//$wgUseFileCache=true; //Temporarily disabled
 
 /*Message cache*/
 $wgAdaptiveMessageCache=true;
@@ -641,6 +641,7 @@ $wmgExtensionDeletePagesForGood=false;
 $wmgExtensionFlow=false;
 $wmgExtensionHighlightjs_Integration=false;
 $wmgExtensionMultimediaViewer=false;
+$wmgExtensionNativeSvgHandler=false;
 $wmgExtensionNuke=false;
 $wmgExtensionPageImages=false;
 $wmgExtensionParserFunctions=false;
