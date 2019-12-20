@@ -92,6 +92,7 @@ $wmgExtensionCollapsibleVector=true;
 $wmgExtensionCommonsMetadata=true;
 $wmgExtensionHighlightjs_Integration=true;
 $wmgExtensionMultimediaViewer=true;
+$wmgExtensionNativeSvgHandler=true;
 $wmgExtensionNuke=true;
 $wmgExtensionPageImages=true;
 $wmgExtensionPerformanceInspector=true;
