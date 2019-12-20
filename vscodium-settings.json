@@ -5,6 +5,7 @@
 "editor.fontFamily":"'D2Coding','Consolas',monospace",
 "editor.tabSize":2,
 "editor.wordWrap":"on",
-"php.validate.executablePath": "C:/plavormind/php-ts/php.exe",
+"holiday.gearIconStyle":"santa hat",
+"php.validate.executablePath":"C:/plavormind/php-ts/php.exe",
 "powershell.powerShellDefaultVersion":"PowerShell 7.0 (X64) Core Edition [7.0.0-preview.6]",
 "window.restoreWindows":"none"}
