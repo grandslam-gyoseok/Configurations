@@ -288,6 +288,11 @@ if ($wmgExtensionMultimediaViewer)
 {wfLoadExtension("MultimediaViewer");
 $wgMediaViewerUseThumbnailGuessing=true;}
 
+/*NativeSvgHandler*/
+if ($wmgExtensionNativeSvgHandler)
+{wfLoadExtension("NativeSvgHandler");
+$wgFileExtensions[]="svg";}
+
 /*Nuke*/
 if ($wmgExtensionNuke)
 {wfLoadExtension("Nuke");
