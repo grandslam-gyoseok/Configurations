@@ -23,9 +23,4 @@ $wmgExtensionParserFunctions=true;
 $wmgExtensionReplaceText=true;
 $wmgExtensionSimpleMathJax=true;
 $wmgExtensionSyntaxHighlight_GeSHi=true;
-
-#Skins
-
-/*Others*/
-$wgDefaultSkin="PlavorBuma";
 ?>
