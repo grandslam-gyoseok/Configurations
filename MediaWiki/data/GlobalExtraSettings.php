@@ -317,7 +317,7 @@ $wgPFEnableStringFunctions=true;}
 /*PerformanceInspector*/
 if ($wmgExtensionPerformanceInspector)
 {wfLoadExtension("PerformanceInspector");
-$wgDefaultUserOptions["performanceinspector"]=true;}
+$wgDefaultUserOptions["performanceinspector"]=1;}
 
 /*PlavorMindTools*/
 wfLoadExtension("PlavorMindTools");
@@ -336,7 +336,7 @@ if ($wmgExtensionPageImages&&$wmgExtensionPopups&&$wmgExtensionTextExtracts)
 {wfLoadExtension("Popups");
 $wgPopupsHideOptInOnPreferencesPage=true;
 $wgPopupsOptInDefaultState="1";
-$wgPopupsOptInStateForNewAccounts="1";
+//$wgPopupsOptInStateForNewAccounts="1"; //Disabled for test - needs further experiment
 $wgPopupsReferencePreviewsBetaFeature=false;}
 
 /*Renameuser*/
