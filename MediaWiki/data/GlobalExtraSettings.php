@@ -334,8 +334,10 @@ if ($wmgGlobalAccountMode!="centralauth")
 /*Popups*/
 if ($wmgExtensionPageImages&&$wmgExtensionPopups&&$wmgExtensionTextExtracts)
 {wfLoadExtension("Popups");
+$wgPopupsHideOptInOnPreferencesPage=true;
 $wgPopupsOptInDefaultState="1";
-$wgPopupsHideOptInOnPreferencesPage=true;}
+$wgPopupsOptInStateForNewAccounts="1";
+$wgPopupsReferencePreviewsBetaFeature=false;}
 
 /*Renameuser*/
 wfLoadExtension("Renameuser");
