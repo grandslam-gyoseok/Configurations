@@ -372,6 +372,7 @@ $wgGroupPermissions=
   "editmyusercss"=>true,
   "editmyuserjs"=>true,
   "editmyuserjson"=>true,
+  "editmyuserjsredirect"=>true,
   "editmywatchlist"=>true,
   "minoredit"=>true,
   "sendemail"=>true,
