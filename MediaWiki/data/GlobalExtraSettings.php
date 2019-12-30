@@ -78,6 +78,7 @@ $wgCentralAuthCookies=true;
 $wgCentralAuthCreateOnView=true;
 $wgCentralAuthDatabase="wiki_centralauth";
 $wgCentralAuthEnableUserMerge=true;
+$wgCentralAuthLoginWiki=$wmgCentralWiki."wiki";
 $wgCentralAuthPreventUnattached=true;
 $wgDisableUnmergedEditing=true;
 //Permissions
@@ -103,6 +104,7 @@ $wgCheckUserCAMultiLock=
 ];
 $wgCheckUserCAtoollink=$wmgCentralWiki."wiki";
 $wgCheckUserCIDRLimit=$wgBlockCIDRLimit;
+$wgCheckUserEnableSpecialInvestigate=true; //Experimental
 $wgCheckUserForceSummary=true;
 $wgCheckUserGBtoollink=
 ["centralDB"=>$wmgCentralWiki."wiki",
@@ -120,14 +122,15 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 
 /*Cite*/
 if ($wmgExtensionCite)
-{wfLoadExtension("Cite");}
+{wfLoadExtension("Cite");
+$wgCiteBookReferencing=true;}
 
 /*CodeEditor*/
 if ($wmgExtensionCodeEditor&&$wmgExtensionWikiEditor)
 {wfLoadExtension("CodeEditor");}
 
 /*CodeMirror*/
-if ($wmgExtensionCodeMirror)
+if ($wmgExtensionCodeMirror&&$wmgExtensionWikiEditor)
 {wfLoadExtension("CodeMirror");}
 
 /*CollapsibleVector*/
@@ -143,6 +146,7 @@ wfLoadExtensions(["ConfirmEdit","ConfirmEdit/ReCaptchaNoCaptcha"]);
 $wgCaptchaBadLoginExpiration=60*60; //1 hour
 $wgCaptchaClass="ReCaptchaNoCaptcha";
 $wgCaptchaTriggers["create"]=true;
+$wgCaptchaTriggers["sendemail"]=true;
 $wgCaptchaTriggersOnNamespace=
 [NS_FILE=>
   ["edit"=>true],
@@ -177,10 +181,10 @@ $wgWikiUrl=$wgServer."/";
 $wgWikiUrlEnding="mediawiki/index.php?title=";
 $wgWikiUrlEndingUserRights="Special:UserRights/";
 
-/*Echo
+/*Echo*/
 //Requires update.php
 //Disabled due to not working dismiss function
-wfLoadExtension("Echo");
+//wfLoadExtension("Echo");
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 ["echo-email-frequency"=>-1,
 "echo-subscriptions-email-user-rights"=>false,
@@ -197,7 +201,6 @@ $wgNotifyTypeAvailabilityByCategory=
 "thank-you-edit"=>
   ["email"=>true]
 ];
-*/
 
 /*Flow
 //Requires update.php
