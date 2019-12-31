@@ -19,8 +19,8 @@ $wgGroupPermissions["user"]["edit"]=false;
 /*Extensions usage*/
 $wmgExtensionCite=true;
 $wmgExtensionHighlightjs_Integration=true;
+$wmgExtensionMath=true;
 $wmgExtensionParserFunctions=true;
 $wmgExtensionReplaceText=true;
-$wmgExtensionSimpleMathJax=true;
 $wmgExtensionSyntaxHighlight_GeSHi=true;
 ?>
