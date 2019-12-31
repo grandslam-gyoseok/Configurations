@@ -281,6 +281,12 @@ $wgGroupPermissions["bureaucrat"]["interwiki"]=true;
 if ($wmgGlobalAccountMode!="centralauth")
 {$wgGroupPermissions["steward"]["interwiki"]=true;}
 
+/*Math*/
+//Requires update.php
+if ($wmgExtensionMath)
+{wfLoadExtension("Math");
+$wgMathEnableExperimentalInputFormats=true;}
+
 /*MinimumNameLength*/
 wfLoadExtension("MinimumNameLength");
 //Only detects alphanumeric names
