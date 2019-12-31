@@ -641,6 +641,7 @@ $wmgExtensionCommonsMetadata=false;
 $wmgExtensionDeletePagesForGood=false;
 $wmgExtensionFlow=false;
 $wmgExtensionHighlightjs_Integration=false;
+$wmgExtensionMath=false;
 $wmgExtensionMultimediaViewer=false;
 $wmgExtensionNativeSvgHandler=false;
 $wmgExtensionNuke=false;
