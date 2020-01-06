@@ -473,6 +473,7 @@ $wgLibertyMainColor="#9933ff";
 $wgTwitterAccount="PlavorSeol";
 
 /*Medik*/
+wfLoadSkin("Medik");
 $wgMedikColor="#9933ff";
 
 /*Vector*/
