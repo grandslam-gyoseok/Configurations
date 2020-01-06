@@ -472,6 +472,9 @@ $wgLibertyEnableLiveRC=false;
 $wgLibertyMainColor="#9933ff";
 $wgTwitterAccount="PlavorSeol";
 
+/*Medik*/
+$wgMedikColor="#9933ff";
+
 /*Vector*/
 wfLoadSkin("Vector");
 $wgVectorResponsive=true;
