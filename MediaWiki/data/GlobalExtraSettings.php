@@ -346,7 +346,6 @@ if ($wmgExtensionPageImages&&$wmgExtensionPopups&&$wmgExtensionTextExtracts)
 {wfLoadExtension("Popups");
 $wgPopupsHideOptInOnPreferencesPage=true;
 $wgPopupsOptInDefaultState="1";
-//$wgPopupsOptInStateForNewAccounts="1"; //Disabled for test - needs further experiment
 $wgPopupsReferencePreviewsBetaFeature=false;}
 
 /*Renameuser*/
