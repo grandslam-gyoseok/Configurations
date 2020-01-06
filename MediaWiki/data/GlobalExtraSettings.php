@@ -181,7 +181,7 @@ $wgWikiUrl=$wgServer."/";
 $wgWikiUrlEnding="mediawiki/index.php?title=";
 $wgWikiUrlEndingUserRights="Special:UserRights/";
 
-/*Echo*/
+/*Echo
 //Requires update.php
 //Disabled due to not working dismiss function
 //wfLoadExtension("Echo");
@@ -201,6 +201,7 @@ $wgNotifyTypeAvailabilityByCategory=
 "thank-you-edit"=>
   ["email"=>true]
 ];
+*/
 
 /*Flow
 //Requires update.php
