@@ -331,6 +331,7 @@ $wgDefaultUserOptions["performanceinspector"]=1;}
 
 /*PlavorMindTools*/
 wfLoadExtension("PlavorMindTools");
+$wgPMTEnableTools["noactionsonnoneditable"]=true;
 $wgPMTEnableTools["pmtmsg"]=true;
 $wgPMTEnglishSystemUsers=true;
 $wgPMTPlavorMindMessages=true;
