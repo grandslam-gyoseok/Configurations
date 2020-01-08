@@ -632,7 +632,6 @@ $wgSessionCacheType=CACHE_ACCEL; //This one should always use cache
 
 /*Extensions usage*/
 $wmgExtensionBabel=false;
-$wmgExtensionChangeAuthor=false;
 $wmgExtensionCite=false;
 $wmgExtensionCodeEditor=false;
 $wmgExtensionCodeMirror=false;
