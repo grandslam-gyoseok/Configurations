@@ -288,7 +288,9 @@ $wgMinimumUsernameLength=3;
 /*MultimediaViewer*/
 if ($wmgExtensionMultimediaViewer)
 {wfLoadExtension("MultimediaViewer");
-$wgMediaViewerUseThumbnailGuessing=true;}
+if ($wgThumbnailScriptPath)
+  {$wgMediaViewerUseThumbnailGuessing=true;}
+}
 
 /*NativeSvgHandler*/
 if (!$wgSVGConverter)
