@@ -291,9 +291,8 @@ if ($wmgExtensionMultimediaViewer)
 $wgMediaViewerUseThumbnailGuessing=true;}
 
 /*NativeSvgHandler*/
-if ($wmgExtensionNativeSvgHandler)
-{wfLoadExtension("NativeSvgHandler");
-$wgFileExtensions[]="svg";}
+if (!$wgSVGConverter)
+{wfLoadExtension("NativeSvgHandler");}
 
 /*Nuke*/
 if ($wmgExtensionNuke)
@@ -373,10 +372,6 @@ $wgGroupPermissions["bureaucrat"]["securepoll-create-poll"]=true;
 if ($wmgGlobalAccountMode!="centralauth")
   {$wgGroupPermissions["steward"]["securepoll-create-poll"]=true;}
 }
-
-/*SimpleMathJax*/
-if ($wmgExtensionSimpleMathJax)
-{wfLoadExtension("SimpleMathJax");}
 
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
