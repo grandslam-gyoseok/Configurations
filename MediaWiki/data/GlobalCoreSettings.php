@@ -6,9 +6,8 @@ if (!defined("MEDIAWIKI"))
 
 /*Databases*/
 $wgDBname=$wmgWiki."wiki";
-$wgLocalDatabases=["exitwiki","osawiki"];
-if (!in_array($wgDBname,$wgLocalDatabases))
-{exit("Cannot find this wiki.");}
+foreach ($wmgWikis as $wiki)
+{$wgLocalDatabases[]=$wiki."wiki";}
 
 /*Variables*/
 if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
@@ -496,14 +495,23 @@ if (file_exists($wgImageMagickConvertCommand))
 {$wgUseImageMagick=true;}
 
 /*SVG*/
+switch (PHP_OS_FAMILY)
+{case "Linux":
+$wgSVGConverter=false;
+break;
+case "Windows":
 $wgSVGConverter="inkscape";
-if (PHP_OS_FAMILY=="Windows")
-{$wgSVGConverters=array_merge($wgSVGConverters,
+$wgSVGConverterPath="C:/Program Files";
+$wgSVGConverters=
 //"!" should not be escaped on Windows
 ["ImageMagick"=>'"'.$wgImageMagickConvertCommand.'" -background none -thumbnail $widthx$height! $input $output',
-"inkscape"=>'"C:/Program Files/Inkscape/inkscape.exe" --export-height=$height --export-png=$output --export-width=$width --file=$input --without-gui']);}
+"inkscape"=>'"$path/Inkscape/inkscape.exe" --export-height=$height --export-png=$output --export-width=$width --file=$input --without-gui'];
+break;
+default:
+$wgSVGConverter=false;}
 
 /*Thumbnails*/
+//Disabled due to issues with handling SVG files
 $wgGenerateThumbnailOnParse=false;
 $wgThumbnailScriptPath=$wgScriptPath."/thumb.php";
 
@@ -514,7 +522,7 @@ $wgCopyUploadsFromSpecialUpload=true;
 
 /*Others*/
 $wgEnableUploads=true;
-$wgFileExtensions=["gif","jpg","png","webp"];
+$wgFileExtensions=["gif","jpg","png","svg","webp"];
 $wgHashedUploadDirectory=false;
 $wgMaxUploadSize=
 ["*"=>1024*1024*5, //5 MB
@@ -553,7 +561,16 @@ $wgSharedTables=["actor","user"];}
 //SQLite-only
 $wgSQLiteDataDir=$wmgPrivateDataDirectory."/databases";
 
-/*Paths*/
+/*Debugging*/
+if ($wgCommandLineMode||$wmgDebugMode)
+{error_reporting(-1);
+ini_set("display_errors",1);
+ini_set("display_startup_errors",1);
+$wgDebugDumpSql=true;
+$wgDevelopmentWarnings=true;
+$wgShowExceptionDetails=true;}
+
+/*URL*/
 $actions=
 ["delete",
 "edit",
@@ -574,6 +591,7 @@ foreach ($actions as $action)
 {$wgActionPaths[$action]="/".$action."/$1";}
 unset($action,$actions);
 $wgArticlePath="/page/$1";
+$wgServer="http://".$wmgWiki.".".$wmgRootHost;
 $wgUsePathInfo=true;
 
 /*Others*/
@@ -604,7 +622,8 @@ $wgMainCacheType=CACHE_ACCEL;
 /*File cache*/
 $wgFileCacheDepth=0;
 $wgFileCacheDirectory=$wgCacheDirectory;
-//$wgUseFileCache=true; //Temporarily disabled
+//Disabled due to several issues, including breaking global user pages and taking too long time to automatically purging cache
+//$wgUseFileCache=true;
 
 /*Message cache*/
 $wgAdaptiveMessageCache=true;
@@ -626,7 +645,8 @@ $wgParserCacheExpireTime=$wmgCacheExpiry;
 $wgParserCacheType=$wgMainCacheType;
 $wgRevisionCacheExpiry=$wmgCacheExpiry;
 $wgSearchSuggestCacheExpiry=$wmgCacheExpiry;
-$wgSessionCacheType=CACHE_ACCEL; //This one should always use cache
+//This one should always use cache
+$wgSessionCacheType=CACHE_ACCEL;
 
 #Extensions
 
@@ -652,7 +672,6 @@ $wmgExtensionReplaceText=false;
 $wmgExtensionRevisionSlider=false;
 $wmgExtensionScribunto=false;
 $wmgExtensionSecurePoll=false;
-$wmgExtensionSimpleMathJax=false;
 $wmgExtensionSyntaxHighlight_GeSHi=false;
 $wmgExtensionTemplateData=false;
 $wmgExtensionTemplateStyles=false;
