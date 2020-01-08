@@ -663,7 +663,6 @@ $wmgExtensionFlow=false;
 $wmgExtensionHighlightjs_Integration=false;
 $wmgExtensionMath=false;
 $wmgExtensionMultimediaViewer=false;
-$wmgExtensionNativeSvgHandler=false;
 $wmgExtensionNuke=false;
 $wmgExtensionPageImages=false;
 $wmgExtensionParserFunctions=false;
