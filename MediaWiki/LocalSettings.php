@@ -1,11 +1,4 @@
 <?php
-/*
-error_reporting(-1);
-ini_set("display_errors",1);
-$wgShowDBErrorBacktrace=true;
-$wgShowExceptionDetails=true;
-$wgShowSQLErrors=true;
-//*/
 if (!defined("MEDIAWIKI"))
 {exit("This is not a valid entry point.");}
 
@@ -38,6 +31,7 @@ $wgConf->siteParamsCallback="efGetSiteParams";
 $wmgCacheExpiry=60; //1 minute
 $wmgCentralWiki="exit";
 $wmgDataDirectory=$IP."/data";
+$wmgDebugMode=false;
 $wmgGlobalAccountExemptWikis=["pocket"];
 //Should be one of "", "centralauth" and "shared-database"
 $wmgGlobalAccountMode="centralauth";
@@ -52,6 +46,7 @@ default:
 $wmgPrivateDataDirectory=$IP."/private_data";}
 $wmgRootHost="plavormind.tk:81";
 $wmgWiki="wiki";
+$wmgWikis=["exit","osa"];
 
 /*Wiki selector*/
 if ($wgCommandLineMode)
@@ -60,9 +55,11 @@ if ($wgCommandLineMode)
 else
   {exit("Wiki is not specified.");}
 }
-elseif (preg_match("/^([\d\-a-z]+)(?:\.[\d\-a-z]+){2}$/i",parse_url($_SERVER["HTTP_HOST"],PHP_URL_HOST),$matches))
+elseif (preg_match("/^([\d\-a-z]+)(?:\.[\d\-a-z]+){2}$/iu",parse_url($_SERVER["HTTP_HOST"],PHP_URL_HOST),$matches))
 {$wmgWiki=$matches[1];}
 else
+{exit("Cannot find this wiki.");}
+if (!in_array($wmgWiki,$wmgWikis))
 {exit("Cannot find this wiki.");}
 
 /*Others*/
