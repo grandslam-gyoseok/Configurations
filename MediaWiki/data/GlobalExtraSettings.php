@@ -86,14 +86,6 @@ $wgGroupPermissions["steward"]["centralauth-lock"]=false;
 $wgGroupPermissions["steward"]["centralauth-oversight"]=false;
 $wgGroupPermissions["steward"]["centralauth-unmerge"]=false;}
 
-/*ChangeAuthor*/
-if ($wmgExtensionChangeAuthor)
-{wfLoadExtension("ChangeAuthor");
-//Permissions
-if ($wmgGlobalAccountMode!="centralauth")
-  {$wgGroupPermissions["steward"]["changeauthor"]=true;}
-}
-
 /*CheckUser*/
 //Requires update.php
 wfLoadExtension("CheckUser");
