@@ -501,19 +501,20 @@ $wgSVGConverter=false;
 break;
 case "Windows":
 $wgSVGConverter="inkscape";
-$wgSVGConverterPath="C:/Program Files";
 $wgSVGConverters=
 //"!" should not be escaped on Windows
+//$path and $wgSVGConverterPath should not be used because double quotes automatically surrounds $path.
 ["ImageMagick"=>'"'.$wgImageMagickConvertCommand.'" -background none -thumbnail $widthx$height! $input $output',
-"inkscape"=>'"$path/Inkscape/inkscape.exe" --export-height=$height --export-png=$output --export-width=$width --file=$input --without-gui'];
+"inkscape"=>'"C:/Program Files/Inkscape/inkscape.exe" --export-height=$height --export-png=$output --export-width=$width --file=$input --without-gui'];
 break;
 default:
 $wgSVGConverter=false;}
 
 /*Thumbnails*/
-//Disabled due to issues with handling SVG files
-$wgGenerateThumbnailOnParse=false;
-$wgThumbnailScriptPath=$wgScriptPath."/thumb.php";
+//thumb.php should not be used when $wgSVGConverter is false due to issues with NativeSvgHandler extension
+if ($wgSVGConverter)
+{$wgGenerateThumbnailOnParse=false;
+$wgThumbnailScriptPath=$wgScriptPath."/thumb.php";}
 
 /*Uploading from URL*/
 $wgAllowCopyUploads=true;
