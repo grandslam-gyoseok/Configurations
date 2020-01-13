@@ -665,6 +665,7 @@ $wmgExtensionCollapsibleVector=false;
 $wmgExtensionCommonsMetadata=false;
 $wmgExtensionDeletePagesForGood=false;
 //$wmgExtensionFlow=false;
+$wmgExtensionGlobalCssJs=true;
 $wmgExtensionGlobalUserPage=true;
 $wmgExtensionHighlightjs_Integration=false;
 $wmgExtensionMath=false;
