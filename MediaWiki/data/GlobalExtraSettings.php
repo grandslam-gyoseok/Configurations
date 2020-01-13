@@ -255,7 +255,8 @@ if ($wmgGlobalAccountMode=="centralauth")
 }
 
 /*GlobalUserPage*/
-if ($wmgGlobalAccountMode!="")
+//Not sorting variables alphabetically to set conditions effeciently
+if ($wmgGlobalAccountMode!=""&&($wmgWiki==$wmgCentralWiki||$wmgExtensionGlobalUserPage))
 wfLoadExtension("GlobalUserPage");
 {$wgGlobalUserPageAPIUrl="http://".$wmgCentralWiki.".".$wmgRootHost.$wgScriptPath."/api.php";
 $wgGlobalUserPageCacheExpiry=$wmgCacheExpiry;
