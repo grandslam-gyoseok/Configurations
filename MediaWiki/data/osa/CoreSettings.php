@@ -20,7 +20,10 @@ $wgGroupPermissions["user"]["edit"]=false;
 $wmgExtensionCite=true;
 $wmgExtensionHighlightjs_Integration=true;
 $wmgExtensionMath=true;
+$wmgExtensionPageImages=true; //Experimental
 $wmgExtensionParserFunctions=true;
+$wmgExtensionPopups=true; //Experimental
 $wmgExtensionReplaceText=true;
 $wmgExtensionSyntaxHighlight_GeSHi=true;
+$wmgExtensionTextExtracts=true; //Experimental
 ?>
