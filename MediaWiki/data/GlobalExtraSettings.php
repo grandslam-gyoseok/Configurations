@@ -246,6 +246,17 @@ if ($wmgGlobalAccountMode!="centralauth")
   {$wgGroupPermissions["steward"]["globalblock-exempt"]=true;}
 }
 
+/*GlobalCssJs*/
+//Not sorting variables alphabetically to set conditions effeciently
+if ($wmgGlobalAccountMode!=""&&($wmgWiki==$wmgCentralWiki||$wmgExtensionGlobalCssJs))
+{//wfLoadExtension("GlobalCssJs");
+$wgGlobalCssJsConfig=
+["source"=>"central",
+"wiki"=>$wmgCentralWiki."wiki"];
+$wgResourceLoaderSources["central"]=
+["apiScript"=>"//".$wmgCentralWiki.".".$wmgRootHost.$wgScriptPath."/api.php",
+"loadScript"=>"//".$wmgCentralWiki.".".$wmgRootHost.$wgScriptPath."/load.php"];}
+
 /*GlobalPreferences*/
 //Requires update.php
 if ($wmgGlobalAccountMode!="")
@@ -257,8 +268,8 @@ if ($wmgGlobalAccountMode=="centralauth")
 /*GlobalUserPage*/
 //Not sorting variables alphabetically to set conditions effeciently
 if ($wmgGlobalAccountMode!=""&&($wmgWiki==$wmgCentralWiki||$wmgExtensionGlobalUserPage))
-wfLoadExtension("GlobalUserPage");
-{$wgGlobalUserPageAPIUrl="http://".$wmgCentralWiki.".".$wmgRootHost.$wgScriptPath."/api.php";
+{wfLoadExtension("GlobalUserPage");
+$wgGlobalUserPageAPIUrl="//".$wmgCentralWiki.".".$wmgRootHost.$wgScriptPath."/api.php";
 $wgGlobalUserPageCacheExpiry=$wmgCacheExpiry;
 $wgGlobalUserPageDBname=$wmgCentralWiki."wiki";}
 
