@@ -8,6 +8,7 @@ if (!defined("MEDIAWIKI"))
 $wgDBname=$wmgWiki."wiki";
 foreach ($wmgWikis as $wiki)
 {$wgLocalDatabases[]=$wiki."wiki";}
+unset($wiki);
 
 /*Variables*/
 if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
@@ -652,14 +653,19 @@ $wgSessionCacheType=CACHE_ACCEL;
 #Extensions
 
 /*Extensions usage*/
-$wmgExtensionBabel=false;
+//It is good to enable Babel when GlobalUserPage is enabled
+if ($wmgGlobalAccountMode!="")
+{$wmgExtensionBabel=true;}
+else
+{$wmgExtensionBabel=false;}
 $wmgExtensionCite=false;
 $wmgExtensionCodeEditor=false;
 $wmgExtensionCodeMirror=false;
 $wmgExtensionCollapsibleVector=false;
 $wmgExtensionCommonsMetadata=false;
 $wmgExtensionDeletePagesForGood=false;
-$wmgExtensionFlow=false;
+//$wmgExtensionFlow=false;
+$wmgExtensionGlobalUserPage=true;
 $wmgExtensionHighlightjs_Integration=false;
 $wmgExtensionMath=false;
 $wmgExtensionMultimediaViewer=false;
