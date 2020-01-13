@@ -249,7 +249,7 @@ if ($wmgGlobalAccountMode!="centralauth")
 /*GlobalCssJs*/
 //Not sorting variables alphabetically to set conditions effeciently
 if ($wmgGlobalAccountMode!=""&&($wmgWiki==$wmgCentralWiki||$wmgExtensionGlobalCssJs))
-{//wfLoadExtension("GlobalCssJs");
+{wfLoadExtension("GlobalCssJs");
 $wgGlobalCssJsConfig=
 ["source"=>"central",
 "wiki"=>$wmgCentralWiki."wiki"];
