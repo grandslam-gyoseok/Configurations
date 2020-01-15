@@ -29,7 +29,7 @@ $wgConf->siteParamsCallback="efGetSiteParams";
 
 /*Variables*/
 $wmgCacheExpiry=60; //1 minute
-$wmgCentralWiki="exit";
+$wmgCentralWiki="central";
 $wmgDataDirectory=$IP."/data";
 $wmgDebugMode=false;
 $wmgGlobalAccountExemptWikis=["pocket"];
@@ -46,7 +46,7 @@ default:
 $wmgPrivateDataDirectory=$IP."/private_data";}
 $wmgRootHost="plavormind.tk:81";
 $wmgWiki="wiki";
-$wmgWikis=["exit","osa"];
+$wmgWikis=["central","osa"];
 
 /*Wiki selector*/
 if ($wgCommandLineMode)
