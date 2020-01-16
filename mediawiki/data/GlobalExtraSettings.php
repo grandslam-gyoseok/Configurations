@@ -390,10 +390,8 @@ if ($wmgGlobalAccountMode!="centralauth")
 /*StaffPowers*/
 wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
-$wgStaffPowersStewardGroupName="moderator";
+$wgStaffPowersStewardGroupName="bureaucrat";
 //Permissions
-$wgGroupPermissions["admin"]["unblockable"]=true;
-$wgGroupPermissions["bureaucrat"]["unblockable"]=true;
 if ($wmgGlobalAccountMode!="centralauth")
 {$wgGroupPermissions["steward"]["unblockable"]=true;}
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
