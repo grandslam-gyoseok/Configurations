@@ -6,4 +6,5 @@
 "editor.tabSize":2,
 "editor.wordWrap":"on",
 "php.validate.executablePath":"C:/plavormind/php-ts/php.exe",
+"terminal.integrated.shell.windows":"C:/Program Files/PowerShell/7-preview/pwsh.exe",
 "window.restoreWindows":"none"}
