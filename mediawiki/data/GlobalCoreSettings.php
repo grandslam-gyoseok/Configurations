@@ -435,6 +435,7 @@ $wgGroupPermissions=
   "markbotedits"=>true,
   "nominornewtalk"=>true,
   "noratelimit"=>true,
+  "override-export-depth"=>true,
   "suppressionlog"=>true,
   "suppressrevision"=>true,
   "unblockself"=>true,
