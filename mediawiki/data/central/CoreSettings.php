@@ -55,7 +55,7 @@ $wgRestrictDisplayTitle=false; //Experimental
 $wgGroupPermissions["bureaucrat"]["editinterface"]=false;
 $wgGroupPermissions["bureaucrat"]["editsitecss"]=false;
 $wgGroupPermissions["bureaucrat"]["editsitejson"]=false;
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["editinterface"]=true;
 $wgGroupPermissions["steward"]["editsitecss"]=true;
 $wgGroupPermissions["steward"]["editsitejson"]=true;}
