@@ -50,7 +50,7 @@ if ($wmgGlobalAccountMode=="shared-database")
 {$wgSharedTables[]="spoofuser";}
 //Permissions
 $wgGroupPermissions["bureaucrat"]["override-antispoof"]=false;
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["override-antispoof"]=true;}
 
 /*Babel*/
@@ -82,9 +82,16 @@ $wgCentralAuthLoginWiki=$wmgCentralWiki."wiki";
 $wgCentralAuthPreventUnattached=true;
 $wgDisableUnmergedEditing=true;
 //Permissions
-$wgGroupPermissions["steward"]["centralauth-lock"]=false;
-$wgGroupPermissions["steward"]["centralauth-oversight"]=false;
-$wgGroupPermissions["steward"]["centralauth-unmerge"]=false;}
+if ($wmgWiki==$wmgCentralWiki)
+  {$wgGroupPermissions["steward"]["centralauth-rename"]=true;
+  $wgGroupPermissions["steward"]["centralauth-usermerge"]=true;
+  $wgGroupPermissions["steward"]["globalgroupmembership"]=true;
+  $wgGroupPermissions["steward"]["globalgrouppermissions"]=true;}
+else
+  {$wgGroupPermissions["steward"]["centralauth-lock"]=false;
+  $wgGroupPermissions["steward"]["centralauth-oversight"]=false;
+  $wgGroupPermissions["steward"]["centralauth-unmerge"]=false;}
+}
 
 /*CheckUser*/
 //Requires update.php
@@ -106,7 +113,7 @@ $wgCheckUserGBtoollink=
 $wgCheckUserLogLogins=true;
 $wgCheckUserMaxBlocks=100;
 //Permissions
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["checkuser"]=true;
 $wgGroupPermissions["steward"]["checkuser-log"]=true;}
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
@@ -150,7 +157,7 @@ $wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
 $wgGroupPermissions["moderator"]["skipcaptcha"]=true;
 $wgGroupPermissions["admin"]["skipcaptcha"]=true;
 $wgGroupPermissions["bureaucrat"]["skipcaptcha"]=true;
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["skipcaptcha"]=true;}
 
 /*DeletePagesForGood*/
@@ -159,7 +166,7 @@ if ($wmgExtensionDeletePagesForGood)
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 $wgPBTabIcons["delete_page_permanently"]="fas fa-trash-alt";
 //Permissions
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["deleteperm"]=true;}
 }
 
@@ -241,8 +248,9 @@ if ($wmgGlobalAccountMode!="")
 {wfLoadExtension("GlobalBlocking");
 $wgGlobalBlockingDatabase="wiki_globalblocking";
 //Permissions
-$wgGroupPermissions["steward"]["globalblock"]=false;
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgWiki!=$wmgCentralWiki)
+  {$wgGroupPermissions["steward"]["globalblock"]=false;}
+if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["globalblock-exempt"]=true;}
 }
 
@@ -282,8 +290,9 @@ wfLoadExtension("Interwiki");
 if ($wmgGlobalAccountMode!="")
 {$wgInterwikiCentralDB=$wmgCentralWiki."wiki";}
 //Permissions
-$wgGroupPermissions["bureaucrat"]["interwiki"]=true;
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgWiki!=$wmgCentralWiki)
+{$wgGroupPermissions["bureaucrat"]["interwiki"]=true;}
+if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["interwiki"]=true;}
 
 /*Math*/
@@ -313,7 +322,7 @@ if ($wmgExtensionNuke)
 {wfLoadExtension("Nuke");
 //Permissions
 $wgGroupPermissions["bureaucrat"]["nuke"]=true;
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["nuke"]=true;}
 }
 
@@ -344,7 +353,7 @@ $wgPMTPlavorMindMessages=true;
 $wgGroupPermissions["moderator"]["editotheruserpages"]=true;
 $wgGroupPermissions["admin"]["editotheruserpages"]=true;
 $wgGroupPermissions["bureaucrat"]["editotheruserpages"]=true;
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["editotheruserpages"]=true;}
 
 /*Popups*/
@@ -358,14 +367,14 @@ $wgPopupsReferencePreviewsBetaFeature=false;}
 wfLoadExtension("Renameuser");
 //Permissions
 $wgGroupPermissions["bureaucrat"]["renameuser"]=false;
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["renameuser"]=true;}
 
 /*ReplaceText*/
 if ($wmgExtensionReplaceText)
 {wfLoadExtension("ReplaceText");
 //Permissions
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["replacetext"]=true;}
 }
 
@@ -383,7 +392,7 @@ if ($wmgExtensionSecurePoll)
 {wfLoadExtension("SecurePoll");
 //Permissions
 $wgGroupPermissions["bureaucrat"]["securepoll-create-poll"]=true;
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["securepoll-create-poll"]=true;}
 }
 
@@ -392,7 +401,7 @@ wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
 $wgStaffPowersStewardGroupName="bureaucrat";
 //Permissions
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["unblockable"]=true;}
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 {unset($wgGroupPermissions["staff"]);};
@@ -434,7 +443,7 @@ $wgTitleBlacklistSources=
 if ($wmgGlobalAccountMode!="")
 {$wgTitleBlacklistUsernameSources=["global"];}
 //Permissions
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["tboverride"]=true;
 $wgGroupPermissions["steward"]["tboverride-account"]=true;
 $wgGroupPermissions["steward"]["titleblacklistlog"]=true;}
@@ -453,7 +462,7 @@ if ($wmgGlobalAccountMode!="shared-database")
 //Remove default value ("sysop")
 $wgUserMergeProtectedGroups=[];
 //Permissions
-if ($wmgGlobalAccountMode!="centralauth")
+if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["usermerge"]=true;}
 }
 
