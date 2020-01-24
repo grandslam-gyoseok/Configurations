@@ -339,109 +339,13 @@ $wgUrlProtocols=["//","http://","https://"];
 
 #Permissions
 
-/*Autoconfirm*/
+/*Adding and removing users from user groups*/
+$wgAddGroups["bureaucrat"]=["moderator","admin"];
+$wgRemoveGroups["bureaucrat"]=["moderator","admin"];
+
+/*Auto-promoting*/
 $wgAutoConfirmAge=60*60*24*$wgLearnerMemberSince;
 $wgAutoConfirmCount=$wgLearnerEdits;
-
-/*Group permissions*/
-$wgAddGroups["bureaucrat"]=["moderator","admin"];
-$wgAvailableRights=array_merge($wgAvailableRights,
-["editprotected-user",
-"editprotected-autoconfirmed",
-"editprotected-moderator",
-"editprotected-admin",
-"editprotected-bureaucrat",
-"editprotected-steward"]);
-$wgGroupPermissions=
-["*"=>
-  ["autocreateaccount"=>true,
-  "browsearchive"=>true,
-  "createaccount"=>true,
-  "deletedhistory"=>true,
-  "patrolmarks"=>true,
-  "read"=>true,
-  "unwatchedpages"=>true],
-"user"=>
-  ["applychangetags"=>true,
-  "createpage"=>true,
-  "createtalk"=>true,
-  "edit"=>true,
-  "editprotected-user"=>true,
-  "editmyoptions"=>true,
-  "editmyprivateinfo"=>true,
-  "editmyusercss"=>true,
-  "editmyuserjs"=>true,
-  "editmyuserjson"=>true,
-  "editmyuserjsredirect"=>true,
-  "editmywatchlist"=>true,
-  "minoredit"=>true,
-  "sendemail"=>true,
-  "viewmyprivateinfo"=>true,
-  "viewmywatchlist"=>true],
-"autoconfirmed"=>
-  ["autoconfirmed"=>true,
-  "editprotected-autoconfirmed"=>true,
-  "editprotected-user"=>true, //Patch for protection
-  "move"=>true,
-  "move-categorypages"=>true,
-  "move-rootuserpages"=>true,
-  "movefile"=>true,
-  "purge"=>true,
-  "reupload"=>true,
-  "upload"=>true],
-"moderator"=>
-  ["autopatrol"=>true,
-  "block"=>true,
-  "blockemail"=>true,
-  "delete"=>true,
-  "deletedtext"=>true,
-  "deleterevision"=>true,
-  "editprotected-moderator"=>true,
-  "protect"=>true,
-  "reupload-shared"=>true,
-  "rollback"=>true,
-  "suppressredirect"=>true,
-  "undelete"=>true,
-  "upload_by_url"=>true],
-"admin"=>
-  ["changetags"=>true,
-  "deletelogentry"=>true,
-  "editcontentmodel"=>true,
-  "editprotected-admin"=>true,
-  "import"=>true,
-  "ipblock-exempt"=>true,
-  "move-subpages"=>true,
-  "pagelang"=>true,
-  "patrol"=>true,
-  "unblockself"=>true],
-"bureaucrat"=>
-  ["editinterface"=>true,
-  "editprotected-bureaucrat"=>true,
-  "editsitecss"=>true,
-  "editsitejs"=>true,
-  "editsitejson"=>true,
-  "editusercss"=>true,
-  "edituserjs"=>true,
-  "edituserjson"=>true,
-  "importupload"=>true,
-  "managechangetags"=>true,
-  "mergehistory"=>true],
-"steward"=>
-  ["apihighlimits"=>true,
-  "bigdelete"=>true,
-  "deletechangetags"=>true,
-  "editprotected-steward"=>true,
-  "hideuser"=>true,
-  "markbotedits"=>true,
-  "nominornewtalk"=>true,
-  "noratelimit"=>true,
-  "override-export-depth"=>true,
-  "suppressionlog"=>true,
-  "suppressrevision"=>true,
-  "unblockself"=>true,
-  "writeapi"=>true]
-];
-$wgRemoveGroups["bureaucrat"]=["moderator","admin"];
 
 /*Protection*/
 $wgCascadingRestrictionLevels=
@@ -449,7 +353,6 @@ $wgCascadingRestrictionLevels=
 "editprotected-admin",
 "editprotected-bureaucrat",
 "editprotected-steward"];
-$wgNamespaceProtection[NS_USER]=["editprotected-user"];
 $wgRestrictionLevels=
 ["",
 "editprotected-user",
@@ -469,20 +372,124 @@ $wgSemiprotectedRestrictionLevels=
 ["editprotected-user",
 "editprotected-autoconfirmed"];
 
-/*Removal of groups*/
+/*Removing user groups*/
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 {unset($wgGroupPermissions["bot"],$wgGroupPermissions["sysop"]);};
+if ($wmgGlobalAccountMode=="centralauth"&&$wmgWiki!=$wmgCentralWiki)
+{$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
+  {unset($wgGroupPermissions["steward"]);};
+}
+
+/*User group permissions*/
+$wgAvailableRights=
+["editprotected-user",
+"editprotected-autoconfirmed",
+"editprotected-moderator",
+"editprotected-admin",
+"editprotected-bureaucrat",
+"editprotected-steward"];
+$wgGroupPermissions=
+["*"=>
+  ["autocreateaccount"=>true,
+  "browsearchive"=>true,
+  "createaccount"=>true,
+  "deletedhistory"=>true,
+  "patrolmarks"=>true,
+  "read"=>true,
+  "unwatchedpages"=>true],
+"user"=>
+  ["applychangetags"=>true,
+  "createpage"=>true,
+  "createtalk"=>true,
+  "edit"=>true,
+  "editmyoptions"=>true,
+  "editmyprivateinfo"=>true,
+  "editmyusercss"=>true,
+  "editmyuserjs"=>true,
+  "editmyuserjson"=>true,
+  "editmyuserjsredirect"=>true,
+  "editmywatchlist"=>true,
+  "editprotected-user"=>true,
+  "minoredit"=>true,
+  "sendemail"=>true,
+  "viewmyprivateinfo"=>true,
+  "viewmywatchlist"=>true],
+"autoconfirmed"=>
+  ["autoconfirmed"=>true,
+  "editprotected-autoconfirmed"=>true,
+  "move"=>true,
+  "move-rootuserpages"=>true,
+  "movefile"=>true,
+  "purge"=>true,
+  "reupload"=>true,
+  "upload"=>true],
+"moderator"=>
+  ["autopatrol"=>true,
+  "block"=>true,
+  "delete"=>true,
+  "deletedtext"=>true,
+  "deleterevision"=>true,
+  "editprotected-moderator"=>true,
+  "move-categorypages"=>true,
+  "protect"=>true,
+  "rollback"=>true,
+  "suppressredirect"=>true,
+  "undelete"=>true,
+  "upload_by_url"=>true],
+"admin"=>
+  ["blockemail"=>true,
+  "changetags"=>true,
+  "deletelogentry"=>true,
+  "editcontentmodel"=>true,
+  "editprotected-admin"=>true,
+  "import"=>true,
+  "ipblock-exempt"=>true,
+  "markbotedits"=>true,
+  "move-subpages"=>true,
+  "pagelang"=>true,
+  "patrol"=>true,
+  "reupload-shared"=>true,
+  "unblockself"=>true],
+"bureaucrat"=>
+  ["editinterface"=>true,
+  "editprotected-bureaucrat"=>true,
+  "editsitecss"=>true,
+  "editsitejson"=>true,
+  "editusercss"=>true,
+  "edituserjson"=>true,
+  "importupload"=>true,
+  "managechangetags"=>true,
+  "mergehistory"=>true],
+"steward"=>
+  ["apihighlimits"=>true,
+  "bigdelete"=>true,
+  "deletechangetags"=>true,
+  "editprotected-steward"=>true,
+  "editsitejs"=>true,
+  "edituserjs"=>true,
+  "hideuser"=>true,
+  "nominornewtalk"=>true,
+  "noratelimit"=>true,
+  "override-export-depth"=>true,
+  "suppressionlog"=>true,
+  "suppressrevision"=>true,
+  "writeapi"=>true]
+];
+//Permission inheritance
+$wgGroupPermissions["moderator"]=array_merge($wgGroupPermissions["autoconfirmed"],$wgGroupPermissions["moderator"]);
+$wgGroupPermissions["admin"]=array_merge($wgGroupPermissions["moderator"],$wgGroupPermissions["admin"]);
+$wgGroupPermissions["bureaucrat"]=array_merge($wgGroupPermissions["admin"],$wgGroupPermissions["bureaucrat"]);
+$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["bureaucrat"],$wgGroupPermissions["steward"]);
+if ($wmgGlobalAccountMode=="centralauth")
+{$wgGroupPermissions["steward"]=[];}
+if ($wmgWiki==$wmgCentralWiki)
+{$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
+["siteadmin"=>true,
+"userrights"=>true,
+"userrights-interwiki"=>true]);}
 
 /*Others*/
 $wgDeleteRevisionsLimit=250;
-//Permission inheritance
-$wgGroupPermissions["moderator"]+=$wgGroupPermissions["autoconfirmed"];
-$wgGroupPermissions["admin"]+=$wgGroupPermissions["moderator"];
-$wgGroupPermissions["bureaucrat"]+=$wgGroupPermissions["admin"];
-if ($wmgGlobalAccountMode=="centralauth")
-{unset($wgGroupPermissions["steward"]);}
-else
-{$wgGroupPermissions["steward"]+=$wgGroupPermissions["bureaucrat"];}
 
 #Images and uploads
 
