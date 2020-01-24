@@ -35,6 +35,7 @@ $wmgDebugMode=false;
 $wmgGlobalAccountExemptWikis=["pocket"];
 //Should be one of "", "centralauth" and "shared-database"
 $wmgGlobalAccountMode="centralauth";
+$wmgGrantStewardsGlobalPermissions=false;
 switch (PHP_OS_FAMILY)
 {case "Linux":
 $wmgPrivateDataDirectory="/plavormind/web/data/mediawiki";
