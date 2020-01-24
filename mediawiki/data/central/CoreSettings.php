@@ -52,20 +52,13 @@ $wgRestrictDisplayTitle=false; //Experimental
 #Permissions
 
 /*Group permissions*/
-$wgGroupPermissions["bureaucrat"]=array_merge($wgGroupPermissions["bureaucrat"],
-["editinterface"=>false,
-"editsitecss"=>false,
-"editsitejs"=>false,
-"editsitejson"=>false]);
+$wgGroupPermissions["bureaucrat"]["editinterface"]=false;
+$wgGroupPermissions["bureaucrat"]["editsitecss"]=false;
+$wgGroupPermissions["bureaucrat"]["editsitejson"]=false;
 if ($wmgGlobalAccountMode!="centralauth")
-{$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
-["editinterface"=>true,
-"editsitecss"=>true,
-"editsitejs"=>true,
-"editsitejson"=>true]);}
-$wgGroupPermissions["steward"]["siteadmin"]=true;
-$wgGroupPermissions["steward"]["userrights"]=true;
-$wgGroupPermissions["steward"]["userrights-interwiki"]=true;
+{$wgGroupPermissions["steward"]["editinterface"]=true;
+$wgGroupPermissions["steward"]["editsitecss"]=true;
+$wgGroupPermissions["steward"]["editsitejson"]=true;}
 
 /*Protection*/
 $wgNamespaceProtection=
