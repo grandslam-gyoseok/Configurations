@@ -375,7 +375,8 @@ $wgSemiprotectedRestrictionLevels=
 /*Removing user groups*/
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 {unset($wgGroupPermissions["bot"],$wgGroupPermissions["sysop"]);};
-if ($wmgGlobalAccountMode=="centralauth"&&$wmgWiki!=$wmgCentralWiki)
+//Not sorting variables alphabetically to set conditions effeciently
+if (!($wmgWiki==$wmgCentralWiki||$wmgGrantStewardsGlobalPermissions))
 {$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
   {unset($wgGroupPermissions["steward"]);};
 }
@@ -480,7 +481,7 @@ $wgGroupPermissions["moderator"]=array_merge($wgGroupPermissions["autoconfirmed"
 $wgGroupPermissions["admin"]=array_merge($wgGroupPermissions["moderator"],$wgGroupPermissions["admin"]);
 $wgGroupPermissions["bureaucrat"]=array_merge($wgGroupPermissions["admin"],$wgGroupPermissions["bureaucrat"]);
 $wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["bureaucrat"],$wgGroupPermissions["steward"]);
-if ($wmgGlobalAccountMode=="centralauth")
+if (!$wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]=[];}
 if ($wmgWiki==$wmgCentralWiki)
 {$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
