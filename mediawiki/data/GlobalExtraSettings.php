@@ -485,6 +485,22 @@ $wgTwitterAccount="PlavorSeol";
 wfLoadSkin("Medik");
 $wgMedikColor="#9933ff";
 
+/*MinervaNeue*/
+wfLoadSkin("MinervaNeue");
+$wgMinervaAdvancedMainMenu["base"]=true;
+$wgMinervaAdvancedMainMenu["beta"]=true;
+$wgMinervaAlwaysShowLanguageButton=false;
+$wgMinervaApplyKnownTemplateHacks=true;
+$wgMinervaEnableSiteNotice=true;
+$wgMinervaHistoryInPageActions["base"]=true;
+$wgMinervaHistoryInPageActions["beta"]=true;
+$wgMinervaPageIssuesNewTreatment["beta"]=false;
+$wgMinervaPersonalMenu["base"]=true;
+$wgMinervaPersonalMenu["beta"]=true;
+$wgMinervaShowCategoriesButton["base"]=true;
+$wgMinervaTalkAtTop["base"]=true;
+$wgMinervaTalkAtTop["beta"]=true;
+
 /*Vector*/
 wfLoadSkin("Vector");
 $wgVectorResponsive=true;
