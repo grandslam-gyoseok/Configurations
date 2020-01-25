@@ -101,6 +101,9 @@ $wgPasswordPolicy["policies"]=
   "PasswordCannotBePopular"=>
     ["forceChange"=>true,
     "value"=>50],
+  "PasswordCannotBeSubstringInUsername"=>
+    ["forceChange"=>true,
+    "value"=>true],
   "PasswordCannotMatchBlacklist"=>
     ["forceChange"=>true,
     "value"=>true],
@@ -120,11 +123,11 @@ $wgPasswordPolicy["policies"]=
   "PasswordCannotBePopular"=>200],
 "bureaucrat"=>
   ["MinimalPasswordLength"=>10,
-  "MinimumPasswordLengthToLogin"=>8,
+  "MinimumPasswordLengthToLogin"=>6,
   "PasswordCannotBePopular"=>400],
 "steward"=>
   ["MinimalPasswordLength"=>12,
-  "MinimumPasswordLengthToLogin"=>10,
+  "MinimumPasswordLengthToLogin"=>6,
   "PasswordCannotBePopular"=>1000]
 ];
 
