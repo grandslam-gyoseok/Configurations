@@ -6,5 +6,5 @@ if (!defined("MEDIAWIKI"))
 
 /*PlavorMindTools*/
 $wgPMTFeatureConfig["BlueCategoryLinks"]["enable"]=true;
-$wgPMTFeatureConfig["ManageOwnUserPages"]["enable"]=true;
+$wgPMTFeatureConfig["UserPageAccess"]["enable"]=true;
 ?>
