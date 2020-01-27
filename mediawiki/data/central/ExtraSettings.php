@@ -5,6 +5,5 @@ if (!defined("MEDIAWIKI"))
 #Extensions
 
 /*PlavorMindTools*/
-$wgPMTEnableTools["bluecategorylinks"]=true;
-$wgPMTEnableTools["protectuserpages"]=true;
+$wgPMTFeatureConfig["BlueCategoryLinks"]["enable"]=true;
 ?>
