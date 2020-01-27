@@ -368,10 +368,12 @@ $wgDefaultUserOptions["performanceinspector"]=1;}
 
 /*PlavorMindTools*/
 wfLoadExtension("PlavorMindTools");
-$wgPMTEnableTools["noactionsonnoneditable"]=true;
-$wgPMTEnableTools["pmtmsg"]=true;
-$wgPMTEnglishSystemUsers=true;
-$wgPMTPlavorMindMessages=true;
+$wgPMTFeatureConfig["NoActionsOnNonEditable"]=
+["enable"=>true,
+"HideMoveTab"=>true];
+$wgPMTFeatureConfig["ReplaceInterfaceMessages"]=
+["enable"=>true,
+"EnglishSystemUsers"=>true];
 //Permissions
 $wgGroupPermissions["moderator"]["editotheruserpages"]=true;
 $wgGroupPermissions["admin"]["editotheruserpages"]=true;
