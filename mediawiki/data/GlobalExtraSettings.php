@@ -184,7 +184,6 @@ $wgDiscordPrependTimestamp=true;}
 /*DiscordNotifications*/
 if ($wmgExtensionDiscordNotifications)
 {wfLoadExtension("DiscordNotifications");
-$wgDiscordAvatarUrl=$wgLogo;
 if ($wgCommandLineMode)
   {$wgDiscordFromName=$wgSitename." (".$wmgWiki.")";}
 else
