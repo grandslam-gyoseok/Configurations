@@ -374,6 +374,8 @@ $wgPMTFeatureConfig["ReplaceInterfaceMessages"]=
 ["enable"=>true,
 "EnglishSystemUsers"=>true];
 //Permissions
+$wgGroupPermissions["user"]["deleteownuserpages"]=true;
+$wgGroupPermissions["user"]["moveownuserpages"]=true;
 $wgGroupPermissions["moderator"]["editotheruserpages"]=true;
 $wgGroupPermissions["admin"]["editotheruserpages"]=true;
 $wgGroupPermissions["bureaucrat"]["editotheruserpages"]=true;
