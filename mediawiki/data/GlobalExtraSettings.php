@@ -374,8 +374,8 @@ $wgPMTFeatureConfig["ReplaceInterfaceMessages"]=
 ["enable"=>true,
 "EnglishSystemUsers"=>true];
 //Permissions
-$wgGroupPermissions["user"]["deleteownuserpages"]=true;
-$wgGroupPermissions["user"]["moveownuserpages"]=true;
+//"deleteownuserpages" permission does not have to be inherited by moderators and above because it is not needed if the group already has "delete" permission
+$wgGroupPermissions["autoconfirmed"]["deleteownuserpages"]=true;
 $wgGroupPermissions["moderator"]["editotheruserpages"]=true;
 $wgGroupPermissions["admin"]["editotheruserpages"]=true;
 $wgGroupPermissions["bureaucrat"]["editotheruserpages"]=true;
