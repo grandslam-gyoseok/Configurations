@@ -624,7 +624,7 @@ $wgJpegTran=false;
 $wgMemoryLimit="256M";
 switch (PHP_OS_FAMILY)
 {case "Windows":
-$wgPhpCli="C:/plavormind/php-nts/php.exe";
+$wgPhpCli="C:/plavormind/php-ts/php.exe";
 break;}
 $wgReadOnlyFile=$wmgDataDirectory."/readonly.txt";
 
