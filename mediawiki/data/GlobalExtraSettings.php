@@ -169,7 +169,6 @@ if ($wmgGrantStewardsGlobalPermissions)
 if ($wmgExtensionDeletePagesForGood)
 {wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
-$wgPBTabIcons["delete_page_permanently"]="fas fa-trash-alt";
 //Permissions
 if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["deleteperm"]=true;}
