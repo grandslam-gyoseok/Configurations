@@ -45,13 +45,13 @@ $wgForceUIMsgAsContentMsg=
 $wgSiteNotice="Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]";
 
 /*Others*/
+$wgAllowDisplayTitle=false;
 $wgAllowSlowParserFunctions=true; //Experimental
 $wgMetaNamespace="PlavorMind";
-$wgRestrictDisplayTitle=false; //Experimental
 
 #Permissions
 
-/*Group permissions*/
+/*User group permissions*/
 $wgGroupPermissions["bureaucrat"]["editinterface"]=false;
 $wgGroupPermissions["bureaucrat"]["editsitecss"]=false;
 $wgGroupPermissions["bureaucrat"]["editsitejson"]=false;
@@ -85,6 +85,7 @@ $wmgExtensionCollapsibleVector=true;
 $wmgExtensionCommonsMetadata=true;
 $wmgExtensionHighlightjs_Integration=true;
 $wmgExtensionInputBox=true;
+$wmgExtensionJosa=true;
 $wmgExtensionMultimediaViewer=true;
 $wmgExtensionNuke=true;
 $wmgExtensionPageImages=true;
