@@ -320,6 +320,10 @@ if ($wmgGlobalAccountMode==""||$wmgWiki!=$wmgCentralWiki)
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["interwiki"]=true;}
 
+/*Josa*/
+if ($wmgExtensionJosa)
+{wfLoadExtension("Josa");}
+
 /*Math*/
 //Requires update.php
 if ($wmgExtensionMath)
