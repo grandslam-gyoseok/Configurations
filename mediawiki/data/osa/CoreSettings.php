@@ -22,6 +22,7 @@ $wmgExtensionHighlightjs_Integration=true;
 $wmgExtensionMath=true;
 $wmgExtensionInputBox=true;
 $wmgExtensionJosa=true;
+$wmgExtensionMassEditRegex=true;
 $wmgExtensionPageImages=true; //Experimental
 $wmgExtensionParserFunctions=true;
 $wmgExtensionPopups=true; //Experimental
