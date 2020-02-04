@@ -684,6 +684,7 @@ $wmgExtensionDiscordNotifications=true;
 $wmgExtensionGlobalCssJs=true;
 $wmgExtensionGlobalUserPage=true;
 $wmgExtensionHighlightjs_Integration=false;
+$wmgExtensionInputBox=false;
 $wmgExtensionMath=false;
 $wmgExtensionMultimediaViewer=false;
 $wmgExtensionNuke=false;
