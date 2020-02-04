@@ -324,6 +324,14 @@ if ($wmgGrantStewardsGlobalPermissions)
 if ($wmgExtensionJosa)
 {wfLoadExtension("Josa");}
 
+/*MassEditRegex*/
+if ($wmgExtensionMassEditRegex)
+{wfLoadExtension("MassEditRegex");
+//Permissions
+if ($wmgGrantStewardsGlobalPermissions)
+  {$wgGroupPermissions["steward"]["masseditregex"]=true;}
+}
+
 /*Math*/
 //Requires update.php
 if ($wmgExtensionMath)
