@@ -685,6 +685,7 @@ $wmgExtensionGlobalCssJs=true;
 $wmgExtensionGlobalUserPage=true;
 $wmgExtensionHighlightjs_Integration=false;
 $wmgExtensionInputBox=false;
+$wmgExtensionJosa=false;
 $wmgExtensionMath=false;
 $wmgExtensionMultimediaViewer=false;
 $wmgExtensionNuke=false;
