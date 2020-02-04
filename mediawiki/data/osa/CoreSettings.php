@@ -10,7 +10,7 @@ $wgSitename="오사위키덤프";
 
 #Permissions
 
-/*Group permissions*/
+/*User group permissions*/
 $wgGroupPermissions["*"]["createaccount"]=false;
 $wgGroupPermissions["user"]["edit"]=false;
 
@@ -20,6 +20,8 @@ $wgGroupPermissions["user"]["edit"]=false;
 $wmgExtensionCite=true;
 $wmgExtensionHighlightjs_Integration=true;
 $wmgExtensionMath=true;
+$wmgExtensionInputBox=true;
+$wmgExtensionJosa=true;
 $wmgExtensionPageImages=true; //Experimental
 $wmgExtensionParserFunctions=true;
 $wmgExtensionPopups=true; //Experimental
