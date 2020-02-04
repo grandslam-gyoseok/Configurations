@@ -306,6 +306,10 @@ $wgGlobalUserPageTimeout="default";}
 if ($wmgExtensionHighlightjs_Integration&&PHP_OS_FAMILY=="Windows")
 {wfLoadExtension("Highlightjs_Integration");}
 
+/*InputBox*/
+if ($wmgExtensionInputBox)
+{wfLoadExtension("InputBox");}
+
 /*Interwiki*/
 wfLoadExtension("Interwiki");
 if ($wmgGlobalAccountMode!="")
