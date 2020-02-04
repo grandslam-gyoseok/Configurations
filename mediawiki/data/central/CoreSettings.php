@@ -86,6 +86,7 @@ $wmgExtensionCommonsMetadata=true;
 $wmgExtensionHighlightjs_Integration=true;
 $wmgExtensionInputBox=true;
 $wmgExtensionJosa=true;
+$wmgExtensionMassEditRegex=true;
 $wmgExtensionMultimediaViewer=true;
 $wmgExtensionNuke=true;
 $wmgExtensionPageImages=true;
