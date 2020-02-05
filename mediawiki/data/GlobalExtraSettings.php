@@ -328,6 +328,7 @@ if ($wmgExtensionJosa)
 if ($wmgExtensionMassEditRegex)
 {wfLoadExtension("MassEditRegex");
 //Permissions
+$wgGroupPermissions["bureaucrat"]["masseditregex"]=true;
 if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["masseditregex"]=true;}
 }
@@ -511,6 +512,13 @@ if ($wmgExtensionWikiEditor)
 wfLoadExtension("SecureLinkFixer");
 
 #Skins
+
+/*Citizen*/
+wfLoadSkin("Citizen");
+$wgEnableManifest=false; //Experimental
+$wgManifestThemeColor="#9933ff";
+//$wgShowPageTools=false; //Experimental
+$wgThemeColor="#9933ff";
 
 /*Liberty*/
 wfLoadSkin("Liberty");
