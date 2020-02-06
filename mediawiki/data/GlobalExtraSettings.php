@@ -504,6 +504,50 @@ if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["usermerge"]=true;}
 }
 
+/*WikibaseClient
+if ($wmgExtensionWikibaseClient)
+{require_once($wgExtensionDirectory."/Wikibase/client/Wikibase.php");
+$wgEnableWikibaseClient=true;
+$wgWBClientSettings=array_merge($wgWBClientSettings,
+["repoArticlePath"=>$wgArticlePath,
+"repoScriptPath"=>$wgScriptPath,
+"repositories"=>
+  [""=>
+    ["changesDatabase"=>$wmgCentralWiki."wiki",
+    "repoDatabase"=>$wmgCentralWiki."wiki"]
+  ],
+"repoUrl"=>"//".$wmgCentralWiki.".".$wmgRootHost,
+"siteGlobalID"=>$wmgWiki,
+"sortPrepend"=>
+  ["en","ko"]
+]);}
+*/
+
+/*WikibaseRepository
+if ($wmgExtensionWikibaseRepository)
+{require_once($wgExtensionDirectory."/Wikibase/repo/Wikibase.php");
+//Use value of $baseNs in $wgExtensionDirectory/extensions/Wikibase/repo/config/Wikibase.example.php
+$wgEnableWikibaseRepo=true;
+$ns_item=120;
+$ns_item_talk=121;
+$ns_property=122;
+$ns_property_talk=123;
+switch ($wgLanguageCode)
+  {case "ko":
+  $wgExtraNamespaces[$ns_item]="항목";
+  $wgExtraNamespaces[$ns_item_talk]="항목토론";
+  $wgExtraNamespaces[$ns_property]="속성";
+  $wgExtraNamespaces[$ns_property_talk]="속성토론";
+  break;
+  default:
+  $wgExtraNamespaces[$ns_item]="Item";
+  $wgExtraNamespaces[$ns_item_talk]="Item_talk";
+  $wgExtraNamespaces[$ns_property]="Property";
+  $wgExtraNamespaces[$ns_property_talk]="Property_talk";}
+$wgWBRepoSettings["entityNamespaces"]["item"]=$ns_item;
+$wgWBRepoSettings["entityNamespaces"]["property"]=$ns_property;}
+*/
+
 /*WikiEditor*/
 if ($wmgExtensionWikiEditor)
 {wfLoadExtension("WikiEditor");}
