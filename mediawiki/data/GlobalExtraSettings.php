@@ -402,7 +402,6 @@ if ($wmgGrantStewardsGlobalPermissions)
 if ($wmgExtensionPopups&&$wmgExtensionPageImages&&$wmgExtensionTextExtracts)
 {wfLoadExtension("Popups");
 $wgPopupsHideOptInOnPreferencesPage=true;
-$wgPopupsOptInDefaultState="1";
 $wgPopupsReferencePreviewsBetaFeature=false;}
 
 /*Renameuser*/
