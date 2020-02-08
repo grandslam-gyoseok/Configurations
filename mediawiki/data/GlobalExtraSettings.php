@@ -54,6 +54,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["override-antispoof"]=true;}
 
 /*Babel*/
+//Requires update.php
 if ($wmgExtensionBabel)
 {wfLoadExtension("Babel");
 $wgBabelCategoryNames=
@@ -192,9 +193,8 @@ $wgDiscordIncludeUserUrls=false;
 $wgWikiUrl=$wgServer.$wgScriptPath."/";
 $wgWikiUrlEndingUserRights="Special:UserRights/";}
 
-/*Echo
+/*Echo*/
 //Requires update.php
-//Disabled because dismiss function does not work properly
 wfLoadExtension("Echo");
 $wgAllowArticleReminderNotification=true;
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
@@ -215,7 +215,6 @@ $wgNotifyTypeAvailabilityByCategory=
 "thank-you-edit"=>
   ["email"=>true]
 ];
-*/
 
 /*Flow
 //Requires update.php
