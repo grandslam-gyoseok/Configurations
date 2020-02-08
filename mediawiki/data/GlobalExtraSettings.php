@@ -205,16 +205,6 @@ $wgEchoMaxMentionsCount=10;
 $wgEchoMaxMentionsInEditSummary=10;
 $wgEchoMentionStatusNotifications=true;
 $wgEchoPerUserBlacklist=true;
-$wgNotifyTypeAvailabilityByCategory=
-["article-linked"=>
-  ["email"=>true],
-"mention-failure"=>
-  ["email"=>true],
-"mention-success"=>
-  ["email"=>true],
-"thank-you-edit"=>
-  ["email"=>true]
-];
 
 /*Flow
 //Requires update.php
