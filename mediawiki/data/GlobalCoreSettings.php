@@ -418,7 +418,8 @@ $wgGroupPermissions=
   "minoredit"=>true,
   "sendemail"=>true,
   "viewmyprivateinfo"=>true,
-  "viewmywatchlist"=>true],
+  "viewmywatchlist"=>true,
+  "writeapi"=>true],
 "autoconfirmed"=>
   ["autoconfirmed"=>true,
   "editprotected-autoconfirmed"=>true,
@@ -477,8 +478,7 @@ $wgGroupPermissions=
   "noratelimit"=>true,
   "override-export-depth"=>true,
   "suppressionlog"=>true,
-  "suppressrevision"=>true,
-  "writeapi"=>true]
+  "suppressrevision"=>true]
 ];
 //Permission inheritance
 $wgGroupPermissions["moderator"]=array_merge($wgGroupPermissions["autoconfirmed"],$wgGroupPermissions["moderator"]);
