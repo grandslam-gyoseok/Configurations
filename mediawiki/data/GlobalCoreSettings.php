@@ -499,7 +499,7 @@ $wgDeleteRevisionsLimit=250;
 #Images and uploads
 
 /*Directories*/
-$wgDeletedDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/deleted_files";
+$wgDeletedDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/deleted-files";
 $wgUploadDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/files";
 $wgUploadPath=$wgScriptPath."/img_auth.php";
 
