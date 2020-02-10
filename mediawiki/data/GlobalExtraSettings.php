@@ -467,6 +467,8 @@ $wgTitleBlacklistSources=
 if ($wmgGlobalAccountMode!="")
 {$wgTitleBlacklistUsernameSources=["global"];}
 //Permissions
+$wgGroupPermissions["admin"]["tboverride"]=true;
+$wgGroupPermissions["bureaucrat"]["tboverride"]=true;
 if ($wmgWiki==$wmgCentralWiki)
 {$wgGroupPermissions["steward"]["tboverride-account"]=true;}
 if ($wmgGrantStewardsGlobalPermissions)
