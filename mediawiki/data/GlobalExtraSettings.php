@@ -545,7 +545,20 @@ switch ($wgLanguageCode)
   $wgExtraNamespaces[$ns_property_talk]="Property_talk";}
 $wgWBRepoSettings["entityNamespaces"]=
 ["item"=>$ns_item,
-"property"=>$ns_property];}
+"property"=>$ns_property];
+//Permissions
+$wgGroupPermissions["*"]["item-merge"]=false;
+$wgGroupPermissions["*"]["item-redirect"]=false;
+$wgGroupPermissions["*"]["item-term"]=false;
+$wgGroupPermissions["*"]["property-create"]=false;
+$wgGroupPermissions["*"]["property-term"]=false;
+if ($wmgGrantStewardsGlobalPermissions)
+  {$wgGroupPermissions["steward"]["item-merge"]=true;
+  $wgGroupPermissions["steward"]["item-redirect"]=true;
+  $wgGroupPermissions["steward"]["item-term"]=true;
+  $wgGroupPermissions["steward"]["property-create"]=true;
+  $wgGroupPermissions["steward"]["property-term"]=true;}
+}
 
 /*WikiEditor*/
 if ($wmgExtensionWikiEditor)
