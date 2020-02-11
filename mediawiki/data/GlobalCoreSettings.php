@@ -704,7 +704,7 @@ $wmgExtensionTemplateWizard=false;
 $wmgExtensionTextExtracts=false;
 $wmgExtensionTwoColConflict=false;
 $wmgExtensionUploadsLink=false;
-//$wmgExtensionWikibaseClient=false;
-//$wmgExtensionWikibaseRepository=false;
+$wmgExtensionWikibaseClient=false;
+$wmgExtensionWikibaseRepository=false;
 $wmgExtensionWikiEditor=false;
 ?>
