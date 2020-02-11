@@ -494,11 +494,39 @@ if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["usermerge"]=true;}
 }
 
+/*WikibaseClient*/
+if ($wmgExtensionWikibaseClient)
+{require_once($wgExtensionDirectory."/Wikibase/client/WikibaseClient.php");
+$wgEnableWikibaseClient=true;
+//Use value of $baseNs in $wgExtensionDirectory/extensions/Wikibase/repo/config/Wikibase.example.php
+$ns_item=120;
+$ns_item_talk=121;
+$ns_property=122;
+$ns_property_talk=123;
+$wgWBClientSettings=array_merge($wgWBClientSettings,
+["repoArticlePath"=>$wgArticlePath,
+"repoScriptPath"=>$wgScriptPath,
+"repositories"=>
+  [""=>
+    [//baseUri will not work because Wikibase appends "/"
+    "baseUri"=>"//".$wmgCentralWiki.".".$wmgRootHost."/page/Item:",
+    "changesDatabase"=>$wmgCentralWiki."wiki",
+    "entityNamespaces"=>
+      ["item"=>$ns_item,
+      "property"=>$ns_property],
+    "repoDatabase"=>$wmgCentralWiki."wiki"]
+  ],
+"repoUrl"=>"//".$wmgCentralWiki.".".$wmgRootHost,
+"siteGlobalID"=>$wmgWiki,
+"sortPrepend"=>
+  ["en","ko"]
+]);}
+
 /*WikibaseRepository*/
 if ($wmgExtensionWikibaseRepository)
 {require_once($wgExtensionDirectory."/Wikibase/repo/Wikibase.php");
-//Use value of $baseNs in $wgExtensionDirectory/extensions/Wikibase/repo/config/Wikibase.example.php
 $wgEnableWikibaseRepo=true;
+//Use value of $baseNs in $wgExtensionDirectory/extensions/Wikibase/repo/config/Wikibase.example.php
 $ns_item=120;
 $ns_item_talk=121;
 $ns_property=122;
@@ -515,27 +543,9 @@ switch ($wgLanguageCode)
   $wgExtraNamespaces[$ns_item_talk]="Item_talk";
   $wgExtraNamespaces[$ns_property]="Property";
   $wgExtraNamespaces[$ns_property_talk]="Property_talk";}
-$wgWBRepoSettings["entityNamespaces"]["item"]=$ns_item;
-$wgWBRepoSettings["entityNamespaces"]["property"]=$ns_property;}
-
-/*WikibaseClient*/
-//This extension must be loaded after loading WikibaseRepository
-if ($wmgExtensionWikibaseClient)
-{require_once($wgExtensionDirectory."/Wikibase/client/WikibaseClient.php");
-$wgEnableWikibaseClient=true;
-$wgWBClientSettings=array_merge($wgWBClientSettings,
-["repoArticlePath"=>$wgArticlePath,
-"repoScriptPath"=>$wgScriptPath,
-"repositories"=>
-  [""=>
-    ["changesDatabase"=>$wmgCentralWiki."wiki",
-    "repoDatabase"=>$wmgCentralWiki."wiki"]
-  ],
-"repoUrl"=>"//".$wmgCentralWiki.".".$wmgRootHost,
-"siteGlobalID"=>$wmgWiki,
-"sortPrepend"=>
-  ["en","ko"]
-]);}
+$wgWBRepoSettings["entityNamespaces"]=
+["item"=>$ns_item,
+"property"=>$ns_property];}
 
 /*WikiEditor*/
 if ($wmgExtensionWikiEditor)
