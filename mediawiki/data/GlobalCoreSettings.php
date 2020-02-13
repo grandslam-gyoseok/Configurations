@@ -710,6 +710,7 @@ $wmgExtensionTemplateWizard=false;
 $wmgExtensionTextExtracts=false;
 $wmgExtensionTwoColConflict=false;
 $wmgExtensionUploadsLink=false;
+$wmgExtensionVisualEditor=false;
 $wmgExtensionWikibaseClient=false;
 $wmgExtensionWikibaseRepository=false;
 $wmgExtensionWikiEditor=false;
