@@ -557,6 +557,10 @@ $wgEnableEmail=false;
 
 #System
 
+/*API*/
+$wgApiFrameOptions="SAMEORIGIN";
+$wgEnableRestAPI=true;
+
 /*Authentication and sessions*/
 $wgAllowSecuritySensitiveOperationIfCannotReauthenticate=
 ["default"=>false,
@@ -611,7 +615,6 @@ $wgServer="http://".$wmgWiki.".".$wmgRootHost;
 $wgUsePathInfo=true;
 
 /*Others*/
-$wgApiFrameOptions="SAMEORIGIN";
 $wgAsyncHTTPTimeout=30;
 $wgDeleteRevisionsBatchSize=500;
 //Ignored on Windows
@@ -653,6 +656,7 @@ $wgTranscludeCacheExpiry=$wmgCacheExpiry;
 
 /*Others*/
 $wgAdaptiveMessageCache=true;
+$wgAPICacheHelpTimeout=$wmgCacheExpiry;
 $wgInterwikiExpiry=$wmgCacheExpiry;
 $wgLanguageConverterCacheType=$wgMainCacheType;
 $wgMessageCacheType=$wgMainCacheType;
