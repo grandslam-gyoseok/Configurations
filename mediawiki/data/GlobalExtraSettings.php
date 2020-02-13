@@ -371,14 +371,11 @@ if ($wmgExtensionParsoid_testing)
 $wgParsoidSettings=
 ["linting"=>true,
 "useSelser"=>true];
-/*
 $wgVirtualRestConfig["modules"]["parsoid"]=
 ["domain"=>$wmgWiki.".".$wmgRootHost,
 //Deprecated but required
 "prefix"=>$wmgWiki,
-"url"=>$wgServer."/mediawiki/rest.php"];
-*/
-}
+"url"=>$wgServer."/mediawiki/rest.php"];}
 
 /*PerformanceInspector*/
 if ($wmgExtensionPerformanceInspector)
@@ -508,6 +505,20 @@ $wgUserMergeProtectedGroups=[];
 if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["usermerge"]=true;}
 }
+
+/*VisualEditor*/
+if ($wmgExtensionVisualEditor)
+{wfLoadExtension("VisualEditor");
+$wgDefaultUserOptions["visualeditor-newwikitext"]=1;
+$wgDefaultUserOptions["visualeditor-tabs"]="prefer-wt";
+$wgHiddenPrefs[]="visualeditor-betatempdisable";
+$wgVisualEditorAvailableNamespaces["Help"]=true;
+$wgVisualEditorAvailableNamespaces["Project"]=true;
+$wgVisualEditorEnableDiffPage=true;
+$wgVisualEditorEnableVisualSectionEditing=true;
+$wgVisualEditorEnableWikitext=true;
+$wgVisualEditorShowBetaWelcome=false;
+$wgVisualEditorUseSingleEditTab=true;}
 
 /*WikibaseClient*/
 if ($wmgExtensionWikibaseClient)
