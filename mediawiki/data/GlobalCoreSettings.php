@@ -697,6 +697,7 @@ $wmgExtensionMultimediaViewer=false;
 $wmgExtensionNuke=false;
 $wmgExtensionPageImages=false;
 $wmgExtensionParserFunctions=false;
+$wmgExtensionParsoid_testing=false;
 $wmgExtensionPerformanceInspector=false;
 $wmgExtensionPopups=false;
 $wmgExtensionReplaceText=false;
