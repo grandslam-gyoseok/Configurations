@@ -90,6 +90,7 @@ $wmgExtensionMassEditRegex=true;
 $wmgExtensionMultimediaViewer=true;
 $wmgExtensionNuke=true;
 $wmgExtensionPageImages=true;
+$wmgExtensionParsoid_testing=true;
 $wmgExtensionPerformanceInspector=true;
 $wmgExtensionPopups=true;
 $wmgExtensionReplaceText=true;
