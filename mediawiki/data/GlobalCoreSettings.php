@@ -559,6 +559,7 @@ $wgEnableEmail=false;
 
 /*API*/
 $wgApiFrameOptions="SAMEORIGIN";
+$wgAPIRequestLog=$wmgPrivateDataDirectory."/".$wmgWiki."/api.log";
 $wgEnableRestAPI=true;
 
 /*Authentication and sessions*/
