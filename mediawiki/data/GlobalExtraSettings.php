@@ -185,7 +185,7 @@ $wgDiscordPrependTimestamp=true;}
 if ($wmgExtensionDiscordNotifications)
 {wfLoadExtension("DiscordNotifications");
 if ($wgCommandLineMode)
-  {$wgDiscordFromName=$wgSitename." (".$wmgWiki.")";}
+  {$wgDiscordFromName=$wgSitename." (".$wmgWiki."/)";}
 else
   {$wgDiscordFromName=$wgSitename." (".$wgServer.")";}
 $wgDiscordIncludePageUrls=false;
@@ -364,6 +364,21 @@ $wgPageImagesNamespaces=[NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];}
 if ($wmgExtensionParserFunctions)
 {wfLoadExtension("ParserFunctions");
 $wgPFEnableStringFunctions=true;}
+
+/*Parsoid-testing*/
+if ($wmgExtensionParsoid_testing)
+{wfLoadExtension("Parsoid-testing");
+$wgParsoidSettings=
+["linting"=>true,
+"useSelser"=>true];
+/*
+$wgVirtualRestConfig["modules"]["parsoid"]=
+["domain"=>$wmgWiki.".".$wmgRootHost,
+//Deprecated but required
+"prefix"=>$wmgWiki,
+"url"=>$wgServer."/mediawiki/rest.php"];
+*/
+}
 
 /*PerformanceInspector*/
 if ($wmgExtensionPerformanceInspector)
