@@ -103,6 +103,7 @@ $wmgExtensionTemplateWizard=true;
 $wmgExtensionTextExtracts=true;
 $wmgExtensionTwoColConflict=true;
 $wmgExtensionUploadsLink=true;
+$wmgExtensionVisualEditor=true;
 $wmgExtensionWikibaseClient=true;
 $wmgExtensionWikibaseRepository=true;
 $wmgExtensionWikiEditor=true;
