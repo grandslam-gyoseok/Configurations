@@ -11,6 +11,7 @@ foreach ($wmgWikis as $wiki)
 unset($wiki);
 
 /*Variables*/
+$wmgCentralBaseURL=str_replace("%wiki%",$wmgCentralWiki,$wmgBaseURL);
 if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
 {$wmgGlobalAccountMode="";}
 
@@ -21,7 +22,7 @@ $wgConf->settings=
 ["wgArticlePath"=>
   ["default"=>"/page/$1"],
 "wgServer"=>
-  ["default"=>'http://$lang.'.$wmgRootHost]
+  ["default"=>str_replace("%wiki%",'$lang',$wmgBaseURL)]
 ];
 $wgConf->suffixes=["wiki"];
 $wgConf->wikis=$wgLocalDatabases;
@@ -311,7 +312,7 @@ $wgWatchersMaxAge=60*60*24*7; //1 week
 $wgDefaultRobotPolicy="noindex,nofollow";
 //All namespaces
 $wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-$wgNoFollowDomainExceptions=[parse_url($wmgRootHost,PHP_URL_HOST)];
+$wgNoFollowDomainExceptions=[parse_url(str_replace("%wiki%.","",$wmgBaseURL),PHP_URL_HOST)];
 
 /*Others*/
 $wgActiveUserDays=7; //1 week
@@ -612,7 +613,7 @@ foreach ($actions as $action)
 {$wgActionPaths[$action]="/".$action."/$1";}
 unset($action,$actions);
 $wgArticlePath="/page/$1";
-$wgServer="http://".$wmgWiki.".".$wmgRootHost;
+$wgServer=str_replace("%wiki%",$wmgWiki,$wmgBaseURL);
 $wgUsePathInfo=true;
 
 /*Others*/
@@ -685,6 +686,7 @@ $wmgExtensionCommonsMetadata=false;
 $wmgExtensionDeletePagesForGood=false;
 $wmgExtensionDiscord=false;
 $wmgExtensionDiscordNotifications=true;
+$wmgExtensionDiscussionTools=false;
 //$wmgExtensionFlow=false;
 $wmgExtensionGlobalCssJs=true;
 $wmgExtensionGlobalUserPage=true;
