@@ -28,6 +28,8 @@ return
 $wgConf->siteParamsCallback="efGetSiteParams";
 
 /*Variables*/
+//Put "%wiki%" where the wiki ID should be placed
+$wmgBaseURL="http://%wiki%.plavormind.tk:81";
 $wmgCacheExpiry=60; //1 minute
 $wmgCentralWiki="central";
 $wmgDataDirectory=$IP."/data";
@@ -45,7 +47,6 @@ $wmgPrivateDataDirectory="C:/plavormind/web/data/mediawiki";
 break;
 default:
 $wmgPrivateDataDirectory=$IP."/private_data";}
-$wmgRootHost="plavormind.tk:81";
 $wmgWiki="wiki";
 $wmgWikis=["central","osa"];
 
