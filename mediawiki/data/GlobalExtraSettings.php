@@ -74,7 +74,8 @@ if ($wmgGlobalAccountMode=="centralauth")
 {wfLoadExtension("CentralAuth");
 $wgCentralAuthAutoMigrate=true;
 $wgCentralAuthAutoMigrateNonGlobalAccounts=true;
-$wgCentralAuthCookieDomain=".".parse_url($wmgRootHost,PHP_URL_HOST);
+//"." should be prepended
+$wgCentralAuthCookieDomain=parse_url(str_replace("%wiki%","",$wmgBaseURL),PHP_URL_HOST);
 $wgCentralAuthCookies=true;
 $wgCentralAuthCreateOnView=true;
 $wgCentralAuthDatabase="wiki_centralauth";
@@ -181,13 +182,19 @@ if ($wmgExtensionDiscord)
 $wgDiscordNoBots=false;
 $wgDiscordPrependTimestamp=true;}
 
+/*DiscussionTools*/
+if ($wmgExtensionDiscussionTools)
+{wfLoadExtension("DiscussionTools");
+//Required by DiscussionTools
+$wgLocaltimezone="Asia/Seoul";}
+
 /*DiscordNotifications*/
 if ($wmgExtensionDiscordNotifications)
 {wfLoadExtension("DiscordNotifications");
 if ($wgCommandLineMode)
-  {$wgDiscordFromName=$wgSitename." (".$wmgWiki."/)";}
+  {$wgDiscordFromName=$wgSitename." (".$wmgWiki.")";}
 else
-  {$wgDiscordFromName=$wgSitename." (".$wgServer.")";}
+  {$wgDiscordFromName=$wgSitename." (".$wgServer."/)";}
 $wgDiscordIncludePageUrls=false;
 $wgDiscordIncludeUserUrls=false;
 $wgWikiUrl=$wgServer.$wgScriptPath."/";
@@ -272,8 +279,8 @@ $wgGlobalCssJsConfig=
 ["source"=>"central",
 "wiki"=>$wmgCentralWiki."wiki"];
 $wgResourceLoaderSources["central"]=
-["apiScript"=>"//".$wmgCentralWiki.".".$wmgRootHost.$wgScriptPath."/api.php",
-"loadScript"=>"//".$wmgCentralWiki.".".$wmgRootHost.$wgScriptPath."/load.php"];}
+["apiScript"=>$wmgCentralBaseURL.$wgScriptPath."/api.php",
+"loadScript"=>$wmgCentralBaseURL.$wgScriptPath."/load.php"];}
 
 /*GlobalPreferences*/
 //Requires update.php
@@ -286,7 +293,7 @@ if ($wmgGlobalAccountMode=="centralauth")
 /*GlobalUserPage*/
 if ($wmgGlobalAccountMode!=""&&($wmgWiki==$wmgCentralWiki||$wmgExtensionGlobalUserPage))
 {wfLoadExtension("GlobalUserPage");
-$wgGlobalUserPageAPIUrl="//".$wmgCentralWiki.".".$wmgRootHost.$wgScriptPath."/api.php";
+$wgGlobalUserPageAPIUrl=$wmgCentralBaseURL.$wgScriptPath."/api.php";
 $wgGlobalUserPageCacheExpiry=$wmgCacheExpiry;
 $wgGlobalUserPageDBname=$wmgCentralWiki."wiki";
 $wgGlobalUserPageTimeout="default";}
@@ -372,7 +379,7 @@ $wgParsoidSettings=
 ["linting"=>true,
 "useSelser"=>true];
 $wgVirtualRestConfig["modules"]["parsoid"]=
-["domain"=>$wmgWiki.".".$wmgRootHost,
+["domain"=>parse_url($wgServer,PHP_URL_HOST),
 //Deprecated but required
 "prefix"=>$wmgWiki,
 "url"=>$wgServer."/mediawiki/rest.php"];}
@@ -535,14 +542,14 @@ $wgWBClientSettings=array_merge($wgWBClientSettings,
 "repositories"=>
   [""=>
     [//baseUri will not work because Wikibase appends "/"
-    "baseUri"=>"//".$wmgCentralWiki.".".$wmgRootHost."/page/Item:",
+    "baseUri"=>$wmgCentralBaseURL."/page/Item:",
     "changesDatabase"=>$wmgCentralWiki."wiki",
     "entityNamespaces"=>
       ["item"=>$ns_item,
       "property"=>$ns_property],
     "repoDatabase"=>$wmgCentralWiki."wiki"]
   ],
-"repoUrl"=>"//".$wmgCentralWiki.".".$wmgRootHost,
+"repoUrl"=>$wmgCentralBaseURL,
 "siteGlobalID"=>$wmgWiki,
 "sortPrepend"=>
   ["en","ko"]
