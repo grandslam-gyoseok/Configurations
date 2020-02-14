@@ -89,7 +89,6 @@ $wmgExtensionPerformanceInspector=true;
 $wmgExtensionPopups=true;
 $wmgExtensionReplaceText=true;
 $wmgExtensionRevisionSlider=true;
-$wmgExtensionScribunto=true;
 $wmgExtensionSyntaxHighlight_GeSHi=true;
 $wmgExtensionTemplateData=true;
 $wmgExtensionTemplateStyles=true;
