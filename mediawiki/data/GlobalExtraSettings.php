@@ -182,12 +182,6 @@ if ($wmgExtensionDiscord)
 $wgDiscordNoBots=false;
 $wgDiscordPrependTimestamp=true;}
 
-/*DiscussionTools*/
-if ($wmgExtensionDiscussionTools)
-{wfLoadExtension("DiscussionTools");
-//Required by DiscussionTools
-$wgLocaltimezone="Asia/Seoul";}
-
 /*DiscordNotifications*/
 if ($wmgExtensionDiscordNotifications)
 {wfLoadExtension("DiscordNotifications");
@@ -199,6 +193,12 @@ $wgDiscordIncludePageUrls=false;
 $wgDiscordIncludeUserUrls=false;
 $wgWikiUrl=$wgServer.$wgScriptPath."/";
 $wgWikiUrlEndingUserRights="Special:UserRights/";}
+
+/*DiscussionTools*/
+if ($wmgExtensionDiscussionTools)
+{wfLoadExtension("DiscussionTools");
+//Required by DiscussionTools
+$wgLocaltimezone="Asia/Seoul";}
 
 /*Echo*/
 //Requires update.php
