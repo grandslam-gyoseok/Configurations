@@ -8,11 +8,6 @@ if (!defined("MEDIAWIKI"))
 $wgLogo=$wgScriptPath."/data/".$wmgWiki."/logo.png";
 $wgSitename="PlavorMindCentral";
 
-/*Copyright*/
-$wgRightsIcon="https://upload.wikimedia.org/wikipedia/commons/2/28/Licence_Art_Libre.svg";
-$wgRightsText="Free Art License 1.3";
-$wgRightsUrl="https://artlibre.org/licence/lal/en/";
-
 /*CSS and JavaScript*/
 $wgAllowSiteCSSOnRestrictedPages=true;
 
@@ -83,9 +78,8 @@ $wmgExtensionCodeEditor=true;
 $wmgExtensionCodeMirror=true;
 $wmgExtensionCollapsibleVector=true;
 $wmgExtensionCommonsMetadata=true;
+$wmgExtensionDiscussionTools=true;
 $wmgExtensionHighlightjs_Integration=true;
-$wmgExtensionInputBox=true;
-$wmgExtensionJosa=true;
 $wmgExtensionMassEditRegex=true;
 $wmgExtensionMultimediaViewer=true;
 $wmgExtensionNuke=true;
