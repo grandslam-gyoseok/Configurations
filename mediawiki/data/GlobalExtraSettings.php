@@ -380,6 +380,7 @@ $wgParsoidSettings=
 "useSelser"=>true];
 $wgVirtualRestConfig["modules"]["parsoid"]=
 ["domain"=>parse_url($wgServer,PHP_URL_HOST),
+"forwardCookies"=>true,
 //Deprecated but required
 "prefix"=>$wmgWiki,
 "url"=>$wgServer."/mediawiki/rest.php"];}
