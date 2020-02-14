@@ -195,7 +195,7 @@ $wgWikiUrl=$wgServer.$wgScriptPath."/";
 $wgWikiUrlEndingUserRights="Special:UserRights/";}
 
 /*DiscussionTools*/
-if ($wmgExtensionDiscussionTools)
+if ($wmgExtensionDiscussionTools&&$wmgExtensionParsoid_testing&&$wmgExtensionVisualEditor)
 {wfLoadExtension("DiscussionTools");
 //Required by DiscussionTools
 $wgLocaltimezone="Asia/Seoul";}
