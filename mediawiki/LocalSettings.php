@@ -57,7 +57,8 @@ if ($wgCommandLineMode)
 else
   {exit("Wiki is not specified.");}
 }
-elseif (preg_match("/^([\d\-a-z]+)(?:\.[\d\-a-z]+){2}$/iu",parse_url($_SERVER["HTTP_HOST"],PHP_URL_HOST),$matches))
+//parse_url doesn't return anything if the string only contains domain
+elseif (preg_match("/^([\d\-a-z]+)(?:\.[\d\-a-z]+){2}$/iu",parse_url("//".$_SERVER["HTTP_HOST"],PHP_URL_HOST),$matches))
 {$wmgWiki=$matches[1];}
 else
 {exit("Cannot find this wiki.");}
