@@ -4,44 +4,55 @@ if (!defined("MEDIAWIKI"))
 
 #Extensions
 
-/*AbuseFilter
+/*AbuseFilter*/
 //Requires update.php
-//Disabled due to conflict with global accounts
 wfLoadExtension("AbuseFilter");
 $wgAbuseFilterActions=
 ["block"=>false,
 "blockautopromote"=>false,
 "degroup"=>false,
-"disallow"=>true,
-"flag"=>false,
+"disallow"=>false,
 "rangeblock"=>false,
 "tag"=>false,
 "throttle"=>false,
-"warn"=>true];
-//$wgAbuseFilterCentralDB="wiki_abusefilter";
+"warn"=>false];
+if ($wmgGlobalAccountMode!="")
+{$wgAbuseFilterCentralDB=$wmgCentralWiki."wiki";}
+$wgAbuseFilterConditionLimit=100;
+$wgAbuseFilterEmergencyDisableCount=
+["default"=>5];
+if ($wmgGlobalAccountMode!=""&&$wmgWiki==$wmgCentralWiki)
+{$wgAbuseFilterIsCentral=true;}
+$wgAbuseFilterLogPrivateDetailsAccess=true;
 $wgAbuseFilterNotifications="rcandudp";
-$wgAbuseFilterNotificationsPrivate=$wgAbuseFilterNotifications;
+$wgAbuseFilterPrivateDetailsForceReason=true;
 $wgAbuseFilterRestrictions=
-["blockautopromote"=>true,
-"degroup"=>true];
+["block"=>false,
+"blockautopromote"=>false,
+"degroup"=>false,
+"disallow"=>false,
+"rangeblock"=>false,
+"tag"=>false,
+"throttle"=>false,
+"warn"=>false];
 //Permissions
-$wgGroupPermissions=array_merge_recursive($wgGroupPermissions,
-["bureaucrat"=>
-  ["abusefilter-log-detail"=>true,
-  "abusefilter-modify"=>true]
-]);
-if ($wmgGlobalAccountMode!="centralauth")
+$wgGroupPermissions["*"]["abusefilter-log"]=false;
+$wgGroupPermissions["*"]["abusefilter-view"]=false;
+if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
-["abusefilter-hide-log"=>true,
-"abusefilter-hidden-log"=>true,
+["abusefilter-hidden-log"=>true,
+"abusefilter-hide-log"=>true,
+"abusefilter-log"=>true,
+"abusefilter-log-detail"=>true,
 "abusefilter-log-private"=>true,
+"abusefilter-modify"=>true,
 "abusefilter-modify-global"=>true,
 "abusefilter-modify-restricted"=>true,
-"abusefilter-private"=>true,
-"abusefilter-private-log"=>true,
+"abusefilter-privatedetails"=>true,
+"abusefilter-privatedetails-log"=>true,
 "abusefilter-revert"=>true,
+"abusefilter-view"=>true,
 "abusefilter-view-private"=>true]);}
-*/
 
 /*AntiSpoof*/
 //Requires update.php
