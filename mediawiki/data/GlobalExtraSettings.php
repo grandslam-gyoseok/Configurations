@@ -7,15 +7,16 @@ if (!defined("MEDIAWIKI"))
 /*AbuseFilter*/
 //Requires update.php
 wfLoadExtension("AbuseFilter");
+//"disallow" and "warn" should always be enabled to make AbuseFilter work properly
 $wgAbuseFilterActions=
 ["block"=>false,
 "blockautopromote"=>false,
 "degroup"=>false,
-"disallow"=>false,
+"disallow"=>true,
 "rangeblock"=>false,
 "tag"=>false,
 "throttle"=>false,
-"warn"=>false];
+"warn"=>true];
 if ($wmgGlobalAccountMode!="")
 {$wgAbuseFilterCentralDB=$wmgCentralWiki."wiki";}
 $wgAbuseFilterConditionLimit=100;
@@ -38,6 +39,8 @@ $wgAbuseFilterRestrictions=
 //Permissions
 $wgGroupPermissions["*"]["abusefilter-log"]=false;
 $wgGroupPermissions["*"]["abusefilter-view"]=false;
+if ($wmgWiki==$wmgCentralWiki)
+{$wgGroupPermissions["steward"]["abusefilter-modify-global"]=true;}
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
 ["abusefilter-hidden-log"=>true,
@@ -46,13 +49,11 @@ if ($wmgGrantStewardsGlobalPermissions)
 "abusefilter-log-detail"=>true,
 "abusefilter-log-private"=>true,
 "abusefilter-modify"=>true,
-"abusefilter-modify-global"=>true,
 "abusefilter-modify-restricted"=>true,
 "abusefilter-privatedetails"=>true,
 "abusefilter-privatedetails-log"=>true,
 "abusefilter-revert"=>true,
-"abusefilter-view"=>true,
-"abusefilter-view-private"=>true]);}
+"abusefilter-view"=>true]);}
 
 /*AntiSpoof*/
 //Requires update.php
