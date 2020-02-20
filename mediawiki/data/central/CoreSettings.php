@@ -84,6 +84,7 @@ $wmgExtensionMassEditRegex=true;
 $wmgExtensionMultimediaViewer=true;
 $wmgExtensionNuke=true;
 $wmgExtensionPageImages=true;
+//Temporarily disable Parsoid-testing due to error
 $wmgExtensionParsoid_testing=false;
 $wmgExtensionPerformanceInspector=true;
 $wmgExtensionPopups=true;
