@@ -22,7 +22,7 @@ if ($wmgGlobalAccountMode!="")
 $wgAbuseFilterConditionLimit=100;
 $wgAbuseFilterEmergencyDisableCount=
 ["default"=>5];
-if ($wmgGlobalAccountMode!=""&&$wmgWiki==$wmgCentralWiki)
+if ($wmgGlobalAccountMode!="" && $wmgWiki==$wmgCentralWiki)
 {$wgAbuseFilterIsCentral=true;}
 $wgAbuseFilterLogPrivateDetailsAccess=true;
 $wgAbuseFilterNotifications="rcandudp";
@@ -141,11 +141,11 @@ if ($wmgExtensionCite)
 $wgCiteBookReferencing=true;}
 
 /*CodeEditor*/
-if ($wmgExtensionCodeEditor&&$wmgExtensionWikiEditor)
+if ($wmgExtensionCodeEditor && $wmgExtensionWikiEditor)
 {wfLoadExtension("CodeEditor");}
 
 /*CodeMirror*/
-if ($wmgExtensionCodeMirror&&$wmgExtensionWikiEditor)
+if ($wmgExtensionCodeMirror && $wmgExtensionWikiEditor)
 {wfLoadExtension("CodeMirror");}
 
 /*CollapsibleVector*/
@@ -207,7 +207,7 @@ $wgWikiUrl=$wgServer.$wgScriptPath."/";
 $wgWikiUrlEndingUserRights="Special:UserRights/";}
 
 /*DiscussionTools*/
-if ($wmgExtensionDiscussionTools&&$wmgExtensionParsoid_testing&&$wmgExtensionVisualEditor)
+if ($wmgExtensionDiscussionTools && $wmgExtensionParsoid_testing && $wmgExtensionVisualEditor)
 {wfLoadExtension("DiscussionTools");
 //Required by DiscussionTools
 $wgLocaltimezone="Asia/Seoul";}
@@ -285,7 +285,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 }
 
 /*GlobalCssJs*/
-if ($wmgGlobalAccountMode!=""&&($wmgWiki==$wmgCentralWiki||$wmgExtensionGlobalCssJs))
+if ($wmgGlobalAccountMode!="" && ($wmgWiki==$wmgCentralWiki || $wmgExtensionGlobalCssJs))
 {wfLoadExtension("GlobalCssJs");
 $wgGlobalCssJsConfig=
 ["source"=>"central",
@@ -303,7 +303,7 @@ if ($wmgGlobalAccountMode=="centralauth")
 }
 
 /*GlobalUserPage*/
-if ($wmgGlobalAccountMode!=""&&($wmgWiki==$wmgCentralWiki||$wmgExtensionGlobalUserPage))
+if ($wmgGlobalAccountMode!="" && ($wmgWiki==$wmgCentralWiki || $wmgExtensionGlobalUserPage))
 {wfLoadExtension("GlobalUserPage");
 $wgGlobalUserPageAPIUrl=$wmgCentralBaseURL.$wgScriptPath."/api.php";
 $wgGlobalUserPageCacheExpiry=$wmgCacheExpiry;
@@ -311,7 +311,7 @@ $wgGlobalUserPageDBname=$wmgCentralWiki."wiki";
 $wgGlobalUserPageTimeout="default";}
 
 /*Highlightjs_Integration*/
-if ($wmgExtensionHighlightjs_Integration&&PHP_OS_FAMILY=="Windows")
+if ($wmgExtensionHighlightjs_Integration && PHP_OS_FAMILY=="Windows")
 {wfLoadExtension("Highlightjs_Integration");}
 
 /*InputBox*/
@@ -323,7 +323,7 @@ wfLoadExtension("Interwiki");
 if ($wmgGlobalAccountMode!="")
 {$wgInterwikiCentralDB=$wmgCentralWiki."wiki";}
 //Permissions
-if ($wmgGlobalAccountMode==""||$wmgWiki!=$wmgCentralWiki)
+if ($wmgGlobalAccountMode=="" || $wmgWiki!=$wmgCentralWiki)
 {$wgGroupPermissions["bureaucrat"]["interwiki"]=true;}
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["interwiki"]=true;}
@@ -420,7 +420,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["editotheruserpages"]=true;}
 
 /*Popups*/
-if ($wmgExtensionPopups&&$wmgExtensionPageImages&&$wmgExtensionTextExtracts)
+if ($wmgExtensionPopups && $wmgExtensionPageImages && $wmgExtensionTextExtracts)
 {wfLoadExtension("Popups");
 $wgPopupsHideOptInOnPreferencesPage=true;
 $wgPopupsReferencePreviewsBetaFeature=false;}
@@ -467,7 +467,7 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 require_once($wgExtensionDirectory."/StalkerLog/StalkerLog.php");
 
 /*SyntaxHighlight_GeSHi*/
-if ($wmgExtensionSyntaxHighlight_GeSHi&&PHP_OS_FAMILY=="Linux")
+if ($wmgExtensionSyntaxHighlight_GeSHi && PHP_OS_FAMILY=="Linux")
 {wfLoadExtension("SyntaxHighlight_GeSHi");}
 
 /*TemplateData*/
@@ -481,7 +481,7 @@ if ($wmgExtensionTemplateStyles)
 $wgTemplateStylesAllowedUrls=[];}
 
 /*TemplateWizard*/
-if ($wmgExtensionTemplateWizard&&$wmgExtensionTemplateData&&$wmgExtensionWikiEditor)
+if ($wmgExtensionTemplateWizard && $wmgExtensionTemplateData && $wmgExtensionWikiEditor)
 {wfLoadExtension("TemplateWizard");}
 
 /*TextExtracts*/
@@ -527,7 +527,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 }
 
 /*VisualEditor*/
-if ($wmgExtensionVisualEditor&&$wmgExtensionParsoid_testing)
+if ($wmgExtensionVisualEditor && $wmgExtensionParsoid_testing)
 {wfLoadExtension("VisualEditor");
 $wgDefaultUserOptions["visualeditor-newwikitext"]=1;
 $wgDefaultUserOptions["visualeditor-tabs"]="prefer-wt";
