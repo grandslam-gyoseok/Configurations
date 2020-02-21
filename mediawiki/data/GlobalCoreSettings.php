@@ -381,7 +381,7 @@ $wgSemiprotectedRestrictionLevels=
 $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 {unset($wgGroupPermissions["bot"],$wgGroupPermissions["sysop"]);};
 //Not sorting variables alphabetically to set conditions effeciently
-if (!($wmgWiki==$wmgCentralWiki||$wmgGrantStewardsGlobalPermissions))
+if (!($wmgWiki==$wmgCentralWiki || $wmgGrantStewardsGlobalPermissions))
 {$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
   {unset($wgGroupPermissions["steward"]);};
 }
@@ -584,7 +584,7 @@ $wgSharedTables=["actor","user"];}
 $wgSQLiteDataDir=$wmgPrivateDataDirectory."/databases";
 
 /*Debugging*/
-if ($wgCommandLineMode||$wmgDebugMode)
+if ($wgCommandLineMode || $wmgDebugMode)
 {error_reporting(-1);
 ini_set("display_errors",1);
 ini_set("display_startup_errors",1);
