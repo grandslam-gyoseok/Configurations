@@ -53,6 +53,8 @@ if ($wmgGrantStewardsGlobalPermissions)
 "abusefilter-privatedetails"=>true,
 "abusefilter-privatedetails-log"=>true,
 "abusefilter-revert"=>true]);}
+$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
+{unset($wgGroupPermissions["suppress"]);};
 
 /*AntiSpoof*/
 //Requires update.php
