@@ -37,23 +37,22 @@ $wgAbuseFilterRestrictions=
 "throttle"=>false,
 "warn"=>false];
 //Permissions
-$wgGroupPermissions["*"]["abusefilter-log"]=false;
-$wgGroupPermissions["*"]["abusefilter-view"]=false;
+$wgGroupPermissions["*"]["abusefilter-log-detail"]=true;
+$wgGroupPermissions["bureaucrat"]["abusefilter-log-private"]=true;
+$wgGroupPermissions["bureaucrat"]["abusefilter-modify"]=true;
+$wgGroupPermissions["bureaucrat"]["abusefilter-revert"]=true;
 if ($wmgWiki==$wmgCentralWiki)
 {$wgGroupPermissions["steward"]["abusefilter-modify-global"]=true;}
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
 ["abusefilter-hidden-log"=>true,
 "abusefilter-hide-log"=>true,
-"abusefilter-log"=>true,
-"abusefilter-log-detail"=>true,
 "abusefilter-log-private"=>true,
 "abusefilter-modify"=>true,
 "abusefilter-modify-restricted"=>true,
 "abusefilter-privatedetails"=>true,
 "abusefilter-privatedetails-log"=>true,
-"abusefilter-revert"=>true,
-"abusefilter-view"=>true]);}
+"abusefilter-revert"=>true]);}
 
 /*AntiSpoof*/
 //Requires update.php
