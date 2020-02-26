@@ -5,7 +5,10 @@ if (!defined("MEDIAWIKI"))
 #General
 
 /*Basic information*/
-$wgLogo=$wgScriptPath."/data/".$wmgWiki."/logo.png";
+$wgLogos=
+["1x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-1x.png",
+"1.5x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-1.5x.png",
+"2x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-2x.png"];
 $wgSitename="오사위키덤프";
 
 #Permissions
@@ -20,13 +23,12 @@ $wgGroupPermissions["user"]["edit"]=false;
 $wmgExtensionCite=true;
 $wmgExtensionHighlightjs_Integration=true;
 $wmgExtensionMath=true;
-$wmgExtensionInputBox=true;
 $wmgExtensionJosa=true;
 $wmgExtensionMassEditRegex=true;
-$wmgExtensionPageImages=true; //Experimental
+$wmgExtensionPageImages=true;
 $wmgExtensionParserFunctions=true;
-$wmgExtensionPopups=true; //Experimental
+$wmgExtensionPopups=true;
 $wmgExtensionReplaceText=true;
 $wmgExtensionSyntaxHighlight_GeSHi=true;
-$wmgExtensionTextExtracts=true; //Experimental
+$wmgExtensionTextExtracts=true;
 ?>
