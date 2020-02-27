@@ -426,6 +426,11 @@ if ($wmgExtensionPopups && $wmgExtensionPageImages && $wmgExtensionTextExtracts)
 $wgPopupsHideOptInOnPreferencesPage=true;
 $wgPopupsReferencePreviewsBetaFeature=false;}
 
+/*ProtectionIndicator*/
+if ($wmgExtensionProtectionIndicator)
+{wfLoadExtension("ProtectionIndicator");
+$wgShowIconsOnMainPage=true;}
+
 /*Renameuser*/
 wfLoadExtension("Renameuser");
 //Permissions
