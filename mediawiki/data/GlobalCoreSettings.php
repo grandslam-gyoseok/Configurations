@@ -702,6 +702,7 @@ $wmgExtensionParserFunctions=false;
 $wmgExtensionParsoid_testing=false;
 $wmgExtensionPerformanceInspector=false;
 $wmgExtensionPopups=false;
+$wmgExtensionProtectionIndicator=false;
 $wmgExtensionReplaceText=false;
 $wmgExtensionRevisionSlider=false;
 $wmgExtensionScribunto=false;
