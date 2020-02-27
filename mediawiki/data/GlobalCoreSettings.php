@@ -338,6 +338,7 @@ NS_USER_TALK];
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
 //Remove default value
 $wgRawHtmlMessages=[];
+$wgSearchMatchRedirectPreference=true;
 $wgUniversalEditButton=false;
 //Only allow HTTP and HTTPS protocol in links
 $wgUrlProtocols=["//","http://","https://"];
