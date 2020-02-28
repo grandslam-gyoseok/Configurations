@@ -387,7 +387,7 @@ $wgPFEnableStringFunctions=true;}
 
 /*Parsoid-testing*/
 if ($wmgExtensionParsoid_testing)
-{wfLoadExtension("Parsoid-testing");
+{wfLoadExtension("Parsoid-testing",$IP."/vendor/wikimedia/parsoid/extension.json");
 $wgParsoidSettings=
 ["linting"=>true,
 "useSelser"=>true];
