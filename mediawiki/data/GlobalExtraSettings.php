@@ -639,6 +639,15 @@ $wgTwitterAccount="PlavorSeol";
 wfLoadSkin("Medik");
 $wgMedikColor="#9933ff";
 
+/*Metrolook*/
+wfLoadSkin("Metrolook");
+$wgMetrolookDownArrow=false;
+$wgMetrolookFeatures["collapsiblenav"]=
+["global"=>true,
+"user"=>false];
+$wgMetrolookSearchBar=false;
+$wgMetrolookUploadButton=false;
+
 /*MinervaNeue*/
 wfLoadSkin("MinervaNeue");
 $wgMinervaAdvancedMainMenu["base"]=true;
