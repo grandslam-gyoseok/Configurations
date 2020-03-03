@@ -46,7 +46,7 @@ case "Windows":
 $wmgPrivateDataDirectory="C:/plavormind/web/data/mediawiki";
 break;
 default:
-$wmgPrivateDataDirectory=$IP."/private_data";}
+$wmgPrivateDataDirectory=$IP."/private-data";}
 $wmgWiki="wiki";
 $wmgWikis=["central","osa"];
 
