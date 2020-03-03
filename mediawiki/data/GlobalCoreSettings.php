@@ -378,15 +378,6 @@ $wgSemiprotectedRestrictionLevels=
 ["editprotected-user",
 "editprotected-autoconfirmed"];
 
-/*Removing user groups*/
-$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
-{unset($wgGroupPermissions["bot"],$wgGroupPermissions["sysop"]);};
-//Not sorting variables alphabetically to set conditions effeciently
-if (!($wmgWiki==$wmgCentralWiki || $wmgGrantStewardsGlobalPermissions))
-{$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
-  {unset($wgGroupPermissions["steward"]);};
-}
-
 /*User group permissions*/
 $wgAvailableRights=
 ["editprotected-user",
@@ -496,7 +487,15 @@ if ($wmgWiki==$wmgCentralWiki)
 "userrights-interwiki"=>true]);}
 
 /*Others*/
+function modify_permissions()
+{global $wgGroupPermissions,$wgNamespaceProtection,$wmgCentralWiki,$wmgGrantStewardsGlobalPermissions,$wmgWiki;
+//Remove user groups
+unset($wgGroupPermissions["bot"],$wgGroupPermissions["sysop"]);
+if (!($wmgWiki==$wmgCentralWiki || $wmgGrantStewardsGlobalPermissions))
+  {unset($wgGroupPermissions["steward"]);}
+$wgNamespaceProtection[NS_MEDIAWIKI]=["editprotected-bureaucrat"];}
 $wgDeleteRevisionsLimit=250;
+$wgExtensionFunctions[]="modify_permissions";
 
 #Images and uploads
 
@@ -586,7 +585,7 @@ $wgSQLiteDataDir=$wmgPrivateDataDirectory."/databases";
 
 /*Debugging*/
 if ($wgCommandLineMode || $wmgDebugMode)
-{error_reporting(-1);
+{error_reporting(E_ALL);
 ini_set("display_errors",1);
 ini_set("display_startup_errors",1);
 $wgDebugDumpSql=true;
