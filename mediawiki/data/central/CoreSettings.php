@@ -49,15 +49,6 @@ $wgMetaNamespace="PlavorMind";
 
 #Permissions
 
-/*User group permissions*/
-$wgGroupPermissions["bureaucrat"]["editinterface"]=false;
-$wgGroupPermissions["bureaucrat"]["editsitecss"]=false;
-$wgGroupPermissions["bureaucrat"]["editsitejson"]=false;
-if ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]["editinterface"]=true;
-$wgGroupPermissions["steward"]["editsitecss"]=true;
-$wgGroupPermissions["steward"]["editsitejson"]=true;}
-
 /*Protection*/
 $wgNamespaceProtection=
 [NS_CATEGORY=>
@@ -71,6 +62,19 @@ NS_PROJECT=>
 NS_TEMPLATE=>
   ["editprotected-admin"]
 ];
+
+/*User group permissions*/
+$wgGroupPermissions["bureaucrat"]["editsitecss"]=false;
+$wgGroupPermissions["bureaucrat"]["editsitejson"]=false;
+if ($wmgGrantStewardsGlobalPermissions)
+{$wgGroupPermissions["steward"]["editsitecss"]=true;
+$wgGroupPermissions["steward"]["editsitejson"]=true;}
+
+/*Others*/
+function modify_permissions_central()
+{global $wgNamespaceProtection;
+$wgNamespaceProtection[NS_MEDIAWIKI]=["editprotected-steward"];}
+$wgExtensionFunctions[]="modify_permissions_central";
 
 #Extensions
 
