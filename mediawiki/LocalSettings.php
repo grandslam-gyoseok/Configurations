@@ -75,4 +75,3 @@ if (file_exists($wmgDataDirectory."/".$wmgWiki."/ExtraSettings.php"))
 {include_once($wmgDataDirectory."/".$wmgWiki."/ExtraSettings.php");}
 if (file_exists($wmgPrivateDataDirectory."/PrivateSettings.php"))
 {include_once($wmgPrivateDataDirectory."/PrivateSettings.php");}
-?>
