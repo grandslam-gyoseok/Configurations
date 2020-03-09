@@ -78,7 +78,7 @@ $wgExtensionFunctions[]="modify_permissions_central";
 
 #Extensions
 
-/*Extensions usage*/
+/*Extension usage*/
 $wmgExtensionBabel=true;
 $wmgExtensionCite=true;
 $wmgExtensionCodeEditor=true;
@@ -109,4 +109,12 @@ $wmgExtensionVisualEditor=true;
 $wmgExtensionWikibaseClient=true;
 $wmgExtensionWikibaseRepository=true;
 $wmgExtensionWikiEditor=true;
-?>
+
+#Skins
+
+/*Skin usage*/
+$wmgSkinCitizen=true;
+$wmgSkinLiberty=true;
+$wmgSkinMinervaNeue=true;
+$wmgSkinPlavorBuma=true;
+$wmgSkinTimeless=true;
