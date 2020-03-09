@@ -595,6 +595,11 @@ switch ($wgLanguageCode)
   $wgExtraNamespaces[$ns_item_talk]="Item_talk";
   $wgExtraNamespaces[$ns_property]="Property";
   $wgExtraNamespaces[$ns_property_talk]="Property_talk";}
+if ($wgLanguageCode!="en")
+  {$wgNamespaceAliases["Item"]=$ns_item;
+  $wgNamespaceAliases["Item_talk"]=$ns_item_talk;
+  $wgNamespaceAliases["Property"]=$ns_property;
+  $wgNamespaceAliases["Property_talk"]=$ns_property_talk;}
 $wgWBRepoSettings["enableEntitySearchUI"]=false;
 $wgWBRepoSettings["entityNamespaces"]=
 ["item"=>$ns_item,
