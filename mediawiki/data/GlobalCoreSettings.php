@@ -671,7 +671,7 @@ $wgSessionCacheType=CACHE_ACCEL;
 
 #Extensions
 
-/*Extensions usage*/
+/*Extension usage*/
 //It is good to enable Babel when GlobalUserPage is enabled
 if ($wmgGlobalAccountMode!="")
 {$wmgExtensionBabel=true;}
@@ -716,4 +716,14 @@ $wmgExtensionVisualEditor=false;
 $wmgExtensionWikibaseClient=false;
 $wmgExtensionWikibaseRepository=false;
 $wmgExtensionWikiEditor=false;
-?>
+
+#Skins
+
+/*Skin usage*/
+$wmgSkinCitizen=false;
+$wmgSkinLiberty=false;
+$wmgSkinMedik=false;
+$wmgSkinMetrolook=false;
+$wmgSkinMinervaNeue=false;
+$wmgSkinPlavorBuma=false;
+$wmgSkinTimeless=false;
