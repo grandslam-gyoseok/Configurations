@@ -19,7 +19,7 @@ $wgGroupPermissions["user"]["edit"]=false;
 
 #Extensions
 
-/*Extensions usage*/
+/*Extension usage*/
 $wmgExtensionCite=true;
 $wmgExtensionHighlightjs_Integration=true;
 $wmgExtensionMath=true;
@@ -31,4 +31,8 @@ $wmgExtensionPopups=true;
 $wmgExtensionReplaceText=true;
 $wmgExtensionSyntaxHighlight_GeSHi=true;
 $wmgExtensionTextExtracts=true;
-?>
+
+#Skins
+
+/*Skin usage*/
+$wmgSkinPlavorBuma=true;
