@@ -10,4 +10,3 @@ $wgPBUseSidebarOnNavbar=true;
 
 /*Others*/
 $wgDefaultSkin="PlavorBuma";
-?>
