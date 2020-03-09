@@ -120,7 +120,7 @@ $wgCheckUserCAMultiLock=
 ];
 $wgCheckUserCAtoollink=$wmgCentralWiki."wiki";
 $wgCheckUserCIDRLimit=$wgBlockCIDRLimit;
-$wgCheckUserEnableSpecialInvestigate=true; //Experimental
+$wgCheckUserEnableSpecialInvestigate=true;
 $wgCheckUserForceSummary=true;
 $wgCheckUserGBtoollink=
 ["centralDB"=>$wmgCentralWiki."wiki",
@@ -628,33 +628,37 @@ wfLoadExtension("SecureLinkFixer");
 #Skins
 
 /*Citizen*/
-wfLoadSkin("Citizen");
-$wgEnableManifest=false; //Experimental
-$wgManifestThemeColor="#9933ff";
-//$wgShowPageTools=false; //Experimental
-$wgThemeColor="#9933ff";
+if ($wmgSkinCitizen)
+{wfLoadSkin("Citizen");
+$wgCitizenEnableManifest=false; //Experimental
+$wgCitizenManifestThemeColor="#9933ff";
+$wgCitizenThemeColor="#9933ff";}
 
 /*Liberty*/
-wfLoadSkin("Liberty");
+if ($wmgSkinLiberty)
+{wfLoadSkin("Liberty");
 $wgLibertyEnableLiveRC=false;
 $wgLibertyMainColor="#9933ff";
-$wgTwitterAccount="PlavorSeol";
+$wgTwitterAccount="PlavorSeol";}
 
 /*Medik*/
-wfLoadSkin("Medik");
-$wgMedikColor="#9933ff";
+if ($wmgSkinMedik)
+{wfLoadSkin("Medik");
+$wgMedikColor="#9933ff";}
 
 /*Metrolook*/
-wfLoadSkin("Metrolook");
+if ($wmgSkinMetrolook)
+{wfLoadSkin("Metrolook");
 $wgMetrolookDownArrow=false;
 $wgMetrolookFeatures["collapsiblenav"]=
 ["global"=>true,
 "user"=>false];
 $wgMetrolookSearchBar=false;
-$wgMetrolookUploadButton=false;
+$wgMetrolookUploadButton=false;}
 
 /*MinervaNeue*/
-wfLoadSkin("MinervaNeue");
+if ($wmgSkinMinervaNeue)
+{wfLoadSkin("MinervaNeue");
 $wgMinervaAdvancedMainMenu["base"]=true;
 $wgMinervaAdvancedMainMenu["beta"]=true;
 $wgMinervaAlwaysShowLanguageButton=false;
@@ -667,12 +671,16 @@ $wgMinervaPersonalMenu["base"]=true;
 $wgMinervaPersonalMenu["beta"]=true;
 $wgMinervaShowCategoriesButton["base"]=true;
 $wgMinervaTalkAtTop["base"]=true;
-$wgMinervaTalkAtTop["beta"]=true;
+$wgMinervaTalkAtTop["beta"]=true;}
+
+/*PlavorBuma*/
+if ($wmgSkinPlavorBuma)
+{wfLoadSkin("PlavorBuma");}
+
+/*Timeless*/
+if ($wmgSkinTimeless)
+{wfLoadSkin("Timeless");}
 
 /*Vector*/
 wfLoadSkin("Vector");
 $wgVectorResponsive=true;
-
-/*Other skins*/
-wfLoadSkins(["PlavorBuma","Timeless"]);
-?>
