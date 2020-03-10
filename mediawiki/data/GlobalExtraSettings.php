@@ -254,11 +254,12 @@ $wgGroupPermissions["admin"]["flow-delete"]=true;
 $wgGroupPermissions["admin"]["flow-edit-post"]=true;
 $wgGroupPermissions["admin"]["flow-hide"]=true;
 $wgGroupPermissions["admin"]["flow-lock"]=true;
-$wgGroupPermissions["bureaucrat"]["flow-create-board"]=true;
-$wgGroupPermissions["bureaucrat"]["flow-delete"]=true;
-$wgGroupPermissions["bureaucrat"]["flow-edit-post"]=true;
-$wgGroupPermissions["bureaucrat"]["flow-hide"]=true;
-$wgGroupPermissions["bureaucrat"]["flow-lock"]=true;
+$wgGroupPermissions["bureaucrat"]=array_merge($wgGroupPermissions["bureaucrat"],
+["flow-create-board"=>true,
+"flow-delete"=>true,
+"flow-edit-post"=>true,
+"flow-hide"=>true,
+"flow-lock"=>true]);
 if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
   ["flow-create-board"=>true,
@@ -604,7 +605,9 @@ $wgWBRepoSettings["enableEntitySearchUI"]=false;
 $wgWBRepoSettings["entityNamespaces"]=
 ["item"=>$ns_item,
 "property"=>$ns_property];
+$wgWBRepoSettings["siteLinkGroups"]=["plavormind-wikis"];
 //Permissions
+//Not using array_merge now because some permissions should be modified first
 $wgGroupPermissions["*"]["item-merge"]=false;
 $wgGroupPermissions["*"]["item-redirect"]=false;
 $wgGroupPermissions["*"]["item-term"]=false;
