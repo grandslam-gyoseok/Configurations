@@ -71,10 +71,10 @@ if ($wmgGrantStewardsGlobalPermissions)
 $wgGroupPermissions["steward"]["editsitejson"]=true;}
 
 /*Others*/
-function modify_permissions_central()
+function central_modify_permissions()
 {global $wgNamespaceProtection;
 $wgNamespaceProtection[NS_MEDIAWIKI]=["editprotected-steward"];}
-$wgExtensionFunctions[]="modify_permissions_central";
+$wgExtensionFunctions[]="central_modify_permissions";
 
 #Extensions
 
