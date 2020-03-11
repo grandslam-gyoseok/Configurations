@@ -17,8 +17,7 @@ if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
 
 /*Others*/
 if ($wmgGlobalAccountMode!="")
-{$wgConf->localVHosts=["localhost"];
-$wgConf->settings=
+{$wgConf->settings=
 ["wgArticlePath"=>
   ["default"=>"/page/$1"],
 "wgServer"=>
