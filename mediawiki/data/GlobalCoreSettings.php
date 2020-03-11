@@ -56,7 +56,6 @@ $wgAutoblockExpiry=60*60*24*365*10; //10 years
 $wgBlockCIDRLimit=
 ["IPv4"=>8, //###.0.0.0/8
 "IPv6"=>16]; //####::/16
-$wgEnablePartialBlocks=true;
 
 /*Copyright*/
 $wgMaxCredits=10;
