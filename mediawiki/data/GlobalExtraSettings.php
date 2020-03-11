@@ -577,6 +577,7 @@ $wgWBClientSettings=array_merge($wgWBClientSettings,
   ],
 "repoUrl"=>$wmgCentralBaseURL,
 "siteGlobalID"=>$wmgWiki,
+"siteGroup"=>"plavormind-wikis",
 "sortPrepend"=>
   ["en","ko"]
 ]);}
