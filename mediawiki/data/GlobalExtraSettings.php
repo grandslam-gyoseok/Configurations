@@ -614,18 +614,18 @@ $wgWBRepoSettings["entityNamespaces"]=
 "property"=>$ns_property];
 $wgWBRepoSettings["siteLinkGroups"]=["plavormind-wikis"];
 //Permissions
-//Not using array_merge now because some permissions should be modified first
-$wgGroupPermissions["*"]["item-merge"]=false;
-$wgGroupPermissions["*"]["item-redirect"]=false;
-$wgGroupPermissions["*"]["item-term"]=false;
-$wgGroupPermissions["*"]["property-create"]=false;
-$wgGroupPermissions["*"]["property-term"]=false;
+$wgGroupPermissions["*"]=array_merge($wgGroupPermissions["*"],
+["item-merge"=>false,
+"item-redirect"=>false,
+"item-term"=>false,
+"property-create"=>false,
+"property-term"=>false]);
+$wgGroupPermissions["user"]["item-term"]=true;
+$wgGroupPermissions["user"]["property-create"]=true;
+$wgGroupPermissions["user"]["property-term"]=true;
 if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["item-merge"]=true;
-  $wgGroupPermissions["steward"]["item-redirect"]=true;
-  $wgGroupPermissions["steward"]["item-term"]=true;
-  $wgGroupPermissions["steward"]["property-create"]=true;
-  $wgGroupPermissions["steward"]["property-term"]=true;}
+  $wgGroupPermissions["steward"]["item-redirect"]=true;}
 }
 
 /*WikiEditor*/
