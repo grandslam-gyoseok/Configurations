@@ -10,5 +10,4 @@
 "terminal.integrated.shell.windows":"C:/Program Files/PowerShell/7-preview/pwsh.exe",
 "window.autoDetectColorScheme":true,
 "window.restoreWindows":"none",
-"workbench.colorTheme":"Visual Studio Light",
-"workbench.preferredLightColorTheme":"Visual Studio Light"}
+"workbench.colorTheme":"Default Light+"}
