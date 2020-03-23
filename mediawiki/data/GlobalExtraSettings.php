@@ -351,11 +351,6 @@ if ($wmgExtensionMath)
 {wfLoadExtension("Math");
 $wgMathEnableExperimentalInputFormats=true;}
 
-/*MinimumNameLength*/
-wfLoadExtension("MinimumNameLength");
-//Only detects alphanumeric names
-$wgMinimumUsernameLength=2;
-
 /*MultimediaViewer*/
 if ($wmgExtensionMultimediaViewer)
 {wfLoadExtension("MultimediaViewer");
