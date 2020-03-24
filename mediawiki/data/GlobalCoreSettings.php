@@ -448,6 +448,7 @@ $wgGroupPermissions=
   "unblockself"=>true],
 "bureaucrat"=>
   ["editcontentmodel"=>true,
+  "editinterface"=>true,
   "editprotected-bureaucrat"=>true,
   "editsitecss"=>true,
   "editsitejson"=>true,
@@ -484,15 +485,15 @@ if ($wmgWiki==$wmgCentralWiki)
 "userrights-interwiki"=>true]);}
 
 /*Others*/
-function modify_permissions()
-{global $wgGroupPermissions,$wgNamespaceProtection,$wmgCentralWiki,$wmgGrantStewardsGlobalPermissions,$wmgWiki;
+function core_modify_permissions()
+{global $wgGroupPermissions,$wmgCentralWiki,$wmgGrantStewardsGlobalPermissions,$wmgWiki;
 //Remove user groups
 unset($wgGroupPermissions["bot"],$wgGroupPermissions["sysop"]);
 if (!($wmgWiki==$wmgCentralWiki || $wmgGrantStewardsGlobalPermissions))
   {unset($wgGroupPermissions["steward"]);}
-$wgNamespaceProtection[NS_MEDIAWIKI]=["editprotected-bureaucrat"];}
+}
 $wgDeleteRevisionsLimit=250;
-$wgExtensionFunctions[]="modify_permissions";
+$wgExtensionFunctions[]="core_modify_permissions";
 
 #Images and uploads
 
