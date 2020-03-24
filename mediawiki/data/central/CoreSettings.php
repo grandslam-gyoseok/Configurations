@@ -64,17 +64,13 @@ NS_TEMPLATE=>
 ];
 
 /*User group permissions*/
+$wgGroupPermissions["bureaucrat"]["editinterface"]=false;
 $wgGroupPermissions["bureaucrat"]["editsitecss"]=false;
 $wgGroupPermissions["bureaucrat"]["editsitejson"]=false;
 if ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]["editsitecss"]=true;
+{$wgGroupPermissions["steward"]["editinterface"]=true;
+$wgGroupPermissions["steward"]["editsitecss"]=true;
 $wgGroupPermissions["steward"]["editsitejson"]=true;}
-
-/*Others*/
-function central_modify_permissions()
-{global $wgNamespaceProtection;
-$wgNamespaceProtection[NS_MEDIAWIKI]=["editprotected-steward"];}
-$wgExtensionFunctions[]="central_modify_permissions";
 
 #Extensions
 
