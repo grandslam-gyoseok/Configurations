@@ -37,6 +37,10 @@ $wgAbuseFilterRestrictions=
 "throttle"=>false,
 "warn"=>false];
 //Permissions
+function extension_AbuseFilter_modify_permissions()
+{global $wgGroupPermissions;
+unset($wgGroupPermissions["suppress"]);}
+$wgExtensionFunctions[]="extension_AbuseFilter_modify_permissions";
 $wgGroupPermissions["*"]["abusefilter-log-detail"]=true;
 $wgGroupPermissions["bureaucrat"]["abusefilter-log-private"]=true;
 $wgGroupPermissions["bureaucrat"]["abusefilter-modify"]=true;
@@ -53,8 +57,6 @@ if ($wmgGrantStewardsGlobalPermissions)
 "abusefilter-privatedetails"=>true,
 "abusefilter-privatedetails-log"=>true,
 "abusefilter-revert"=>true]);}
-$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
-{unset($wgGroupPermissions["suppress"]);};
 
 /*AntiSpoof*/
 //Requires update.php
@@ -130,11 +132,13 @@ $wgCheckUserGBtoollink=
 $wgCheckUserLogLogins=true;
 $wgCheckUserMaxBlocks=100;
 //Permissions
+function extension_CheckUser_modify_permissions()
+{global $wgGroupPermissions;
+unset($wgGroupPermissions["checkuser"]);}
+$wgExtensionFunctions[]="extension_CheckUser_modify_permissions";
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["checkuser"]=true;
 $wgGroupPermissions["steward"]["checkuser-log"]=true;}
-$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
-{unset($wgGroupPermissions["checkuser"]);};
 
 /*Cite*/
 if ($wmgExtensionCite)
@@ -463,10 +467,12 @@ wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
 $wgStaffPowersStewardGroupName="bureaucrat";
 //Permissions
+function extension_StaffPowers_modify_permissions()
+{global $wgGroupPermissions;
+unset($wgGroupPermissions["staff"]);}
+$wgExtensionFunctions[]="extension_StaffPowers_modify_permissions";
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["unblockable"]=true;}
-$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
-{unset($wgGroupPermissions["staff"]);};
 
 /*StalkerLog*/
 //Requires update.php
