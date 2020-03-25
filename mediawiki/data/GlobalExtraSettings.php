@@ -138,7 +138,8 @@ unset($wgGroupPermissions["checkuser"]);}
 $wgExtensionFunctions[]="extension_CheckUser_modify_permissions";
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["checkuser"]=true;
-$wgGroupPermissions["steward"]["checkuser-log"]=true;}
+$wgGroupPermissions["steward"]["checkuser-log"]=true;
+$wgGroupPermissions["steward"]["investigate"]=true;}
 
 /*Cite*/
 if ($wmgExtensionCite)
