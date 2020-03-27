@@ -51,16 +51,20 @@ $wgMetaNamespace="PlavorMind";
 
 /*Protection*/
 $wgNamespaceProtection=
-[NS_CATEGORY=>
-  ["editprotected-autoconfirmed"],
-NS_HELP=>
-  ["editprotected-moderator"],
+[NS_CATEGORY_TALK=>
+  ["editprotected-steward"],
+NS_FILE_TALK=>
+  ["editprotected-steward"],
+NS_HELP_TALK=>
+  ["editprotected-steward"],
 NS_MEDIAWIKI_TALK=>
   ["editprotected-steward"],
 NS_PROJECT=>
-  ["editprotected-steward"],
+  ["editprotected-bureaucrat"],
 NS_TEMPLATE=>
-  ["editprotected-admin"]
+  ["editprotected-admin"],
+NS_TEMPLATE_TALK=>
+  ["editprotected-steward"],
 ];
 
 /*User group permissions*/
