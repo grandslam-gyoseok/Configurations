@@ -523,8 +523,7 @@ $wgGroupPermissions["steward"]["titleblacklistlog"]=true;}
 /*TwoColConflict*/
 if ($wmgExtensionTwoColConflict)
 {wfLoadExtension("TwoColConflict");
-$wgTwoColConflictBetaFeature=false;
-$wgTwoColConflictSuggestResolution=true;}
+$wgTwoColConflictBetaFeature=false;}
 
 /*UploadsLink*/
 if ($wmgExtensionUploadsLink)
