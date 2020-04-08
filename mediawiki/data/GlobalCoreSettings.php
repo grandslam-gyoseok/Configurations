@@ -31,7 +31,7 @@ $wgScriptPath="/mediawiki";
 
 #General
 
-/*Account*/
+/*Accounts*/
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 $wgMaxNameChars=30;
 $wgReservedUsernames=array_merge($wgReservedUsernames,
@@ -67,15 +67,6 @@ $wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/";
 $wgAllowUserCss=true;
 $wgAllowUserJs=true;
 
-/*Interface*/
-$wgAdvancedSearchHighlighting=true;
-$wgAmericanDates=true;
-$wgDisableAnonTalk=true;
-$wgEdititis=true;
-$wgMaxTocLevel=5;
-$wgShowRollbackEditCount=30;
-$wgSpecialVersionShowHooks=true;
-
 /*Interwiki*/
 $wgEnableScaryTranscluding=true;
 $wgExternalInterwikiFragmentMode="html5";
@@ -85,6 +76,21 @@ $wgRedirectSources="/^https?:\\/\\//i";
 //Exclude File namespace
 $wgNamespacesWithSubpages[NS_CATEGORY]=true;
 $wgNamespacesWithSubpages[NS_MAIN]=true;
+
+/*Parser*/
+$wgCleanSignatures=false;
+$wgMaxTemplateDepth=10;
+$wgNonincludableNamespaces=
+[NS_CATEGORY_TALK,
+NS_FILE_TALK,
+NS_HELP_TALK,
+NS_MEDIAWIKI_TALK,
+NS_PROJECT_TALK,
+NS_TALK,
+NS_TEMPLATE_TALK,
+NS_USER_TALK];
+//Only allow HTTP and HTTPS protocols in links
+$wgUrlProtocols=["//","http://","https://"];
 
 /*Password policies*/
 $wgPasswordPolicy["policies"]=
@@ -141,6 +147,7 @@ $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 "watchlisthidecategorization"=>0,
 "watchuploads"=>0]);
 $wgHiddenPrefs=["gender","realname"];
+$wgSearchMatchRedirectPreference=true;
 
 /*Rate limits*/
 $wgAccountCreationThrottle=
@@ -312,34 +319,27 @@ $wgDefaultRobotPolicy="noindex,nofollow";
 $wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 $wgNoFollowDomainExceptions=[parse_url(str_replace("%wiki%.","",$wmgBaseURL),PHP_URL_HOST)];
 
+/*User interface*/
+$wgAdvancedSearchHighlighting=true;
+$wgAmericanDates=true;
+$wgDisableAnonTalk=true;
+$wgEdititis=true;
+$wgMaxTocLevel=5;
+$wgShowRollbackEditCount=30;
+$wgSpecialVersionShowHooks=true;
+
 /*Others*/
 $wgActiveUserDays=7; //1 week
 $wgBreakFrames=true;
 $wgCapitalLinks=false;
-$wgCleanSignatures=false;
 $wgEditPageFrameOptions="SAMEORIGIN";
 $wgExternalLinkTarget="_blank";
 $wgFragmentMode=["html5"];
 unset($wgFooterIcons["poweredby"]);
 $wgHideUserContribLimit=500;
 $wgMaxSigChars=200;
-$wgMaxTemplateDepth=10;
-$wgNonincludableNamespaces=
-[NS_CATEGORY_TALK,
-NS_FILE_TALK,
-NS_HELP_TALK,
-NS_MEDIAWIKI_TALK,
-NS_PROJECT_TALK,
-NS_TALK,
-NS_TEMPLATE_TALK,
-NS_USER_TALK];
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
-//Remove default value
-$wgRawHtmlMessages=[];
-$wgSearchMatchRedirectPreference=true;
 $wgUniversalEditButton=false;
-//Only allow HTTP and HTTPS protocol in links
-$wgUrlProtocols=["//","http://","https://"];
 
 #Permissions
 
