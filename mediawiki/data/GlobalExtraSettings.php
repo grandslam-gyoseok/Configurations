@@ -212,13 +212,11 @@ $wgDiscordIncludeUserUrls=false;
 $wgWikiUrl=$wgServer.$wgScriptPath."/";
 $wgWikiUrlEndingUserRights="Special:UserRights/";}
 
-/*DiscussionTools
-//Disabled due to Parsoid error
-if ($wmgExtensionDiscussionTools && $wmgExtensionParsoid_testing && $wmgExtensionVisualEditor)
+/*DiscussionTools*/
+if ($wmgExtensionDiscussionTools && $wmgExtensionParsoid && $wmgExtensionVisualEditor)
 {wfLoadExtension("DiscussionTools");
 //Required by DiscussionTools
 $wgLocaltimezone="Asia/Seoul";}
-*/
 
 /*Echo*/
 //Requires update.php
@@ -532,9 +530,8 @@ if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["usermerge"]=true;}
 }
 
-/*VisualEditor
-//Disabled due to Parsoid error
-if ($wmgExtensionVisualEditor && $wmgExtensionParsoid_testing)
+/*VisualEditor*/
+if ($wmgExtensionVisualEditor && $wmgExtensionParsoid)
 {wfLoadExtension("VisualEditor");
 $wgDefaultUserOptions["visualeditor-newwikitext"]=1;
 $wgDefaultUserOptions["visualeditor-tabs"]="prefer-wt";
@@ -546,7 +543,6 @@ $wgVisualEditorEnableVisualSectionEditing=true;
 $wgVisualEditorEnableWikitext=true;
 $wgVisualEditorShowBetaWelcome=false;
 $wgVisualEditorUseSingleEditTab=true;}
-*/
 
 /*WikibaseClient*/
 if ($wmgExtensionWikibaseClient)
