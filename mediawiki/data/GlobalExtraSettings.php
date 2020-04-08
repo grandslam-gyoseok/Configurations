@@ -388,20 +388,13 @@ if ($wmgExtensionParserFunctions)
 {wfLoadExtension("ParserFunctions");
 $wgPFEnableStringFunctions=true;}
 
-/*Parsoid-testing
-//Disabled due to error
-if ($wmgExtensionParsoid_testing)
-{wfLoadExtension("Parsoid-testing",$IP."/vendor/wikimedia/parsoid/extension.json");
+/*Parsoid*/
+if ($wmgExtensionParsoid)
+{wfLoadExtension("Parsoid",$IP."/vendor/wikimedia/parsoid/extension.json");
 $wgParsoidSettings=
 ["linting"=>true,
 "useSelser"=>true];
-$wgVirtualRestConfig["modules"]["parsoid"]=
-["domain"=>parse_url($wgServer,PHP_URL_HOST),
-"forwardCookies"=>true,
-//Deprecated but required
-"prefix"=>$wmgWiki,
-"url"=>$wgServer."/mediawiki/rest.php"];}
-*/
+$wgVirtualRestConfig["modules"]["parsoid"]["forwardCookies"]=true;}
 
 /*PerformanceInspector*/
 if ($wmgExtensionPerformanceInspector)
