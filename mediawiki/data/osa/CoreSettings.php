@@ -22,9 +22,8 @@ $wgGroupPermissions["user"]["edit"]=false;
 /*Extension usage*/
 $wmgExtensionCite=true;
 $wmgExtensionHighlightjs_Integration=true;
-$wmgExtensionMath=true;
 $wmgExtensionJosa=true;
-$wmgExtensionMassEditRegex=true;
+$wmgExtensionMath=true;
 $wmgExtensionPageImages=true;
 $wmgExtensionParserFunctions=true;
 $wmgExtensionPopups=true;
