@@ -14,7 +14,17 @@ $wgSitename="PlavorMindCentral";
 /*CSS and JavaScript*/
 $wgAllowSiteCSSOnRestrictedPages=true;
 
-/*Interface*/
+/*Namespaces*/
+$wgMetaNamespace="PlavorMind";
+
+/*Parser*/
+$wgAllowDisplayTitle=false;
+$wgAllowSlowParserFunctions=true; //Experimental
+
+/*Recent changes and watchlist*/
+$wgWatchlistExpiry=true; //Experimental
+
+/*User interface*/
 $wgForceUIMsgAsContentMsg=
 ["excontent",
 "excontentauthor",
@@ -41,11 +51,6 @@ $wgForceUIMsgAsContentMsg=
 "undo-summary",
 "unprotectedarticle-comment"];
 $wgSiteNotice="Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]";
-
-/*Others*/
-$wgAllowDisplayTitle=false;
-$wgAllowSlowParserFunctions=true; //Experimental
-$wgMetaNamespace="PlavorMind";
 
 #Permissions
 
