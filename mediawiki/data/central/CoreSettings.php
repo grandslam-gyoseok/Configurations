@@ -117,7 +117,6 @@ $wmgExtensionWikiEditor=true;
 
 /*Skin usage*/
 $wmgSkinCitizen=true;
-$wmgSkinLiberty=true;
 $wmgSkinMinervaNeue=true;
 $wmgSkinPlavorBuma=true;
 $wmgSkinTimeless=true;
