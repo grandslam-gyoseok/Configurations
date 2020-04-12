@@ -185,6 +185,10 @@ $wgGroupPermissions["bureaucrat"]["skipcaptcha"]=true;
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["skipcaptcha"]=true;}
 
+/*CreateRedirect*/
+if ($wmgExtensionCreateRedirect)
+{wfLoadExtension("CreateRedirect");}
+
 /*DeletePagesForGood*/
 if ($wmgExtensionDeletePagesForGood)
 {wfLoadExtension("DeletePagesForGood");
@@ -466,11 +470,6 @@ unset($wgGroupPermissions["staff"]);}
 $wgExtensionFunctions[]="extension_StaffPowers_modify_permissions";
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["unblockable"]=true;}
-
-/*StalkerLog
-//Requires update.php
-require_once($wgExtensionDirectory."/StalkerLog/StalkerLog.php");
-*/
 
 /*SyntaxHighlight_GeSHi*/
 if ($wmgExtensionSyntaxHighlight_GeSHi && PHP_OS_FAMILY=="Linux")
