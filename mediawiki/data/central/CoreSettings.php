@@ -90,6 +90,7 @@ $wmgExtensionCodeEditor=true;
 $wmgExtensionCodeMirror=true;
 $wmgExtensionCollapsibleVector=true;
 $wmgExtensionCommonsMetadata=true;
+$wmgExtensionCreateRedirect=true;
 $wmgExtensionDiscussionTools=true;
 $wmgExtensionHighlightjs_Integration=true;
 $wmgExtensionMultimediaViewer=true;
