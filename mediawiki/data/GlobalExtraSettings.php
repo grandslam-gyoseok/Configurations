@@ -339,7 +339,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 if ($wmgExtensionJosa)
 {wfLoadExtension("Josa");}
 
-/*MassEditRegex*/
+/*MassEditRegex
 if ($wmgExtensionMassEditRegex)
 {wfLoadExtension("MassEditRegex");
 //Permissions
@@ -347,6 +347,7 @@ $wgGroupPermissions["bureaucrat"]["masseditregex"]=true;
 if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["masseditregex"]=true;}
 }
+*/
 
 /*Math*/
 //Requires update.php
@@ -466,9 +467,10 @@ $wgExtensionFunctions[]="extension_StaffPowers_modify_permissions";
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["unblockable"]=true;}
 
-/*StalkerLog*/
+/*StalkerLog
 //Requires update.php
 require_once($wgExtensionDirectory."/StalkerLog/StalkerLog.php");
+*/
 
 /*SyntaxHighlight_GeSHi*/
 if ($wmgExtensionSyntaxHighlight_GeSHi && PHP_OS_FAMILY=="Linux")
@@ -631,16 +633,17 @@ wfLoadExtension("SecureLinkFixer");
 /*Citizen*/
 if ($wmgSkinCitizen)
 {wfLoadSkin("Citizen");
-$wgCitizenEnableManifest=false; //Experimental
+$wgCitizenEnableManifest=false;
 $wgCitizenManifestThemeColor="#9933ff";
 $wgCitizenThemeColor="#9933ff";}
 
-/*Liberty*/
+/*Liberty
 if ($wmgSkinLiberty)
 {wfLoadSkin("Liberty");
 $wgLibertyEnableLiveRC=false;
 $wgLibertyMainColor="#9933ff";
 $wgTwitterAccount="PlavorSeol";}
+*/
 
 /*Medik*/
 if ($wmgSkinMedik)
