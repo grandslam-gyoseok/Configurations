@@ -691,7 +691,7 @@ $wmgExtensionGlobalUserPage=true;
 $wmgExtensionHighlightjs_Integration=false;
 $wmgExtensionInputBox=false;
 $wmgExtensionJosa=false;
-$wmgExtensionMassEditRegex=false;
+//$wmgExtensionMassEditRegex=false;
 $wmgExtensionMath=false;
 $wmgExtensionMultimediaViewer=false;
 $wmgExtensionNuke=false;
@@ -720,7 +720,7 @@ $wmgExtensionWikiEditor=false;
 
 /*Skin usage*/
 $wmgSkinCitizen=false;
-$wmgSkinLiberty=false;
+//$wmgSkinLiberty=false;
 $wmgSkinMedik=false;
 $wmgSkinMetrolook=false;
 $wmgSkinMinervaNeue=false;
