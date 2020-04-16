@@ -519,7 +519,7 @@ $wgSVGConverters=
 //"!" should not be escaped on Windows
 //$path and $wgSVGConverterPath should not be used because double quotes automatically surrounds $path.
 ["ImageMagick"=>'"'.$wgImageMagickConvertCommand.'" -background none -thumbnail $widthx$height! $input $output',
-"inkscape"=>'"C:/Program Files/Inkscape/inkscape.exe" --export-height=$height --export-png=$output --export-width=$width --file=$input --without-gui'];
+"inkscape"=>'"C:/Program Files/Inkscape/bin/inkscape.com" $input --batch-process --export-filename=$output --export-height=$height --export-width=$width'];
 break;
 default:
 $wgSVGConverter=false;}
