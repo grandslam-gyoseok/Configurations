@@ -2,29 +2,29 @@
 if (!defined("MEDIAWIKI"))
 {exit("This is not a valid entry point.");}
 
-#General
+//< General >
 
-/*Basic information*/
+//<< Basic information >>
 $wgLogos=
 ["1x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-1x.png",
 "1.5x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-1.5x.png",
 "2x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-2x.png"];
 $wgSitename="PlavorMindCentral";
 
-/*CSS and JavaScript*/
+//<< CSS and JavaScript >>
 $wgAllowSiteCSSOnRestrictedPages=true;
 
-/*Namespaces*/
+//<< Namespaces >>
 $wgMetaNamespace="PlavorMind";
 
-/*Parser*/
+//<< Parser >>
 $wgAllowDisplayTitle=false;
 $wgAllowSlowParserFunctions=true; //Experimental
 
-/*Recent changes and watchlist*/
+//<< Recent changes and watchlist >>
 $wgWatchlistExpiry=true; //Experimental
 
-/*User interface*/
+//<< User interface >>
 $wgForceUIMsgAsContentMsg=
 ["excontent",
 "excontentauthor",
@@ -52,9 +52,9 @@ $wgForceUIMsgAsContentMsg=
 "unprotectedarticle-comment"];
 $wgSiteNotice="Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]";
 
-#Permissions
+//< Permissions >
 
-/*Protection*/
+//<< Protection >>
 $wgNamespaceProtection=
 [NS_CATEGORY_TALK=>
   ["editprotected-steward"],
@@ -72,7 +72,7 @@ NS_TEMPLATE_TALK=>
   ["editprotected-steward"],
 ];
 
-/*User group permissions*/
+//<< User group permissions >>
 $wgGroupPermissions["bureaucrat"]["editinterface"]=false;
 $wgGroupPermissions["bureaucrat"]["editsitecss"]=false;
 $wgGroupPermissions["bureaucrat"]["editsitejson"]=false;
@@ -81,9 +81,9 @@ if ($wmgGrantStewardsGlobalPermissions)
 $wgGroupPermissions["steward"]["editsitecss"]=true;
 $wgGroupPermissions["steward"]["editsitejson"]=true;}
 
-#Extensions
+//< Extensions >
 
-/*Extension usage*/
+//<< Extension usage >>
 $wmgExtensionBabel=true;
 $wmgExtensionCite=true;
 $wmgExtensionCodeEditor=true;
@@ -114,9 +114,9 @@ $wmgExtensionWikibaseClient=true;
 $wmgExtensionWikibaseRepository=true;
 $wmgExtensionWikiEditor=true;
 
-#Skins
+//< Skins >
 
-/*Skin usage*/
+//<< Skin usage >>
 $wmgSkinCitizen=true;
 $wmgSkinMinervaNeue=true;
 $wmgSkinPlavorBuma=true;
