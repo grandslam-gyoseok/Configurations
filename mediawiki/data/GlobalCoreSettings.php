@@ -2,20 +2,20 @@
 if (!defined("MEDIAWIKI"))
 {exit("This is not a valid entry point.");}
 
-#Initialize
+//< Initialize >
 
-/*Databases*/
+//<< Databases >>
 $wgDBname=$wmgWiki."wiki";
 foreach ($wmgWikis as $wiki)
 {$wgLocalDatabases[]=$wiki."wiki";}
 unset($wiki);
 
-/*Variables*/
+//<< Variables >>
 $wmgCentralBaseURL=str_replace("%wiki%",$wmgCentralWiki,$wmgBaseURL);
 if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
 {$wmgGlobalAccountMode="";}
 
-/*Others*/
+//<< Others >>
 if ($wmgGlobalAccountMode!="")
 {$wgConf->settings=
 ["wgArticlePath"=>
@@ -29,9 +29,9 @@ $wgConf->extractAllGlobals($wgDBname);}
 //Should be defined before variables using $wgScriptPath
 $wgScriptPath="/mediawiki";
 
-#General
+//< General >
 
-/*Accounts*/
+//<< Accounts >>
 $wgInvalidUsernameCharacters="`~!@$%^&*()=+\\;:,.?";
 $wgMaxNameChars=30;
 $wgReservedUsernames=array_merge($wgReservedUsernames,
@@ -47,37 +47,37 @@ $wgReservedUsernames=array_merge($wgReservedUsernames,
 "Username",
 "편집 필터"]);
 
-/*Basic information*/
+//<< Basic information >>
 $wgSitename="Nameless";
 
-/*Blocking*/
+//<< Blocking >>
 $wgApplyIpBlocksToXff=true;
 $wgAutoblockExpiry=60*60*24*365*10; //10 years
 $wgBlockCIDRLimit=
 ["IPv4"=>8, //###.0.0.0/8
 "IPv6"=>16]; //####::/16
 
-/*Copyright*/
+//<< Copyright >>
 $wgMaxCredits=10;
 $wgRightsIcon=$wgScriptPath."/resources/assets/licenses/cc-by-sa.png";
 $wgRightsText="Creative Commons Attribution-ShareAlike 4.0 International";
 $wgRightsUrl="https://creativecommons.org/licenses/by-sa/4.0/";
 
-/*CSS and JavaScript*/
+//<< CSS and JavaScript >>
 $wgAllowUserCss=true;
 $wgAllowUserJs=true;
 
-/*Interwiki*/
+//<< Interwiki >>
 $wgEnableScaryTranscluding=true;
 $wgExternalInterwikiFragmentMode="html5";
 $wgRedirectSources="/^https?:\\/\\//i";
 
-/*Namespaces*/
+//<< Namespaces >>
 //Exclude File namespace
 $wgNamespacesWithSubpages[NS_CATEGORY]=true;
 $wgNamespacesWithSubpages[NS_MAIN]=true;
 
-/*Parser*/
+//<< Parser >>
 $wgCleanSignatures=false;
 $wgMaxTemplateDepth=10;
 $wgNonincludableNamespaces=
@@ -92,7 +92,7 @@ NS_USER_TALK];
 //Only allow HTTP and HTTPS protocols in links
 $wgUrlProtocols=["//","http://","https://"];
 
-/*Password policies*/
+//<< Password policies >>
 $wgPasswordPolicy["policies"]=
 ["default"=>
   ["MaximalPasswordLength"=>
@@ -137,7 +137,7 @@ $wgPasswordPolicy["policies"]=
   "PasswordCannotBePopular"=>1000]
 ];
 
-/*Preferences*/
+//<< Preferences >>
 $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 ["hidecategorization"=>0,
 "rememberpassword"=>1,
@@ -149,7 +149,7 @@ $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 $wgHiddenPrefs=["gender","realname"];
 $wgSearchMatchRedirectPreference=true;
 
-/*Rate limits*/
+//<< Rate limits >>
 $wgAccountCreationThrottle=
 [//Per minute
   ["count"=>1,
@@ -302,7 +302,7 @@ $wgRateLimits=
   ]
 ];
 
-/*Recent changes and watchlist*/
+//<< Recent changes and watchlist >>
 $wgLearnerEdits=15;
 $wgLearnerMemberSince=7; //1 week
 $wgRCFilterByAge=true;
@@ -313,13 +313,13 @@ $wgUnwatchedPageSecret=-1;
 $wgUnwatchedPageThreshold=0;
 $wgWatchersMaxAge=60*60*24*7; //1 week
 
-/*Robot policies*/
+//<< Robot policies >>
 $wgDefaultRobotPolicy="noindex,nofollow";
 //All namespaces
 $wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 $wgNoFollowDomainExceptions=[parse_url(str_replace("%wiki%.","",$wmgBaseURL),PHP_URL_HOST)];
 
-/*User interface*/
+//<< User interface >>
 $wgAdvancedSearchHighlighting=true;
 $wgAmericanDates=true;
 $wgDisableAnonTalk=true;
@@ -328,7 +328,7 @@ $wgMaxTocLevel=5;
 $wgShowRollbackEditCount=30;
 $wgSpecialVersionShowHooks=true;
 
-/*Others*/
+//<< Others >>
 $wgActiveUserDays=7; //1 week
 $wgBreakFrames=true;
 $wgCapitalLinks=false;
@@ -341,17 +341,17 @@ $wgMaxSigChars=200;
 $wgRangeContributionsCIDRLimit=$wgBlockCIDRLimit;
 $wgUniversalEditButton=false;
 
-#Permissions
+//< Permissions >
 
-/*Adding and removing users from user groups*/
+//<< Adding and removing users from user groups >>
 $wgAddGroups["bureaucrat"]=["moderator","admin"];
 $wgRemoveGroups["bureaucrat"]=["moderator","admin"];
 
-/*Auto-promoting*/
+//<< Auto-promoting >>
 $wgAutoConfirmAge=60*60*24*$wgLearnerMemberSince;
 $wgAutoConfirmCount=$wgLearnerEdits;
 
-/*Protection*/
+//<< Protection >>
 $wgCascadingRestrictionLevels=
 ["editprotected-moderator",
 "editprotected-admin",
@@ -376,7 +376,7 @@ $wgSemiprotectedRestrictionLevels=
 ["editprotected-user",
 "editprotected-autoconfirmed"];
 
-/*User group permissions*/
+//<< User group permissions >>
 $wgAvailableRights=
 ["editprotected-user",
 "editprotected-autoconfirmed",
@@ -484,7 +484,7 @@ if ($wmgWiki==$wmgCentralWiki)
 "userrights"=>true,
 "userrights-interwiki"=>true]);}
 
-/*Others*/
+//<< Others >>
 function core_modify_permissions()
 {global $wgGroupPermissions,$wmgCentralWiki,$wmgGrantStewardsGlobalPermissions,$wmgWiki;
 //Remove user groups
@@ -495,20 +495,20 @@ if (!($wmgWiki==$wmgCentralWiki || $wmgGrantStewardsGlobalPermissions))
 $wgDeleteRevisionsLimit=250;
 $wgExtensionFunctions[]="core_modify_permissions";
 
-#Images and uploads
+//< Images and uploads >
 
-/*Directories*/
+//<< Directories >>
 $wgDeletedDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/deleted-files";
 $wgUploadDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/files";
 $wgUploadPath=$wgScriptPath."/img_auth.php";
 
-/*ImageMagick*/
+//<< ImageMagick >>
 if (PHP_OS_FAMILY=="Windows")
 {$wgImageMagickConvertCommand="C:/Program Files/ImageMagick-7.0.9-Q16-HDRI/convert.exe";}
 if (file_exists($wgImageMagickConvertCommand))
 {$wgUseImageMagick=true;}
 
-/*SVG*/
+//<< SVG >>
 switch (PHP_OS_FAMILY)
 {case "Linux":
 $wgSVGConverter=false;
@@ -524,18 +524,18 @@ break;
 default:
 $wgSVGConverter=false;}
 
-/*Thumbnails*/
+//<< Thumbnails >>
 //thumb.php should not be used when $wgSVGConverter is false due to issues with NativeSvgHandler extension
 if ($wgSVGConverter)
 {$wgGenerateThumbnailOnParse=false;
 $wgThumbnailScriptPath=$wgScriptPath."/thumb.php";}
 
-/*Uploading from URL*/
+//<< Uploading from URL >>
 $wgAllowCopyUploads=true;
 $wgCopyUploadsDomains=[]; //openclipart.org is inaccessible
 $wgCopyUploadsFromSpecialUpload=true;
 
-/*Others*/
+//<< Others >>
 $wgEnableUploads=true;
 $wgFileExtensions=["gif","jpg","png","svg","webp"];
 $wgHashedUploadDirectory=false;
@@ -549,19 +549,19 @@ $wgUseCopyrightUpload=true;
 $wgUseInstantCommons=true;
 $wgUseTinyRGBForJPGThumbnails=true;
 
-#Email
+//< Email >
 
 //Server does not support e-mail services
 $wgEnableEmail=false;
 
-#System
+//< System >
 
-/*API*/
+//<< API >>
 $wgApiFrameOptions="SAMEORIGIN";
 $wgAPIRequestLog=$wmgPrivateDataDirectory."/".$wmgWiki."/api.log";
 $wgEnableRestAPI=true;
 
-/*Authentication and sessions*/
+//<< Authentication and sessions >>
 $wgAllowSecuritySensitiveOperationIfCannotReauthenticate=
 ["default"=>false,
 "LinkAccounts"=>true,
@@ -574,14 +574,14 @@ $wgReauthenticateTime=
 "ChangeCredentials"=>60, //1 minute
 "RemoveCredentials"=>60]; //1 minute
 
-/*Databases*/
+//<< Databases >>
 if ($wmgGlobalAccountMode=="shared-database")
 {$wgSharedDB=$wmgCentralWiki."wiki";
 $wgSharedTables=["actor","user"];}
 //SQLite-only
 $wgSQLiteDataDir=$wmgPrivateDataDirectory."/databases";
 
-/*Debugging*/
+//<< Debugging >>
 if ($wgCommandLineMode || $wmgDebugMode)
 {error_reporting(E_ALL);
 ini_set("display_errors",1);
@@ -590,7 +590,7 @@ $wgDebugDumpSql=true;
 $wgDevelopmentWarnings=true;
 $wgShowExceptionDetails=true;}
 
-/*URL*/
+//<< URL >>
 $actions=
 ["delete",
 "edit",
@@ -614,7 +614,7 @@ $wgArticlePath="/page/$1";
 $wgServer=str_replace("%wiki%",$wmgWiki,$wmgBaseURL);
 $wgUsePathInfo=true;
 
-/*Others*/
+//<< Others >>
 $wgAsyncHTTPTimeout=30;
 $wgDeleteRevisionsBatchSize=500;
 //Ignored on Windows
@@ -631,30 +631,30 @@ $wgPhpCli="C:/plavormind/php-ts/php.exe";
 break;}
 $wgReadOnlyFile=$wmgDataDirectory."/readonly.txt";
 
-#Caching
+//< Caching >
 
 $wgCacheDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/cache";
 //Disable client side caching
 $wgCachePages=false;
 $wgMainCacheType=CACHE_ACCEL;
 
-/*File cache*/
+//<< File cache >>
 $wgFileCacheDepth=0;
 $wgFileCacheDirectory=$wgCacheDirectory;
 //Disabled due to several issues, including breaking global user pages and taking too long time to automatically purging cache
 //$wgUseFileCache=true;
 
-/*Message cache*/
+//<< Message cache >>
 $wgAdaptiveMessageCache=true;
 $wgLocalisationCacheConf["store"]="array";
 $wgUseLocalMessageCache=true;
 
-/*Sidebar cache*/
+//<< Sidebar cache >>
 $wgEnableSidebarCache=true;
 $wgSidebarCacheExpiry=$wmgCacheExpiry;
 $wgTranscludeCacheExpiry=$wmgCacheExpiry;
 
-/*Others*/
+//<< Others >>
 $wgAdaptiveMessageCache=true;
 $wgAPICacheHelpTimeout=$wmgCacheExpiry;
 $wgInterwikiExpiry=$wmgCacheExpiry;
@@ -668,9 +668,9 @@ $wgSearchSuggestCacheExpiry=$wmgCacheExpiry;
 //This one should always use cache
 $wgSessionCacheType=CACHE_ACCEL;
 
-#Extensions
+//< Extensions >
 
-/*Extension usage*/
+//<< Extension usage >>
 //It is good to enable Babel when GlobalUserPage is enabled
 if ($wmgGlobalAccountMode!="")
 {$wmgExtensionBabel=true;}
@@ -717,9 +717,9 @@ $wmgExtensionWikibaseClient=false;
 $wmgExtensionWikibaseRepository=false;
 $wmgExtensionWikiEditor=false;
 
-#Skins
+//< Skins >
 
-/*Skin usage*/
+//<< Skin usage >>
 $wmgSkinCitizen=false;
 //$wmgSkinLiberty=false;
 $wmgSkinMedik=false;
