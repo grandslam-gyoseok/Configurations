@@ -2,9 +2,9 @@
 if (!defined("MEDIAWIKI"))
 {exit("This is not a valid entry point.");}
 
-#Initialize
+//< Initialize >
 
-/*efGetSiteParams callback*/
+//<< efGetSiteParams callback >>
 function efGetSiteParams($conf,$wiki)
 {$lang=null;
 $site=null;
@@ -27,7 +27,7 @@ return
 }
 $wgConf->siteParamsCallback="efGetSiteParams";
 
-/*Variables*/
+//<< Variables >>
 //Put "%wiki%" where the wiki ID should be placed
 $wmgBaseURL="http://%wiki%.plavormind.tk:81";
 $wmgCacheExpiry=60; //1 minute
@@ -50,7 +50,7 @@ $wmgPrivateDataDirectory=$IP."/private-data";}
 $wmgWiki="wiki";
 $wmgWikis=["central","osa"];
 
-/*Wiki selector*/
+//<< Wiki selector >>
 if ($wgCommandLineMode)
 {if (defined("MW_DB"))
   {$wmgWiki=MW_DB;}
@@ -65,7 +65,7 @@ else
 if (!in_array($wmgWiki,$wmgWikis))
 {exit("Cannot find this wiki.");}
 
-/*Others*/
+//<< Others >>
 require_once($wmgDataDirectory."/GlobalCoreSettings.php");
 if (file_exists($wmgDataDirectory."/".$wmgWiki."/CoreSettings.php"))
 {include_once($wmgDataDirectory."/".$wmgWiki."/CoreSettings.php");}
