@@ -683,7 +683,6 @@ $wmgExtensionCollapsibleVector=false;
 $wmgExtensionCommonsMetadata=false;
 $wmgExtensionCreateRedirect=false;
 $wmgExtensionDeletePagesForGood=false;
-$wmgExtensionDiscord=false;
 $wmgExtensionDiscordNotifications=true;
 $wmgExtensionDiscussionTools=false;
 //$wmgExtensionFlow=false;
