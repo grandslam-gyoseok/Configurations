@@ -104,6 +104,7 @@ $wmgExtensionReplaceText=true;
 $wmgExtensionRevisionSlider=true;
 $wmgExtensionSyntaxHighlight_GeSHi=true;
 $wmgExtensionTemplateData=true;
+$wmgExtensionTemplateSandbox=true;
 $wmgExtensionTemplateStyles=true;
 $wmgExtensionTemplateWizard=true;
 $wmgExtensionTextExtracts=true;
