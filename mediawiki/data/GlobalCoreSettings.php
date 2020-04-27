@@ -706,6 +706,7 @@ $wmgExtensionRevisionSlider=false;
 $wmgExtensionScribunto=false;
 $wmgExtensionSyntaxHighlight_GeSHi=false;
 $wmgExtensionTemplateData=false;
+$wmgExtensionTemplateSandbox=false;
 $wmgExtensionTemplateStyles=false;
 $wmgExtensionTemplateWizard=false;
 $wmgExtensionTextExtracts=false;
