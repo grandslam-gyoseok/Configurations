@@ -198,12 +198,6 @@ if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["deleteperm"]=true;}
 }
 
-//<< Discord >>
-if ($wmgExtensionDiscord)
-{wfLoadExtension("Discord");
-$wgDiscordNoBots=false;
-$wgDiscordPrependTimestamp=true;}
-
 //<< DiscordNotifications >>
 if ($wmgExtensionDiscordNotifications)
 {wfLoadExtension("DiscordNotifications");
