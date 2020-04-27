@@ -7,7 +7,7 @@ if (!defined("MEDIAWIKI"))
 //<< AbuseFilter >>
 //This extension requires running update.php.
 wfLoadExtension("AbuseFilter");
-//"disallow" and "warn" should always be enabled to make AbuseFilter work properly
+//"disallow" and "warn" should always be enabled to make AbuseFilter work properly.
 $wgAbuseFilterActions=
 ["block"=>false,
 "blockautopromote"=>false,
@@ -472,6 +472,10 @@ if ($wmgExtensionSyntaxHighlight_GeSHi && PHP_OS_FAMILY=="Linux")
 //<< TemplateData >>
 if ($wmgExtensionTemplateData)
 {wfLoadExtension("TemplateData");}
+
+//<< TemplateSandbox >>
+if ($wmgExtensionTemplateSandbox)
+{wfLoadExtension("TemplateSandbox");}
 
 //<< TemplateStyles >>
 if ($wmgExtensionTemplateStyles)
