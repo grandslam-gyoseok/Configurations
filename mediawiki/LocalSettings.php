@@ -6,6 +6,9 @@ if (!defined("MEDIAWIKI"))
 
 $wmgCacheExpiry=60; //1 minute
 $wmgCentralWiki="central";
+$wmgCIDRLimit=
+["IPv4"=>8, //###.0.0.0/8
+"IPv6"=>16]; //####::/16
 $wmgCustomDomains=[];
 $wmgDataDirectory=$IP."/data";
 $wmgDebugMode=false;
