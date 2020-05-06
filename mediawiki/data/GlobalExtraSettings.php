@@ -1,7 +1,4 @@
 <?php
-if (!defined("MEDIAWIKI"))
-{exit("This is not a valid entry point.");}
-
 //< Extensions >
 
 //<< AbuseFilter >>
@@ -90,7 +87,7 @@ if ($wmgGlobalAccountMode=="centralauth")
 $wgCentralAuthAutoMigrate=true;
 $wgCentralAuthAutoMigrateNonGlobalAccounts=true;
 //"." should be prepended
-$wgCentralAuthCookieDomain=parse_url(str_replace("%wiki%","",$wmgBaseURL),PHP_URL_HOST);
+$wgCentralAuthCookieDomain=parse_url(str_replace("%wiki%","",$wmgDefaultBaseURL),PHP_URL_HOST);
 $wgCentralAuthCookies=true;
 $wgCentralAuthCreateOnView=true;
 $wgCentralAuthDatabase="wiki_centralauth";
