@@ -1,7 +1,4 @@
 <?php
-if (!defined("MEDIAWIKI"))
-{exit("This is not a valid entry point.");}
-
 //< Initialize >
 
 //<< Databases >>
@@ -10,18 +7,13 @@ foreach ($wmgWikis as $wiki)
 {$wgLocalDatabases[]=$wiki."wiki";}
 unset($wiki);
 
-//<< Variables >>
-$wmgCentralBaseURL=str_replace("%wiki%",$wmgCentralWiki,$wmgBaseURL);
-if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
-{$wmgGlobalAccountMode="";}
-
 //<< Others >>
 if ($wmgGlobalAccountMode!="")
 {$wgConf->settings=
 ["wgArticlePath"=>
   ["default"=>"/page/$1"],
 "wgServer"=>
-  ["default"=>str_replace("%wiki%",'$lang',$wmgBaseURL)]
+  ["default"=>str_replace("%wiki%",'$lang',$wmgDefaultBaseURL)]
 ];
 $wgConf->suffixes=["wiki"];
 $wgConf->wikis=$wgLocalDatabases;
@@ -317,7 +309,7 @@ $wgWatchersMaxAge=60*60*24*7; //1 week
 $wgDefaultRobotPolicy="noindex,nofollow";
 //All namespaces
 $wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-$wgNoFollowDomainExceptions=[parse_url(str_replace("%wiki%.","",$wmgBaseURL),PHP_URL_HOST)];
+$wgNoFollowDomainExceptions=[parse_url(str_replace("%wiki%.","",$wmgDefaultBaseURL),PHP_URL_HOST)];
 
 //<< User interface >>
 $wgAdvancedSearchHighlighting=true;
@@ -611,7 +603,7 @@ foreach ($actions as $action)
 {$wgActionPaths[$action]="/".$action."/$1";}
 unset($action,$actions);
 $wgArticlePath="/page/$1";
-$wgServer=str_replace("%wiki%",$wmgWiki,$wmgBaseURL);
+$wgServer=str_replace("%wiki%",$wmgWiki,$wmgDefaultBaseURL);
 $wgUsePathInfo=true;
 
 //<< Others >>
