@@ -685,3 +685,6 @@ if ($wmgSkinTimeless)
 //<< Vector >>
 wfLoadSkin("Vector");
 $wgVectorResponsive=true;
+$wgVectorDefaultSkinVersion="2";
+$wgVectorDefaultSkinVersionForExistingAccounts="2";
+$wgVectorDefaultSkinVersionForNewAccounts="2";
