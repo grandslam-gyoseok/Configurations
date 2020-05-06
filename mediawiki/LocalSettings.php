@@ -4,9 +4,6 @@ if (!defined("MEDIAWIKI"))
 
 //< Custom settings >
 
-//Put "%wiki%" where the wiki ID should be placed.
-//This setting is deprecated.
-$wmgBaseURL="http://%wiki%.plavormind.tk:81";
 $wmgCacheExpiry=60; //1 minute
 $wmgCentralWiki="central";
 $wmgCustomDomains=[];
