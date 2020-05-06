@@ -28,13 +28,13 @@ return
 $wgConf->siteParamsCallback="efGetSiteParams";
 
 //<< Variables >>
-//Put "%wiki%" where the wiki ID should be placed
+//Put "%wiki%" where the wiki ID should be placed.
 $wmgBaseURL="http://%wiki%.plavormind.tk:81";
 $wmgCacheExpiry=60; //1 minute
 $wmgCentralWiki="central";
 $wmgDataDirectory=$IP."/data";
 $wmgDebugMode=false;
-$wmgGlobalAccountExemptWikis=["pocket"];
+$wmgGlobalAccountExemptWikis=[];
 //Should be one of "", "centralauth" and "shared-database"
 $wmgGlobalAccountMode="centralauth";
 $wmgGrantStewardsGlobalPermissions=false;
@@ -47,7 +47,6 @@ $wmgPrivateDataDirectory="C:/plavormind/web/data/mediawiki";
 break;
 default:
 $wmgPrivateDataDirectory=$IP."/private-data";}
-$wmgWiki="wiki";
 $wmgWikis=["central","osa"];
 
 //<< Wiki selector >>
