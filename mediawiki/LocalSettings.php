@@ -10,18 +10,22 @@ $wmgCIDRLimit=
 ["IPv4"=>8, //###.0.0.0/8
 "IPv6"=>16]; //####::/16
 $wmgCustomDomains=[];
-$wmgDataDirectory=$IP."/data";
 $wmgDebugMode=false;
 //Put "%wiki%" where the wiki ID should be placed.
 $wmgDefaultBaseURL="http://%wiki%.plavormind.tk:81";
-$wmgGlobalAccountExemptWikis=[];
-//Should be one of "", "centralauth" and "shared-database"
-$wmgGlobalAccountMode="centralauth";
+$wmgWikis=["central","osa"];
+
+//<< Directories >>
+$wmgDataDirectory=$IP."/data";
 $wmgPrivateDataDirectories=
 ["Android"=>$IP."/private-data",
 "Linux"=>"/plavormind/web/data/mediawiki",
 "Windows"=>"C:/plavormind/web/data/mediawiki"];
-$wmgWikis=["central","osa"];
+
+//<< Global accounts >>
+$wmgGlobalAccountExemptWikis=[];
+//Should be one of "centralauth", "shared-database" and false
+$wmgGlobalAccountMode="centralauth";
 
 //< Initialize >
 
@@ -91,6 +95,9 @@ else
   {$wmgGrantStewardsGlobalPermissions=true;}
 }
 
+//< Wiki settings >
+
+//<< Load settings >>
 require_once($wmgDataDirectory."/GlobalCoreSettings.php");
 if (file_exists($wmgDataDirectory."/".$wmgWiki."/CoreSettings.php"))
 {include_once($wmgDataDirectory."/".$wmgWiki."/CoreSettings.php");}
