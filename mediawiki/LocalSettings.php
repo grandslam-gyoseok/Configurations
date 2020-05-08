@@ -89,7 +89,7 @@ if (!isset($wmgPrivateDataDirectory))
 {$wmgPrivateDataDirectory=$wmgPrivateDataDirectories[$wmgPlatform];}
 
 if (!isset($wmgGrantStewardsGlobalPermissions))
-{if ($wmgGlobalAccountMode == "centralauth")
+{if ($wmgGlobalAccountMode === "centralauth")
   {$wmgGrantStewardsGlobalPermissions=false;}
 else
   {$wmgGrantStewardsGlobalPermissions=true;}
