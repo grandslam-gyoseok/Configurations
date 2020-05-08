@@ -663,11 +663,15 @@ $wgSessionCacheType=CACHE_ACCEL;
 //< Extensions >
 
 //<< Extension usage >>
-//It is good to enable Babel when GlobalUserPage is enabled
-if ($wmgGlobalAccountMode!="")
+//It is good to enable Babel when GlobalUserPage is enabled.
+//EMERGENCY: Disable Babel until the timeout issue is resolved.
+/*
+if ($wmgGlobalAccountMode !== "")
 {$wmgExtensionBabel=true;}
 else
 {$wmgExtensionBabel=false;}
+*/
+$wmgExtensionBabel=false;
 $wmgExtensionCite=false;
 $wmgExtensionCodeEditor=false;
 $wmgExtensionCodeMirror=false;
