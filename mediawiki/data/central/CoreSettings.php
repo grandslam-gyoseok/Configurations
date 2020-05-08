@@ -84,7 +84,8 @@ $wgGroupPermissions["steward"]["editsitejson"]=true;}
 //< Extensions >
 
 //<< Extension usage >>
-$wmgExtensionBabel=true;
+//EMERGENCY: Disable Babel until the timeout issue is resolved.
+//$wmgExtensionBabel=true;
 $wmgExtensionCite=true;
 $wmgExtensionCodeEditor=true;
 $wmgExtensionCodeMirror=true;
