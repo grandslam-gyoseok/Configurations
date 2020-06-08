@@ -204,8 +204,8 @@ else
   {$wgDiscordFromName=$wgSitename." (".$wgServer."/)";}
 $wgDiscordIncludePageUrls=false;
 $wgDiscordIncludeUserUrls=false;
-$wgWikiUrl=$wgServer.$wgScriptPath."/";
-$wgWikiUrlEndingUserRights="Special:UserRights/";}
+$wgDiscordNotificationWikiUrl=$wgServer.$wgScriptPath."/";
+$wgDiscordNotificationWikiUrlEndingUserRights="Special:UserRights/";}
 
 //<< DiscussionTools >>
 if ($wmgExtensionDiscussionTools && $wmgExtensionParsoid && $wmgExtensionVisualEditor)
