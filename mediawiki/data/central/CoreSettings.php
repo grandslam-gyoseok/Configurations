@@ -89,7 +89,6 @@ $wgGroupPermissions["steward"]["editsitejson"]=true;}
 $wmgExtensionCite=true;
 $wmgExtensionCodeEditor=true;
 $wmgExtensionCodeMirror=true;
-$wmgExtensionCollapsibleVector=true;
 $wmgExtensionCommonsMetadata=true;
 $wmgExtensionCreateRedirect=true;
 $wmgExtensionDiscussionTools=true;
