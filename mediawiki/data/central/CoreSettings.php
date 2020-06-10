@@ -92,7 +92,6 @@ $wmgExtensionCodeEditor=true;
 $wmgExtensionCodeMirror=true;
 $wmgExtensionCommonsMetadata=true;
 $wmgExtensionCreateRedirect=true;
-$wmgExtensionDiscussionTools=true;
 $wmgExtensionHighlightjs_Integration=true;
 $wmgExtensionMultimediaViewer=true;
 $wmgExtensionNuke=true;
