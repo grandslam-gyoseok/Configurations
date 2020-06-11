@@ -85,33 +85,31 @@ $wgGroupPermissions["steward"]["editsitejson"]=true;}
 //< Extensions >
 
 //<< Extension usage >>
-//EMERGENCY: Disable Babel until the timeout issue is resolved.
-//$wmgExtensionBabel=true;
-$wmgExtensionCite=true;
-$wmgExtensionCodeEditor=true;
-$wmgExtensionCodeMirror=true;
-$wmgExtensionCommonsMetadata=true;
-$wmgExtensionCreateRedirect=true;
-$wmgExtensionHighlightjs_Integration=true;
-$wmgExtensionMultimediaViewer=true;
-$wmgExtensionNuke=true;
-$wmgExtensionPageImages=true;
-$wmgExtensionPerformanceInspector=true;
-$wmgExtensionPopups=true;
-$wmgExtensionProtectionIndicator=true;
-$wmgExtensionReplaceText=true;
-$wmgExtensionRevisionSlider=true;
-$wmgExtensionSyntaxHighlight_GeSHi=true;
-$wmgExtensionTemplateData=true;
-$wmgExtensionTemplateSandbox=true;
-$wmgExtensionTemplateStyles=true;
-$wmgExtensionTemplateWizard=true;
-$wmgExtensionTextExtracts=true;
-$wmgExtensionTwoColConflict=true;
-$wmgExtensionUploadsLink=true;
-$wmgExtensionWikibaseClient=true;
-$wmgExtensionWikibaseRepository=true;
-$wmgExtensionWikiEditor=true;
+$wmgExtensions=array_merge($wmgExtensions,
+["Cite"=>true,
+"CodeEditor"=>true,
+"CodeMirror"=>true,
+"CommonsMetadata"=>true,
+"CreateRedirect"=>true,
+"Highlightjs_Integration"=>true,
+"MultimediaViewer"=>true,
+"Nuke"=>true,
+"PageImages"=>true,
+"PerformanceInspector"=>true,
+"Popups"=>true,
+"ReplaceText"=>true,
+"RevisionSlider"=>true,
+"SyntaxHighlight_GeSHi"=>true,
+"TemplateData"=>true,
+"TemplateSandbox"=>true,
+"TemplateStyles"=>true,
+"TemplateWizard"=>true,
+"TextExtracts"=>true,
+"TwoColConflict"=>true,
+"UploadsLink"=>true,
+"WikibaseClient"=>true,
+"WikibaseRepository"=>true,
+"WikiEditor"=>true]);
 
 //< Skins >
 
