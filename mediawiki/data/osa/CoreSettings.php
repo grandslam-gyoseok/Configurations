@@ -8,7 +8,8 @@ if (!defined("MEDIAWIKI"))
 $wgLogos=
 ["1x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-1x.png",
 "1.5x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-1.5x.png",
-"2x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-2x.png"];
+"2x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-2x.png",
+"icon"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-2x.png"];
 $wgSitename="오사위키덤프";
 
 //< Permissions >
@@ -20,16 +21,18 @@ $wgGroupPermissions["user"]["edit"]=false;
 //< Extensions >
 
 //<< Extension usage >>
-$wmgExtensionCite=true;
-$wmgExtensionHighlightjs_Integration=true;
-$wmgExtensionJosa=true;
-$wmgExtensionMath=true;
-$wmgExtensionPageImages=true;
-$wmgExtensionParserFunctions=true;
-$wmgExtensionPopups=true;
-$wmgExtensionReplaceText=true;
-$wmgExtensionSyntaxHighlight_GeSHi=true;
-$wmgExtensionTextExtracts=true;
+$wmgExtensions=array_merge($wmgExtensions,
+["Cite"=>true,
+"Highlightjs_Integration"=>true,
+"Josa"=>true,
+"Math"=>true,
+"PageImages"=>true,
+"ParserFunctions"=>true,
+"PerformanceInspector"=>true,
+"Popups"=>true,
+"ReplaceText"=>true,
+"SyntaxHighlight_GeSHi"=>true,
+"TextExtracts"=>true]);
 
 //< Skins >
 
