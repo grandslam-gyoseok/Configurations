@@ -67,7 +67,9 @@ if ($wmgGrantStewardsGlobalPermissions)
 
 //<< Babel >>
 //This extension requires running update.php.
-if ($wmgExtensionBabel)
+//Disabled due to timeout issue
+/*
+if ($wmgExtensions["Babel"])
 {wfLoadExtension("Babel");
 $wgBabelCategoryNames=
 ["0"=>false,
@@ -79,10 +81,11 @@ $wgBabelCategoryNames=
 "N"=>false];
 $wgBabelMainCategory=false;
 $wgBabelUseUserLanguage=true;}
+*/
 
 //<< CentralAuth >>
 //This extension requires running update.php.
-if ($wmgGlobalAccountMode=="centralauth")
+if ($wmgGlobalAccountMode === "centralauth")
 {wfLoadExtension("CentralAuth");
 $wgCentralAuthAutoMigrate=true;
 $wgCentralAuthAutoMigrateNonGlobalAccounts=true;
@@ -98,7 +101,7 @@ $wgDisableUnmergedEditing=true;
 //Permissions
 $wgGroupPermissions["*"]["centralauth-merge"]=false;
 $wgGroupPermissions["user"]["centralauth-merge"]=true;
-if ($wmgWiki==$wmgCentralWiki)
+if ($wmgWiki === $wmgCentralWiki)
   {$wgGroupPermissions["steward"]["centralauth-rename"]=true;
   $wgGroupPermissions["steward"]["centralauth-usermerge"]=true;
   $wgGroupPermissions["steward"]["globalgroupmembership"]=true;
@@ -139,27 +142,20 @@ $wgGroupPermissions["steward"]["checkuser-log"]=true;
 $wgGroupPermissions["steward"]["investigate"]=true;}
 
 //<< Cite >>
-if ($wmgExtensionCite)
+if ($wmgExtensions["Cite"])
 {wfLoadExtension("Cite");
 $wgCiteBookReferencing=true;}
 
 //<< CodeEditor >>
-if ($wmgExtensionCodeEditor && $wmgExtensionWikiEditor)
+if ($wmgExtensions["CodeEditor"] && $wmgExtensions["WikiEditor"])
 {wfLoadExtension("CodeEditor");}
 
 //<< CodeMirror >>
-if ($wmgExtensionCodeMirror && $wmgExtensionWikiEditor)
+if ($wmgExtensions["CodeMirror"] && $wmgExtensions["WikiEditor"])
 {wfLoadExtension("CodeMirror");}
 
-//<< CollapsibleVector >>
-if ($wmgExtensionCollapsibleVector)
-{wfLoadExtension("CollapsibleVector");
-$wgCollapsibleVectorFeatures["collapsiblenav"]=
-["global"=>true,
-"user"=>false];}
-
 //<< CommonsMetadata >>
-if ($wmgExtensionCommonsMetadata)
+if ($wmgExtensions["CommonsMetadata"])
 {wfLoadExtension("CommonsMetadata");}
 
 //<< ConfirmEdit >>
@@ -183,11 +179,11 @@ if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["skipcaptcha"]=true;}
 
 //<< CreateRedirect >>
-if ($wmgExtensionCreateRedirect)
+if ($wmgExtensions["CreateRedirect"])
 {wfLoadExtension("CreateRedirect");}
 
 //<< DeletePagesForGood >>
-if ($wmgExtensionDeletePagesForGood)
+if ($wmgExtensions["DeletePagesForGood"])
 {wfLoadExtension("DeletePagesForGood");
 $wgDeletePagesForGoodNamespaces[NS_FILE]=false;
 //Permissions
@@ -196,7 +192,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 }
 
 //<< DiscordNotifications >>
-if ($wmgExtensionDiscordNotifications)
+if ($wmgExtensions["DiscordNotifications"])
 {wfLoadExtension("DiscordNotifications");
 if ($wgCommandLineMode)
   {$wgDiscordFromName=$wgSitename." (".$wmgWiki.")";}
@@ -208,10 +204,12 @@ $wgDiscordNotificationWikiUrl=$wgServer.$wgScriptPath."/";
 $wgDiscordNotificationWikiUrlEndingUserRights="Special:UserRights/";}
 
 //<< DiscussionTools >>
-if ($wmgExtensionDiscussionTools && $wmgExtensionParsoid && $wmgExtensionVisualEditor)
+/*
+if ($wmgExtensions["DiscussionTools"] && $wmgExtensions["Parsoid"] && $wmgExtensions["VisualEditor"])
 {wfLoadExtension("DiscussionTools");
 //Required by DiscussionTools
 $wgLocaltimezone="Asia/Seoul";}
+*/
 
 //<< Echo >>
 //This extension requires running update.php.
@@ -275,7 +273,7 @@ $wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
 
 //<< GlobalBlocking >>
 //This extension requires running update.php.
-if ($wmgGlobalAccountMode!="")
+if ($wmgGlobalAccountMode !== "")
 {wfLoadExtension("GlobalBlocking");
 $wgGlobalBlockingDatabase="wiki_globalblocking";
 //Permissions
@@ -287,7 +285,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 }
 
 //<< GlobalCssJs >>
-if ($wmgGlobalAccountMode!="" && ($wmgWiki==$wmgCentralWiki || $wmgExtensionGlobalCssJs))
+if ($wmgGlobalAccountMode !== "" && ($wmgWiki === $wmgCentralWiki || $wmgExtensions["GlobalCssJs"]))
 {wfLoadExtension("GlobalCssJs");
 $wgGlobalCssJsConfig=
 ["source"=>"central",
@@ -298,14 +296,14 @@ $wgResourceLoaderSources["central"]=
 
 //<< GlobalPreferences >>
 //This extension requires running update.php.
-if ($wmgGlobalAccountMode!="")
+if ($wmgGlobalAccountMode !== "")
 {wfLoadExtension("GlobalPreferences");
 if ($wmgGlobalAccountMode=="centralauth")
   {$wgGlobalPreferencesDB="wiki_globalpreferences";}
 }
 
 //<< GlobalUserPage >>
-if ($wmgGlobalAccountMode!="" && ($wmgWiki==$wmgCentralWiki || $wmgExtensionGlobalUserPage))
+if ($wmgGlobalAccountMode !== "" && ($wmgWiki === $wmgCentralWiki || $wmgExtensions["GlobalUserPage"]))
 {wfLoadExtension("GlobalUserPage");
 $wgGlobalUserPageAPIUrl=$wmgCentralBaseURL.$wgScriptPath."/api.php";
 $wgGlobalUserPageCacheExpiry=$wmgCacheExpiry;
@@ -313,25 +311,25 @@ $wgGlobalUserPageDBname=$wmgCentralWiki."wiki";
 $wgGlobalUserPageTimeout="default";}
 
 //<< Highlightjs_Integration >>
-if ($wmgExtensionHighlightjs_Integration && PHP_OS_FAMILY=="Windows")
+if ($wmgExtensions["Highlightjs_Integration"] && $wmgPlatform === "Windows")
 {wfLoadExtension("Highlightjs_Integration");}
 
 //<< InputBox >>
-if ($wmgExtensionInputBox)
+if ($wmgExtensions["InputBox"])
 {wfLoadExtension("InputBox");}
 
 //<< Interwiki >>
 wfLoadExtension("Interwiki");
-if ($wmgGlobalAccountMode!="")
+if ($wmgGlobalAccountMode !== "")
 {$wgInterwikiCentralDB=$wmgCentralWiki."wiki";}
 //Permissions
-if ($wmgGlobalAccountMode=="" || $wmgWiki!=$wmgCentralWiki)
+if ($wmgGlobalAccountMode === "" || $wmgWiki !== $wmgCentralWiki)
 {$wgGroupPermissions["bureaucrat"]["interwiki"]=true;}
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["interwiki"]=true;}
 
 //<< Josa >>
-if ($wmgExtensionJosa)
+if ($wmgExtensions["Josa"])
 {wfLoadExtension("Josa");}
 
 /*MassEditRegex
@@ -346,12 +344,12 @@ if ($wmgGrantStewardsGlobalPermissions)
 
 //<< Math >>
 //This extension requires running update.php.
-if ($wmgExtensionMath)
+if ($wmgExtensions["Math"])
 {wfLoadExtension("Math");
 $wgMathEnableExperimentalInputFormats=true;}
 
 //<< MultimediaViewer >>
-if ($wmgExtensionMultimediaViewer)
+if ($wmgExtensions["MultimediaViewer"])
 {wfLoadExtension("MultimediaViewer");
 if ($wgThumbnailScriptPath)
   {$wgMediaViewerUseThumbnailGuessing=true;}
@@ -362,7 +360,7 @@ if (!$wgSVGConverter)
 {wfLoadExtension("NativeSvgHandler");}
 
 //<< Nuke >>
-if ($wmgExtensionNuke)
+if ($wmgExtensions["Nuke"])
 {wfLoadExtension("Nuke");
 //Permissions
 $wgGroupPermissions["bureaucrat"]["nuke"]=true;
@@ -371,19 +369,19 @@ if ($wmgGrantStewardsGlobalPermissions)
 }
 
 //<< PageImages >>
-if ($wmgExtensionPageImages)
+if ($wmgExtensions["PageImages"])
 {wfLoadExtension("PageImages");
 $wgPageImagesBlacklistExpiry=$wmgCacheExpiry;
 $wgPageImagesExpandOpenSearchXml=true;
 $wgPageImagesNamespaces=[NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];}
 
 //<< ParserFunctions >>
-if ($wmgExtensionParserFunctions)
+if ($wmgExtensions["ParserFunctions"])
 {wfLoadExtension("ParserFunctions");
 $wgPFEnableStringFunctions=true;}
 
 //<< Parsoid >>
-if ($wmgExtensionParsoid)
+if ($wmgExtensions["Parsoid"])
 {wfLoadExtension("Parsoid",$IP."/vendor/wikimedia/parsoid/extension.json");
 $wgParsoidSettings=
 ["linting"=>true,
@@ -391,7 +389,7 @@ $wgParsoidSettings=
 $wgVirtualRestConfig["modules"]["parsoid"]["forwardCookies"]=true;}
 
 //<< PerformanceInspector >>
-if ($wmgExtensionPerformanceInspector)
+if ($wmgExtensions["PerformanceInspector"])
 {wfLoadExtension("PerformanceInspector");
 $wgDefaultUserOptions["performanceinspector"]=1;}
 
@@ -413,13 +411,13 @@ if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["editotheruserpages"]=true;}
 
 //<< Popups >>
-if ($wmgExtensionPopups && $wmgExtensionPageImages && $wmgExtensionTextExtracts)
+if ($wmgExtensions["Popups"] && $wmgExtensions["PageImages"] && $wmgExtensions["TextExtracts"])
 {wfLoadExtension("Popups");
 $wgPopupsHideOptInOnPreferencesPage=true;
 $wgPopupsReferencePreviewsBetaFeature=false;}
 
 //<< ProtectionIndicator >>
-if ($wmgExtensionProtectionIndicator)
+if ($wmgExtensions["ProtectionIndicator"])
 {wfLoadExtension("ProtectionIndicator");
 $wgShowIconsOnMainPage=true;}
 
@@ -435,7 +433,7 @@ elseif ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["renameuser"]=true;}
 
 //<< ReplaceText >>
-if ($wmgExtensionReplaceText)
+if ($wmgExtensions["ReplaceText"])
 {wfLoadExtension("ReplaceText");
 //Permissions
 if ($wmgGrantStewardsGlobalPermissions)
@@ -443,11 +441,11 @@ if ($wmgGrantStewardsGlobalPermissions)
 }
 
 //<< RevisionSlider >>
-if ($wmgExtensionRevisionSlider)
+if ($wmgExtensions["RevisionSlider"])
 {wfLoadExtension("RevisionSlider");}
 
 //<< Scribunto >>
-if ($wmgExtensionScribunto)
+if ($wmgExtensions["Scribunto"])
 {wfLoadExtension("Scribunto");}
 
 //<< StaffPowers >>
@@ -463,29 +461,29 @@ if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["unblockable"]=true;}
 
 //<< SyntaxHighlight_GeSHi >>
-if ($wmgExtensionSyntaxHighlight_GeSHi && PHP_OS_FAMILY=="Linux")
+if ($wmgExtensions["SyntaxHighlight_GeSHi"] && $wmgPlatform === "Linux")
 {wfLoadExtension("SyntaxHighlight_GeSHi");}
 
 //<< TemplateData >>
-if ($wmgExtensionTemplateData)
+if ($wmgExtensions["TemplateData"])
 {wfLoadExtension("TemplateData");}
 
 //<< TemplateSandbox >>
-if ($wmgExtensionTemplateSandbox)
+if ($wmgExtensions["TemplateSandbox"])
 {wfLoadExtension("TemplateSandbox");}
 
 //<< TemplateStyles >>
-if ($wmgExtensionTemplateStyles)
+if ($wmgExtensions["TemplateStyles"])
 {wfLoadExtension("TemplateStyles");
 //Remove default value
 $wgTemplateStylesAllowedUrls=[];}
 
 //<< TemplateWizard >>
-if ($wmgExtensionTemplateWizard && $wmgExtensionTemplateData && $wmgExtensionWikiEditor)
+if ($wmgExtensions["TemplateWizard"] && $wmgExtensions["TemplateData"] && $wmgExtensions["WikiEditor"])
 {wfLoadExtension("TemplateWizard");}
 
 //<< TextExtracts >>
-if ($wmgExtensionTextExtracts)
+if ($wmgExtensions["TextExtracts"])
 {wfLoadExtension("TextExtracts");
 $wgExtractsExtendOpenSearchXml=true;}
 
@@ -508,16 +506,16 @@ if ($wmgGrantStewardsGlobalPermissions)
 $wgGroupPermissions["steward"]["titleblacklistlog"]=true;}
 
 //<< TwoColConflict >>
-if ($wmgExtensionTwoColConflict)
+if ($wmgExtensions["TwoColConflict"])
 {wfLoadExtension("TwoColConflict");
 $wgTwoColConflictBetaFeature=false;}
 
 //<< UploadsLink >>
-if ($wmgExtensionUploadsLink)
+if ($wmgExtensions["UploadsLink"])
 {wfLoadExtension("UploadsLink");}
 
 //<< UserMerge >>
-if ($wmgGlobalAccountMode!="shared-database")
+if ($wmgGlobalAccountMode !== "shared-database")
 {wfLoadExtension("UserMerge");
 //Remove default value ("sysop")
 $wgUserMergeProtectedGroups=[];
@@ -527,7 +525,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 }
 
 //<< VisualEditor >>
-if ($wmgExtensionVisualEditor && $wmgExtensionParsoid)
+if ($wmgExtensions["VisualEditor"] && $wmgExtensions["Parsoid"])
 {wfLoadExtension("VisualEditor");
 $wgDefaultUserOptions["visualeditor-newwikitext"]=1;
 $wgDefaultUserOptions["visualeditor-tabs"]="prefer-wt";
@@ -541,7 +539,7 @@ $wgVisualEditorShowBetaWelcome=false;
 $wgVisualEditorUseSingleEditTab=true;}
 
 //<< WikibaseClient >>
-if ($wmgExtensionWikibaseClient)
+if ($wmgExtensions["WikibaseClient"])
 {require_once($wgExtensionDirectory."/Wikibase/client/WikibaseClient.php");
 $wgEnableWikibaseClient=true;
 //Use value of $baseNs in $wgExtensionDirectory/extensions/Wikibase/repo/config/Wikibase.example.php
@@ -570,7 +568,7 @@ $wgWBClientSettings=array_merge($wgWBClientSettings,
 ]);}
 
 //<< WikibaseRepository >>
-if ($wmgExtensionWikibaseRepository)
+if ($wmgExtensions["WikibaseRepository"])
 {require_once($wgExtensionDirectory."/Wikibase/repo/Wikibase.php");
 $wgEnableWikibaseRepo=true;
 //Use value of $baseNs in $wgExtensionDirectory/extensions/Wikibase/repo/config/Wikibase.example.php
@@ -616,7 +614,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 }
 
 //<< WikiEditor >>
-if ($wmgExtensionWikiEditor)
+if ($wmgExtensions["WikiEditor"])
 {wfLoadExtension("WikiEditor");}
 
 //<< Other extensions >>
