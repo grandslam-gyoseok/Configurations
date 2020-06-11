@@ -224,53 +224,6 @@ $wgEchoMaxMentionsInEditSummary=10;
 $wgEchoMentionStatusNotifications=true;
 $wgEchoPerUserBlacklist=true;
 
-/*Flow
-//Requires update.php
-if ($wmgExtensionFlow)
-{wfLoadExtension("Flow");
-$wgFlowCacheTime=$wmgCacheExpiry;
-$wgFlowCoreActionWhitelist[]="delete_page_permanently";
-$wgFlowEditorList=["wikitext"];
-$wgFlowMaxMentionCount=10;
-$wgFlowSearchEnabled=true;
-//Exclude MediaWiki talk namespace
-//array_merge should not be used due to a bug
-$wgNamespaceContentModels[NS_CATEGORY_TALK]="flow-board";
-$wgNamespaceContentModels[NS_FILE_TALK]="flow-board";
-$wgNamespaceContentModels[NS_HELP_TALK]="flow-board";
-$wgNamespaceContentModels[NS_PROJECT_TALK]="flow-board";
-$wgNamespaceContentModels[NS_TALK]="flow-board";
-$wgNamespaceContentModels[NS_TEMPLATE_TALK]="flow-board";
-$wgNamespaceContentModels[NS_USER_TALK]="flow-board";
-//Permissions
-$wgGroupPermissions["*"]["flow-hide"]=false;
-$wgGroupPermissions["user"]["flow-lock"]=false;
-$wgGroupPermissions["moderator"]["flow-edit-post"]=true;
-$wgGroupPermissions["moderator"]["flow-hide"]=true;
-$wgGroupPermissions["moderator"]["flow-lock"]=true;
-$wgGroupPermissions["admin"]["flow-delete"]=true;
-$wgGroupPermissions["admin"]["flow-edit-post"]=true;
-$wgGroupPermissions["admin"]["flow-hide"]=true;
-$wgGroupPermissions["admin"]["flow-lock"]=true;
-$wgGroupPermissions["bureaucrat"]=array_merge($wgGroupPermissions["bureaucrat"],
-["flow-create-board"=>true,
-"flow-delete"=>true,
-"flow-edit-post"=>true,
-"flow-hide"=>true,
-"flow-lock"=>true]);
-if ($wmgGrantStewardsGlobalPermissions)
-  {$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
-  ["flow-create-board"=>true,
-  "flow-delete"=>true,
-  "flow-edit-post"=>true,
-  "flow-hide"=>true,
-  "flow-lock"=>true,
-  "flow-suppress"=>true]);}
-$wgExtensionFunctions[]=function() use (&$wgGroupPermissions)
-  {unset($wgGroupPermissions["flow-bot"],$wgGroupPermissions["suppress"]);};
-}
-*/
-
 //<< GlobalBlocking >>
 //This extension requires running update.php.
 if ($wmgGlobalAccountMode !== "")
@@ -332,8 +285,9 @@ if ($wmgGrantStewardsGlobalPermissions)
 if ($wmgExtensions["Josa"])
 {wfLoadExtension("Josa");}
 
-/*MassEditRegex
-if ($wmgExtensionMassEditRegex)
+//<< MassEditRegex >>
+/*
+if ($wmgExtensions["MassEditRegex"])
 {wfLoadExtension("MassEditRegex");
 //Permissions
 $wgGroupPermissions["bureaucrat"]["masseditregex"]=true;
@@ -341,7 +295,6 @@ if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["masseditregex"]=true;}
 }
 */
-
 //<< Math >>
 //This extension requires running update.php.
 if ($wmgExtensions["Math"])
@@ -381,12 +334,14 @@ if ($wmgExtensions["ParserFunctions"])
 $wgPFEnableStringFunctions=true;}
 
 //<< Parsoid >>
+/*
 if ($wmgExtensions["Parsoid"])
 {wfLoadExtension("Parsoid",$IP."/vendor/wikimedia/parsoid/extension.json");
 $wgParsoidSettings=
 ["linting"=>true,
 "useSelser"=>true];
 $wgVirtualRestConfig["modules"]["parsoid"]["forwardCookies"]=true;}
+*/
 
 //<< PerformanceInspector >>
 if ($wmgExtensions["PerformanceInspector"])
@@ -415,11 +370,6 @@ if ($wmgExtensions["Popups"] && $wmgExtensions["PageImages"] && $wmgExtensions["
 {wfLoadExtension("Popups");
 $wgPopupsHideOptInOnPreferencesPage=true;
 $wgPopupsReferencePreviewsBetaFeature=false;}
-
-//<< ProtectionIndicator >>
-if ($wmgExtensions["ProtectionIndicator"])
-{wfLoadExtension("ProtectionIndicator");
-$wgShowIconsOnMainPage=true;}
 
 //<< Renameuser >>
 wfLoadExtension("Renameuser");
@@ -525,6 +475,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 }
 
 //<< VisualEditor >>
+/*
 if ($wmgExtensions["VisualEditor"] && $wmgExtensions["Parsoid"])
 {wfLoadExtension("VisualEditor");
 $wgDefaultUserOptions["visualeditor-newwikitext"]=1;
@@ -537,6 +488,7 @@ $wgVisualEditorEnableVisualSectionEditing=true;
 $wgVisualEditorEnableWikitext=true;
 $wgVisualEditorShowBetaWelcome=false;
 $wgVisualEditorUseSingleEditTab=true;}
+*/
 
 //<< WikibaseClient >>
 if ($wmgExtensions["WikibaseClient"])
