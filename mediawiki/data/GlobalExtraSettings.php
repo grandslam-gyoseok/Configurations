@@ -295,6 +295,7 @@ if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["masseditregex"]=true;}
 }
 */
+
 //<< Math >>
 //This extension requires running update.php.
 if ($wmgExtensions["Math"])
