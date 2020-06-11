@@ -663,55 +663,47 @@ $wgSessionCacheType=CACHE_ACCEL;
 //< Extensions >
 
 //<< Extension usage >>
-//It is good to enable Babel when GlobalUserPage is enabled.
-//EMERGENCY: Disable Babel until the timeout issue is resolved.
-/*
-if ($wmgGlobalAccountMode !== "")
-{$wmgExtensionBabel=true;}
-else
-{$wmgExtensionBabel=false;}
-*/
-$wmgExtensionBabel=false;
-$wmgExtensionCite=false;
-$wmgExtensionCodeEditor=false;
-$wmgExtensionCodeMirror=false;
-$wmgExtensionCollapsibleVector=false;
-$wmgExtensionCommonsMetadata=false;
-$wmgExtensionCreateRedirect=false;
-$wmgExtensionDeletePagesForGood=false;
-$wmgExtensionDiscordNotifications=true;
-$wmgExtensionDiscussionTools=false;
-//$wmgExtensionFlow=false;
-$wmgExtensionGlobalCssJs=true;
-$wmgExtensionGlobalUserPage=true;
-$wmgExtensionHighlightjs_Integration=false;
-$wmgExtensionInputBox=false;
-$wmgExtensionJosa=false;
-//$wmgExtensionMassEditRegex=false;
-$wmgExtensionMath=false;
-$wmgExtensionMultimediaViewer=false;
-$wmgExtensionNuke=false;
-$wmgExtensionPageImages=false;
-$wmgExtensionParserFunctions=false;
-$wmgExtensionParsoid=false;
-$wmgExtensionPerformanceInspector=false;
-$wmgExtensionPopups=false;
-$wmgExtensionProtectionIndicator=false;
-$wmgExtensionReplaceText=false;
-$wmgExtensionRevisionSlider=false;
-$wmgExtensionScribunto=false;
-$wmgExtensionSyntaxHighlight_GeSHi=false;
-$wmgExtensionTemplateData=false;
-$wmgExtensionTemplateSandbox=false;
-$wmgExtensionTemplateStyles=false;
-$wmgExtensionTemplateWizard=false;
-$wmgExtensionTextExtracts=false;
-$wmgExtensionTwoColConflict=false;
-$wmgExtensionUploadsLink=false;
-$wmgExtensionVisualEditor=false;
-$wmgExtensionWikibaseClient=false;
-$wmgExtensionWikibaseRepository=false;
-$wmgExtensionWikiEditor=false;
+$wmgExtensions=
+[//"Babel"=>false,
+"Cite"=>false,
+"CodeEditor"=>false,
+"CodeMirror"=>false,
+"CollapsibleVector"=>false,
+"CommonsMetadata"=>false,
+"CreateRedirect"=>false,
+"DeletePagesForGood"=>false,
+"DiscordNotifications"=>true,
+//"DiscussionTools"=>false,
+"GlobalCssJs"=>true,
+"GlobalUserPage"=>true,
+"Highlightjs_Integration"=>false,
+"InputBox"=>false,
+"Josa"=>false,
+"MassEditRegex"=>false,
+"Math"=>false,
+"MultimediaViewer"=>false,
+"Nuke"=>false,
+"PageImages"=>false,
+"ParserFunctions"=>false,
+"Parsoid"=>false,
+"PerformanceInspector"=>false,
+"Popups"=>false,
+"ProtectionIndicator"=>false,
+"ReplaceText"=>false,
+"RevisionSlider"=>false,
+"Scribunto"=>false,
+"SyntaxHighlight_GeSHi"=>false,
+"TemplateData"=>false,
+"TemplateSandbox"=>false,
+"TemplateStyles"=>false,
+"TemplateWizard"=>false,
+"TextExtracts"=>false,
+"TwoColConflict"=>false,
+"UploadsLink"=>false,
+"VisualEditor"=>false,
+"WikibaseClient"=>false,
+"WikibaseRepository"=>false,
+"WikiEditor"=>false];
 
 //< Skins >
 
