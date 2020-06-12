@@ -114,7 +114,7 @@ $wmgExtensions=array_merge($wmgExtensions,
 //< Skins >
 
 //<< Skin usage >>
-$wmgSkinCitizen=true;
-$wmgSkinMinervaNeue=true;
-$wmgSkinPlavorBuma=true;
-$wmgSkinTimeless=true;
+$wmgSkins["Citizen"]=true;
+$wmgSkins["MinervaNeue"]=true;
+$wmgSkins["PlavorBuma"]=true;
+$wmgSkins["Timeless"]=true;
