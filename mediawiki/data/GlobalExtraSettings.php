@@ -495,6 +495,7 @@ $wgVisualEditorUseSingleEditTab=true;}
 */
 
 //<< WikibaseClient >>
+/*
 if ($wmgExtensions["WikibaseClient"])
 {require_once($wgExtensionDirectory."/Wikibase/client/WikibaseClient.php");
 $wgEnableWikibaseClient=true;
@@ -522,8 +523,10 @@ $wgWBClientSettings=array_merge($wgWBClientSettings,
 "sortPrepend"=>
   ["en","ko"]
 ]);}
+*/
 
 //<< WikibaseRepository >>
+/*
 if ($wmgExtensions["WikibaseRepository"])
 {require_once($wgExtensionDirectory."/Wikibase/repo/Wikibase.php");
 $wgEnableWikibaseRepo=true;
@@ -568,6 +571,7 @@ if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["item-merge"]=true;
   $wgGroupPermissions["steward"]["item-redirect"]=true;}
 }
+*/
 
 //<< WikiEditor >>
 if ($wmgExtensions["WikiEditor"])
