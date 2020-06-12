@@ -579,14 +579,15 @@ wfLoadExtension("SecureLinkFixer");
 //< Skins >
 
 //<< Citizen >>
-if ($wmgSkinCitizen)
+if ($wmgSkins["Citizen"])
 {wfLoadSkin("Citizen");
 $wgCitizenEnableManifest=false;
 $wgCitizenManifestThemeColor="#9933ff";
 $wgCitizenThemeColor="#9933ff";}
 
-/*Liberty
-if ($wmgSkinLiberty)
+//<< Liberty >>
+/*
+if ($wmgSkins["Liberty"])
 {wfLoadSkin("Liberty");
 $wgLibertyEnableLiveRC=false;
 $wgLibertyMainColor="#9933ff";
@@ -594,12 +595,12 @@ $wgTwitterAccount="PlavorSeol";}
 */
 
 //<< Medik >>
-if ($wmgSkinMedik)
+if ($wmgSkins["Medik"])
 {wfLoadSkin("Medik");
 $wgMedikColor="#9933ff";}
 
 //<< Metrolook >>
-if ($wmgSkinMetrolook)
+if ($wmgSkins["Metrolook"])
 {wfLoadSkin("Metrolook");
 $wgMetrolookDownArrow=false;
 $wgMetrolookFeatures["collapsiblenav"]=
@@ -609,7 +610,7 @@ $wgMetrolookSearchBar=false;
 $wgMetrolookUploadButton=false;}
 
 //<< MinervaNeue >>
-if ($wmgSkinMinervaNeue)
+if ($wmgSkins["MinervaNeue"])
 {wfLoadSkin("MinervaNeue");
 $wgMinervaAdvancedMainMenu["base"]=true;
 $wgMinervaAdvancedMainMenu["beta"]=true;
@@ -626,11 +627,11 @@ $wgMinervaTalkAtTop["base"]=true;
 $wgMinervaTalkAtTop["beta"]=true;}
 
 //<< PlavorBuma >>
-if ($wmgSkinPlavorBuma)
+if ($wmgSkins["PlavorBuma"])
 {wfLoadSkin("PlavorBuma");}
 
 //<< Timeless >>
-if ($wmgSkinTimeless)
+if ($wmgSkins["Timeless"])
 {wfLoadSkin("Timeless");}
 
 //<< Vector >>
