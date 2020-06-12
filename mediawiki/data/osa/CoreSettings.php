@@ -37,4 +37,4 @@ $wmgExtensions=array_merge($wmgExtensions,
 //< Skins >
 
 //<< Skin usage >>
-$wmgSkinPlavorBuma=true;
+$wmgSkins["PlavorBuma"]=true;
