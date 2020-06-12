@@ -14,12 +14,12 @@ $wgAbuseFilterActions=
 "tag"=>false,
 "throttle"=>false,
 "warn"=>true];
-if ($wmgGlobalAccountMode!="")
+if ($wmgGlobalAccountMode !== "")
 {$wgAbuseFilterCentralDB=$wmgCentralWiki."wiki";}
 $wgAbuseFilterConditionLimit=100;
 $wgAbuseFilterEmergencyDisableCount=
 ["default"=>5];
-if ($wmgGlobalAccountMode!="" && $wmgWiki==$wmgCentralWiki)
+if ($wmgGlobalAccountMode !== "" && $wmgWiki === $wmgCentralWiki)
 {$wgAbuseFilterIsCentral=true;}
 $wgAbuseFilterLogPrivateDetailsAccess=true;
 $wgAbuseFilterNotifications="rcandudp";
@@ -58,7 +58,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 //<< AntiSpoof >>
 //This extension requires running update.php.
 wfLoadExtension("AntiSpoof");
-if ($wmgGlobalAccountMode=="shared-database")
+if ($wmgGlobalAccountMode === "shared-database")
 {$wgSharedTables[]="spoofuser";}
 //Permissions
 $wgGroupPermissions["bureaucrat"]["override-antispoof"]=false;
@@ -379,8 +379,8 @@ $wgPopupsReferencePreviewsBetaFeature=false;}
 wfLoadExtension("Renameuser");
 //Permissions
 $wgGroupPermissions["bureaucrat"]["renameuser"]=false;
-if ($wmgGlobalAccountMode=="shared-database")
-{if ($wmgWiki==$wmgCentralWiki)
+if ($wmgGlobalAccountMode === "shared-database")
+{if ($wmgWiki === $wmgCentralWiki)
   {$wgGroupPermissions["steward"]["renameuser"]=true;}
 }
 elseif ($wmgGrantStewardsGlobalPermissions)
@@ -448,12 +448,12 @@ $wgTitleBlacklistSources=
   ["src"=>$wmgPrivateDataDirectory."/titleblacklist.txt",
   "type"=>"file"]
 ];
-if ($wmgGlobalAccountMode!="")
+if ($wmgGlobalAccountMode !== "")
 {$wgTitleBlacklistUsernameSources=["global"];}
 //Permissions
 $wgGroupPermissions["admin"]["tboverride"]=true;
 $wgGroupPermissions["bureaucrat"]["tboverride"]=true;
-if ($wmgWiki==$wmgCentralWiki)
+if ($wmgWiki === $wmgCentralWiki)
 {$wgGroupPermissions["steward"]["tboverride-account"]=true;}
 if ($wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]["tboverride"]=true;
@@ -547,7 +547,7 @@ switch ($wgLanguageCode)
   $wgExtraNamespaces[$ns_item_talk]="Item_talk";
   $wgExtraNamespaces[$ns_property]="Property";
   $wgExtraNamespaces[$ns_property_talk]="Property_talk";}
-if ($wgLanguageCode!="en")
+if ($wgLanguageCode !== "en")
   {$wgNamespaceAliases["Item"]=$ns_item;
   $wgNamespaceAliases["Item_talk"]=$ns_item_talk;
   $wgNamespaceAliases["Property"]=$ns_property;
