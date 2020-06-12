@@ -107,8 +107,6 @@ $wmgExtensions=array_merge($wmgExtensions,
 "TextExtracts"=>true,
 "TwoColConflict"=>true,
 "UploadsLink"=>true,
-"WikibaseClient"=>true,
-"WikibaseRepository"=>true,
 "WikiEditor"=>true]);
 
 //< Skins >
