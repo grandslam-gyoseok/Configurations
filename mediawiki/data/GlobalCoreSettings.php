@@ -706,10 +706,11 @@ $wmgExtensions=
 //< Skins >
 
 //<< Skin usage >>
-$wmgSkinCitizen=false;
-//$wmgSkinLiberty=false;
-$wmgSkinMedik=false;
-$wmgSkinMetrolook=false;
-$wmgSkinMinervaNeue=false;
-$wmgSkinPlavorBuma=false;
-$wmgSkinTimeless=false;
+$wmgSkins=
+["Citizen"=>false,
+//"Liberty"=>false,
+"Medik"=>false,
+"Metrolook"=>false,
+"MinervaNeue"=>false,
+"PlavorBuma"=>false,
+"Timeless"=>false];
