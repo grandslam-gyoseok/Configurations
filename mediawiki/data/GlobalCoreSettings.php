@@ -699,8 +699,8 @@ $wmgExtensions=
 "TwoColConflict"=>false,
 "UploadsLink"=>false,
 //"VisualEditor"=>false,
-"WikibaseClient"=>false,
-"WikibaseRepository"=>false,
+//"WikibaseClient"=>false,
+//"WikibaseRepository"=>false,
 "WikiEditor"=>false];
 
 //< Skins >
