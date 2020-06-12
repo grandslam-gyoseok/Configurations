@@ -8,7 +8,7 @@ foreach ($wmgWikis as $wiki)
 unset($wiki);
 
 //<< Others >>
-if ($wmgGlobalAccountMode!="")
+if ($wmgGlobalAccountMode !== "")
 {$wgConf->settings=
 ["wgArticlePath"=>
   ["default"=>"/page/$1"],
@@ -470,7 +470,7 @@ $wgGroupPermissions["bureaucrat"]=array_merge($wgGroupPermissions["admin"],$wgGr
 $wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["bureaucrat"],$wgGroupPermissions["steward"]);
 if (!$wmgGrantStewardsGlobalPermissions)
 {$wgGroupPermissions["steward"]=[];}
-if ($wmgWiki==$wmgCentralWiki)
+if ($wmgWiki === $wmgCentralWiki)
 {$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
 ["siteadmin"=>true,
 "userrights"=>true,
@@ -481,7 +481,7 @@ function core_modify_permissions()
 {global $wgGroupPermissions,$wmgCentralWiki,$wmgGrantStewardsGlobalPermissions,$wmgWiki;
 //Remove user groups
 unset($wgGroupPermissions["bot"],$wgGroupPermissions["sysop"]);
-if (!($wmgWiki==$wmgCentralWiki || $wmgGrantStewardsGlobalPermissions))
+if (!($wmgWiki === $wmgCentralWiki || $wmgGrantStewardsGlobalPermissions))
   {unset($wgGroupPermissions["steward"]);}
 }
 $wgDeleteRevisionsLimit=250;
@@ -495,13 +495,13 @@ $wgUploadDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/files";
 $wgUploadPath=$wgScriptPath."/img_auth.php";
 
 //<< ImageMagick >>
-if (PHP_OS_FAMILY=="Windows")
+if ($wmgPlatform === "Windows")
 {$wgImageMagickConvertCommand="C:/Program Files/ImageMagick-7.0.9-Q16-HDRI/convert.exe";}
 if (file_exists($wgImageMagickConvertCommand))
 {$wgUseImageMagick=true;}
 
 //<< SVG >>
-switch (PHP_OS_FAMILY)
+switch ($wmgPlatform)
 {case "Linux":
 $wgSVGConverter=false;
 break;
@@ -567,7 +567,7 @@ $wgReauthenticateTime=
 "RemoveCredentials"=>60]; //1 minute
 
 //<< Databases >>
-if ($wmgGlobalAccountMode=="shared-database")
+if ($wmgGlobalAccountMode === "shared-database")
 {$wgSharedDB=$wmgCentralWiki."wiki";
 $wgSharedTables=["actor","user"];}
 //SQLite-only
@@ -617,7 +617,7 @@ $wgGitBin=false;
 $wgHTTPTimeout=30;
 $wgJpegTran=false;
 $wgMemoryLimit="256M";
-switch (PHP_OS_FAMILY)
+switch ($wmgPlatform)
 {case "Windows":
 $wgPhpCli="C:/plavormind/php-ts/php.exe";
 break;}
