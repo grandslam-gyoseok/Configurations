@@ -108,7 +108,7 @@ $wgPasswordPolicy["policies"]=
   "PasswordCannotMatchUsername"=>
     ["forceChange"=>true,
     "value"=>true],
-  "PasswordNotInLargeBlacklist"=>
+  "PasswordNotInCommonList"=>
     ["forceChange"=>true,
     "value"=>true]
   ],
