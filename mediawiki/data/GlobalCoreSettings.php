@@ -96,9 +96,6 @@ $wgPasswordPolicy["policies"]=
   "MinimumPasswordLengthToLogin"=>
     ["forceChange"=>true,
     "value"=>1],
-  "PasswordCannotBePopular"=>
-    ["forceChange"=>true,
-    "value"=>50],
   "PasswordCannotBeSubstringInUsername"=>
     ["forceChange"=>true,
     "value"=>true],
@@ -113,20 +110,16 @@ $wgPasswordPolicy["policies"]=
     "value"=>true]
   ],
 "moderator"=>
-  ["MinimumPasswordLengthToLogin"=>6,
-  "PasswordCannotBePopular"=>100],
+  ["MinimumPasswordLengthToLogin"=>6],
 "admin"=>
   ["MinimalPasswordLength"=>8,
-  "MinimumPasswordLengthToLogin"=>6,
-  "PasswordCannotBePopular"=>200],
+  "MinimumPasswordLengthToLogin"=>6],
 "bureaucrat"=>
   ["MinimalPasswordLength"=>10,
-  "MinimumPasswordLengthToLogin"=>6,
-  "PasswordCannotBePopular"=>400],
+  "MinimumPasswordLengthToLogin"=>6],
 "steward"=>
   ["MinimalPasswordLength"=>12,
-  "MinimumPasswordLengthToLogin"=>6,
-  "PasswordCannotBePopular"=>1000]
+  "MinimumPasswordLengthToLogin"=>6]
 ];
 
 //<< Preferences >>
