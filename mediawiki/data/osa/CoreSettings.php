@@ -6,10 +6,10 @@ if (!defined("MEDIAWIKI"))
 
 //<< Basic information >>
 $wgLogos=
-["1x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-1x.png",
-"1.5x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-1.5x.png",
-"2x"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-2x.png",
-"icon"=>$wgScriptPath."/data/".$wmgWiki."/logos/logo-2x.png"];
+["1x"=>"/resources/per-wiki/".$wmgWiki."/logos/logo-1x.png",
+"1.5x"=>"/resources/per-wiki/".$wmgWiki."/logos/logo-1.5x.png",
+"2x"=>"/resources/per-wiki/".$wmgWiki."/logos/logo-2x.png",
+"icon"=>"/resources/per-wiki/".$wmgWiki."/logos/logo-2x.png"];
 $wgSitename="오사위키덤프";
 
 //< Permissions >
