@@ -53,6 +53,11 @@ $wgForceUIMsgAsContentMsg=
 "unprotectedarticle-comment"];
 $wgSiteNotice="Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]";
 
+//<< Others >>
+//Remove default value ("obsolete-tag")
+$wgSignatureAllowedLintErrors=[]; //Experimental
+$wgSignatureValidation="disallow"; //Experimental
+
 //< Permissions >
 
 //<< Protection >>
