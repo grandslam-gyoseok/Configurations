@@ -131,6 +131,7 @@ $wgCheckUserGBtoollink=
 ];
 $wgCheckUserLogLogins=true;
 $wgCheckUserMaxBlocks=100;
+$wgCheckUserMaximumRowCount=500; //Experimental
 //Permissions
 function extension_CheckUser_modify_permissions()
 {global $wgGroupPermissions;
