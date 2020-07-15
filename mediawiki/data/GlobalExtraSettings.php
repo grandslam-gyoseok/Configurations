@@ -641,7 +641,8 @@ if ($wmgSkins["Timeless"])
 
 //<< Vector >>
 wfLoadSkin("Vector");
-$wgVectorResponsive=true;
 $wgVectorDefaultSidebarVisibleForAnonymousUser=true;
 $wgVectorDefaultSkinVersionForExistingAccounts="2";
 $wgVectorDefaultSkinVersionForNewAccounts="2";
+$wgVectorLayoutMaxWidth=true;
+$wgVectorResponsive=true;
