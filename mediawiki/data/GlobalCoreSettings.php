@@ -688,6 +688,7 @@ $wmgExtensions=
 "TemplateWizard"=>false,
 "TextExtracts"=>false,
 "TwoColConflict"=>false,
+//"UniversalLanguageSelector"=>false,
 "UploadsLink"=>false,
 //"VisualEditor"=>false,
 //"WikibaseClient"=>false,
