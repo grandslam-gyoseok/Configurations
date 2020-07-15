@@ -455,6 +455,16 @@ if ($wmgExtensions["TwoColConflict"])
 {wfLoadExtension("TwoColConflict");
 $wgTwoColConflictBetaFeature=false;}
 
+//<< UniversalLanguageSelector >>
+/*
+if ($wmgExtensions["UniversalLanguageSelector"])
+{wfLoadExtension("UniversalLanguageSelector");
+$wgULSCompactLanguageLinksBetaFeature=false;
+$wgULSIMEEnabled=false;
+$wgULSLanguageDetection=false;
+$wgULSWebfontsEnabled=false;}
+*/
+
 //<< UploadsLink >>
 if ($wmgExtensions["UploadsLink"])
 {wfLoadExtension("UploadsLink");}
