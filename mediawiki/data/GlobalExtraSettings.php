@@ -338,16 +338,6 @@ if ($wmgExtensions["ParserFunctions"])
 {wfLoadExtension("ParserFunctions");
 $wgPFEnableStringFunctions=true;}
 
-//<< Parsoid >>
-/*
-if ($wmgExtensions["Parsoid"])
-{wfLoadExtension("Parsoid",$IP."/vendor/wikimedia/parsoid/extension.json");
-$wgParsoidSettings=
-["linting"=>true,
-"useSelser"=>true];
-$wgVirtualRestConfig["modules"]["parsoid"]["forwardCookies"]=true;}
-*/
-
 //<< PerformanceInspector >>
 if ($wmgExtensions["PerformanceInspector"])
 {wfLoadExtension("PerformanceInspector");
