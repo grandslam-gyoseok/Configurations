@@ -209,7 +209,7 @@ $wgDiscordNotificationWikiUrlEndingUserRights="Special:UserRights/";}
 
 //<< DiscussionTools >>
 /*
-if ($wmgExtensions["DiscussionTools"] && $wmgExtensions["Parsoid"] && $wmgExtensions["VisualEditor"])
+if ($wmgExtensions["DiscussionTools"] && $wmgExtensions["VisualEditor"])
 {wfLoadExtension("DiscussionTools");
 //Required by DiscussionTools
 $wgLocaltimezone="Asia/Seoul";}
