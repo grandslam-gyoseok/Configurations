@@ -481,8 +481,9 @@ if ($wmgGrantStewardsGlobalPermissions)
 
 //<< VisualEditor >>
 /*
-if ($wmgExtensions["VisualEditor"] && $wmgExtensions["Parsoid"])
+if ($wmgExtensions["VisualEditor"])
 {wfLoadExtension("VisualEditor");
+$wgDefaultUserOptions["visualeditor-enable"]=0;
 $wgDefaultUserOptions["visualeditor-newwikitext"]=1;
 $wgDefaultUserOptions["visualeditor-tabs"]="prefer-wt";
 $wgHiddenPrefs[]="visualeditor-betatempdisable";
