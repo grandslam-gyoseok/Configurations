@@ -338,11 +338,6 @@ if ($wmgExtensions["ParserFunctions"])
 {wfLoadExtension("ParserFunctions");
 $wgPFEnableStringFunctions=true;}
 
-//<< PerformanceInspector >>
-if ($wmgExtensions["PerformanceInspector"])
-{wfLoadExtension("PerformanceInspector");
-$wgDefaultUserOptions["performanceinspector"]=1;}
-
 //<< PlavorMindTools >>
 wfLoadExtension("PlavorMindTools");
 $wgPMTFeatureConfig["NoActionsOnNonEditable"]=
