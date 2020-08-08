@@ -111,6 +111,7 @@ $wmgExtensions=array_merge($wmgExtensions,
 "TextExtracts"=>true,
 "TwoColConflict"=>true,
 "UploadsLink"=>true,
+"VisualEditor"=>true,
 "WikiEditor"=>true]);
 
 //< Skins >
