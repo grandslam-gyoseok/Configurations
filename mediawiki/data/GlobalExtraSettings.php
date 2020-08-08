@@ -475,7 +475,6 @@ if ($wmgGrantStewardsGlobalPermissions)
 }
 
 //<< VisualEditor >>
-/*
 if ($wmgExtensions["VisualEditor"])
 {wfLoadExtension("VisualEditor");
 $wgDefaultUserOptions["visualeditor-enable"]=0;
@@ -489,7 +488,6 @@ $wgVisualEditorEnableVisualSectionEditing=true;
 $wgVisualEditorEnableWikitext=true;
 $wgVisualEditorShowBetaWelcome=false;
 $wgVisualEditorUseSingleEditTab=true;}
-*/
 
 //<< WikibaseClient >>
 /*
