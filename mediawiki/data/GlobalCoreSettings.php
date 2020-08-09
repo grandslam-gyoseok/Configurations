@@ -483,8 +483,8 @@ $wgExtensionFunctions[]="core_modify_permissions";
 //< Images and uploads >
 
 //<< Directories >>
-$wgDeletedDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/deleted-files";
-$wgUploadDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/files";
+$wgDeletedDirectory=$wmgDataDirectory."/private/per-wiki/".$wmgWiki."/deleted-files";
+$wgUploadDirectory=$wmgDataDirectory."/private/per-wiki/".$wmgWiki."/files";
 $wgUploadPath=$wgScriptPath."/img_auth.php";
 
 //<< ImageMagick >>
@@ -543,7 +543,7 @@ $wgEnableEmail=false;
 
 //<< API >>
 $wgApiFrameOptions="SAMEORIGIN";
-$wgAPIRequestLog=$wmgPrivateDataDirectory."/".$wmgWiki."/api.log";
+$wgAPIRequestLog=$wmgDataDirectory."/private/per-wiki/".$wmgWiki."/api.log";
 
 //<< Authentication and sessions >>
 $wgAllowSecuritySensitiveOperationIfCannotReauthenticate=
@@ -563,7 +563,7 @@ if ($wmgGlobalAccountMode === "shared-database")
 {$wgSharedDB=$wmgCentralWiki."wiki";
 $wgSharedTables=["actor","user"];}
 //SQLite-only
-$wgSQLiteDataDir=$wmgPrivateDataDirectory."/databases";
+$wgSQLiteDataDir=$wmgDataDirectory."/private/databases";
 
 //<< Debugging >>
 if ($wgCommandLineMode || $wmgDebugMode)
@@ -617,7 +617,7 @@ $wgReadOnlyFile=$wmgDataDirectory."/readonly.txt";
 
 //< Caching >
 
-$wgCacheDirectory=$wmgPrivateDataDirectory."/".$wmgWiki."/cache";
+$wgCacheDirectory=$wmgDataDirectory."/private/per-wiki/".$wmgWiki."/cache";
 //Disable client side caching
 $wgCachePages=false;
 $wgMainCacheType=CACHE_ACCEL;
