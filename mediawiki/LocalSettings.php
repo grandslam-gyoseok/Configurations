@@ -10,15 +10,16 @@ $wmgCIDRLimit=
 ["IPv4"=>8, //###.0.0.0/8
 "IPv6"=>16]; //####::/16
 $wmgCustomDomains=[];
-$wmgDebugMode=false;
+$wmgDebugMode=true;
 //Put "%wiki%" where the wiki ID should be placed.
 $wmgDefaultBaseURL="http://%wiki%.plavormind.tk:81";
+$wmgGroupPermissions=[];
+$wmgPermissionInheritances=[];
 $wmgWikis=["central","osa"];
 
 //<< Directories >>
-$wmgDataDirectory=$IP."/data";
-$wmgPrivateDataDirectories=
-["Android"=>$IP."/private-data",
+$wmgDataDirectories=
+["Android"=>$IP."/data",
 "Linux"=>"/plavormind/web/data/mediawiki",
 "Windows"=>"C:/plavormind/web/data/mediawiki"];
 
@@ -29,7 +30,7 @@ $wmgGlobalAccountMode="centralauth";
 
 //< Initialize >
 
-//<< efGetSiteParams callback >>
+//<< Callback functions >>
 function efGetSiteParams($conf,$wiki)
 {$lang=null;
 $site=null;
@@ -50,7 +51,11 @@ return
     []
   ];
 }
+function set_permissions()
+{global $wgGroupPermissions,$wmgGroupPermissions,$wmgPermissionInheritances;
+}
 $wgConf->siteParamsCallback="efGetSiteParams";
+$wgExtensionFunctions[]="set_permissions";
 
 //<< Wiki detection >>
 if ($wgCommandLineMode)
@@ -70,7 +75,6 @@ elseif (preg_match("/^".$domain_regex."$/iu",$current_domain,$matches))
 else
   {exit("Cannot find this wiki.");}
 unset($current_domain,$domain_regex);}
-
 if (!in_array($wmgWiki,$wmgWikis))
 {exit("Cannot find this wiki.");}
 
@@ -85,8 +89,6 @@ if (!isset($wmgDataDirectory))
 {$wmgDataDirectory=$wmgDataDirectories[$wmgPlatform];}
 if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
 {$wmgGlobalAccountMode="";}
-if (!isset($wmgPrivateDataDirectory))
-{$wmgPrivateDataDirectory=$wmgPrivateDataDirectories[$wmgPlatform];}
 
 if (!isset($wmgGrantStewardsGlobalPermissions))
 {if ($wmgGlobalAccountMode === "centralauth")
@@ -99,11 +101,11 @@ else
 
 //<< Load settings >>
 require_once($wmgDataDirectory."/GlobalCoreSettings.php");
-if (file_exists($wmgDataDirectory."/".$wmgWiki."/CoreSettings.php"))
-{include_once($wmgDataDirectory."/".$wmgWiki."/CoreSettings.php");}
+if (file_exists($wmgDataDirectory."/per-wiki/".$wmgWiki."/CoreSettings.php"))
+{include_once($wmgDataDirectory."/per-wiki/".$wmgWiki."/CoreSettings.php");}
 if (file_exists($wmgDataDirectory."/GlobalExtraSettings.php"))
 {include_once($wmgDataDirectory."/GlobalExtraSettings.php");}
-if (file_exists($wmgDataDirectory."/".$wmgWiki."/ExtraSettings.php"))
-{include_once($wmgDataDirectory."/".$wmgWiki."/ExtraSettings.php");}
-if (file_exists($wmgPrivateDataDirectory."/PrivateSettings.php"))
-{include_once($wmgPrivateDataDirectory."/PrivateSettings.php");}
+if (file_exists($wmgDataDirectory."/per-wiki/".$wmgWiki."/ExtraSettings.php"))
+{include_once($wmgDataDirectory."/per-wiki/".$wmgWiki."/ExtraSettings.php");}
+if (file_exists($wmgDataDirectory."/private/PrivateSettings.php"))
+{include_once($wmgDataDirectory."/private/PrivateSettings.php");}
