@@ -431,7 +431,7 @@ $wgExtractsExtendOpenSearchXml=true;}
 wfLoadExtension("TitleBlacklist");
 $wgTitleBlacklistSources=
 ["global"=>
-  ["src"=>$wmgPrivateDataDirectory."/titleblacklist.txt",
+  ["src"=>$wmgDataDirectory."/private/titleblacklist.txt",
   "type"=>"file"]
 ];
 if ($wmgGlobalAccountMode !== "")
