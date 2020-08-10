@@ -160,9 +160,8 @@ if ($wmgExtensions["CommonsMetadata"])
 {wfLoadExtension("CommonsMetadata");}
 
 //<< ConfirmEdit >>
-wfLoadExtensions(["ConfirmEdit","ConfirmEdit/ReCaptchaNoCaptcha"]);
+wfLoadExtensions(["ConfirmEdit","ConfirmEdit/hCaptcha"]);
 $wgCaptchaBadLoginExpiration=60*60; //1 hour
-$wgCaptchaClass="ReCaptchaNoCaptcha";
 $wgCaptchaTriggers["create"]=true;
 $wgCaptchaTriggers["sendemail"]=true;
 $wgCaptchaTriggersOnNamespace=
