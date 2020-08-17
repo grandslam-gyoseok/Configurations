@@ -637,5 +637,6 @@ wfLoadSkin("Vector");
 $wgVectorDefaultSidebarVisibleForAnonymousUser=true;
 $wgVectorDefaultSkinVersionForExistingAccounts="2";
 $wgVectorDefaultSkinVersionForNewAccounts="2";
+$wgVectorIsSearchInHeader=true;
 $wgVectorLayoutMaxWidth=true;
 $wgVectorResponsive=true;
