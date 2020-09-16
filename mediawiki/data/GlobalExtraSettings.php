@@ -289,7 +289,6 @@ if ($wmgExtensions["Josa"])
 {wfLoadExtension("Josa");}
 
 //<< MassEditRegex >>
-/*
 if ($wmgExtensions["MassEditRegex"])
 {wfLoadExtension("MassEditRegex");
 //Permissions
@@ -297,7 +296,6 @@ $wgGroupPermissions["bureaucrat"]["masseditregex"]=true;
 if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["masseditregex"]=true;}
 }
-*/
 
 //<< Math >>
 //This extension requires running update.php.
@@ -474,6 +472,7 @@ if ($wmgGrantStewardsGlobalPermissions)
 }
 
 //<< VisualEditor >>
+/*
 if ($wmgExtensions["VisualEditor"])
 {wfLoadExtension("VisualEditor");
 $wgDefaultUserOptions["visualeditor-enable"]=0;
@@ -487,6 +486,7 @@ $wgVisualEditorEnableVisualSectionEditing=true;
 $wgVisualEditorEnableWikitext=true;
 $wgVisualEditorShowBetaWelcome=false;
 $wgVisualEditorUseSingleEditTab=true;}
+*/
 
 //<< WikibaseClient >>
 /*
