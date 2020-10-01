@@ -491,8 +491,7 @@ $wgVisualEditorUseSingleEditTab=true;}
 //<< WikibaseClient >>
 /*
 if ($wmgExtensions["WikibaseClient"])
-{require_once($wgExtensionDirectory."/Wikibase/client/WikibaseClient.php");
-$wgEnableWikibaseClient=true;
+{wfLoadExtension("WikibaseClient",$wgExtensionDirectory."/Wikibase/extension-client.json");
 //Use value of $baseNs in $wgExtensionDirectory/extensions/Wikibase/repo/config/Wikibase.example.php
 $ns_item=120;
 $ns_item_talk=121;
@@ -522,8 +521,7 @@ $wgWBClientSettings=array_merge($wgWBClientSettings,
 //<< WikibaseRepository >>
 /*
 if ($wmgExtensions["WikibaseRepository"])
-{require_once($wgExtensionDirectory."/Wikibase/repo/Wikibase.php");
-$wgEnableWikibaseRepo=true;
+{wfLoadExtension("WikibaseRepository",$wgExtensionDirectory."/Wikibase/extension-repo.json");
 //Use value of $baseNs in $wgExtensionDirectory/extensions/Wikibase/repo/config/Wikibase.example.php
 $ns_item=120;
 $ns_item_talk=121;
