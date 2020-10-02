@@ -182,18 +182,6 @@ if ($wmgGrantStewardsGlobalPermissions)
 if ($wmgExtensions["CreateRedirect"])
 {wfLoadExtension("CreateRedirect");}
 
-//<< DeletePagesForGood >>
-//Disabled until https://phabricator.wikimedia.org/T231752 is resolved
-/*
-if ($wmgExtensions["DeletePagesForGood"])
-{wfLoadExtension("DeletePagesForGood");
-$wgDeletePagesForGoodNamespaces[NS_FILE]=false;
-//Permissions
-if ($wmgGrantStewardsGlobalPermissions)
-  {$wgGroupPermissions["steward"]["deleteperm"]=true;}
-}
-*/
-
 //<< DiscordNotifications >>
 if ($wmgExtensions["DiscordNotifications"])
 {wfLoadExtension("DiscordNotifications");
@@ -309,10 +297,6 @@ if ($wmgExtensions["MultimediaViewer"])
 if ($wgThumbnailScriptPath)
   {$wgMediaViewerUseThumbnailGuessing=true;}
 }
-
-//<< NativeSvgHandler >>
-if (!$wgSVGConverter)
-{wfLoadExtension("NativeSvgHandler");}
 
 //<< Nuke >>
 if ($wmgExtensions["Nuke"])
