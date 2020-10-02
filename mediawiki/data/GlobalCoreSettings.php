@@ -495,10 +495,7 @@ if (file_exists($wgImageMagickConvertCommand))
 
 //<< SVG >>
 switch ($wmgPlatform)
-{case "Linux":
-$wgSVGConverter=false;
-break;
-case "Windows":
+{case "Windows":
 $wgSVGConverter="inkscape";
 $wgSVGConverters=
 //"!" should not be escaped on Windows
@@ -510,19 +507,19 @@ default:
 $wgSVGConverter=false;}
 
 //<< Thumbnails >>
-//thumb.php should not be used when $wgSVGConverter is false due to issues with NativeSvgHandler extension
-if ($wgSVGConverter)
-{$wgGenerateThumbnailOnParse=false;
-$wgThumbnailScriptPath=$wgScriptPath."/thumb.php";}
+$wgGenerateThumbnailOnParse=false;
+$wgThumbnailScriptPath=$wgScriptPath."/thumb.php";
 
 //<< Uploading from URL >>
 $wgAllowCopyUploads=true;
-$wgCopyUploadsDomains=[]; //openclipart.org is inaccessible
+$wgCopyUploadsDomains=["openclipart.org"];
 $wgCopyUploadsFromSpecialUpload=true;
 
 //<< Others >>
 $wgEnableUploads=true;
-$wgFileExtensions=["gif","jpg","png","svg","webp"];
+$wgFileExtensions=["gif","jpg","png","webp"];
+if ($wgSVGConverter)
+{$wgFileExtensions[]="svg";}
 $wgHashedUploadDirectory=false;
 $wgMaxUploadSize=
 ["*"=>1024*1024*5, //5 MB
