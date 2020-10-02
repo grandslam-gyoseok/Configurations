@@ -659,7 +659,6 @@ $wmgExtensions=
 "CodeMirror"=>false,
 "CommonsMetadata"=>false,
 "CreateRedirect"=>false,
-//"DeletePagesForGood"=>false,
 "DiscordNotifications"=>true,
 //"DiscussionTools"=>false,
 "GlobalCssJs"=>true,
