@@ -626,8 +626,7 @@ $wgFileCacheDirectory=$wgCacheDirectory;
 //$wgUseFileCache=true;
 
 //<< Message cache >>
-$wgAdaptiveMessageCache=true;
-$wgLocalisationCacheConf["store"]="array";
+$wgMessageCacheType=$wgMainCacheType;
 $wgUseLocalMessageCache=true;
 
 //<< Sidebar cache >>
@@ -636,11 +635,9 @@ $wgSidebarCacheExpiry=$wmgCacheExpiry;
 $wgTranscludeCacheExpiry=$wmgCacheExpiry;
 
 //<< Others >>
-$wgAdaptiveMessageCache=true;
 $wgAPICacheHelpTimeout=$wmgCacheExpiry;
 $wgInterwikiExpiry=$wmgCacheExpiry;
 $wgLanguageConverterCacheType=$wgMainCacheType;
-$wgMessageCacheType=$wgMainCacheType;
 $wgObjectCacheSessionExpiry=$wmgCacheExpiry;
 $wgParserCacheExpireTime=$wmgCacheExpiry;
 $wgParserCacheType=$wgMainCacheType;
