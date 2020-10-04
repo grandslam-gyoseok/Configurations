@@ -650,7 +650,7 @@ $wgSessionCacheType=CACHE_ACCEL;
 
 //<< Extension usage >>
 $wmgExtensions=
-[//"Babel"=>false,
+["Babel"=>false,
 "Cite"=>false,
 "CodeEditor"=>false,
 "CodeMirror"=>false,
@@ -680,7 +680,7 @@ $wmgExtensions=
 "TemplateWizard"=>false,
 "TextExtracts"=>false,
 "TwoColConflict"=>false,
-//"UniversalLanguageSelector"=>false,
+"UniversalLanguageSelector"=>false,
 "UploadsLink"=>false,
 //"VisualEditor"=>false,
 //"WikibaseClient"=>false,
