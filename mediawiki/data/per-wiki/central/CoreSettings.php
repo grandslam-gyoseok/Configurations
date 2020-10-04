@@ -91,7 +91,8 @@ $wgGroupPermissions["steward"]["editsitejson"]=true;}
 
 //<< Extension usage >>
 $wmgExtensions=array_merge($wmgExtensions,
-["Cite"=>true,
+["Babel"=>true,
+"Cite"=>true,
 "CodeEditor"=>true,
 "CodeMirror"=>true,
 "CommonsMetadata"=>true,
@@ -111,6 +112,7 @@ $wmgExtensions=array_merge($wmgExtensions,
 "TemplateWizard"=>true,
 "TextExtracts"=>true,
 "TwoColConflict"=>true,
+"UniversalLanguageSelector"=>true,
 "UploadsLink"=>true,
 //"VisualEditor"=>true,
 "WikiEditor"=>true]);
