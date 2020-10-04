@@ -650,7 +650,7 @@ $wgSessionCacheType=CACHE_ACCEL;
 
 //<< Extension usage >>
 $wmgExtensions=
-["Babel"=>false,
+["Babel"=>true,
 "Cite"=>false,
 "CodeEditor"=>false,
 "CodeMirror"=>false,
