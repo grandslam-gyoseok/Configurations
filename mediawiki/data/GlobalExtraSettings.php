@@ -67,8 +67,6 @@ if ($wmgGrantStewardsGlobalPermissions)
 
 //<< Babel >>
 //This extension requires running update.php.
-//Disabled due to timeout issue
-/*
 if ($wmgExtensions["Babel"])
 {wfLoadExtension("Babel");
 $wgBabelCategoryNames=
@@ -81,7 +79,6 @@ $wgBabelCategoryNames=
 "N"=>false];
 $wgBabelMainCategory=false;
 $wgBabelUseUserLanguage=true;}
-*/
 
 //<< CentralAuth >>
 //This extension requires running update.php.
@@ -432,14 +429,12 @@ if ($wmgExtensions["TwoColConflict"])
 $wgTwoColConflictBetaFeature=false;}
 
 //<< UniversalLanguageSelector >>
-/*
 if ($wmgExtensions["UniversalLanguageSelector"])
 {wfLoadExtension("UniversalLanguageSelector");
 $wgULSCompactLanguageLinksBetaFeature=false;
 $wgULSIMEEnabled=false;
 $wgULSLanguageDetection=false;
 $wgULSWebfontsEnabled=false;}
-*/
 
 //<< UploadsLink >>
 if ($wmgExtensions["UploadsLink"])
