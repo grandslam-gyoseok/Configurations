@@ -34,26 +34,21 @@ $wgAbuseFilterRestrictions=
 "throttle"=>false,
 "warn"=>false];
 //Permissions
-function extension_AbuseFilter_modify_permissions()
-{global $wgGroupPermissions;
-unset($wgGroupPermissions["suppress"]);}
-$wgExtensionFunctions[]="extension_AbuseFilter_modify_permissions";
-$wgGroupPermissions["*"]["abusefilter-log-detail"]=true;
-$wgGroupPermissions["bureaucrat"]["abusefilter-log-private"]=true;
-$wgGroupPermissions["bureaucrat"]["abusefilter-modify"]=true;
-$wgGroupPermissions["bureaucrat"]["abusefilter-revert"]=true;
-if ($wmgWiki==$wmgCentralWiki)
-{$wgGroupPermissions["steward"]["abusefilter-modify-global"]=true;}
+$wmgGroupPermissions["*"]["abusefilter-log"]=true;
+$wmgGroupPermissions["*"]["abusefilter-log-detail"]=true;
+$wmgGroupPermissions["*"]["abusefilter-view"]=true;
+$wmgGroupPermissions["bureaucrat"]["abusefilter-log-private"]=true;
+$wmgGroupPermissions["bureaucrat"]["abusefilter-modify"]=true;
+$wmgGroupPermissions["bureaucrat"]["abusefilter-revert"]=true;
+if ($wmgWiki === $wmgCentralWiki)
+{$wmgGroupPermissions["steward"]["abusefilter-modify-global"]=true;}
 if ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
+{$wmgGroupPermissions["steward"]=array_merge($wmgGroupPermissions["steward"],
 ["abusefilter-hidden-log"=>true,
 "abusefilter-hide-log"=>true,
-"abusefilter-log-private"=>true,
-"abusefilter-modify"=>true,
 "abusefilter-modify-restricted"=>true,
 "abusefilter-privatedetails"=>true,
-"abusefilter-privatedetails-log"=>true,
-"abusefilter-revert"=>true]);}
+"abusefilter-privatedetails-log"=>true]);}
 
 //<< AntiSpoof >>
 //This extension requires running update.php.
@@ -61,9 +56,8 @@ wfLoadExtension("AntiSpoof");
 if ($wmgGlobalAccountMode === "shared-database")
 {$wgSharedTables[]="spoofuser";}
 //Permissions
-$wgGroupPermissions["bureaucrat"]["override-antispoof"]=false;
 if ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]["override-antispoof"]=true;}
+{$wmgGroupPermissions["steward"]["override-antispoof"]=true;}
 
 //<< Babel >>
 //This extension requires running update.php.
@@ -96,17 +90,15 @@ $wgCentralAuthLoginWiki=$wmgCentralWiki."wiki";
 $wgCentralAuthPreventUnattached=true;
 $wgDisableUnmergedEditing=true;
 //Permissions
-$wgGroupPermissions["*"]["centralauth-merge"]=false;
-$wgGroupPermissions["user"]["centralauth-merge"]=true;
+$wmgGroupPermissions["user"]["centralauth-merge"]=true;
 if ($wmgWiki === $wmgCentralWiki)
-  {$wgGroupPermissions["steward"]["centralauth-rename"]=true;
-  $wgGroupPermissions["steward"]["centralauth-usermerge"]=true;
-  $wgGroupPermissions["steward"]["globalgroupmembership"]=true;
-  $wgGroupPermissions["steward"]["globalgrouppermissions"]=true;}
-else
-  {$wgGroupPermissions["steward"]["centralauth-lock"]=false;
-  $wgGroupPermissions["steward"]["centralauth-oversight"]=false;
-  $wgGroupPermissions["steward"]["centralauth-unmerge"]=false;}
+  {$wmgGroupPermissions["steward"]["centralauth-lock"]=true;
+  $wmgGroupPermissions["steward"]["centralauth-oversight"]=true;
+  $wmgGroupPermissions["steward"]["centralauth-rename"]=true;
+  $wmgGroupPermissions["steward"]["centralauth-unmerge"]=true;
+  $wmgGroupPermissions["steward"]["centralauth-usermerge"]=true;
+  $wmgGroupPermissions["steward"]["globalgroupmembership"]=true;
+  $wmgGroupPermissions["steward"]["globalgrouppermissions"]=true;}
 }
 
 //<< CheckUser >>
@@ -130,14 +122,10 @@ $wgCheckUserLogLogins=true;
 $wgCheckUserMaxBlocks=100;
 $wgCheckUserMaximumRowCount=500; //Experimental
 //Permissions
-function extension_CheckUser_modify_permissions()
-{global $wgGroupPermissions;
-unset($wgGroupPermissions["checkuser"]);}
-$wgExtensionFunctions[]="extension_CheckUser_modify_permissions";
 if ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]["checkuser"]=true;
-$wgGroupPermissions["steward"]["checkuser-log"]=true;
-$wgGroupPermissions["steward"]["investigate"]=true;}
+{$wmgGroupPermissions["steward"]["checkuser"]=true;
+$wmgGroupPermissions["steward"]["checkuser-log"]=true;
+$wmgGroupPermissions["steward"]["investigate"]=true;}
 
 //<< Cite >>
 if ($wmgExtensions["Cite"])
@@ -168,12 +156,7 @@ NS_USER=>
   ["create"=>false]
 ];
 //Permissions
-$wgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
-$wgGroupPermissions["moderator"]["skipcaptcha"]=true;
-$wgGroupPermissions["admin"]["skipcaptcha"]=true;
-$wgGroupPermissions["bureaucrat"]["skipcaptcha"]=true;
-if ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]["skipcaptcha"]=true;}
+$wmgGroupPermissions["autoconfirmed"]["skipcaptcha"]=true;
 
 //<< CreateRedirect >>
 if ($wmgExtensions["CreateRedirect"])
@@ -218,11 +201,11 @@ if ($wmgGlobalAccountMode !== "")
 {wfLoadExtension("GlobalBlocking");
 $wgGlobalBlockingDatabase="wiki_globalblocking";
 //Permissions
-if ($wmgWiki!=$wmgCentralWiki)
-  {$wgGroupPermissions["steward"]["globalblock"]=false;}
+if ($wmgWiki === $wmgCentralWiki)
+  {$wmgGroupPermissions["steward"]["globalblock"]=true;}
 if ($wmgGrantStewardsGlobalPermissions)
-  {$wgGroupPermissions["steward"]["globalblock-exempt"]=true;
-  $wgGroupPermissions["steward"]["globalblock-whitelist"]=true;}
+  {$wmgGroupPermissions["steward"]["globalblock-exempt"]=true;
+  $wmgGroupPermissions["steward"]["globalblock-whitelist"]=true;}
 }
 
 //<< GlobalCssJs >>
@@ -265,9 +248,9 @@ if ($wmgGlobalAccountMode !== "")
 {$wgInterwikiCentralDB=$wmgCentralWiki."wiki";}
 //Permissions
 if ($wmgGlobalAccountMode === "" || $wmgWiki !== $wmgCentralWiki)
-{$wgGroupPermissions["bureaucrat"]["interwiki"]=true;}
+{$wmgGroupPermissions["bureaucrat"]["interwiki"]=true;}
 if ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]["interwiki"]=true;}
+{$wmgGroupPermissions["steward"]["interwiki"]=true;}
 
 //<< Josa >>
 if ($wmgExtensions["Josa"])
@@ -277,10 +260,7 @@ if ($wmgExtensions["Josa"])
 if ($wmgExtensions["MassEditRegex"])
 {wfLoadExtension("MassEditRegex");
 //Permissions
-$wgGroupPermissions["bureaucrat"]["masseditregex"]=true;
-if ($wmgGrantStewardsGlobalPermissions)
-  {$wgGroupPermissions["steward"]["masseditregex"]=true;}
-}
+$wmgGroupPermissions["bureaucrat"]["masseditregex"]=true;}
 
 //<< Math >>
 //This extension requires running update.php.
@@ -299,10 +279,7 @@ if ($wgThumbnailScriptPath)
 if ($wmgExtensions["Nuke"])
 {wfLoadExtension("Nuke");
 //Permissions
-$wgGroupPermissions["bureaucrat"]["nuke"]=true;
-if ($wmgGrantStewardsGlobalPermissions)
-  {$wgGroupPermissions["steward"]["nuke"]=true;}
-}
+$wmgGroupPermissions["bureaucrat"]["nuke"]=true;}
 
 //<< OATHAuth >>
 if ($wmgGlobalAccountMode !== "shared-database")
@@ -311,11 +288,13 @@ $wgOATHAuthAccountPrefix="PlavorMind wikis";
 if ($wmgGlobalAccountMode === "centralauth")
   {$wgOATHAuthDatabase="wiki_centralauth";}
 //Permissions
+$wmgGroupPermissions["user"]["oathauth-enable"]=true;
+if ($wmgWiki === $wmgCentralWiki)
+  {$wmgGroupPermissions["steward"]["oathauth-verify-user"]=true;}
 if ($wmgGrantStewardsGlobalPermissions)
-  {$wgGroupPermissions["steward"]["oathauth-api-all"]=true;
-  $wgGroupPermissions["steward"]["oathauth-disable-for-user"]=true;
-  $wgGroupPermissions["steward"]["oathauth-verify-user"]=true;
-  $wgGroupPermissions["steward"]["oathauth-view-log"]=true;}
+  {$wmgGroupPermissions["steward"]["oathauth-api-all"]=true;
+  $wmgGroupPermissions["steward"]["oathauth-disable-for-user"]=true;
+  $wmgGroupPermissions["steward"]["oathauth-view-log"]=true;}
 }
 
 //<< PageImages >>
@@ -339,13 +318,9 @@ $wgPMTFeatureConfig["ReplaceInterfaceMessages"]=
 ["enable"=>true,
 "EnglishSystemUsers"=>true];
 //Permissions
-$wgGroupPermissions["user"]["deleteownuserpages"]=true;
-$wgGroupPermissions["user"]["moveownuserpages"]=true;
-$wgGroupPermissions["moderator"]["editotheruserpages"]=true;
-$wgGroupPermissions["admin"]["editotheruserpages"]=true;
-$wgGroupPermissions["bureaucrat"]["editotheruserpages"]=true;
-if ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]["editotheruserpages"]=true;}
+$wmgGroupPermissions["user"]["deleteownuserpages"]=true;
+$wmgGroupPermissions["user"]["moveownuserpages"]=true;
+$wmgGroupPermissions["moderator"]["editotheruserpages"]=true;
 
 //<< Popups >>
 if ($wmgExtensions["Popups"] && $wmgExtensions["PageImages"] && $wmgExtensions["TextExtracts"])
@@ -356,20 +331,19 @@ $wgPopupsReferencePreviewsBetaFeature=false;}
 //<< Renameuser >>
 wfLoadExtension("Renameuser");
 //Permissions
-$wgGroupPermissions["bureaucrat"]["renameuser"]=false;
 if ($wmgGlobalAccountMode === "shared-database")
 {if ($wmgWiki === $wmgCentralWiki)
-  {$wgGroupPermissions["steward"]["renameuser"]=true;}
+  {$wmgGroupPermissions["steward"]["renameuser"]=true;}
 }
 elseif ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]["renameuser"]=true;}
+{$wmgGroupPermissions["steward"]["renameuser"]=true;}
 
 //<< ReplaceText >>
 if ($wmgExtensions["ReplaceText"])
 {wfLoadExtension("ReplaceText");
 //Permissions
 if ($wmgGrantStewardsGlobalPermissions)
-  {$wgGroupPermissions["steward"]["replacetext"]=true;}
+  {$wmgGroupPermissions["steward"]["replacetext"]=true;}
 }
 
 //<< RevisionSlider >>
@@ -385,12 +359,8 @@ wfLoadExtension("StaffPowers");
 $wgStaffPowersShoutWikiMessages=false;
 $wgStaffPowersStewardGroupName="bureaucrat";
 //Permissions
-function extension_StaffPowers_modify_permissions()
-{global $wgGroupPermissions;
-unset($wgGroupPermissions["staff"]);}
-$wgExtensionFunctions[]="extension_StaffPowers_modify_permissions";
 if ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]["unblockable"]=true;}
+{$wmgGroupPermissions["steward"]["unblockable"]=true;}
 
 //<< SyntaxHighlight_GeSHi >>
 if ($wmgExtensions["SyntaxHighlight_GeSHi"] && $wmgPlatform === "Linux")
@@ -429,13 +399,11 @@ $wgTitleBlacklistSources=
 if ($wmgGlobalAccountMode !== "")
 {$wgTitleBlacklistUsernameSources=["global"];}
 //Permissions
-$wgGroupPermissions["admin"]["tboverride"]=true;
-$wgGroupPermissions["bureaucrat"]["tboverride"]=true;
+$wmgGroupPermissions["admin"]["tboverride"]=true;
 if ($wmgWiki === $wmgCentralWiki)
-{$wgGroupPermissions["steward"]["tboverride-account"]=true;}
+{$wmgGroupPermissions["steward"]["tboverride-account"]=true;}
 if ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]["tboverride"]=true;
-$wgGroupPermissions["steward"]["titleblacklistlog"]=true;}
+{$wmgGroupPermissions["steward"]["titleblacklistlog"]=true;}
 
 //<< TwoColConflict >>
 if ($wmgExtensions["TwoColConflict"])
@@ -461,7 +429,7 @@ if ($wmgGlobalAccountMode !== "shared-database")
 $wgUserMergeProtectedGroups=[];
 //Permissions
 if ($wmgGrantStewardsGlobalPermissions)
-  {$wgGroupPermissions["steward"]["usermerge"]=true;}
+  {$wmgGroupPermissions["steward"]["usermerge"]=true;}
 }
 
 //<< VisualEditor >>
@@ -543,18 +511,12 @@ $wgWBRepoSettings["entityNamespaces"]=
 "property"=>$ns_property];
 $wgWBRepoSettings["siteLinkGroups"]=["plavormind-wikis"];
 //Permissions
-$wgGroupPermissions["*"]=array_merge($wgGroupPermissions["*"],
-["item-merge"=>false,
-"item-redirect"=>false,
-"item-term"=>false,
-"property-create"=>false,
-"property-term"=>false]);
-$wgGroupPermissions["user"]["item-term"]=true;
-$wgGroupPermissions["user"]["property-create"]=true;
-$wgGroupPermissions["user"]["property-term"]=true;
+$wmgGroupPermissions["user"]["item-term"]=true;
+$wmgGroupPermissions["user"]["property-create"]=true;
+$wmgGroupPermissions["user"]["property-term"]=true;
 if ($wmgGrantStewardsGlobalPermissions)
-  {$wgGroupPermissions["steward"]["item-merge"]=true;
-  $wgGroupPermissions["steward"]["item-redirect"]=true;}
+  {$wmgGroupPermissions["steward"]["item-merge"]=true;
+  $wmgGroupPermissions["steward"]["item-redirect"]=true;}
 }
 */
 
