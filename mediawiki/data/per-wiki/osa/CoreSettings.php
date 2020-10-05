@@ -15,8 +15,8 @@ $wgSitename="오사위키덤프";
 //< Permissions >
 
 //<< User group permissions >>
-$wgGroupPermissions["*"]["createaccount"]=false;
-$wgGroupPermissions["user"]["edit"]=false;
+$wmgGroupPermissions["*"]["createaccount"]=false;
+$wmgGroupPermissions["user"]["edit"]=false;
 
 //< Extensions >
 
