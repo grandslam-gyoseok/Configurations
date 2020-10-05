@@ -79,13 +79,13 @@ NS_TEMPLATE_TALK=>
 ];
 
 //<< User group permissions >>
-$wgGroupPermissions["bureaucrat"]["editinterface"]=false;
-$wgGroupPermissions["bureaucrat"]["editsitecss"]=false;
-$wgGroupPermissions["bureaucrat"]["editsitejson"]=false;
+$wmgGroupPermissions["bureaucrat"]["editinterface"]=false;
+$wmgGroupPermissions["bureaucrat"]["editsitecss"]=false;
+$wmgGroupPermissions["bureaucrat"]["editsitejson"]=false;
 if ($wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]["editinterface"]=true;
-$wgGroupPermissions["steward"]["editsitecss"]=true;
-$wgGroupPermissions["steward"]["editsitejson"]=true;}
+{$wmgGroupPermissions["steward"]["editinterface"]=true;
+$wmgGroupPermissions["steward"]["editsitecss"]=true;
+$wmgGroupPermissions["steward"]["editsitejson"]=true;}
 
 //< Extensions >
 
