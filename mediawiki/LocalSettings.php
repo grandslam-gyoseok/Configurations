@@ -53,6 +53,11 @@ return
 }
 function set_permissions()
 {global $wgGroupPermissions,$wmgGroupPermissions,$wmgPermissionInheritances;
+$wgGroupPermissions=$wmgGroupPermissions;
+foreach ($wmgPermissionInheritances as $target_group=>$source_groups)
+  {foreach ($source_groups as $source_group)
+    {$wgGroupPermissions[$target_group]=array_merge($wgGroupPermissions[$source_group],$wgGroupPermissions[$target_group]);}
+  }
 }
 $wgConf->siteParamsCallback="efGetSiteParams";
 $wgExtensionFunctions[]="set_permissions";
