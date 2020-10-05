@@ -239,7 +239,7 @@ $wgResourceLoaderSources["central"]=
 //This extension requires running update.php.
 if ($wmgGlobalAccountMode !== "")
 {wfLoadExtension("GlobalPreferences");
-if ($wmgGlobalAccountMode=="centralauth")
+if ($wmgGlobalAccountMode === "centralauth")
   {$wgGlobalPreferencesDB="wiki_globalpreferences";}
 }
 
@@ -302,6 +302,20 @@ if ($wmgExtensions["Nuke"])
 $wgGroupPermissions["bureaucrat"]["nuke"]=true;
 if ($wmgGrantStewardsGlobalPermissions)
   {$wgGroupPermissions["steward"]["nuke"]=true;}
+}
+
+//<< OATHAuth >>
+if ($wmgGlobalAccountMode !== "shared-database")
+{wfLoadExtension("OATHAuth");
+$wgOATHAuthAccountPrefix="PlavorMind wikis";
+if ($wmgGlobalAccountMode === "centralauth")
+  {$wgOATHAuthDatabase="wiki_centralauth";}
+//Permissions
+if ($wmgGrantStewardsGlobalPermissions)
+  {$wgGroupPermissions["steward"]["oathauth-api-all"]=true;
+  $wgGroupPermissions["steward"]["oathauth-disable-for-user"]=true;
+  $wgGroupPermissions["steward"]["oathauth-verify-user"]=true;
+  $wgGroupPermissions["steward"]["oathauth-view-log"]=true;}
 }
 
 //<< PageImages >>
