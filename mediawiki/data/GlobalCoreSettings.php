@@ -369,7 +369,7 @@ $wgAvailableRights=
 "editprotected-admin",
 "editprotected-bureaucrat",
 "editprotected-steward"];
-$wgGroupPermissions=
+$wmgGroupPermissions=
 ["*"=>
   ["autocreateaccount"=>true,
   "browsearchive"=>true,
@@ -456,29 +456,27 @@ $wgGroupPermissions=
   "suppressionlog"=>true,
   "suppressrevision"=>true]
 ];
-//Permission inheritance
-$wgGroupPermissions["moderator"]=array_merge($wgGroupPermissions["autoconfirmed"],$wgGroupPermissions["moderator"]);
-$wgGroupPermissions["admin"]=array_merge($wgGroupPermissions["moderator"],$wgGroupPermissions["admin"]);
-$wgGroupPermissions["bureaucrat"]=array_merge($wgGroupPermissions["admin"],$wgGroupPermissions["bureaucrat"]);
-$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["bureaucrat"],$wgGroupPermissions["steward"]);
-if (!$wmgGrantStewardsGlobalPermissions)
-{$wgGroupPermissions["steward"]=[];}
+//Permission inheritances
+$wmgPermissionInheritances=
+["moderator"=>
+  ["autoconfirmed"],
+"admin"=>
+  ["moderator"],
+"bureaucrat"=>
+  ["admin"]
+];
+if ($wmgGrantStewardsGlobalPermissions)
+{$wmgPermissionInheritances["steward"]=["bureaucrat"];}
+else
+{$wmgGroupPermissions["steward"]=[];}
 if ($wmgWiki === $wmgCentralWiki)
-{$wgGroupPermissions["steward"]=array_merge($wgGroupPermissions["steward"],
+{$wmgGroupPermissions["steward"]=array_merge($wmgGroupPermissions["steward"],
 ["siteadmin"=>true,
 "userrights"=>true,
 "userrights-interwiki"=>true]);}
 
 //<< Others >>
-function core_modify_permissions()
-{global $wgGroupPermissions,$wmgCentralWiki,$wmgGrantStewardsGlobalPermissions,$wmgWiki;
-//Remove user groups
-unset($wgGroupPermissions["bot"],$wgGroupPermissions["sysop"]);
-if (!($wmgWiki === $wmgCentralWiki || $wmgGrantStewardsGlobalPermissions))
-  {unset($wgGroupPermissions["steward"]);}
-}
 $wgDeleteRevisionsLimit=250;
-$wgExtensionFunctions[]="core_modify_permissions";
 
 //< Images and uploads >
 
