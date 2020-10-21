@@ -322,6 +322,10 @@ $wmgGroupPermissions["user"]["deleteownuserpages"]=true;
 $wmgGroupPermissions["user"]["moveownuserpages"]=true;
 $wmgGroupPermissions["moderator"]["editotheruserpages"]=true;
 
+//<< Poem >>
+if ($wmgExtensions["Poem"])
+{wfLoadExtension("Poem");}
+
 //<< Popups >>
 if ($wmgExtensions["Popups"] && $wmgExtensions["PageImages"] && $wmgExtensions["TextExtracts"])
 {wfLoadExtension("Popups");
