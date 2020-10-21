@@ -667,6 +667,7 @@ $wmgExtensions=
 "Nuke"=>false,
 "PageImages"=>false,
 "ParserFunctions"=>false,
+"Poem"=>false,
 "Popups"=>false,
 "ReplaceText"=>false,
 "RevisionSlider"=>false,
