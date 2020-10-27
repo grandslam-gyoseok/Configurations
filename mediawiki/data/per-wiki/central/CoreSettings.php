@@ -23,7 +23,7 @@ $wgAllowDisplayTitle=false;
 $wgAllowSlowParserFunctions=true; //Experimental
 
 //<< Recent changes and watchlist >>
-$wgWatchlistExpiry=true; //Experimental
+$wgWatchlistExpiry=true;
 
 //<< User interface >>
 $wgForceUIMsgAsContentMsg=
@@ -55,8 +55,8 @@ $wgSiteNotice="Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION
 
 //<< Others >>
 //Remove default value ("obsolete-tag")
-$wgSignatureAllowedLintErrors=[]; //Experimental
-$wgSignatureValidation="disallow"; //Experimental
+$wgSignatureAllowedLintErrors=[];
+$wgSignatureValidation="disallow";
 
 //< Permissions >
 
