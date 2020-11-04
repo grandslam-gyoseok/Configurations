@@ -4,6 +4,15 @@
 //<< AbuseFilter >>
 //This extension requires running update.php.
 wfLoadExtension("AbuseFilter");
+$wgAbuseFilterActionRestrictions=
+["block"=>false,
+"blockautopromote"=>false,
+"degroup"=>false,
+"disallow"=>false,
+"rangeblock"=>false,
+"tag"=>false,
+"throttle"=>false,
+"warn"=>false];
 //"disallow" and "warn" should always be enabled to make AbuseFilter work properly.
 $wgAbuseFilterActions=
 ["block"=>false,
@@ -24,15 +33,6 @@ if ($wmgGlobalAccountMode !== "" && $wmgWiki === $wmgCentralWiki)
 $wgAbuseFilterLogPrivateDetailsAccess=true;
 $wgAbuseFilterNotifications="rcandudp";
 $wgAbuseFilterPrivateDetailsForceReason=true;
-$wgAbuseFilterRestrictions=
-["block"=>false,
-"blockautopromote"=>false,
-"degroup"=>false,
-"disallow"=>false,
-"rangeblock"=>false,
-"tag"=>false,
-"throttle"=>false,
-"warn"=>false];
 //Permissions
 $wmgGroupPermissions["*"]["abusefilter-log"]=true;
 $wmgGroupPermissions["*"]["abusefilter-log-detail"]=true;
