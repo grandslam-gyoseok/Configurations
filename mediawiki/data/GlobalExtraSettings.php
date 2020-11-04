@@ -124,8 +124,7 @@ $wgCheckUserMaximumRowCount=500; //Experimental
 //Permissions
 if ($wmgGrantStewardsGlobalPermissions)
 {$wmgGroupPermissions["steward"]["checkuser"]=true;
-$wmgGroupPermissions["steward"]["checkuser-log"]=true;
-$wmgGroupPermissions["steward"]["investigate"]=true;}
+$wmgGroupPermissions["steward"]["checkuser-log"]=true;}
 
 //<< Cite >>
 if ($wmgExtensions["Cite"])
