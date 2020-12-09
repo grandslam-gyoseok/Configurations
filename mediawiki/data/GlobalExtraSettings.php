@@ -570,7 +570,6 @@ $wgMinervaAdvancedMainMenu["base"]=true;
 $wgMinervaAdvancedMainMenu["beta"]=true;
 $wgMinervaAlwaysShowLanguageButton=false;
 $wgMinervaApplyKnownTemplateHacks=true;
-$wgMinervaEnableSiteNotice=true;
 $wgMinervaHistoryInPageActions["base"]=true;
 $wgMinervaHistoryInPageActions["beta"]=true;
 $wgMinervaPageIssuesNewTreatment["beta"]=false;
