@@ -21,6 +21,7 @@ $wgMetaNamespace="PlavorMind";
 //<< Parser >>
 $wgAllowDisplayTitle=false;
 $wgAllowSlowParserFunctions=true; //Experimental
+$wgUseNewMediaStructure=true; //Experimental
 
 //<< Recent changes and watchlist >>
 $wgWatchlistExpiry=true;
