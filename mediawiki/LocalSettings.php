@@ -97,7 +97,7 @@ $wmgPlatform=$wmgPlatform ?? PHP_OS_FAMILY;
 
 //Dependency of $wmgGrantStewardsGlobalPermissions
 if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
-  {$wmgGlobalAccountMode='';}
+  {$wmgGlobalAccountMode=false;}
 
 $wmgCentralBaseURL=$wmgCentralBaseURL ?? str_replace('%wiki%',$wmgCentralWiki,$wmgDefaultBaseURL);
 $wmgDataDirectory=$wmgDataDirectory ?? $wmgDataDirectories[$wmgPlatform];
@@ -109,13 +109,13 @@ $wmgGrantStewardsGlobalPermissions=$wmgGrantStewardsGlobalPermissions ?? ($wmgGl
 require_once "{$wmgDataDirectory}/GlobalCoreSettings.php";
 
 if (file_exists("{$wmgDataDirectory}/per-wiki/{$wmgWiki}/CoreSettings.php"))
-{include_once "{$wmgDataDirectory}/per-wiki/{$wmgWiki}/CoreSettings.php";}
+  {include_once "{$wmgDataDirectory}/per-wiki/{$wmgWiki}/CoreSettings.php";}
 
 if (file_exists("{$wmgDataDirectory}/GlobalExtraSettings.php"))
-{include_once "{$wmgDataDirectory}/GlobalExtraSettings.php";}
+  {include_once "{$wmgDataDirectory}/GlobalExtraSettings.php";}
 
 if (file_exists("{$wmgDataDirectory}/per-wiki/{$wmgWiki}/ExtraSettings.php"))
-{include_once "{$wmgDataDirectory}/per-wiki/{$wmgWiki}/ExtraSettings.php";}
+  {include_once "{$wmgDataDirectory}/per-wiki/{$wmgWiki}/ExtraSettings.php";}
 
 if (file_exists("{$wmgDataDirectory}/private/PrivateSettings.php"))
-{include_once "{$wmgDataDirectory}/private/PrivateSettings.php";}
+  {include_once "{$wmgDataDirectory}/private/PrivateSettings.php";}
