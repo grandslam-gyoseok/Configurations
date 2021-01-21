@@ -13,6 +13,7 @@ $wmgCustomDomains=[];
 $wmgDebugMode=false;
 //Put "%wiki%" where the wiki ID should be placed.
 $wmgDefaultBaseURL='http://%wiki%.plavormind.tk:81';
+$wmgGlobalGroupPermissions=[];
 $wmgGroupPermissions=[];
 $wmgPermissionInheritances=[];
 $wmgWikis=['central','osa'];
@@ -55,12 +56,17 @@ function efGetSiteParams($conf,$wiki)
   }
 
 function set_permissions()
-  {global $wgGroupPermissions,$wmgGroupPermissions,$wmgPermissionInheritances;
+  {global $wgGroupPermissions,$wmgGlobalAccountMode,$wmgGlobalGroupPermissions,$wmgGroupPermissions,$wmgPermissionInheritances;
   $wgGroupPermissions=$wmgGroupPermissions;
 
   foreach ($wmgPermissionInheritances as $target_group => $source_groups)
     {foreach ($source_groups as $source_group)
       {$wgGroupPermissions[$target_group]=array_merge($wgGroupPermissions[$source_group],$wgGroupPermissions[$target_group]);}
+    }
+
+  if ($wmgGlobalAccountMode !== 'centralauth')
+    {foreach ($wmgGlobalGroupPermissions as $group => $permissions)
+      {$wgGroupPermissions[$group]=is_array($wgGroupPermissions[$group]) ? array_merge($wgGroupPermissions[$group],$permissions) : $permissions;}
     }
   }
 
