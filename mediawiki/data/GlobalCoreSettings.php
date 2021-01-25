@@ -6,9 +6,13 @@ $wgDBname="{$wmgWiki}wiki";
 
 foreach ($wmgWikis as $wiki)
   {$wgLocalDatabases[]="{$wiki}wiki";}
+
 unset($wiki);
 
 //<< Others >>
+//Should be defined before variables using $wgScriptPath
+$wgScriptPath='/mediawiki';
+
 if ($wmgGlobalAccountMode !== false)
   {$wgConf->settings=
   ['wgArticlePath' =>
@@ -19,9 +23,6 @@ if ($wmgGlobalAccountMode !== false)
   $wgConf->suffixes=['wiki'];
   $wgConf->wikis=$wgLocalDatabases;
   $wgConf->extractAllGlobals($wgDBname);}
-
-//Should be defined before variables using $wgScriptPath
-$wgScriptPath='/mediawiki';
 
 //< General >
 
@@ -50,7 +51,6 @@ $wgAutoblockExpiry=60 * 60 * 24 * 365 * 10; //10 years
 $wgBlockCIDRLimit=$wmgCIDRLimit;
 
 //<< Copyright >>
-$wgMaxCredits=10;
 $wgRightsIcon="{$wgScriptPath}/resources/assets/licenses/cc-by-sa.png";
 $wgRightsText='Creative Commons Attribution-ShareAlike 4.0 International';
 $wgRightsUrl='https://creativecommons.org/licenses/by-sa/4.0/';
@@ -70,7 +70,6 @@ $wgNamespacesWithSubpages[NS_CATEGORY]=true;
 $wgNamespacesWithSubpages[NS_MAIN]=true;
 
 //<< Parser >>
-$wgCleanSignatures=false;
 $wgMaxTemplateDepth=10;
 $wgNonincludableNamespaces=
 [NS_CATEGORY_TALK,
@@ -132,7 +131,6 @@ $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 'watchlisthidecategorization' => 0,
 'watchuploads' => 0]);
 $wgHiddenPrefs=['gender','realname'];
-$wgSearchMatchRedirectPreference=true;
 
 //<< Rate limits >>
 $wgAccountCreationThrottle=
@@ -293,7 +291,7 @@ $wgLearnerMemberSince=7; //1 week
 $wgRCFilterByAge=true;
 $wgRCShowWatchingUsers=true;
 $wgRCWatchCategoryMembership=true;
-//Disable hiding (active) page watchers to users without "unwatchedpages" permission
+//Disable hiding (active) page watchers to users without unwatchedpages permission
 $wgUnwatchedPageSecret=-1;
 $wgUnwatchedPageThreshold=0;
 $wgWatchersMaxAge=60 * 60 * 24 * 7; //1 week
@@ -305,19 +303,15 @@ $wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 $wgNoFollowDomainExceptions=[parse_url(str_replace('%wiki%.','',$wmgDefaultBaseURL),PHP_URL_HOST)];
 
 //<< User interface >>
-$wgAdvancedSearchHighlighting=true;
 $wgAmericanDates=true;
 $wgDisableAnonTalk=true;
 $wgEdititis=true;
-$wgMaxTocLevel=5;
-$wgShowRollbackEditCount=30;
 $wgSpecialVersionShowHooks=true;
 
 //<< Others >>
 $wgActiveUserDays=7; //1 week
 $wgBreakFrames=true;
 $wgCapitalLinks=false;
-$wgEditPageFrameOptions='SAMEORIGIN';
 $wgExternalLinkTarget='_blank';
 $wgFragmentMode=['html5'];
 unset($wgFooterIcons['poweredby']);
@@ -542,7 +536,6 @@ $wgEnableEmail=false;
 //< System >
 
 //<< API >>
-$wgApiFrameOptions='SAMEORIGIN';
 $wgAPIRequestLog="{$wmgDataDirectory}/private/per-wiki/{$wmgWiki}/api.log";
 
 //<< Authentication and sessions >>
@@ -559,11 +552,12 @@ $wgReauthenticateTime=
 'RemoveCredentials' => 60]; //1 minute
 
 //<< Databases >>
+//SQLite-only
+$wgSQLiteDataDir="{$wmgDataDirectory}/private/databases";
+
 if ($wmgGlobalAccountMode === 'shared-database')
   {$wgSharedDB="{$wmgCentralWiki}wiki";
   $wgSharedTables=['actor','user'];}
-//SQLite-only
-$wgSQLiteDataDir="{$wmgDataDirectory}/private/databases";
 
 //<< Debugging >>
 if ($wgCommandLineMode || $wmgDebugMode)
@@ -611,13 +605,12 @@ $wgGitBin=false;
 $wgHTTPTimeout=30;
 $wgJpegTran=false;
 $wgMemoryLimit='256M';
+$wgReadOnlyFile="{$wmgDataDirectory}/readonly.txt";
 
 switch ($wmgPlatform)
   {case 'Windows':
   $wgPhpCli='C:/plavormind/php/php.exe';
   break;}
-
-$wgReadOnlyFile="{$wmgDataDirectory}/readonly.txt";
 
 //< Caching >
 
