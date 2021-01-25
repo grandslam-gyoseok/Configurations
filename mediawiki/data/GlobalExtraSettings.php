@@ -164,10 +164,6 @@ NS_USER =>
 //Permissions
 $wmgGroupPermissions['autoconfirmed']['skipcaptcha']=true;
 
-//<< CreateRedirect >>
-if ($wmgExtensions['CreateRedirect'])
-  {wfLoadExtension('CreateRedirect');}
-
 //<< DiscordNotifications >>
 if ($wmgExtensions['DiscordNotifications'])
   {wfLoadExtension('DiscordNotifications');
@@ -181,14 +177,6 @@ if ($wmgExtensions['DiscordNotifications'])
   $wgDiscordIncludeUserUrls=false;
   $wgDiscordNotificationWikiUrl="{$wgServer}{$wgScriptPath}/";
   $wgDiscordNotificationWikiUrlEndingUserRights='Special:UserRights/';}
-
-//<< DiscussionTools >>
-/*
-if ($wmgExtensions["DiscussionTools"] && $wmgExtensions["VisualEditor"])
-{wfLoadExtension("DiscussionTools");
-//Required by DiscussionTools
-$wgLocaltimezone="Asia/Seoul";}
-*/
 
 //<< Echo >>
 //This extension requires running update.php.
@@ -452,94 +440,6 @@ if ($wmgGlobalAccountMode !== 'shared-database')
     {$wmgGroupPermissions['steward']['usermerge']=true;}
   }
 
-//<< VisualEditor >>
-/*
-if ($wmgExtensions["VisualEditor"])
-{wfLoadExtension("VisualEditor");
-$wgDefaultUserOptions["visualeditor-enable"]=0;
-$wgDefaultUserOptions["visualeditor-newwikitext"]=1;
-$wgDefaultUserOptions["visualeditor-tabs"]="prefer-wt";
-$wgHiddenPrefs[]="visualeditor-betatempdisable";
-$wgVisualEditorAvailableNamespaces["Help"]=true;
-$wgVisualEditorAvailableNamespaces["Project"]=true;
-$wgVisualEditorEnableDiffPage=true;
-$wgVisualEditorEnableVisualSectionEditing=true;
-$wgVisualEditorEnableWikitext=true;
-$wgVisualEditorShowBetaWelcome=false;
-$wgVisualEditorUseSingleEditTab=true;}
-*/
-
-//<< WikibaseClient >>
-/*
-if ($wmgExtensions["WikibaseClient"])
-{wfLoadExtension("WikibaseClient",$wgExtensionDirectory."/Wikibase/extension-client.json");
-//Use value of $baseNs in $wgExtensionDirectory/extensions/Wikibase/repo/config/Wikibase.example.php
-$ns_item=120;
-$ns_item_talk=121;
-$ns_property=122;
-$ns_property_talk=123;
-$wgWBClientSettings=array_merge($wgWBClientSettings,
-["repoArticlePath"=>$wgArticlePath,
-"repoScriptPath"=>$wgScriptPath,
-"repositories"=>
-  [""=>
-    [//baseUri will not work because Wikibase appends "/"
-    "baseUri"=>$wmgCentralBaseURL."/page/Item:",
-    "changesDatabase"=>$wmgCentralWiki."wiki",
-    "entityNamespaces"=>
-      ["item"=>$ns_item,
-      "property"=>$ns_property],
-    "repoDatabase"=>$wmgCentralWiki."wiki"]
-  ],
-"repoUrl"=>$wmgCentralBaseURL,
-"siteGlobalID"=>$wmgWiki,
-"siteGroup"=>"plavormind-wikis",
-"sortPrepend"=>
-  ["en","ko"]
-]);}
-*/
-
-//<< WikibaseRepository >>
-/*
-if ($wmgExtensions["WikibaseRepository"])
-{wfLoadExtension("WikibaseRepository",$wgExtensionDirectory."/Wikibase/extension-repo.json");
-//Use value of $baseNs in $wgExtensionDirectory/extensions/Wikibase/repo/config/Wikibase.example.php
-$ns_item=120;
-$ns_item_talk=121;
-$ns_property=122;
-$ns_property_talk=123;
-switch ($wgLanguageCode)
-  {case "ko":
-  $wgExtraNamespaces[$ns_item]="항목";
-  $wgExtraNamespaces[$ns_item_talk]="항목토론";
-  $wgExtraNamespaces[$ns_property]="속성";
-  $wgExtraNamespaces[$ns_property_talk]="속성토론";
-  break;
-  default:
-  $wgExtraNamespaces[$ns_item]="Item";
-  $wgExtraNamespaces[$ns_item_talk]="Item_talk";
-  $wgExtraNamespaces[$ns_property]="Property";
-  $wgExtraNamespaces[$ns_property_talk]="Property_talk";}
-if ($wgLanguageCode !== "en")
-  {$wgNamespaceAliases["Item"]=$ns_item;
-  $wgNamespaceAliases["Item_talk"]=$ns_item_talk;
-  $wgNamespaceAliases["Property"]=$ns_property;
-  $wgNamespaceAliases["Property_talk"]=$ns_property_talk;}
-$wgWBRepoSettings["enableEntitySearchUI"]=false;
-$wgWBRepoSettings["entityNamespaces"]=
-["item"=>$ns_item,
-"property"=>$ns_property];
-$wgWBRepoSettings["siteLinkGroups"]=["plavormind-wikis"];
-//Permissions
-$wmgGroupPermissions["user"]["item-term"]=true;
-$wmgGroupPermissions["user"]["property-create"]=true;
-$wmgGroupPermissions["user"]["property-term"]=true;
-if ($wmgGrantStewardsGlobalPermissions)
-  {$wmgGroupPermissions["steward"]["item-merge"]=true;
-  $wmgGroupPermissions["steward"]["item-redirect"]=true;}
-}
-*/
-
 //<< WikiEditor >>
 if ($wmgExtensions['WikiEditor'])
   {wfLoadExtension('WikiEditor');}
@@ -555,15 +455,6 @@ if ($wmgSkins['Citizen'])
   $wgCitizenEnableManifest=false;
   $wgCitizenManifestThemeColor='#9933ff';
   $wgCitizenThemeColor='#9933ff';}
-
-//<< Liberty >>
-/*
-if ($wmgSkins["Liberty"])
-{wfLoadSkin("Liberty");
-$wgLibertyEnableLiveRC=false;
-$wgLibertyMainColor="#9933ff";
-$wgTwitterAccount="PlavorSeol";}
-*/
 
 //<< Medik >>
 if ($wmgSkins['Medik'])
