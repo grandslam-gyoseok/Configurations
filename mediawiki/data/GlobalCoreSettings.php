@@ -655,7 +655,6 @@ $wmgExtensions=
 'CodeEditor' => false,
 'CodeMirror' => false,
 'CommonsMetadata' => false,
-'DiscordNotifications' => true,
 'GlobalCssJs' => true,
 'GlobalUserPage' => true,
 'Highlightjs_Integration' => false,
