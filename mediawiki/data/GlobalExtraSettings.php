@@ -164,20 +164,6 @@ NS_USER =>
 //Permissions
 $wmgGroupPermissions['autoconfirmed']['skipcaptcha']=true;
 
-//<< DiscordNotifications >>
-if ($wmgExtensions['DiscordNotifications'])
-  {wfLoadExtension('DiscordNotifications');
-
-  if ($wgCommandLineMode)
-    {$wgDiscordFromName="{$wgSitename} ({$wmgWiki})";}
-  else
-    {$wgDiscordFromName="{$wgSitename} ({$wgServer}/)";}
-
-  $wgDiscordIncludePageUrls=false;
-  $wgDiscordIncludeUserUrls=false;
-  $wgDiscordNotificationWikiUrl="{$wgServer}{$wgScriptPath}/";
-  $wgDiscordNotificationWikiUrlEndingUserRights='Special:UserRights/';}
-
 //<< Echo >>
 //This extension requires running update.php.
 wfLoadExtension('Echo');
