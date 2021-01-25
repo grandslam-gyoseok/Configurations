@@ -655,9 +655,7 @@ $wmgExtensions=
 'CodeEditor' => false,
 'CodeMirror' => false,
 'CommonsMetadata' => false,
-'CreateRedirect' => false,
 'DiscordNotifications' => true,
-//'DiscussionTools' => false,
 'GlobalCssJs' => true,
 'GlobalUserPage' => true,
 'Highlightjs_Integration' => false,
@@ -683,9 +681,6 @@ $wmgExtensions=
 'TwoColConflict' => false,
 'UniversalLanguageSelector' => false,
 'UploadsLink' => false,
-//'VisualEditor' => false,
-//'WikibaseClient' => false,
-//'WikibaseRepository' => false,
 'WikiEditor' => false];
 
 //< Skins >
@@ -693,7 +688,6 @@ $wmgExtensions=
 //<< Skin usage >>
 $wmgSkins=
 ['Citizen' => false,
-//'Liberty' => false,
 'Medik' => false,
 'Metrolook' => false,
 'MinervaNeue' => false,
