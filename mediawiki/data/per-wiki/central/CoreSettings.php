@@ -9,6 +9,9 @@ $wgLogos=
 'icon' => "/resources/per-wiki/{$wmgWiki}/logos/logo-2x.png"];
 $wgSitename='PlavorMindCentral';
 
+//<< Copyright >>
+$wgMaxCredits=10;
+
 //<< CSS and JavaScript >>
 $wgAllowSiteCSSOnRestrictedPages=true;
 
@@ -18,7 +21,11 @@ $wgMetaNamespace='PlavorMind';
 //<< Parser >>
 $wgAllowDisplayTitle=false;
 $wgAllowSlowParserFunctions=true; //Experimental
+$wgCleanSignatures=false;
 $wgUseNewMediaStructure=true; //Experimental
+
+//<< Preferences >>
+$wgAllowUserCssPrefs=false; //Experimental
 
 //<< Recent changes and watchlist >>
 $wgWatchlistExpiry=true;
@@ -49,6 +56,8 @@ $wgForceUIMsgAsContentMsg=
 'revertpage',
 'undo-summary',
 'unprotectedarticle-comment'];
+$wgMaxTocLevel=5;
+$wgShowRollbackEditCount=30;
 $wgSiteNotice='Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]';
 
 //<< Others >>
