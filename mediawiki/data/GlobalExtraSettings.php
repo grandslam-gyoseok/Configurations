@@ -484,4 +484,19 @@ if ($wmgSkins['Timeless'])
 //<< Vector >>
 wfLoadSkin('Vector');
 $wgVectorDefaultSidebarVisibleForAnonymousUser=true;
+$wgVectorDefaultSkinVersion='2';
+$wgVectorDefaultSkinVersionForExistingAccounts='2';
+$wgVectorDefaultSkinVersionForNewAccounts='2';
+$wgVectorLanguageInHeader=true;
+$wgVectorMaxWidthOptions=
+['exclude' =>
+  ['mainpage' => true,
+  'namespaces' =>
+    //All namespaces
+    [-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+  ],
+'include' =>
+  []
+];
 $wgVectorResponsive=true;
+$wgVectorUseWvuiSearch=true;
