@@ -87,7 +87,7 @@ if ($wmgGlobalAccountMode === 'centralauth')
   $wgCentralAuthAutoMigrate=true;
   $wgCentralAuthAutoMigrateNonGlobalAccounts=true;
   //"." should be prepended
-  $wgCentralAuthCookieDomain=parse_url(str_replace('%wiki%','',$wmgDefaultBaseURL),PHP_URL_HOST);
+  $wgCentralAuthCookieDomain=parse_url(str_replace('%wiki%', '', $wmgDefaultBaseURL), PHP_URL_HOST);
   $wgCentralAuthCookies=true;
   $wgCentralAuthCreateOnView=true;
   $wgCentralAuthDatabase='wiki_centralauth';
@@ -151,7 +151,7 @@ if ($wmgExtensions['CommonsMetadata'])
   {wfLoadExtension('CommonsMetadata');}
 
 //<< ConfirmEdit >>
-wfLoadExtensions(['ConfirmEdit','ConfirmEdit/hCaptcha']);
+wfLoadExtensions(['ConfirmEdit', 'ConfirmEdit/hCaptcha']);
 $wgCaptchaBadLoginExpiration=60 * 60; //1 hour
 $wgCaptchaTriggers['create']=true;
 $wgCaptchaTriggers['sendemail']=true;
@@ -289,7 +289,7 @@ if ($wmgExtensions['PageImages'])
   {wfLoadExtension('PageImages');
   $wgPageImagesBlacklistExpiry=$wmgCacheExpiry;
   $wgPageImagesExpandOpenSearchXml=true;
-  $wgPageImagesNamespaces=[NS_HELP,NS_MAIN,NS_PROJECT,NS_USER];}
+  $wgPageImagesNamespaces=[NS_HELP, NS_MAIN, NS_PROJECT, NS_USER];}
 
 //<< ParserFunctions >>
 if ($wmgExtensions['ParserFunctions'])
@@ -493,7 +493,7 @@ $wgVectorMaxWidthOptions=
   ['mainpage' => true,
   'namespaces' =>
     //All namespaces
-    [-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
   ],
 'include' =>
   []
