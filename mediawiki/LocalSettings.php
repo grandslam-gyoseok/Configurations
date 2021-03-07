@@ -16,7 +16,7 @@ $wmgDefaultBaseURL='http://%wiki%.plavormind.tk:81';
 $wmgGlobalGroupPermissions=[];
 $wmgGroupPermissions=[];
 $wmgPermissionInheritances=[];
-$wmgWikis=['central','osa'];
+$wmgWikis=['central', 'osa'];
 
 //<< Directories >>
 $wmgDataDirectories=
@@ -32,13 +32,13 @@ $wmgGlobalAccountMode='centralauth';
 //< Initialize >
 
 //<< Callback functions >>
-function efGetSiteParams($conf,$wiki)
+function efGetSiteParams($conf, $wiki)
   {$lang=null;
   $site=null;
 
   foreach($conf->suffixes as $suffix)
-    {if (substr($wiki,-strlen($suffix)) === $suffix)
-      {$lang=substr($wiki,0,-strlen($suffix));
+    {if (substr($wiki, -strlen($suffix)) === $suffix)
+      {$lang=substr($wiki, 0, -strlen($suffix));
       $site=$suffix;
       break;}
     }
@@ -56,17 +56,17 @@ function efGetSiteParams($conf,$wiki)
   }
 
 function set_permissions()
-  {global $wgGroupPermissions,$wmgGlobalAccountMode,$wmgGlobalGroupPermissions,$wmgGroupPermissions,$wmgPermissionInheritances;
+  {global $wgGroupPermissions, $wmgGlobalAccountMode, $wmgGlobalGroupPermissions, $wmgGroupPermissions, $wmgPermissionInheritances;
   $wgGroupPermissions=$wmgGroupPermissions;
 
   foreach ($wmgPermissionInheritances as $target_group => $source_groups)
     {foreach ($source_groups as $source_group)
-      {$wgGroupPermissions[$target_group]=array_merge($wgGroupPermissions[$source_group],$wgGroupPermissions[$target_group]);}
+      {$wgGroupPermissions[$target_group]=array_merge($wgGroupPermissions[$source_group], $wgGroupPermissions[$target_group]);}
     }
 
   if ($wmgGlobalAccountMode !== 'centralauth')
     {foreach ($wmgGlobalGroupPermissions as $group => $permissions)
-      {$wgGroupPermissions[$group]=is_array($wgGroupPermissions[$group]) ? array_merge($wgGroupPermissions[$group],$permissions) : $permissions;}
+      {$wgGroupPermissions[$group]=is_array($wgGroupPermissions[$group]) ? array_merge($wgGroupPermissions[$group], $permissions) : $permissions;}
     }
   }
 
@@ -82,19 +82,19 @@ if ($wgCommandLineMode)
   }
 else
   //parse_url does not return anything if the string only contains domain.
-  {$current_domain=parse_url('https://'.$_SERVER['HTTP_HOST'],PHP_URL_HOST);
-  $domain_regex=str_replace('%wiki%','([\w\-]+)',preg_quote(parse_url($wmgDefaultBaseURL,PHP_URL_HOST),'/'));
+  {$current_domain=parse_url('https://'.$_SERVER['HTTP_HOST'], PHP_URL_HOST);
+  $domain_regex=str_replace('%wiki%', '([\w\-]+)', preg_quote(parse_url($wmgDefaultBaseURL, PHP_URL_HOST), '/'));
 
-  if (array_key_exists($current_domain,$wmgCustomDomains))
+  if (array_key_exists($current_domain, $wmgCustomDomains))
     {$wmgWiki=$wmgCustomDomains[$current_domain];}
-  elseif (preg_match('/^'.$domain_regex.'$/iu',$current_domain,$matches))
+  elseif (preg_match('/^'.$domain_regex.'$/iu', $current_domain, $matches))
     {$wmgWiki=$matches[1];}
   else
     {exit('Cannot find this wiki.');}
 
-  unset($current_domain,$domain_regex);}
+  unset($current_domain, $domain_regex);}
 
-if (!in_array($wmgWiki,$wmgWikis))
+if (!in_array($wmgWiki, $wmgWikis))
   {exit('Cannot find this wiki.');}
 
 //<< Others >>
@@ -102,10 +102,10 @@ if (!in_array($wmgWiki,$wmgWikis))
 $wmgPlatform=$wmgPlatform ?? PHP_OS_FAMILY;
 
 //Dependency of $wmgGrantStewardsGlobalPermissions
-if (in_array($wmgWiki,$wmgGlobalAccountExemptWikis))
+if (in_array($wmgWiki, $wmgGlobalAccountExemptWikis))
   {$wmgGlobalAccountMode=false;}
 
-$wmgCentralBaseURL=$wmgCentralBaseURL ?? str_replace('%wiki%',$wmgCentralWiki,$wmgDefaultBaseURL);
+$wmgCentralBaseURL=$wmgCentralBaseURL ?? str_replace('%wiki%', $wmgCentralWiki, $wmgDefaultBaseURL);
 $wmgDataDirectory=$wmgDataDirectory ?? $wmgDataDirectories[$wmgPlatform];
 $wmgGrantStewardsGlobalPermissions=$wmgGrantStewardsGlobalPermissions ?? ($wmgGlobalAccountMode !== "centralauth");
 
