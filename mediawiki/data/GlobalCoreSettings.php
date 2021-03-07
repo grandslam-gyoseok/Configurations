@@ -18,7 +18,7 @@ if ($wmgGlobalAccountMode !== false)
   ['wgArticlePath' =>
     ['default' => '/page/$1'],
   'wgServer' =>
-    ['default' => str_replace('%wiki%','$lang',$wmgDefaultBaseURL)]
+    ['default' => str_replace('%wiki%', '$lang', $wmgDefaultBaseURL)]
   ];
   $wgConf->suffixes=['wiki'];
   $wgConf->wikis=$wgLocalDatabases;
@@ -30,14 +30,10 @@ if ($wmgGlobalAccountMode !== false)
 $wgInvalidUsernameCharacters='`~!@$%^&*()=+\\;:,.?';
 $wgMaxNameChars=30;
 $wgReservedUsernames=array_merge($wgReservedUsernames,
-['Abuse filter',
-'Anonymous',
-'Example',
+['Example',
 'Flow talk page manager',
 'MediaWiki message delivery',
 'New user message',
-'Undefined',
-'Unknown',
 'User',
 'Username',
 '편집 필터']);
@@ -60,7 +56,6 @@ $wgAllowUserCss=true;
 $wgAllowUserJs=true;
 
 //<< Interwiki >>
-$wgEnableScaryTranscluding=true;
 $wgExternalInterwikiFragmentMode='html5';
 $wgRedirectSources='/^https?:\\/\\//i';
 
@@ -68,20 +63,6 @@ $wgRedirectSources='/^https?:\\/\\//i';
 //Exclude File namespace
 $wgNamespacesWithSubpages[NS_CATEGORY]=true;
 $wgNamespacesWithSubpages[NS_MAIN]=true;
-
-//<< Parser >>
-$wgMaxTemplateDepth=10;
-$wgNonincludableNamespaces=
-[NS_CATEGORY_TALK,
-NS_FILE_TALK,
-NS_HELP_TALK,
-NS_MEDIAWIKI_TALK,
-NS_PROJECT_TALK,
-NS_TALK,
-NS_TEMPLATE_TALK,
-NS_USER_TALK];
-//Only allow HTTP and HTTPS protocols in links
-$wgUrlProtocols=['//','http://','https://'];
 
 //<< Password policies >>
 $wgPasswordPolicy['policies']=
@@ -130,9 +111,10 @@ $wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
 'watchdefault' => 0,
 'watchlisthidecategorization' => 0,
 'watchuploads' => 0]);
-$wgHiddenPrefs=['gender','realname'];
+$wgHiddenPrefs=['gender', 'realname'];
 
 //<< Rate limits >>
+//Any attempt to create an account, whether succeed or not, is subject to this setting.
 $wgAccountCreationThrottle=
 [//Per minute
   ['count' => 1,
@@ -153,142 +135,141 @@ $wgRateLimits=
 //"anon" aggregates all non-logged in users (not per-IP basis)
 ['edit' =>
   ['ip' =>
-    [5,60], //5/min
+    [5, 60], //5/min
   'newbie' =>
-    [5,60], //5/min
+    [5, 60], //5/min
   'user' =>
-    [10,60] //10/min
+    [10, 60] //10/min
   ],
 'move' =>
   ['ip' =>
-    [2,60], //2/min
+    [2, 60], //2/min
   'newbie' =>
-    [2,60], //2/min
+    [2, 60], //2/min
   'user' =>
-    [5,60] //5/min
+    [5, 60] //5/min
   ],
 'upload' =>
   ['ip' =>
-    [1,60], //1/min
+    [1, 60], //1/min
   'newbie' =>
-    [1,60], //1/min
+    [1, 60], //1/min
   'user' =>
-    [3,60] //3/min
+    [3, 60] //3/min
   ],
 'rollback' =>
   ['ip' =>
-    [5,60], //5/min
+    [5, 60], //5/min
   'newbie' =>
-    [5,60], //5/min
+    [5, 60], //5/min
   'user' =>
-    [10,60] //10/min
+    [10, 60] //10/min
   ],
 'mailpassword' =>
   ['ip' =>
-    [5,60 * 60 * 24] //5/day
+    [5, 60 * 60 * 24] //5/day
   ],
 'emailuser' =>
   ['&can-bypass' => false,
   'ip' =>
-    [3,60 * 60], //3/h
+    [3, 60 * 60], //3/h
   'newbie' =>
-    [3,60 * 60], //3/h
+    [3, 60 * 60], //3/h
   'user' =>
-    [10,60 * 60] //10/h
+    [10, 60 * 60] //10/h
   ],
 'changeemail' =>
   ['&can-bypass' => false,
   'ip' =>
-    [3,60 * 60 * 24], //3/day
+    [3, 60 * 60 * 24], //3/day
   'newbie' =>
-    [3,60 * 60 * 24], //3/day
+    [3, 60 * 60 * 24], //3/day
   'user' =>
-    [6,60 * 60 * 24] //6/day
+    [6, 60 * 60 * 24] //6/day
   ],
 'confirmemail' =>
   ['&can-bypass' => false,
   'ip' =>
-    [3,60 * 60 * 24], //3/day
+    [3, 60 * 60 * 24], //3/day
   'newbie' =>
-    [3,60 * 60 * 24], //3/day
+    [3, 60 * 60 * 24], //3/day
   'user' =>
-    [6,60 * 60 * 24] //6/day
+    [6, 60 * 60 * 24] //6/day
   ],
 'purge' =>
   ['&can-bypass' => false,
   'anon' =>
-    [2,1], //2/s
+    [2, 1], //2/s
   'ip' =>
-    [6,60], //6/min
+    [6, 60], //6/min
   'newbie' =>
-    [3,60], //3/min
+    [3, 60], //3/min
   'user' =>
-    [10,60] //10/min
+    [10, 60] //10/min
   ],
 'linkpurge' =>
   ['&can-bypass' => false,
   'anon' =>
-    [2,1], //2/s
+    [2, 1], //2/s
   'ip' =>
-    [6,60], //6/min
+    [6, 60], //6/min
   'newbie' =>
-    [3,60], //3/min
+    [3, 60], //3/min
   'user' =>
-    [10,60] //10/min
+    [10, 60] //10/min
   ],
 'renderfile' =>
   ['&can-bypass' => false,
   'anon' =>
-    [30,1], //30/s
+    [30, 1], //30/s
   'ip' =>
-    [60,60], //60/min
+    [60, 60], //60/min
   'newbie' =>
-    [30,60], //30/min
+    [30, 60], //30/min
   'user' =>
-    [60,60] //60/min
+    [60, 60] //60/min
   ],
 'renderfile-nonstandard' =>
   ['&can-bypass' => false,
   'anon' =>
-    [10,1], //10/s
+    [10, 1], //10/s
   'ip' =>
-    [30,60], //30/min
+    [30, 60], //30/min
   'newbie' =>
-    [15,60], //15/min
+    [15, 60], //15/min
   'user' =>
-    [40,60] //40/min
+    [40, 60] //40/min
   ],
 'stashedit' =>
   ['&can-bypass' => false,
   'ip' =>
-    [15,60], //15/min
+    [15, 60], //15/min
   'newbie' =>
-    [15,60], //15/min
+    [15, 60], //15/min
   'user' =>
-    [30,60] //30/min
+    [30, 60] //30/min
   ],
 'changetag' =>
   ['ip' =>
-    [5,60], //5/min
+    [5, 60], //5/min
   'newbie' =>
-    [5,60], //5/min
+    [5, 60], //5/min
   'user' =>
-    [10,60] //10/min
+    [10, 60] //10/min
   ],
 'editcontentmodel' =>
   ['ip' =>
-    [1,60], //1/min
+    [1, 60], //1/min
   'newbie' =>
-    [1,60], //1/min
+    [1, 60], //1/min
   'user' =>
-    [3,60] //3/min
+    [3, 60] //3/min
   ]
 ];
 
 //<< Recent changes and watchlist >>
 $wgLearnerEdits=15;
 $wgLearnerMemberSince=7; //1 week
-$wgRCFilterByAge=true;
 $wgRCShowWatchingUsers=true;
 $wgRCWatchCategoryMembership=true;
 //Disable hiding (active) page watchers to users without unwatchedpages permission
@@ -299,14 +280,29 @@ $wgWatchersMaxAge=60 * 60 * 24 * 7; //1 week
 //<< Robot policies >>
 $wgDefaultRobotPolicy='noindex,nofollow';
 //All namespaces
-$wgExemptFromUserRobotsControl=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-$wgNoFollowDomainExceptions=[parse_url(str_replace('%wiki%.','',$wmgDefaultBaseURL),PHP_URL_HOST)];
+$wgExemptFromUserRobotsControl=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+$wgNoFollowDomainExceptions=[parse_url(str_replace('%wiki%.', '', $wmgDefaultBaseURL), PHP_URL_HOST)];
 
 //<< User interface >>
 $wgAmericanDates=true;
 $wgDisableAnonTalk=true;
 $wgEdititis=true;
 $wgSpecialVersionShowHooks=true;
+
+//<< Wikitext >>
+$wgEnableScaryTranscluding=true;
+$wgMaxTemplateDepth=10;
+$wgNonincludableNamespaces=
+[NS_CATEGORY_TALK,
+NS_FILE_TALK,
+NS_HELP_TALK,
+NS_MEDIAWIKI_TALK,
+NS_PROJECT_TALK,
+NS_TALK,
+NS_TEMPLATE_TALK,
+NS_USER_TALK];
+//Only allow HTTP and HTTPS protocols in links
+$wgUrlProtocols=['//', 'http://', 'https://'];
 
 //<< Others >>
 $wgActiveUserDays=7; //1 week
@@ -323,8 +319,8 @@ $wgUniversalEditButton=false;
 //< Permissions >
 
 //<< Adding and removing users from user groups >>
-$wgAddGroups['bureaucrat']=['moderator','admin'];
-$wgRemoveGroups['bureaucrat']=['moderator','admin'];
+$wgAddGroups['bureaucrat']=['moderator', 'admin'];
+$wgRemoveGroups['bureaucrat']=['moderator', 'admin'];
 
 //<< Auto-promoting >>
 $wgAutoConfirmAge=60 * 60 * 24 * $wgLearnerMemberSince;
@@ -512,7 +508,7 @@ $wgCopyUploadsFromSpecialUpload=true;
 
 //<< Others >>
 $wgEnableUploads=true;
-$wgFileExtensions=['gif','jpg','png','webp'];
+$wgFileExtensions=['gif', 'jpg', 'png', 'webp'];
 
 if ($wgSVGConverter)
   {$wgFileExtensions[]='svg';}
@@ -557,13 +553,13 @@ $wgSQLiteDataDir="{$wmgDataDirectory}/private/databases";
 
 if ($wmgGlobalAccountMode === 'shared-database')
   {$wgSharedDB="{$wmgCentralWiki}wiki";
-  $wgSharedTables=['actor','user'];}
+  $wgSharedTables=['actor', 'user'];}
 
 //<< Debugging >>
 if ($wgCommandLineMode || $wmgDebugMode)
   {error_reporting(E_ALL);
-  ini_set('display_errors',1);
-  ini_set('display_startup_errors',1);
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
   $wgDebugDumpSql=true;
   $wgDevelopmentWarnings=true;
   $wgShowExceptionDetails=true;}
@@ -589,9 +585,9 @@ $actions=
 foreach ($actions as $action)
   {$wgActionPaths[$action]="/{$action}/$1";}
 
-unset($action,$actions);
+unset($action, $actions);
 $wgArticlePath='/page/$1';
-$wgServer=str_replace('%wiki%',$wmgWiki,$wmgDefaultBaseURL);
+$wgServer=str_replace('%wiki%', $wmgWiki, $wmgDefaultBaseURL);
 $wgUsePathInfo=true;
 
 //<< Others >>
