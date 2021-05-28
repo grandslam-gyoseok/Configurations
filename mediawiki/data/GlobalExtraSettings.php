@@ -483,11 +483,16 @@ if ($wmgSkins['Timeless'])
 
 //<< Vector >>
 wfLoadSkin('Vector');
+$wgVectorConsolidateUserLinks=
+['logged_in' => true,
+'logged_out' => true];
 $wgVectorDefaultSidebarVisibleForAnonymousUser=true;
 $wgVectorDefaultSkinVersion='2';
 $wgVectorDefaultSkinVersionForExistingAccounts='2';
 $wgVectorDefaultSkinVersionForNewAccounts='2';
-$wgVectorLanguageInHeader=true;
+$wgVectorLanguageInHeader=
+['logged_in' => true,
+'logged_out' => true];
 $wgVectorMaxWidthOptions=
 ['exclude' =>
   ['mainpage' => true,
