@@ -473,10 +473,6 @@ if ($wmgSkins['MinervaNeue'])
   $wgMinervaTalkAtTop['base']=true;
   $wgMinervaTalkAtTop['beta']=true;}
 
-//<< PlavorBuma >>
-if ($wmgSkins['PlavorBuma'])
-  {wfLoadSkin('PlavorBuma');}
-
 //<< Timeless >>
 if ($wmgSkins['Timeless'])
   {wfLoadSkin('Timeless');}
