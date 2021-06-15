@@ -104,7 +104,6 @@ $wmgExtensions=array_merge($wmgExtensions,
 'CodeEditor' => true,
 'CodeMirror' => true,
 'CommonsMetadata' => true,
-'CreateRedirect' => true,
 'Highlightjs_Integration' => true,
 'MassEditRegex' => true,
 'MultimediaViewer' => true,
@@ -123,13 +122,11 @@ $wmgExtensions=array_merge($wmgExtensions,
 'TwoColConflict' => true,
 'UniversalLanguageSelector' => true,
 'UploadsLink' => true,
-//'VisualEditor' => true,
 'WikiEditor' => true]);
 
 //< Skins >
 
 //<< Skin usage >>
-$wmgSkins['Citizen']=true;
-$wmgSkins['MinervaNeue']=true;
-$wmgSkins['PlavorBuma']=true;
-$wmgSkins['Timeless']=true;
+$wmgSkins['Citizen'] = true;
+$wmgSkins['MinervaNeue'] = true;
+$wmgSkins['Timeless'] = true;
