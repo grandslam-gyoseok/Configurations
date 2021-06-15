@@ -686,5 +686,4 @@ $wmgSkins=
 'Medik' => false,
 'Metrolook' => false,
 'MinervaNeue' => false,
-'PlavorBuma' => false,
 'Timeless' => false];
