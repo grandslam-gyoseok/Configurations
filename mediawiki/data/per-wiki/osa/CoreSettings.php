@@ -29,8 +29,3 @@ $wmgExtensions=array_merge($wmgExtensions,
 'ReplaceText' => true,
 'SyntaxHighlight_GeSHi' => true,
 'TextExtracts' => true]);
-
-//< Skins >
-
-//<< Skin usage >>
-$wmgSkins['PlavorBuma']=true;
