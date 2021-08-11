@@ -5,16 +5,14 @@
 "editor.inlayHints.fontFamily": "'D2Coding', 'Consolas', monospace",
 "editor.tabSize": 2,
 "editor.wordWrap": "on",
-"extensions.supportUntrustedWorkspaces":
-  {"icrawl.discord-vscode":
-    {"supported": true
+"extensions.supportUntrustedWorkspaces": {
+  "icrawl.discord-vscode": {
+    "supported": true
     }
   },
 "php.validate.executablePath": "C:/plavormind/php/php.exe",
 "powershell.codeFormatting.alignPropertyValuePairs": false,
 "powershell.codeFormatting.autoCorrectAliases": true,
-"powershell.codeFormatting.newLineAfterOpenBrace": false,
-"powershell.codeFormatting.openBraceOnSameLine": false,
 "powershell.codeFormatting.useCorrectCasing": true,
 "powershell.codeFormatting.whitespaceInsideBrace": false,
 "powershell.integratedConsole.showOnStartup": false,
