@@ -1,5 +1,6 @@
 {
   "editor.autoIndent": "none",
+  "editor.bracketPairColorization.enabled": true,
   "editor.copyWithSyntaxHighlighting": false,
   "editor.detectIndentation": false,
   "editor.fontFamily": "'D2Coding', 'Consolas', monospace",
