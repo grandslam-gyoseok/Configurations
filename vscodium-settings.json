@@ -26,5 +26,6 @@
   "security.workspace.trust.untrustedFiles": "newWindow",
   "window.autoDetectColorScheme": true,
   "window.restoreWindows": "none",
-  "workbench.colorTheme": "Default Light+"
+  "workbench.colorTheme": "Default Light+",
+  "workbench.editor.languageDetection": false
 }
