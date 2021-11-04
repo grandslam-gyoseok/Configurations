@@ -10,8 +10,8 @@
   "extensions.supportUntrustedWorkspaces": {
     "icrawl.discord-vscode": {
       "supported": true
-      }
-    },
+    }
+  },
   "php.validate.executablePath": "C:/plavormind/php/php.exe",
   "powershell.buttons.showRunButtons": false,
   "powershell.codeFormatting.alignPropertyValuePairs": false,
