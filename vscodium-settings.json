@@ -6,6 +6,8 @@
   "editor.fontFamily": "'D2Coding', 'Consolas', monospace",
   "editor.inlayHints.fontFamily": "'D2Coding', 'Consolas', monospace",
   "editor.tabSize": 2,
+  "editor.unicodeHighlight.includeComments": true,
+  "editor.unicodeHighlight.nonBasicASCII": false,
   "editor.wordWrap": "on",
   "extensions.supportUntrustedWorkspaces": {
     "icrawl.discord-vscode": {
