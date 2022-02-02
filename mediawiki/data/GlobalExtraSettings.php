@@ -91,7 +91,6 @@ if ($wmgGlobalAccountMode === 'centralauth')
   $wgCentralAuthCookies=true;
   $wgCentralAuthCreateOnView=true;
   $wgCentralAuthDatabase='wiki_centralauth';
-  $wgCentralAuthEnableUserMerge=true;
   $wgCentralAuthLoginWiki="{$wmgCentralWiki}wiki";
   $wgCentralAuthPreventUnattached=true;
   $wgDisableUnmergedEditing=true;
@@ -103,7 +102,6 @@ if ($wmgGlobalAccountMode === 'centralauth')
     $wmgGroupPermissions['steward']['centralauth-oversight']=true;
     $wmgGroupPermissions['steward']['centralauth-rename']=true;
     $wmgGroupPermissions['steward']['centralauth-unmerge']=true;
-    $wmgGroupPermissions['steward']['centralauth-usermerge']=true;
     $wmgGroupPermissions['steward']['globalgroupmembership']=true;
     $wmgGroupPermissions['steward']['globalgrouppermissions']=true;}
   }
@@ -416,16 +414,6 @@ if ($wmgExtensions['UniversalLanguageSelector'])
 if ($wmgExtensions['UploadsLink'])
   {wfLoadExtension('UploadsLink');}
 
-//<< UserMerge >>
-if ($wmgGlobalAccountMode !== 'shared-database')
-  {wfLoadExtension('UserMerge');
-  //Remove default value ('sysop')
-  $wgUserMergeProtectedGroups=[];
-  //Permissions
-  if ($wmgGrantStewardsGlobalPermissions)
-    {$wmgGroupPermissions['steward']['usermerge']=true;}
-  }
-
 //<< WikiEditor >>
 if ($wmgExtensions['WikiEditor'])
   {wfLoadExtension('WikiEditor');}
@@ -479,14 +467,11 @@ if ($wmgSkins['Timeless'])
 
 //<< Vector >>
 wfLoadSkin('Vector');
-$wgVectorConsolidateUserLinks=
-['logged_in' => true,
-'logged_out' => true];
 $wgVectorDefaultSidebarVisibleForAnonymousUser=true;
 $wgVectorDefaultSkinVersion='2';
 $wgVectorDefaultSkinVersionForExistingAccounts='2';
 $wgVectorDefaultSkinVersionForNewAccounts='2';
-$wgVectorLanguageInHeader=
+$wgVectorLanguageAlertInSidebar=
 ['logged_in' => true,
 'logged_out' => true];
 $wgVectorMaxWidthOptions=
@@ -500,4 +485,8 @@ $wgVectorMaxWidthOptions=
   []
 ];
 $wgVectorResponsive=true;
-$wgVectorUseWvuiSearch=true;
+$wgVectorStickyHeader['logged_out']=true;
+$wgVectorStickyHeaderEdit=
+['logged_in' => true,
+'logged_out' => true];
+$wgVectorTableOfContents=true;
