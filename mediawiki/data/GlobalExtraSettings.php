@@ -485,8 +485,12 @@ $wgVectorMaxWidthOptions=
   []
 ];
 $wgVectorResponsive=true;
+$wgVectorSkinMigrationMode=true;
 $wgVectorStickyHeader['logged_out']=true;
 $wgVectorStickyHeaderEdit=
 ['logged_in' => true,
 'logged_out' => true];
-$wgVectorTableOfContents=true;
+$wgVectorTableOfContents['default']=true;
+
+//<< Others >>
+$wgDefaultSkin='vector-2022';
