@@ -485,7 +485,6 @@ $wgVectorMaxWidthOptions=
   []
 ];
 $wgVectorResponsive=true;
-$wgVectorSkinMigrationMode=true;
 $wgVectorStickyHeader['logged_out']=true;
 $wgVectorStickyHeaderEdit=
 ['logged_in' => true,
