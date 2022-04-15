@@ -416,7 +416,8 @@ if ($wmgExtensions['UploadsLink'])
 
 //<< WikiEditor >>
 if ($wmgExtensions['WikiEditor'])
-  {wfLoadExtension('WikiEditor');}
+  {wfLoadExtension('WikiEditor');
+  $wgWikiEditorRealtimePreview=true;}
 
 //<< Other extensions >>
 wfLoadExtension('SecureLinkFixer');
