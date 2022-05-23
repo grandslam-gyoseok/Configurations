@@ -472,6 +472,7 @@ $wgVectorDefaultSidebarVisibleForAnonymousUser=true;
 $wgVectorDefaultSkinVersion='2';
 $wgVectorDefaultSkinVersionForExistingAccounts='2';
 $wgVectorDefaultSkinVersionForNewAccounts='2';
+$wgVectorGrid=true;
 $wgVectorLanguageAlertInSidebar=
 ['logged_in' => true,
 'logged_out' => true];
