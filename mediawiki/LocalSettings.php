@@ -1,127 +1,119 @@
 <?php
-if (!defined('MEDIAWIKI'))
-  {exit('This is not a valid entry point.');}
+function getWiki($defaultDomain, $uploadDomain, $customDomains) {
+  if (PHP_SAPI === 'cli') {
+    if (defined('MW_DB')) {
+      return MW_DB;
+    }
+
+    return;
+  }
+
+  $currentDomain = parse_url('//' . $_SERVER['HTTP_HOST'], PHP_URL_HOST);
+  $wiki = array_search($currentDomain, $customDomains, true);
+
+  if ($wiki !== false) {
+    return $wiki;
+  }
+
+  foreach ([$defaultDomain, $uploadDomain] as $expectedDomain) {
+    $regex = str_replace('%wiki%', '([\w\-]+)', preg_quote($expectedDomain, '/'));
+
+    if (preg_match("/^{$regex}$/i", $currentDomain, $matches)) {
+      return $matches[1];
+    }
+  }
+}
+
+if (!defined('MEDIAWIKI')) {
+  exit('This is not valid entry point.');
+}
 
 //< Custom settings >
 
-$wmgCacheExpiry=60; //1 minute
-$wmgCentralWiki='central';
-$wmgCIDRLimit=
-['IPv4' => 8, //###.0.0.0/8
-'IPv6' => 16]; //####::/16
-$wmgCustomDomains=[];
-$wmgDebugMode=false;
-//Put "%wiki%" where the wiki ID should be placed.
-$wmgDefaultBaseURL='http://%wiki%.plavormind.tk:81';
-$wmgGlobalGroupPermissions=[];
-$wmgGroupPermissions=[];
-$wmgPermissionInheritances=[];
-$wmgWikis=['central', 'osa'];
+$wmgBaseURL = 'http://%domain%:81';
+// 1 minute
+$wmgCacheExpiry = 60;
+$wmgCentralWiki = 'central';
+$wmgCIDRLimit = [
+  // ###.0.0.0/8
+  'IPv4' => 8,
+  // ####::/16
+  'IPv6' => 16
+];
+$wmgCustomDomains = [];
+$wmgDebugLevel = 0;
+$wmgDefaultDomain = '%wiki%.plavormind.tk';
+$wmgWiki = getWiki($wmgDefaultDomain, 'default', $wmgCustomDomains);
+$wmgWikis = ['central', 'osa'];
 
-//<< Directories >>
-$wmgDataDirectories=
-['Android' => "{$IP}/data",
-'Linux' => '/plavormind/web/data/mediawiki',
-'Windows' => 'C:/plavormind/web/data/mediawiki'];
+$domain = $wmgCustomDomains[$wmgCentralWiki] ?? str_replace('%wiki%', $wmgCentralWiki, $wmgDefaultDomain);
+$wmgCentralBaseURL = str_replace('%domain%', $domain, $wmgBaseURL);
+unset($domain);
+
+switch (PHP_OS_FAMILY) {
+  case 'Linux':
+  $wmgDataDirectory = '/plavormind/web/data/mediawiki';
+  break;
+
+  case 'Windows':
+  $wmgDataDirectory = 'C:/plavormind/web/data/mediawiki';
+}
+
+if (PHP_SAPI === 'cli' || $wmgDebugLevel >= 1) {
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+}
+
+if (!in_array($wmgWiki, $wmgWikis, true)) {
+  exit('Cannot find this wiki.');
+}
+
+//<< $wgConf callback >>
+
+$wgConf->siteParamsCallback = function ($siteConfiguration, $wikiDB) {
+  $wiki = preg_replace('/wiki$/', '', $wikiDB);
+  return [
+    'lang' => 'en',
+    'params' => [
+      'wiki' => $wiki
+    ],
+    'suffix' => '',
+    'tags' => [$wiki]
+  ];
+};
+
+//<< Backward compatibility >>
+
+$wmgDebugMode = (PHP_SAPI === 'cli') || $wmgDebugLevel >= 1;
+$wmgDefaultBaseURL = str_replace('%domain%', $wmgDefaultDomain, $wmgBaseURL);
+$wmgGrantStewardsGlobalPermissions = false;
+$wmgPlatform = PHP_OS_FAMILY;
 
 //<< Global accounts >>
-$wmgGlobalAccountExemptWikis=[];
-//Should be one of 'centralauth', 'shared-database' and false
-$wmgGlobalAccountMode='centralauth';
 
-//< Initialize >
+$wmgGlobalAccountExemptWikis = [];
+// 'centralauth', 'shared-db' or null
+$wmgGlobalAccountMode = 'centralauth';
 
-//<< Callback functions >>
-function efGetSiteParams($conf, $wiki)
-  {$lang=null;
-  $site=null;
+if (in_array($wmgWiki, $wmgGlobalAccountExemptWikis, true)) {
+  $wmgGlobalAccountMode = null;
+}
 
-  foreach($conf->suffixes as $suffix)
-    {if (substr($wiki, -strlen($suffix)) === $suffix)
-      {$lang=substr($wiki, 0, -strlen($suffix));
-      $site=$suffix;
-      break;}
-    }
+//< Load settings >
 
-  return
-    ['lang' => $lang,
-    'params' =>
-      ['lang' => $lang,
-      'site' => $site,
-      'wiki' => $wiki],
-    'suffix' => $site,
-    'tags' =>
-      []
-    ];
-  }
+require_once "$wmgDataDirectory/GlobalCoreSettings.php";
 
-function set_permissions()
-  {global $wgGroupPermissions, $wmgGlobalAccountMode, $wmgGlobalGroupPermissions, $wmgGroupPermissions, $wmgPermissionInheritances;
-  $wgGroupPermissions=$wmgGroupPermissions;
+if (file_exists("$wmgDataDirectory/per-wiki/$wmgWiki/CoreSettings.php")) {
+  include_once "$wmgDataDirectory/per-wiki/$wmgWiki/CoreSettings.php";
+}
 
-  foreach ($wmgPermissionInheritances as $target_group => $source_groups)
-    {foreach ($source_groups as $source_group)
-      {$wgGroupPermissions[$target_group]=array_merge($wgGroupPermissions[$source_group], $wgGroupPermissions[$target_group]);}
-    }
+require_once "$wmgDataDirectory/GlobalExtraSettings.php";
 
-  if ($wmgGlobalAccountMode !== 'centralauth')
-    {foreach ($wmgGlobalGroupPermissions as $group => $permissions)
-      {$wgGroupPermissions[$group]=is_array($wgGroupPermissions[$group]) ? array_merge($wgGroupPermissions[$group], $permissions) : $permissions;}
-    }
-  }
+if (file_exists("$wmgDataDirectory/per-wiki/$wmgWiki/ExtraSettings.php")) {
+  include_once "$wmgDataDirectory/per-wiki/$wmgWiki/ExtraSettings.php";
+}
 
-$wgConf->siteParamsCallback='efGetSiteParams';
-$wgExtensionFunctions[]='set_permissions';
-
-//<< Wiki detection >>
-if ($wgCommandLineMode)
-  {if (defined('MW_DB'))
-    {$wmgWiki=MW_DB;}
-  else
-    {exit('Wiki is not specified.');}
-  }
-else
-  //parse_url does not return anything if the string only contains domain.
-  {$current_domain=parse_url('https://'.$_SERVER['HTTP_HOST'], PHP_URL_HOST);
-  $domain_regex=str_replace('%wiki%', '([\w\-]+)', preg_quote(parse_url($wmgDefaultBaseURL, PHP_URL_HOST), '/'));
-
-  if (array_key_exists($current_domain, $wmgCustomDomains))
-    {$wmgWiki=$wmgCustomDomains[$current_domain];}
-  elseif (preg_match('/^'.$domain_regex.'$/iu', $current_domain, $matches))
-    {$wmgWiki=$matches[1];}
-  else
-    {exit('Cannot find this wiki.');}
-
-  unset($current_domain, $domain_regex);}
-
-if (!in_array($wmgWiki, $wmgWikis))
-  {exit('Cannot find this wiki.');}
-
-//<< Others >>
-//Dependency of $wmgDataDirectory
-$wmgPlatform=$wmgPlatform ?? PHP_OS_FAMILY;
-
-//Dependency of $wmgGrantStewardsGlobalPermissions
-if (in_array($wmgWiki, $wmgGlobalAccountExemptWikis))
-  {$wmgGlobalAccountMode=false;}
-
-$wmgCentralBaseURL=$wmgCentralBaseURL ?? str_replace('%wiki%', $wmgCentralWiki, $wmgDefaultBaseURL);
-$wmgDataDirectory=$wmgDataDirectory ?? $wmgDataDirectories[$wmgPlatform];
-$wmgGrantStewardsGlobalPermissions=$wmgGrantStewardsGlobalPermissions ?? ($wmgGlobalAccountMode !== "centralauth");
-
-//< Wiki settings >
-
-//<< Load settings >>
-require_once "{$wmgDataDirectory}/GlobalCoreSettings.php";
-
-if (file_exists("{$wmgDataDirectory}/per-wiki/{$wmgWiki}/CoreSettings.php"))
-  {include_once "{$wmgDataDirectory}/per-wiki/{$wmgWiki}/CoreSettings.php";}
-
-if (file_exists("{$wmgDataDirectory}/GlobalExtraSettings.php"))
-  {include_once "{$wmgDataDirectory}/GlobalExtraSettings.php";}
-
-if (file_exists("{$wmgDataDirectory}/per-wiki/{$wmgWiki}/ExtraSettings.php"))
-  {include_once "{$wmgDataDirectory}/per-wiki/{$wmgWiki}/ExtraSettings.php";}
-
-if (file_exists("{$wmgDataDirectory}/private/PrivateSettings.php"))
-  {include_once "{$wmgDataDirectory}/private/PrivateSettings.php";}
+if (file_exists("$wmgDataDirectory/private/PrivateSettings.php")) {
+  include_once "$wmgDataDirectory/private/PrivateSettings.php";
+}
