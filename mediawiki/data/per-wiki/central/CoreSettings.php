@@ -1,99 +1,82 @@
 <?php
-//< General >
+//< General Settings >
 
-//<< Basic information >>
-$wgLogos=
-['1x' => "/resources/per-wiki/{$wmgWiki}/logos/logo-1x.png",
-'1.5x' => "/resources/per-wiki/{$wmgWiki}/logos/logo-1.5x.png",
-'2x' => "/resources/per-wiki/{$wmgWiki}/logos/logo-2x.png",
-'icon' => "/resources/per-wiki/{$wmgWiki}/logos/logo-2x.png"];
-$wgSitename='PlavorMindCentral';
+$wgSitename = 'PlavorMindCentral';
 
-//<< Copyright >>
-$wgMaxCredits=10;
+//< Server URLs and file paths >
 
-//<< CSS and JavaScript >>
-$wgAllowSiteCSSOnRestrictedPages=true;
-
-//<< Namespaces >>
-$wgMetaNamespace='PlavorMind';
-
-//<< Parser >>
-$wgAllowDisplayTitle=false;
-$wgAllowSlowParserFunctions=true; //Experimental
-$wgCleanSignatures=false;
-$wgUseNewMediaStructure=true; //Experimental
-
-//<< Preferences >>
-$wgAllowUserCssPrefs=false; //Experimental
-
-//<< Recent changes and watchlist >>
-$wgWatchlistExpiry=true;
-
-//<< User interface >>
-$wgForceUIMsgAsContentMsg=
-['excontent',
-'excontentauthor',
-'modifiedarticleprotection-comment',
-'protect-expiry-indefinite',
-'protect-fallback',
-'protect-level-editprotected',
-'protect-level-editprotected-admin',
-'protect-level-editprotected-autoconfirmed',
-'protect-level-editprotected-bureaucrat',
-'protect-level-editprotected-moderator',
-'protect-level-editprotected-steward',
-'protect-level-editprotected-user',
-'protect-level-editsemiprotected',
-'protect-summary-cascade',
-'protect-summary-desc',
-'protectedarticle-comment',
-'restriction-delete',
-'restriction-edit',
-'restriction-move',
-'restriction-protect',
-'restriction-upload',
-'revertpage',
-'undo-summary',
-'unprotectedarticle-comment'];
-$wgMaxTocLevel=5;
-$wgShowRollbackEditCount=30;
-$wgSiteNotice='Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]';
-
-//<< Others >>
-//Remove default value ('obsolete-tag')
-$wgSignatureAllowedLintErrors=[];
-$wgSignatureValidation='disallow';
-
-//< Permissions >
-
-//<< Protection >>
-$wgNamespaceProtection=
-[NS_CATEGORY_TALK =>
-  ['editprotected-steward'],
-NS_FILE_TALK =>
-  ['editprotected-steward'],
-NS_HELP_TALK =>
-  ['editprotected-steward'],
-NS_MEDIAWIKI_TALK =>
-  ['editprotected-steward'],
-NS_PROJECT =>
-  ['editprotected-bureaucrat'],
-NS_TEMPLATE =>
-  ['editprotected-admin'],
-NS_TEMPLATE_TALK =>
-  ['editprotected-steward'],
+$wgLogos = [
+  '1x' => "/resources/per-wiki/$wmgWiki/logos/logo-1x.png",
+  '1.5x' => "/resources/per-wiki/$wmgWiki/logos/logo-1.5x.png",
+  '2x' => "/resources/per-wiki/$wmgWiki/logos/logo-2x.png",
+  'icon' => "/resources/per-wiki/$wmgWiki/logos/logo-2x.png"
 ];
 
-//<< User group permissions >>
-$wmgGroupPermissions['bureaucrat']['editinterface']=false;
-$wmgGroupPermissions['bureaucrat']['editsitecss']=false;
-$wmgGroupPermissions['bureaucrat']['editsitejson']=false;
+//< Output format and skin settings >
 
-if ($wmgGrantStewardsGlobalPermissions)
-  {$wmgGroupPermissions['steward']['editinterface']=true;
-  $wmgGroupPermissions['steward']['editsitecss']=true;
-  $wmgGroupPermissions['steward']['editsitejson']=true;}
+//<< Output >>
+
+// This should be migrated to on-wiki later. $wgSiteNotice should never be used again.
+$wgSiteNotice = 'Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]';
+
+//< ResourceLoader >
+
+$wgAllowSiteCSSOnRestrictedPages = true;
+
+//< Page titles and redirects >
+
+//<< Namespaces >>
+
+$wgMetaNamespace = 'PlavorMind';
+$wgNamespaceAliases = [
+  '@' => NS_USER,
+  'PlavorMindCentral' => NS_PROJECT,
+  'PM' => NS_PROJECT
+];
+
+//< Interwiki links and sites >
+
+// $wgLocalInterwikis
+
+//< User rights, access control and monitoring >
+
+$wgGroupPermissions['steward']['userrights'] = true;
+$wgGroupPermissions['steward']['userrights-interwiki'] = true;
+
+$wgGroupPermissions['admin'] = array_merge($wgGroupPermissions['admin'], [
+  'editinterface' => false,
+  'editsitecss' => false,
+  'editsitejson' => false,
+  'editusercss' => false,
+  'edituserjson' => false
+]);
+
+if ($wmgGlobalAccountMode !== 'centralauth') {
+  $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['steward'], [
+    'editinterface' => true,
+    'editsitecss' => true,
+    'editsitejson' => true,
+    'editusercss' => true,
+    'edituserjson' => true,
+  ]);
+}
+
+//<< Access >>
+
+$wgEnablePartialActionBlocks = true;
+$wgNamespaceProtection = [
+  NS_PROJECT => ['editprotected-admin'],
+  NS_TEMPLATE => ['editprotected-admin']
+];
+// $wgNonincludableNamespaces
+
+//< Copyright >
+
+$wgUseCopyrightUpload = true;
+
+//< Miscellaneous settings >
+
+$wgRedirectOnLogin = 'PlavorMindCentral';
 
 //< Extensions >
 
