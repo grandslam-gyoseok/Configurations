@@ -1,28 +1,173 @@
 <?php
-//< Initialize >
+//< General Settings >
 
-//<< Databases >>
-$wgDBname="{$wmgWiki}wiki";
+$wgSitename = 'Nameless';
 
-foreach ($wmgWikis as $wiki)
-  {$wgLocalDatabases[]="{$wiki}wiki";}
+//< Global Objects >
+
+if ($wmgGlobalAccountMode === 'centralauth') {
+  $wgConf->settings = [
+    'wgArticlePath' => [
+      'default' => '/page/$1'
+    ],
+    'wgServer' => []
+  ];
+  $domain = str_replace('%wiki%', '$wiki', $wmgDefaultDomain);
+  $wgConf->settings['wgServer']['default'] = str_replace('%domain%', $domain, $wmgBaseURL);
+
+  foreach ($wmgCustomDomains as $wiki => $domain) {
+    $wgConf->settings['wgServer'][$wiki] = str_replace('%domain%', $domain, $wmgBaseURL);
+  }
+
+  $wgConf->siteParamsCallback = function ($siteConfiguration, $wikiDB) {
+    $wiki = preg_replace('/wiki$/', '', $wikiDB);
+    return [
+      'lang' => 'en',
+      'params' => [
+        'wiki' => $wiki
+      ],
+      'suffix' => '',
+      'tags' => [$wiki]
+    ];
+  };
+
+  $wgConf->suffixes = [''];
+  $wgConf->wikis = [];
+
+  foreach ($wmgWikis as $wiki) {
+    $wgConf->wikis[] = "{$wiki}wiki";
+  }
+
+  unset($domain, $wiki);
+}
+
+//< Server URLs and file paths >
+
+$wgArticlePath = '/page/$1';
+$wgFileCacheDirectory = "$wmgDataDirectory/private/per-wiki/$wmgWiki/caches";
+$wgScriptPath = '/mediawiki';
+$wgUploadDirectory = "$wmgDataDirectory/private/per-wiki/$wmgWiki/uploads";
+$wgUploadPath = "$wgScriptPath/img_auth.php";
+$wgUsePathInfo = true;
+
+$actions = [
+  'delete',
+  'edit',
+  'history',
+  'info',
+  'markpatrolled',
+  'protect',
+  'purge',
+  'raw',
+  'render',
+  'revert',
+  'rollback',
+  'submit',
+  'unprotect',
+  'unwatch',
+  'watch'
+];
+
+foreach ($actions as $action) {
+  $wgActionPaths[$action] = "/$action/$1";
+}
+
+$domain = $wmgCustomDomains[$wmgWiki] ?? str_replace('%wiki%', $wmgWiki, $wmgDefaultDomain);
+$wgServer = str_replace('%domain%', $domain, $wmgBaseURL);
+unset($action, $actions, $domain);
+
+//< Files and file uploads >
+
+$wgAllowCopyUploads = true;
+$wgCopyUploadsDomains = ['openclipart.org'];
+$wgCopyUploadsFromSpecialUpload = true;
+$wgDeletedDirectory = "$wmgDataDirectory/private/per-wiki/$wmgWiki/deleted-uploads";
+$wgEnableUploads = true;
+$wgFileExtensions = ['gif', 'jpg', 'png', 'webp'];
+$wgImgAuthDetails = true;
+$wgMaxUploadSize = [
+  // 3 MiB
+  '*' => 1024 * 1024 * 3,
+  // 1 MiB
+  'url' => 1024 * 1024 * 1
+];
+$wgMediaInTargetLanguage = true;
+$wgNativeImageLazyLoading = true;
+// 1 MiB
+$wgUploadSizeWarning = 1024 * 1024 * 1;
+
+//<< Shared uploads >>
+
+$wgUseInstantCommons = true;
+
+//<< MIME types >>
+
+$wgVerifyMimeTypeIE = false;
+
+//<< Images >>
+
+//<<< Thumbnail settings >>>
+
+$wgGenerateThumbnailOnParse = false;
+$wgThumbnailScriptPath = "$wgScriptPath/thumb.php";
+
+//< Email settings >
+
+$wgEnableEmail = false;
+
+//< Database settings >
+
+$wgDBname = "{$wmgWiki}wiki";
+$wgDBserver = '127.0.0.1';
+$wgDBuser = 'root';
+
+foreach ($wmgWikis as $wiki) {
+  $wgLocalDatabases[] = "{$wiki}wiki";
+}
 
 unset($wiki);
 
-//<< Others >>
-//Should be defined before variables using $wgScriptPath
-$wgScriptPath='/mediawiki';
+//<< SQLite-specific >>
 
-if ($wmgGlobalAccountMode !== false)
-  {$wgConf->settings=
-  ['wgArticlePath' =>
-    ['default' => '/page/$1'],
-  'wgServer' =>
-    ['default' => str_replace('%wiki%', '$lang', $wmgDefaultBaseURL)]
-  ];
-  $wgConf->suffixes=['wiki'];
-  $wgConf->wikis=$wgLocalDatabases;
-  $wgConf->extractAllGlobals($wgDBname);}
+$wgSQLiteDataDir = "$wmgDataDirectory/private/dbs";
+
+//<< Shared DB settings >>
+
+if ($wmgGlobalAccountMode === 'shared-db') {
+  $wgSharedDB = "pmw$wmgCentralWiki";
+  $wgSharedTables = ['actor', 'user', 'user_autocreate_serial'];
+}
+
+//< Content handlers and storage >
+
+$wgPageLanguageUseDB = true;
+$wgRevisionCacheExpiry = $wmgCacheExpiry;
+
+//< Cache >
+
+$wgCacheDirectory = "$wmgDataDirectory/private/per-wiki/$wmgWiki/caches";
+$wgFooterLinkCacheExpiry = $wmgCacheExpiry;
+$wgLanguageConverterCacheType = CACHE_ACCEL;
+$wgMainCacheType = CACHE_ACCEL;
+$wgStatsCacheType = CACHE_ACCEL;
+$wgUseFileCache = true;
+
+//<< Message Cache >>
+
+$wgMessageCacheType = CACHE_ACCEL;
+$wgUseLocalMessageCache = true;
+
+//<< Sidebar Cache >>
+
+$wgEnableSidebarCache = true;
+$wgSidebarCacheExpiry = $wmgCacheExpiry;
+
+//<< Parser Cache >>
+
+$wgOldRevisionParserCacheExpireTime = $wmgCacheExpiry;
+$wgParserCacheExpireTime = $wmgCacheExpiry;
+$wgParserCacheType = CACHE_ACCEL;
+$wgUseContentMediaStyles = true;
 
 //< General >
 
@@ -37,9 +182,6 @@ $wgReservedUsernames=array_merge($wgReservedUsernames,
 'User',
 'Username',
 '편집 필터']);
-
-//<< Basic information >>
-$wgSitename='Nameless';
 
 //<< Blocking >>
 $wgApplyIpBlocksToXff=true;
@@ -80,9 +222,6 @@ $wgPasswordPolicy['policies']=
     ['forceChange' => true,
     'value' => true],
   'PasswordCannotMatchDefaults' =>
-    ['forceChange' => true,
-    'value' => true],
-  'PasswordCannotMatchUsername' =>
     ['forceChange' => true,
     'value' => true],
   'PasswordNotInCommonList' =>
@@ -359,123 +498,91 @@ $wgAvailableRights=
 'editprotected-admin',
 'editprotected-bureaucrat',
 'editprotected-steward'];
-$wmgGroupPermissions=
-['*' =>
-  ['autocreateaccount' => true,
-  'browsearchive' => true,
-  'createaccount' => true,
-  'deletedhistory' => true,
-  'patrolmarks' => true,
-  'read' => true,
-  'unwatchedpages' => true,
-  'writeapi' => true],
-'user' =>
-  ['applychangetags' => true,
-  'createpage' => true,
-  'createtalk' => true,
-  'edit' => true,
-  'editmyoptions' => true,
-  'editmyprivateinfo' => true,
-  'editmyusercss' => true,
-  'editmyuserjs' => true,
-  'editmyuserjson' => true,
-  'editmyuserjsredirect' => true,
-  'editmywatchlist' => true,
-  'editprotected-user' => true,
-  'minoredit' => true,
-  'sendemail' => true,
-  'viewmyprivateinfo' => true,
-  'viewmywatchlist' => true],
-'autoconfirmed' =>
-  ['autoconfirmed' => true,
-  'editprotected-autoconfirmed' => true,
-  'move' => true,
-  'move-rootuserpages' => true,
-  'movefile' => true,
-  'purge' => true,
-  'reupload' => true,
-  'upload' => true],
-'moderator' =>
-  ['autopatrol' => true,
-  'block' => true,
-  'delete' => true,
-  'deletedtext' => true,
-  'deleterevision' => true,
-  'editprotected-moderator' => true,
-  'move-categorypages' => true,
-  'protect' => true,
-  'rollback' => true,
-  'suppressredirect' => true,
-  'undelete' => true,
-  'upload_by_url' => true],
-'admin' =>
-  ['blockemail' => true,
-  'changetags' => true,
-  'deletelogentry' => true,
-  'editprotected-admin' => true,
-  'import' => true,
-  'ipblock-exempt' => true,
-  'markbotedits' => true,
-  'move-subpages' => true,
-  'pagelang' => true,
-  'patrol' => true,
-  'reupload-shared' => true,
-  'unblockself' => true],
-'bureaucrat' =>
-  ['editcontentmodel' => true,
-  'editinterface' => true,
-  'editprotected-bureaucrat' => true,
-  'editsitecss' => true,
-  'editsitejson' => true,
-  'editusercss' => true,
-  'edituserjson' => true,
-  'importupload' => true,
-  'managechangetags' => true,
-  'mergehistory' => true],
-'steward' =>
-  ['apihighlimits' => true,
-  'bigdelete' => true,
-  'deletechangetags' => true,
-  'editprotected-steward' => true,
-  'editsitejs' => true,
-  'edituserjs' => true,
-  'hideuser' => true,
-  'nominornewtalk' => true,
-  'noratelimit' => true,
-  'override-export-depth' => true,
-  'suppressionlog' => true,
-  'suppressrevision' => true]
+$wgGroupInheritsPermissions = [
+  'moderator' => 'autoconfirmed',
+  'staff' => 'moderator',
+  'admin' => 'staff'
 ];
-//Permission inheritances
-$wmgPermissionInheritances=
-['moderator' =>
-  ['autoconfirmed'],
-'admin' =>
-  ['moderator'],
-'bureaucrat' =>
-  ['admin']
+$wgGroupPermissions = [
+  '*' => [
+    'autocreateaccount' => true,
+    'browsearchive' => true,
+    'createaccount' => true,
+    'deletedhistory' => true,
+    'patrolmarks' => true,
+    'read' => true,
+    'unwatchedpages' => true,
+    'writeapi' => true
+  ],
+  'user' => [
+    'applychangetags' => true,
+    'createpage' => true,
+    'createtalk' => true,
+    'edit' => true,
+    'editmyoptions' => true,
+    'editmyprivateinfo' => true,
+    'editmyusercss' => true,
+    'editmyuserjson' => true,
+    'editmywatchlist' => true,
+    'editprotected-user' => true,
+    'minoredit' => true,
+    'viewmyprivateinfo' => true,
+    'viewmywatchlist' => true
+  ],
+  'autoconfirmed' => [
+    'autoconfirmed' => true,
+    'editmyuserjs' => true,
+    'editmyuserjsredirect' => true,
+    'editprotected-autoconfirmed' => true,
+    'move' => true,
+    'move-rootuserpages' => true,
+    'movefile' => true,
+    'purge' => true,
+    'reupload' => true,
+    'sendemail' => true,
+    'upload' => true
+  ],
+  'moderator' => [
+    'autopatrol' => true,
+    'block' => true,
+    'delete' => true,
+    'deletedtext' => true,
+    'deleterevision' => true,
+    'editprotected-moderator' => true,
+    'move-categorypages' => true,
+    'move-subpages' => true,
+    'patrol' => true,
+    'reupload-shared' => true,
+    'rollback' => true,
+    'suppressredirect' => true,
+    'undelete' => true
+  ],
+  'staff' => [
+    'changetags' => true,
+    'deletelogentry' => true,
+    'editcontentmodel' => true,
+    'editprotected-staff' => true,
+    'ipblock-exempt' => true,
+    'managechangetags' => true,
+    'markbotedits' => true,
+    'protect' => true
+  ],
+  'admin' => [
+    'deletechangetags' => true,
+    'editinterface' => true,
+    'editprotected-admin' => true,
+    'editsitecss' => true,
+    'editsitejson' => true,
+    'editusercss' => true,
+    'edituserjson' => true,
+    'mergehistory' => true
+  ]
 ];
-
-if ($wmgGrantStewardsGlobalPermissions)
-  {$wmgPermissionInheritances['steward']=['bureaucrat'];}
-else
-  {$wmgGroupPermissions['steward']=[];}
-
-if ($wmgWiki === $wmgCentralWiki)
-  {$wmgGroupPermissions['steward']=array_merge($wmgGroupPermissions['steward'],
-  ['siteadmin' => true,
-  'userrights' => true,
-  'userrights-interwiki' => true]);}
 
 //<< Others >>
 $wgDeleteRevisionsLimit=250;
 
 //< Images and uploads >
-
-//<< Directories >>
-$wgDeletedDirectory="{$wmgDataDirectory}/private/per-wiki/{$wmgWiki}/deleted-files";
-$wgUploadDirectory="{$wmgDataDirectory}/private/per-wiki/{$wmgWiki}/files";
-$wgUploadPath="{$wgScriptPath}/img_auth.php";
 
 //<< ImageMagick >>
 if ($wmgPlatform === "Windows")
@@ -497,37 +604,14 @@ switch ($wmgPlatform)
   default:
   $wgSVGConverter=false;}
 
-//<< Thumbnails >>
-$wgGenerateThumbnailOnParse=false;
-$wgThumbnailScriptPath="{$wgScriptPath}/thumb.php";
-
-//<< Uploading from URL >>
-$wgAllowCopyUploads=true;
-$wgCopyUploadsDomains=['openclipart.org'];
-$wgCopyUploadsFromSpecialUpload=true;
-
-//<< Others >>
-$wgEnableUploads=true;
-$wgFileExtensions=['gif', 'jpg', 'png', 'webp'];
-
 if ($wgSVGConverter)
   {$wgFileExtensions[]='svg';}
 
 $wgHashedUploadDirectory=false;
-$wgMaxUploadSize=
-['*' => 1024 * 1024 * 5, //5 MB
-'url' => 1024 * 1024 * 2]; //2 MB
 $wgUpdateCompatibleMetadata=true;
-$wgUploadSizeWarning=1024 * 1024 * 4; //4 MB
 $wgUploadStashMaxAge=60 * 60; //1 hour
 $wgUseCopyrightUpload=true;
-$wgUseInstantCommons=true;
 $wgUseTinyRGBForJPGThumbnails=true;
-
-//< Email >
-
-//Server does not support e-mail services
-$wgEnableEmail=false;
 
 //< System >
 
@@ -564,32 +648,6 @@ if ($wgCommandLineMode || $wmgDebugMode)
   $wgDevelopmentWarnings=true;
   $wgShowExceptionDetails=true;}
 
-//<< URL >>
-$actions=
-['delete',
-'edit',
-'history',
-'info',
-'markpatrolled',
-'protect',
-'purge',
-'raw',
-'render',
-'revert',
-'rollback',
-'submit',
-'unprotect',
-'unwatch',
-'watch'];
-
-foreach ($actions as $action)
-  {$wgActionPaths[$action]="/{$action}/$1";}
-
-unset($action, $actions);
-$wgArticlePath='/page/$1';
-$wgServer=str_replace('%wiki%', $wmgWiki, $wmgDefaultBaseURL);
-$wgUsePathInfo=true;
-
 //<< Others >>
 $wgAsyncHTTPTimeout=30;
 $wgDeleteRevisionsBatchSize=500;
@@ -610,34 +668,13 @@ switch ($wmgPlatform)
 
 //< Caching >
 
-$wgCacheDirectory="{$wmgDataDirectory}/private/per-wiki/{$wmgWiki}/cache";
-//Disable client side caching
-$wgCachePages=false;
-$wgMainCacheType=CACHE_ACCEL;
-
-//<< File cache >>
-$wgFileCacheDepth=0;
-$wgFileCacheDirectory=$wgCacheDirectory;
-//Disabled due to several issues, including breaking global user pages and taking too long time to automatically purging cache
-//$wgUseFileCache=true;
-
-//<< Message cache >>
-$wgMessageCacheType=$wgMainCacheType;
-$wgUseLocalMessageCache=true;
-
 //<< Sidebar cache >>
-$wgEnableSidebarCache=true;
-$wgSidebarCacheExpiry=$wmgCacheExpiry;
 $wgTranscludeCacheExpiry=$wmgCacheExpiry;
 
 //<< Others >>
 $wgAPICacheHelpTimeout=$wmgCacheExpiry;
 $wgInterwikiExpiry=$wmgCacheExpiry;
-$wgLanguageConverterCacheType=$wgMainCacheType;
 $wgObjectCacheSessionExpiry=$wmgCacheExpiry;
-$wgParserCacheExpireTime=$wmgCacheExpiry;
-$wgParserCacheType=$wgMainCacheType;
-$wgRevisionCacheExpiry=$wmgCacheExpiry;
 $wgSearchSuggestCacheExpiry=$wmgCacheExpiry;
 //This one should always use cache
 $wgSessionCacheType=CACHE_ACCEL;
