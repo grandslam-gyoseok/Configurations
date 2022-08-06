@@ -69,20 +69,6 @@ if (!in_array($wmgWiki, $wmgWikis, true)) {
   exit('Cannot find this wiki.');
 }
 
-//<< $wgConf callback >>
-
-$wgConf->siteParamsCallback = function ($siteConfiguration, $wikiDB) {
-  $wiki = preg_replace('/wiki$/', '', $wikiDB);
-  return [
-    'lang' => 'en',
-    'params' => [
-      'wiki' => $wiki
-    ],
-    'suffix' => '',
-    'tags' => [$wiki]
-  ];
-};
-
 //<< Backward compatibility >>
 
 $wmgDebugMode = (PHP_SAPI === 'cli') || $wmgDebugLevel >= 1;
