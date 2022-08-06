@@ -169,107 +169,452 @@ $wgParserCacheExpireTime = $wmgCacheExpiry;
 $wgParserCacheType = CACHE_ACCEL;
 $wgUseContentMediaStyles = true;
 
+//< Language, regional and character encoding settings >
+
+$wgAllUnicodeFixes = true;
+// $wgRawHtmlMessages
+
+//<< Language-specific >>
+
+//<<< English >>>
+
+$wgAmericanDates = true;
+
+//< Output format and skin settings >
+
+//<< Output >>
+
+$wgEditSubmitButtonLabelPublish = true;
+$wgExternalInterwikiFragmentMode = 'html5';
+$wgFragmentMode = ['html5'];
+
+//<< Skins >>
+
+$wgDefaultSkin = 'vector-2022';
+$wgSkinMetaTags = ['og:title'];
+
+unset($wgFooterIcons['poweredby']);
+
+//< Page titles and redirects >
+
+$wgCapitalLinks = false;
+
+//< Interwiki links and sites >
+
+$baseURL = str_replace('%domain%', $wmgDefaultDomain, $wmgBaseURL);
+$regex = str_replace('%wiki%', '([\w\-]+)', preg_quote($baseURL, '/'));
+$wgRedirectSources = "/^{$regex}$/i";
+
+//<< Interwiki cache >>
+
+$wgInterwikiExpiry = $wmgCacheExpiry;
+
+//< Parser >
+
+$wgCleanSignatures = false;
+$wgEnableScaryTranscluding = true;
+$wgExternalLinkTarget = '_blank';
+$wgMaxTemplateDepth = 5;
+// Remove default value ('mediawiki.org')
+$wgNoFollowDomainExceptions = [];
+$wgParserEnableLegacyMediaDOM = false;
+$wgTranscludeCacheExpiry = $wmgCacheExpiry;
+// Only allow HTTP and HTTPS protocols in links
+$wgUrlProtocols = ['http://', 'https://'];
+
+if (strpos($wmgDefaultDomain, '%wiki%.') === 0) {
+  $wgNoFollowDomainExceptions[] = preg_replace('/^%wiki%\\./', '', $wmgDefaultDomain);
+}
+elseif (!isset($wmgCustomDomains[$wmgWiki])) {
+  $wgNoFollowDomainExceptions[] = str_replace('%wiki%', $wmgWiki, $wmgDefaultDomain);
+}
+
+if (isset($wmgCustomDomains[$wmgWiki])) {
+  $wgNoFollowDomainExceptions[] = $wmgCustomDomains[$wmgWiki];
+}
+
+//< Statistics and content analysis >
+
+// 1 week
+$wgActiveUserDays = 7;
+$wgLearnerEdits = 15;
+// 1 week
+$wgLearnerMemberSince = 7;
+
+//< User accounts, authentication >
+
+$wgHiddenPrefs = ['gender', 'realname'];
+$wgInvalidUsernameCharacters = '`~!@$%^&*()=+\\;:,.?';
+$wgMaxNameChars = 30;
+$wgMaxSigChars = 200;
+$wgPasswordPolicy['policies'] = [
+  'default' => [
+    'MaximalPasswordLength' => [
+      'forceChange' => true,
+      'value' => 20
+    ],
+    'MinimalPasswordLength' => [
+      'forceChange' => true,
+      'value' => 6
+    ],
+    'MinimumPasswordLengthToLogin' => [
+      'forceChange' => true,
+      'value' => 1
+    ],
+    'PasswordCannotBeSubstringInUsername' => [
+      'forceChange' => true,
+      'value' => true
+    ],
+    'PasswordCannotMatchDefaults' => [
+      'forceChange' => true,
+      'value' => true
+    ],
+    'PasswordNotInCommonList' => [
+      'forceChange' => true,
+      'value' => true
+    ]
+  ],
+  'moderator' => [
+    'MinimumPasswordLengthToLogin' => 6
+  ],
+  'staff' => [
+    'MinimalPasswordLength' => 8,
+    'MinimumPasswordLengthToLogin' => 6
+  ],
+  'admin' => [
+    'MinimalPasswordLength' => 10,
+    'MinimumPasswordLengthToLogin' => 6
+  ],
+  'steward' => [
+    'MinimalPasswordLength' => 12,
+    'MinimumPasswordLengthToLogin' => 6
+  ]
+];
+// Remove default value ('obsolete-tag')
+$wgSignatureAllowedLintErrors = [];
+$wgSignatureValidation = 'disallow';
+
+$wgDefaultUserOptions = array_merge($wgDefaultUserOptions, [
+  // Recent Changes
+  'hidecategorization' => 0,
+  'usenewrc' => 0,
+
+  // Watchlist
+  'watchcreations' => 0,
+  'watchdefault' => 0,
+  'watchlisthidecategorization' => 0,
+  'watchlistunwatchlinks' => 1,
+  'watchuploads' => 0
+]);
+
+$wgReservedUsernames = array_merge($wgReservedUsernames, [
+  'Example',
+  'Flow talk page manager',
+  'MediaWiki message delivery',
+  'New user message',
+  'User',
+  'Username',
+  '편집 필터'
+]);
+
+//<< Authentication >>
+
+$wgAllowSecuritySensitiveOperationIfCannotReauthenticate = [
+  'default' => false,
+  'LinkAccounts' => true,
+  'UnlinkAccount' => true
+];
+$wgReauthenticateTime = [
+  // 10 minutes
+  'default' => 60 * 10,
+  // 1 minute
+  'ChangeCredentials' => 60,
+  // 1 minute
+  'RemoveCredentials' => 60
+];
+
+//< User rights, access control and monitoring >
+
+$wgAddGroups = [
+  'staff' => ['moderator'],
+  'admin' => ['moderator', 'staff']
+];
+// 10 years
+$wgAutoblockExpiry = 60 * 60 * 24 * 365 * 10;
+$wgDeleteRevisionsBatchSize = 500;
+$wgGroupInheritsPermissions = [
+  'moderator' => 'autoconfirmed',
+  'staff' => 'moderator',
+  'admin' => 'staff'
+];
+$wgGroupPermissions = [
+  '*' => [
+    'autocreateaccount' => true,
+    'browsearchive' => true,
+    'createaccount' => true,
+    'deletedhistory' => true,
+    'patrolmarks' => true,
+    'read' => true,
+    'unwatchedpages' => true,
+    'writeapi' => true
+  ],
+  'user' => [
+    'applychangetags' => true,
+    'createpage' => true,
+    'createtalk' => true,
+    'edit' => true,
+    'editmyoptions' => true,
+    'editmyprivateinfo' => true,
+    'editmyusercss' => true,
+    'editmyuserjson' => true,
+    'editmywatchlist' => true,
+    'editprotected-user' => true,
+    'minoredit' => true,
+    'viewmyprivateinfo' => true,
+    'viewmywatchlist' => true
+  ],
+  'autoconfirmed' => [
+    'autoconfirmed' => true,
+    'editmyuserjs' => true,
+    'editmyuserjsredirect' => true,
+    'editprotected-autoconfirmed' => true,
+    'move' => true,
+    'move-rootuserpages' => true,
+    'movefile' => true,
+    'purge' => true,
+    'reupload' => true,
+    'sendemail' => true,
+    'upload' => true
+  ],
+  'moderator' => [
+    'autopatrol' => true,
+    'block' => true,
+    'delete' => true,
+    'deletedtext' => true,
+    'deleterevision' => true,
+    'editprotected-moderator' => true,
+    'move-categorypages' => true,
+    'move-subpages' => true,
+    'patrol' => true,
+    'reupload-shared' => true,
+    'rollback' => true,
+    'suppressredirect' => true,
+    'undelete' => true
+  ],
+  'staff' => [
+    'changetags' => true,
+    'deletelogentry' => true,
+    'editcontentmodel' => true,
+    'editprotected-staff' => true,
+    'ipblock-exempt' => true,
+    'managechangetags' => true,
+    'markbotedits' => true,
+    'protect' => true
+  ],
+  'admin' => [
+    'deletechangetags' => true,
+    'editinterface' => true,
+    'editprotected-admin' => true,
+    'editsitecss' => true,
+    'editsitejson' => true,
+    'editusercss' => true,
+    'edituserjson' => true,
+    'mergehistory' => true
+  ]
+];
+$wgGroupsRemoveFromSelf = [
+  'moderator' => ['moderator'],
+  'staff' => ['staff'],
+  'admin' => ['admin']
+];
+$wgHideUserContribLimit = 500;
+$wgPasswordAttemptThrottle = [
+  [
+    'allIPs' => 'Value of "allIPs" key can be anything but null.',
+    'count' => 5,
+    // 10 minutes
+    'seconds' => 60 * 10
+  ],
+  [
+    'allIPs' => 'See includes/auth/Throttler.php.',
+    'count' => 30,
+    // 1 day
+    'seconds' => 60 * 60 * 24
+  ]
+];
+// $wgRateLimits
+$wgRemoveGroups = [
+  'staff' => ['moderator'],
+  'admin' => ['moderator', 'staff']
+];
+
+if ($wmgGlobalAccountMode !== 'centralauth') {
+  $wgGroupInheritsPermissions['steward'] = 'admin';
+  $wgGroupPermissions['steward'] = [
+    'apihighlimits' => true,
+    'bigdelete' => true,
+    'blockemail' => true,
+    'editprotected-steward' => true,
+    'editsitejs' => true,
+    'edituserjs' => true,
+    'hideuser' => true,
+    'import' => true,
+    'importupload' => true,
+    'nominornewtalk' => true,
+    'noratelimit' => true,
+    'override-export-depth' => true,
+    'pagelang' => true,
+    'siteadmin' => true,
+    'suppressionlog' => true,
+    'suppressrevision' => true,
+    'unblockself' => true,
+    'upload_by_url' => true
+  ];
+}
+
+//<< Access >>
+
+// This also counts failed attempts (e. g. CAPTCHA failure).
+$wgAccountCreationThrottle = [
+  [
+    'count' => 3,
+    // 1 day
+    'seconds' => 60 * 60 * 24
+  ]
+];
+$wgApplyIpBlocksToXff = true;
+// 1 week
+$wgAutoConfirmAge = 60 * 60 * 24 * 7;
+$wgAutoConfirmCount = 15;
+$wgAvailableRights = [
+  'editprotected-user',
+  'editprotected-autoconfirmed',
+  'editprotected-moderator',
+  'editprotected-staff',
+  'editprotected-admin',
+  'editprotected-steward'
+];
+$wgBlockCIDRLimit = $wmgCIDRLimit;
+$wgCascadingRestrictionLevels = [
+  'editprotected-staff',
+  'editprotected-admin',
+  'editprotected-steward'
+];
+$wgDeleteRevisionsLimit = 250;
+$wgRestrictionLevels = [
+  '',
+  'editprotected-user',
+  'editprotected-autoconfirmed',
+  'editprotected-moderator',
+  'editprotected-staff',
+  'editprotected-admin',
+  'editprotected-steward'
+];
+$wgRestrictionTypes[] = 'delete';
+$wgSemiprotectedRestrictionLevels = [
+  'editprotected-user',
+  'editprotected-autoconfirmed'
+];
+
+if ($wmgGlobalAccountMode !== null) {
+  $wgBotPasswordsDatabase = "{$wmgCentralWiki}wiki";
+}
+
+//< Security >
+
+$wgAllowUserCssPrefs = false;
+$wgAllowUserCss = true;
+$wgAllowUserJs = true;
+$wgBreakFrames = true;
+// $wgCSPHeader
+// $wgCSPReportOnlyHeader
+$wgRestAllowCrossOriginCookieAuth = true;
+
+//< Cookies >
+
+$wgCookieSameSite = 'None';
+// 2 months
+$wgExtendedLoginCookieExpiration = 60 * 60 * 24 * 30 * 2;
+
+if ($wmgGlobalAccountMode === 'shared-db' && strpos($wmgDefaultDomain, '%wiki%.') === 0 && !isset($wmgCustomDomains[$wmgWiki])) {
+  $wgCookieDomain = preg_replace('/^%wiki%/', '', $wmgDefaultDomain);
+}
+
+//< Profiling, testing and debugging >
+
+//<< Debug >>
+
+$wgDebugDumpSql = true;
+// $wgDebugLogGroups
+// $wgSpecialVersionShowHooks
+
+if (PHP_SAPI === 'cli' || $wmgDebugLevel >= 1) {
+  $wgShowExceptionDetails = true;
+}
+
+if ($wmgDebugLevel >= 2) {
+  $wgDebugComments = true;
+  // $wgDebugLogFile
+  $wgDevelopmentWarnings = true;
+  $wgShowDebug = true;
+  $wgShowHostnames = true;
+}
+
+//< Search >
+
+$wgSearchSuggestCacheExpiry = $wmgCacheExpiry;
+
+//< Edit user interface >
+
+// $wgDiff3
+// $wgPreviewOnOpenNamespaces
+
+//< Maintenance Scripts setting >
+
+$wgGitBin = false;
+$wgGitRepositoryViewers['https:\/\/github\.com\/([\w-.]+\/[\w-.]+)\.git'] = 'https://github.com/$1/commit/%H';
+
+if (PHP_SAPI !== 'cli') {
+  $wgReadOnlyFile = "$wmgDataDirectory/read-only.txt";
+}
+
+//< Recent changes, new pages, watchlist and history >
+
+$wgDisableAnonTalk = true;
+$wgRCWatchCategoryMembership = true;
+// $wgRecentChangesFlags
+// $wgUnwatchedPageSecret
+// $wgUnwatchedPageThreshold
+// 1 week
+$wgWatchersMaxAge = 60 * 60 * 24 * 7;
+$wgWatchlistExpiry = true;
+// $wgWatchlistPurgeRate
+
+//<< Feed >>
+
+$wgFeed = false;
+
+//< Copyright >
+
+$wgRightsIcon = "$wgScriptPath/resources/assets/licenses/cc-by-sa.png";
+$wgRightsText = 'Creative Commons Attribution-ShareAlike 4.0 International';
+$wgRightsUrl = 'https://creativecommons.org/licenses/by-sa/4.0/';
+
+//< Import/Export >
+
+$wgExportAllowListContributors = true;
+$wgExportMaxHistory = 50;
+$wgExportPagelistLimit = 20;
+// $wgImportSources
+
 //< General >
-
-//<< Accounts >>
-$wgInvalidUsernameCharacters='`~!@$%^&*()=+\\;:,.?';
-$wgMaxNameChars=30;
-$wgReservedUsernames=array_merge($wgReservedUsernames,
-['Example',
-'Flow talk page manager',
-'MediaWiki message delivery',
-'New user message',
-'User',
-'Username',
-'편집 필터']);
-
-//<< Blocking >>
-$wgApplyIpBlocksToXff=true;
-$wgAutoblockExpiry=60 * 60 * 24 * 365 * 10; //10 years
-$wgBlockCIDRLimit=$wmgCIDRLimit;
-
-//<< Copyright >>
-$wgRightsIcon="{$wgScriptPath}/resources/assets/licenses/cc-by-sa.png";
-$wgRightsText='Creative Commons Attribution-ShareAlike 4.0 International';
-$wgRightsUrl='https://creativecommons.org/licenses/by-sa/4.0/';
-
-//<< CSS and JavaScript >>
-$wgAllowUserCss=true;
-$wgAllowUserJs=true;
-
-//<< Interwiki >>
-$wgExternalInterwikiFragmentMode='html5';
-$wgRedirectSources='/^https?:\\/\\//i';
 
 //<< Namespaces >>
 //Exclude File namespace
 $wgNamespacesWithSubpages[NS_CATEGORY]=true;
 $wgNamespacesWithSubpages[NS_MAIN]=true;
 
-//<< Password policies >>
-$wgPasswordPolicy['policies']=
-['default' =>
-  ['MaximalPasswordLength' =>
-    ['forceChange' => true,
-    'value' => 20],
-  'MinimalPasswordLength' =>
-    ['forceChange' => true,
-    'value' => 6],
-  'MinimumPasswordLengthToLogin' =>
-    ['forceChange' => true,
-    'value' => 1],
-  'PasswordCannotBeSubstringInUsername' =>
-    ['forceChange' => true,
-    'value' => true],
-  'PasswordCannotMatchDefaults' =>
-    ['forceChange' => true,
-    'value' => true],
-  'PasswordNotInCommonList' =>
-    ['forceChange' => true,
-    'value' => true]
-  ],
-'moderator' =>
-  ['MinimumPasswordLengthToLogin' => 6],
-'admin' =>
-  ['MinimalPasswordLength' => 8,
-  'MinimumPasswordLengthToLogin' => 6],
-'bureaucrat' =>
-  ['MinimalPasswordLength' => 10,
-  'MinimumPasswordLengthToLogin' => 6],
-'steward' =>
-  ['MinimalPasswordLength' => 12,
-  'MinimumPasswordLengthToLogin' => 6]
-];
-
-//<< Preferences >>
-$wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
-['hidecategorization' => 0,
-'rememberpassword' => 1,
-'usenewrc' => 0,
-'watchcreations' => 0,
-'watchdefault' => 0,
-'watchlisthidecategorization' => 0,
-'watchuploads' => 0]);
-$wgHiddenPrefs=['gender', 'realname'];
-
 //<< Rate limits >>
-//Any attempt to create an account, whether succeed or not, is subject to this setting.
-$wgAccountCreationThrottle=
-[//Per minute
-  ['count' => 1,
-  'seconds' => 60],
-//Per day
-  ['count' => 5,
-  'seconds' => 60 * 60 * 24]
-];
-$wgPasswordAttemptThrottle=
-[//Per minute
-  ['count' => 5,
-  'seconds' => 60],
-//Per day
-  ['count' => 30,
-  'seconds' => 60 * 60 * 24]
-];
 $wgRateLimits=
 //"anon" aggregates all non-logged in users (not per-IP basis)
 ['edit' =>
@@ -407,30 +752,21 @@ $wgRateLimits=
 ];
 
 //<< Recent changes and watchlist >>
-$wgLearnerEdits=15;
-$wgLearnerMemberSince=7; //1 week
 $wgRCShowWatchingUsers=true;
-$wgRCWatchCategoryMembership=true;
 //Disable hiding (active) page watchers to users without unwatchedpages permission
 $wgUnwatchedPageSecret=-1;
 $wgUnwatchedPageThreshold=0;
-$wgWatchersMaxAge=60 * 60 * 24 * 7; //1 week
 
 //<< Robot policies >>
 $wgDefaultRobotPolicy='noindex,nofollow';
 //All namespaces
 $wgExemptFromUserRobotsControl=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-$wgNoFollowDomainExceptions=[parse_url(str_replace('%wiki%.', '', $wmgDefaultBaseURL), PHP_URL_HOST)];
 
 //<< User interface >>
-$wgAmericanDates=true;
-$wgDisableAnonTalk=true;
 $wgEdititis=true;
 $wgSpecialVersionShowHooks=true;
 
 //<< Wikitext >>
-$wgEnableScaryTranscluding=true;
-$wgMaxTemplateDepth=10;
 $wgNonincludableNamespaces=
 [NS_CATEGORY_TALK,
 NS_FILE_TALK,
@@ -440,147 +776,10 @@ NS_PROJECT_TALK,
 NS_TALK,
 NS_TEMPLATE_TALK,
 NS_USER_TALK];
-//Only allow HTTP and HTTPS protocols in links
-$wgUrlProtocols=['//', 'http://', 'https://'];
 
 //<< Others >>
-$wgActiveUserDays=7; //1 week
-$wgBreakFrames=true;
-$wgCapitalLinks=false;
-$wgExternalLinkTarget='_blank';
-$wgFragmentMode=['html5'];
-unset($wgFooterIcons['poweredby']);
-$wgHideUserContribLimit=500;
-$wgMaxSigChars=200;
 $wgRangeContributionsCIDRLimit=$wmgCIDRLimit;
 $wgUniversalEditButton=false;
-
-//< Permissions >
-
-//<< Adding and removing users from user groups >>
-$wgAddGroups['bureaucrat']=['moderator', 'admin'];
-$wgRemoveGroups['bureaucrat']=['moderator', 'admin'];
-
-//<< Auto-promoting >>
-$wgAutoConfirmAge=60 * 60 * 24 * $wgLearnerMemberSince;
-$wgAutoConfirmCount=$wgLearnerEdits;
-
-//<< Protection >>
-$wgCascadingRestrictionLevels=
-['editprotected-moderator',
-'editprotected-admin',
-'editprotected-bureaucrat',
-'editprotected-steward'];
-$wgRestrictionLevels=
-['',
-'editprotected-user',
-'editprotected-autoconfirmed',
-'editprotected-moderator',
-'editprotected-admin',
-'editprotected-bureaucrat',
-'editprotected-steward'];
-$wgRestrictionTypes=
-['create',
-'edit',
-'move',
-'upload',
-'delete',
-'protect'];
-$wgSemiprotectedRestrictionLevels=
-['editprotected-user',
-'editprotected-autoconfirmed'];
-
-//<< User group permissions >>
-$wgAvailableRights=
-['editprotected-user',
-'editprotected-autoconfirmed',
-'editprotected-moderator',
-'editprotected-admin',
-'editprotected-bureaucrat',
-'editprotected-steward'];
-$wgGroupInheritsPermissions = [
-  'moderator' => 'autoconfirmed',
-  'staff' => 'moderator',
-  'admin' => 'staff'
-];
-$wgGroupPermissions = [
-  '*' => [
-    'autocreateaccount' => true,
-    'browsearchive' => true,
-    'createaccount' => true,
-    'deletedhistory' => true,
-    'patrolmarks' => true,
-    'read' => true,
-    'unwatchedpages' => true,
-    'writeapi' => true
-  ],
-  'user' => [
-    'applychangetags' => true,
-    'createpage' => true,
-    'createtalk' => true,
-    'edit' => true,
-    'editmyoptions' => true,
-    'editmyprivateinfo' => true,
-    'editmyusercss' => true,
-    'editmyuserjson' => true,
-    'editmywatchlist' => true,
-    'editprotected-user' => true,
-    'minoredit' => true,
-    'viewmyprivateinfo' => true,
-    'viewmywatchlist' => true
-  ],
-  'autoconfirmed' => [
-    'autoconfirmed' => true,
-    'editmyuserjs' => true,
-    'editmyuserjsredirect' => true,
-    'editprotected-autoconfirmed' => true,
-    'move' => true,
-    'move-rootuserpages' => true,
-    'movefile' => true,
-    'purge' => true,
-    'reupload' => true,
-    'sendemail' => true,
-    'upload' => true
-  ],
-  'moderator' => [
-    'autopatrol' => true,
-    'block' => true,
-    'delete' => true,
-    'deletedtext' => true,
-    'deleterevision' => true,
-    'editprotected-moderator' => true,
-    'move-categorypages' => true,
-    'move-subpages' => true,
-    'patrol' => true,
-    'reupload-shared' => true,
-    'rollback' => true,
-    'suppressredirect' => true,
-    'undelete' => true
-  ],
-  'staff' => [
-    'changetags' => true,
-    'deletelogentry' => true,
-    'editcontentmodel' => true,
-    'editprotected-staff' => true,
-    'ipblock-exempt' => true,
-    'managechangetags' => true,
-    'markbotedits' => true,
-    'protect' => true
-  ],
-  'admin' => [
-    'deletechangetags' => true,
-    'editinterface' => true,
-    'editprotected-admin' => true,
-    'editsitecss' => true,
-    'editsitejson' => true,
-    'editusercss' => true,
-    'edituserjson' => true,
-    'mergehistory' => true
-  ]
-];
-
-//<< Others >>
-$wgDeleteRevisionsLimit=250;
 
 //< Images and uploads >
 
@@ -619,17 +818,7 @@ $wgUseTinyRGBForJPGThumbnails=true;
 $wgAPIRequestLog="{$wmgDataDirectory}/private/per-wiki/{$wmgWiki}/api.log";
 
 //<< Authentication and sessions >>
-$wgAllowSecuritySensitiveOperationIfCannotReauthenticate=
-['default' => false,
-'LinkAccounts' => true,
-'UnlinkAccount' => true];
 $wgAuthenticationTokenVersion='1';
-$wgExtendedLoginCookieExpiration=60 * 60 * 24 * 90; //3 months
-$wgPasswordResetRoutes['username']=false;
-$wgReauthenticateTime=
-['default' => 60 * 10, //10 minutes
-'ChangeCredentials' => 60, //1 minute
-'RemoveCredentials' => 60]; //1 minute
 
 //<< Databases >>
 //SQLite-only
@@ -639,27 +828,14 @@ if ($wmgGlobalAccountMode === 'shared-database')
   {$wgSharedDB="{$wmgCentralWiki}wiki";
   $wgSharedTables=['actor', 'user'];}
 
-//<< Debugging >>
-if ($wgCommandLineMode || $wmgDebugMode)
-  {error_reporting(E_ALL);
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  $wgDebugDumpSql=true;
-  $wgDevelopmentWarnings=true;
-  $wgShowExceptionDetails=true;}
-
 //<< Others >>
 $wgAsyncHTTPTimeout=30;
-$wgDeleteRevisionsBatchSize=500;
 //Ignored on Windows
 $wgDirectoryMode=0755;
 $wgEnableDnsBlacklist=true;
-$wgFeed=false;
-$wgGitBin=false;
 $wgHTTPTimeout=30;
 $wgJpegTran=false;
 $wgMemoryLimit='256M';
-$wgReadOnlyFile="{$wmgDataDirectory}/readonly.txt";
 
 switch ($wmgPlatform)
   {case 'Windows':
@@ -668,14 +844,8 @@ switch ($wmgPlatform)
 
 //< Caching >
 
-//<< Sidebar cache >>
-$wgTranscludeCacheExpiry=$wmgCacheExpiry;
-
-//<< Others >>
 $wgAPICacheHelpTimeout=$wmgCacheExpiry;
-$wgInterwikiExpiry=$wmgCacheExpiry;
 $wgObjectCacheSessionExpiry=$wmgCacheExpiry;
-$wgSearchSuggestCacheExpiry=$wmgCacheExpiry;
 //This one should always use cache
 $wgSessionCacheType=CACHE_ACCEL;
 
