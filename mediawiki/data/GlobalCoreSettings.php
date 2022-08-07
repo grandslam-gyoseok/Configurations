@@ -169,6 +169,10 @@ $wgParserCacheExpireTime = $wmgCacheExpiry;
 $wgParserCacheType = CACHE_ACCEL;
 $wgUseContentMediaStyles = true;
 
+//<< Memcached settings >>
+
+$wgSessionCacheType = CACHE_ACCEL;
+
 //< Language, regional and character encoding settings >
 
 $wgAllUnicodeFixes = true;
@@ -607,14 +611,49 @@ $wgExportMaxHistory = 50;
 $wgExportPagelistLimit = 20;
 // $wgImportSources
 
-//< General >
+//< Logging >
 
-//<< Namespaces >>
-//Exclude File namespace
-$wgNamespacesWithSubpages[NS_CATEGORY]=true;
-$wgNamespacesWithSubpages[NS_MAIN]=true;
+// $wgFilterLogTypes
+// $wgLogHeaders
+// $wgLogNames
+
+//< Special pages >
+
+$wgRangeContributionsCIDRLimit = $wmgCIDRLimit;
+
+//< Robot policies >
+
+$wgDefaultRobotPolicy = 'noindex, nofollow';
+// All namespaces
+$wgExemptFromUserRobotsControl = range(0, 15);
+
+//< Ajax, Action API and REST API >
+
+//<< API >>
+
+$wgAPICacheHelpTimeout = $wmgCacheExpiry;
+
+//< Shell and process control >
+
+if (PHP_OS_FAMILY === 'Windows') {
+  $wgPhpCli = 'C:/plavormind/php/php.exe';
+}
+
+//< HTTP client >
+
+$wgAsyncHTTPTimeout = 40;
+$wgHTTPMaxTimeout = 40;
+$wgHTTPImportTimeout = 30;
+$wgHTTPTimeout = 30;
+
+//< Miscellaneous settings >
+
+// $wgSkinsPreferred
+
+//< Legacy settings >
 
 //<< Rate limits >>
+
 $wgRateLimits=
 //"anon" aggregates all non-logged in users (not per-IP basis)
 ['edit' =>
@@ -752,34 +791,12 @@ $wgRateLimits=
 ];
 
 //<< Recent changes and watchlist >>
-$wgRCShowWatchingUsers=true;
 //Disable hiding (active) page watchers to users without unwatchedpages permission
 $wgUnwatchedPageSecret=-1;
 $wgUnwatchedPageThreshold=0;
 
-//<< Robot policies >>
-$wgDefaultRobotPolicy='noindex,nofollow';
-//All namespaces
-$wgExemptFromUserRobotsControl=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-
 //<< User interface >>
-$wgEdititis=true;
 $wgSpecialVersionShowHooks=true;
-
-//<< Wikitext >>
-$wgNonincludableNamespaces=
-[NS_CATEGORY_TALK,
-NS_FILE_TALK,
-NS_HELP_TALK,
-NS_MEDIAWIKI_TALK,
-NS_PROJECT_TALK,
-NS_TALK,
-NS_TEMPLATE_TALK,
-NS_USER_TALK];
-
-//<< Others >>
-$wgRangeContributionsCIDRLimit=$wmgCIDRLimit;
-$wgUniversalEditButton=false;
 
 //< Images and uploads >
 
@@ -807,47 +824,6 @@ if ($wgSVGConverter)
   {$wgFileExtensions[]='svg';}
 
 $wgHashedUploadDirectory=false;
-$wgUpdateCompatibleMetadata=true;
-$wgUploadStashMaxAge=60 * 60; //1 hour
-$wgUseCopyrightUpload=true;
-$wgUseTinyRGBForJPGThumbnails=true;
-
-//< System >
-
-//<< API >>
-$wgAPIRequestLog="{$wmgDataDirectory}/private/per-wiki/{$wmgWiki}/api.log";
-
-//<< Authentication and sessions >>
-$wgAuthenticationTokenVersion='1';
-
-//<< Databases >>
-//SQLite-only
-$wgSQLiteDataDir="{$wmgDataDirectory}/private/databases";
-
-if ($wmgGlobalAccountMode === 'shared-database')
-  {$wgSharedDB="{$wmgCentralWiki}wiki";
-  $wgSharedTables=['actor', 'user'];}
-
-//<< Others >>
-$wgAsyncHTTPTimeout=30;
-//Ignored on Windows
-$wgDirectoryMode=0755;
-$wgEnableDnsBlacklist=true;
-$wgHTTPTimeout=30;
-$wgJpegTran=false;
-$wgMemoryLimit='256M';
-
-switch ($wmgPlatform)
-  {case 'Windows':
-  $wgPhpCli='C:/plavormind/php/php.exe';
-  break;}
-
-//< Caching >
-
-$wgAPICacheHelpTimeout=$wmgCacheExpiry;
-$wgObjectCacheSessionExpiry=$wmgCacheExpiry;
-//This one should always use cache
-$wgSessionCacheType=CACHE_ACCEL;
 
 //< Extensions >
 
