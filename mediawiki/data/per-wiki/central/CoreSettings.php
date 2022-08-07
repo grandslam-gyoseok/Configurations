@@ -16,8 +16,7 @@ $wgLogos = [
 
 //<< Output >>
 
-// This should be migrated to on-wiki later. $wgSiteNotice should never be used again.
-$wgSiteNotice = 'Current [[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]';
+$wgSiteNotice = '[[MediaWiki]] version: [[Special:Version|{{CURRENTVERSION}}]]';
 
 //< ResourceLoader >
 
