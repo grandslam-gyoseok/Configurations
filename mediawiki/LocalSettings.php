@@ -1,8 +1,8 @@
 <?php
 function getWiki($defaultDomain, $uploadDomain, $customDomains) {
   if (PHP_SAPI === 'cli') {
-    if (defined('MW_DB')) {
-      return MW_DB;
+    if (defined('MW_WIKI_NAME')) {
+      return MW_WIKI_NAME;
     }
 
     return;
@@ -46,6 +46,8 @@ $wmgDefaultDomain = '%wiki%.plavormind.tk';
 $wmgWiki = getWiki($wmgDefaultDomain, 'default', $wmgCustomDomains);
 $wmgWikis = ['central', 'osa'];
 
+$wmgCentralDB = "{$wmgCentralWiki}wiki";
+
 $domain = $wmgCustomDomains[$wmgCentralWiki] ?? str_replace('%wiki%', $wmgCentralWiki, $wmgDefaultDomain);
 $wmgCentralBaseURL = str_replace('%domain%', $domain, $wmgBaseURL);
 unset($domain);
@@ -71,8 +73,6 @@ if (!in_array($wmgWiki, $wmgWikis, true)) {
 
 //<< Backward compatibility >>
 
-$wmgDebugMode = (PHP_SAPI === 'cli') || $wmgDebugLevel >= 1;
-$wmgDefaultBaseURL = str_replace('%domain%', $wmgDefaultDomain, $wmgBaseURL);
 $wmgGrantStewardsGlobalPermissions = false;
 $wmgPlatform = PHP_OS_FAMILY;
 
