@@ -134,7 +134,7 @@ $wgSQLiteDataDir = "$wmgDataDirectory/private/dbs";
 //<< Shared DB settings >>
 
 if ($wmgGlobalAccountMode === 'shared-db') {
-  $wgSharedDB = "pmw$wmgCentralWiki";
+  $wgSharedDB = $wmgCentralDB;
   $wgSharedTables = ['actor', 'user', 'user_autocreate_serial'];
 }
 
@@ -521,7 +521,7 @@ $wgSemiprotectedRestrictionLevels = [
 ];
 
 if ($wmgGlobalAccountMode !== null) {
-  $wgBotPasswordsDatabase = "{$wmgCentralWiki}wiki";
+  $wgBotPasswordsDatabase = $wmgCentralDB;
 }
 
 //< Security >
@@ -536,7 +536,8 @@ $wgRestAllowCrossOriginCookieAuth = true;
 
 //< Cookies >
 
-$wgCookieSameSite = 'None';
+// This requires HTTPS.
+// $wgCookieSameSite = 'None';
 // 2 months
 $wgExtendedLoginCookieExpiration = 60 * 60 * 24 * 30 * 2;
 
@@ -550,7 +551,6 @@ if ($wmgGlobalAccountMode === 'shared-db' && strpos($wmgDefaultDomain, '%wiki%.'
 
 $wgDebugDumpSql = true;
 // $wgDebugLogGroups
-// $wgSpecialVersionShowHooks
 
 if (PHP_SAPI === 'cli' || $wmgDebugLevel >= 1) {
   $wgShowExceptionDetails = true;
@@ -562,6 +562,7 @@ if ($wmgDebugLevel >= 2) {
   $wgDevelopmentWarnings = true;
   $wgShowDebug = true;
   $wgShowHostnames = true;
+  $wgSpecialVersionShowHooks = true;
 }
 
 //< Search >
@@ -571,7 +572,6 @@ $wgSearchSuggestCacheExpiry = $wmgCacheExpiry;
 //< Edit user interface >
 
 // $wgDiff3
-// $wgPreviewOnOpenNamespaces
 
 //< Maintenance Scripts setting >
 
@@ -587,12 +587,9 @@ if (PHP_SAPI !== 'cli') {
 $wgDisableAnonTalk = true;
 $wgRCWatchCategoryMembership = true;
 // $wgRecentChangesFlags
-// $wgUnwatchedPageSecret
-// $wgUnwatchedPageThreshold
 // 1 week
 $wgWatchersMaxAge = 60 * 60 * 24 * 7;
 $wgWatchlistExpiry = true;
-// $wgWatchlistPurgeRate
 
 //<< Feed >>
 
@@ -648,7 +645,7 @@ $wgHTTPTimeout = 30;
 
 //< Miscellaneous settings >
 
-// $wgSkinsPreferred
+$wgSkinsPreferred = ['vector-2022'];
 
 //< Legacy settings >
 
@@ -790,40 +787,28 @@ $wgRateLimits=
   ]
 ];
 
-//<< Recent changes and watchlist >>
-//Disable hiding (active) page watchers to users without unwatchedpages permission
-$wgUnwatchedPageSecret=-1;
-$wgUnwatchedPageThreshold=0;
+//<< Images >>
 
-//<< User interface >>
-$wgSpecialVersionShowHooks=true;
-
-//< Images and uploads >
+$wgHashedUploadDirectory = false;
 
 //<< ImageMagick >>
-if ($wmgPlatform === "Windows")
-  {$wgImageMagickConvertCommand='C:/Program Files/ImageMagick-7.0.9-Q16-HDRI/convert.exe';}
 
-if (file_exists($wgImageMagickConvertCommand))
-  {$wgUseImageMagick=true;}
+if (PHP_OS_FAMILY === 'Windows') {
+  $wgImageMagickConvertCommand = 'C:/Program Files/ImageMagick-7.0.9-Q16-HDRI/convert.exe';
+}
 
 //<< SVG >>
-switch ($wmgPlatform)
-  {case 'Windows':
-  $wgSVGConverter='inkscape';
-  $wgSVGConverters=
-  //"!" should not be escaped on Windows
-  //$path and $wgSVGConverterPath should not be used because double quotes automatically surrounds $path.
-  ['ImageMagick' => '"' . $wgImageMagickConvertCommand . '" -background none -thumbnail $widthx$height! $input $output',
-  'inkscape' => '"C:/Program Files/Inkscape/bin/inkscape.com" $input --batch-process --export-filename=$output --export-height=$height --export-width=$width'];
-  break;
-  default:
-  $wgSVGConverter=false;}
 
-if ($wgSVGConverter)
-  {$wgFileExtensions[]='svg';}
+$wgSVGConverter = (PHP_OS_FAMILY === 'Windows') ? 'inkscape' : false;
 
-$wgHashedUploadDirectory=false;
+if (PHP_OS_FAMILY === 'Windows') {
+  $wgSVGConverters = [
+    // "!" should not be escaped on Windows.
+    // $path and $wgSVGConverterPath should not be used because double quotes automatically surrounds $path.
+    'ImageMagick' => '"' . $wgImageMagickConvertCommand . '" -background none -thumbnail $widthx$height! $input $output',
+    'inkscape' => '"C:/Program Files/Inkscape/bin/inkscape.com" $input --batch-process --export-filename=$output --export-height=$height --export-width=$width'
+  ];
+}
 
 //< Extensions >
 
