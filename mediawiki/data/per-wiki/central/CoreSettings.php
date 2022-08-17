@@ -35,7 +35,7 @@ $wgNamespaceAliases = [
 
 //< Interwiki links and sites >
 
-// $wgLocalInterwikis
+$wgLocalInterwikis = ['central'];
 
 //< User rights, access control and monitoring >
 
@@ -72,6 +72,10 @@ $wgNamespaceProtection = [
 //< Copyright >
 
 $wgUseCopyrightUpload = true;
+
+//< Import/Export >
+
+$wgImportSources = [];
 
 //< Miscellaneous settings >
 
