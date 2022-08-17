@@ -16,7 +16,9 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgConf->settings['wgServer']['default'] = str_replace('%domain%', $domain, $wmgBaseURL);
 
   foreach ($wmgCustomDomains as $wiki => $domain) {
-    $wgConf->settings['wgServer'][$wiki] = str_replace('%domain%', $domain, $wmgBaseURL);
+    if (!in_array($wiki, $wmgGlobalAccountExemptWikis, true)) {
+      $wgConf->settings['wgServer'][$wiki] = str_replace('%domain%', $domain, $wmgBaseURL);
+    }
   }
 
   $wgConf->siteParamsCallback = function ($siteConfiguration, $wikiDB) {
@@ -33,12 +35,13 @@ if ($wmgGlobalAccountMode === 'centralauth') {
 
   $wgConf->suffixes = [''];
   $wgConf->wikis = [];
+  $wikis = array_diff($wmgWikis, $wmgGlobalAccountExemptWikis);
 
   foreach ($wmgWikis as $wiki) {
     $wgConf->wikis[] = "{$wiki}wiki";
   }
 
-  unset($domain, $wiki);
+  unset($domain, $wiki, $wikis);
 }
 
 //< Server URLs and file paths >
@@ -121,11 +124,15 @@ $wgDBname = "{$wmgWiki}wiki";
 $wgDBserver = '127.0.0.1';
 $wgDBuser = 'root';
 
-foreach ($wmgWikis as $wiki) {
-  $wgLocalDatabases[] = "{$wiki}wiki";
-}
+if ($wmgGlobalAccountMode !== null) {
+  $wikis = array_diff($wmgWikis, $wmgGlobalAccountExemptWikis);
 
-unset($wiki);
+  foreach ($wikis as $wiki) {
+    $wgLocalDatabases[] = "{$wiki}wiki";
+  }
+
+  unset($wiki, $wikis);
+}
 
 //<< SQLite-specific >>
 
@@ -426,6 +433,8 @@ $wgGroupPermissions = [
     'mergehistory' => true
   ]
 ];
+$wgGroupPermissions['staff'] = array_merge($wgGroupPermissions['autoconfirmed'], $wgGroupPermissions['staff']);
+$wgGroupPermissions['admin'] = array_merge($wgGroupPermissions['moderator'], $wgGroupPermissions['admin']);
 $wgGroupsRemoveFromSelf = [
   'moderator' => ['moderator'],
   'staff' => ['staff'],
@@ -452,6 +461,10 @@ $wgRemoveGroups = [
   'admin' => ['moderator', 'staff']
 ];
 
+if ($wmgGlobalAccountMode === null) {
+  $wgGroupPermissions['steward']['userrights'] = true;
+}
+
 if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupInheritsPermissions['steward'] = 'admin';
   $wgGroupPermissions['steward'] = [
@@ -474,6 +487,7 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
     'unblockself' => true,
     'upload_by_url' => true
   ];
+  $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['staff'], $wgGroupPermissions['steward']);
 }
 
 //<< Access >>
@@ -606,7 +620,7 @@ $wgRightsUrl = 'https://creativecommons.org/licenses/by-sa/4.0/';
 $wgExportAllowListContributors = true;
 $wgExportMaxHistory = 50;
 $wgExportPagelistLimit = 20;
-// $wgImportSources
+$wgImportSources = ['central'];
 
 //< Logging >
 
@@ -791,25 +805,6 @@ $wgRateLimits=
 
 $wgHashedUploadDirectory = false;
 
-//<< ImageMagick >>
-
-if (PHP_OS_FAMILY === 'Windows') {
-  $wgImageMagickConvertCommand = 'C:/Program Files/ImageMagick-7.0.9-Q16-HDRI/convert.exe';
-}
-
-//<< SVG >>
-
-$wgSVGConverter = (PHP_OS_FAMILY === 'Windows') ? 'inkscape' : false;
-
-if (PHP_OS_FAMILY === 'Windows') {
-  $wgSVGConverters = [
-    // "!" should not be escaped on Windows.
-    // $path and $wgSVGConverterPath should not be used because double quotes automatically surrounds $path.
-    'ImageMagick' => '"' . $wgImageMagickConvertCommand . '" -background none -thumbnail $widthx$height! $input $output',
-    'inkscape' => '"C:/Program Files/Inkscape/bin/inkscape.com" $input --batch-process --export-filename=$output --export-height=$height --export-width=$width'
-  ];
-}
-
 //< Extensions >
 
 //<< Extension usage >>
@@ -852,6 +847,5 @@ $wmgExtensions=
 $wmgSkins=
 ['Citizen' => false,
 'Medik' => false,
-'Metrolook' => false,
 'MinervaNeue' => false,
 'Timeless' => false];
