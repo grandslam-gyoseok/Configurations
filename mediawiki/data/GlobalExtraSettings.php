@@ -1,6 +1,70 @@
 <?php
 //< Extensions >
 
+//<< AbuseFilter >>
+
+wfLoadExtension('AbuseFilter');
+$wgAbuseFilterActionRestrictions = [
+  'block' => false,
+  'blockautopromote' => false,
+  'degroup' => false,
+  'disallow' => false,
+  'rangeblock' => false,
+  'tag' => false,
+  'throttle' => false,
+  'warn' => false
+];
+$wgAbuseFilterActions = [
+  'block' => false,
+  'blockautopromote' => false,
+  'degroup' => false,
+  'disallow' => true,
+  'rangeblock' => false,
+  'tag' => false,
+  'throttle' => false,
+  'warn' => true
+];
+// $wgAbuseFilterDefaultDisallowMessage
+// $wgAbuseFilterDefaultWarningMessage
+$wgAbuseFilterEmergencyDisableCount = [
+  'default' => 10
+];
+$wgAbuseFilterEmergencyDisableThreshold = [
+  'default' => 0.1
+];
+$wgAbuseFilterNotifications = 'rcandudp';
+
+$wgGroupPermissions['suppress']['abusefilter-hidden-log'] = false;
+$wgGroupPermissions['suppress']['abusefilter-hide-log'] = false;
+$wgGroupPermissions['moderator']['abusefilter-log-detail'] = true;
+$wgGroupPermissions['staff']['abusefilter-modify'] = true;
+$wgGroupPermissions['admin']['abusefilter-log-detail'] = true;
+$wgGroupPermissions['admin']['abusefilter-modify-restricted'] = true;
+
+// array_merge() should not be used here because sysop group was not defined before.
+$wgGroupPermissions['sysop'] = [
+  'abusefilter-log-detail' => false,
+  'abusefilter-log-private' => false,
+  'abusefilter-modify' => false,
+  'abusefilter-modify-restricted' => false,
+  'abusefilter-revert' => false,
+  'abusefilter-view-private' => false
+];
+
+if ($wmgGlobalAccountMode === 'centralauth') {
+  $wgAbuseFilterCentralDB = $wmgCentralDB;
+}
+else {
+  $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['steward'], [
+    'abusefilter-hidden-log' => true,
+    'abusefilter-hide-log' => true,
+    'abusefilter-modify' => true,
+    'abusefilter-privatedetails' => true,
+    'abusefilter-privatedetails-log' => true,
+    'abusefilter-revert' => true
+  ]);
+}
+
 //<< AntiSpoof >>
 
 // This extension requires running update.php.
@@ -26,7 +90,7 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgCentralAuthCookies = true;
   $wgCentralAuthCreateOnView = true;
   $wgCentralAuthDatabase = 'wiki_centralauth';
-  // $wgCentralAuthGlobalPasswordPolicies
+  $wgCentralAuthGlobalPasswordPolicies['steward'] = $wgPasswordPolicy['policies']['steward'];
   $wgCentralAuthLoginWiki = $wmgCentralDB;
   $wgCentralAuthOldNameAntiSpoofWiki = $wmgCentralDB;
   $wgCentralAuthPreventUnattached = true;
@@ -53,7 +117,6 @@ $wgCheckUserCIDRLimit = $wmgCIDRLimit;
 $wgCheckUserEnableSpecialInvestigate = true;
 $wgCheckUserLogLogins = true;
 $wgCheckUserMaxBlocks = 10;
-// $wgCUDMaxAge
 
 $wgGroupPermissions['checkuser']['checkuser'] = false;
 $wgGroupPermissions['checkuser']['checkuser-log'] = false;
@@ -77,12 +140,13 @@ else {
 //<< ConfirmEdit >>
 
 wfLoadExtensions(['ConfirmEdit', 'ConfirmEdit/hCaptcha']);
-// $wgCaptchaBadLoginAttempts
 // This completely blocks API login until expiration.
-// $wgCaptchaBadLoginExpiration
-// $wgCaptchaBadLoginPerUserAttempts
+// 10 minutes
+$wgCaptchaBadLoginExpiration = 60 * 10;
+$wgCaptchaBadLoginPerUserAttempts = 10;
 // This completely blocks API login until expiration.
-// $wgCaptchaBadLoginPerUserExpiration
+// 1 day
+$wgCaptchaBadLoginPerUserExpiration = 60 * 60 * 24;
 $wgCaptchaTriggers['create'] = true;
 $wgCaptchaTriggers['sendemail'] = true;
 $wgCaptchaTriggersOnNamespace = [
@@ -104,7 +168,6 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
 
 // This extension requires running update.php.
 wfLoadExtension('Echo');
-// $wgAllowArticleReminderNotification
 $wgDefaultNotifyTypeAvailability = [
   'email' => false,
   'web' => true
@@ -114,25 +177,105 @@ $wgEchoMaxMentionsInEditSummary = 10;
 // This is also the number of maximum notifications for single user to have.
 $wgEchoMaxUpdateCount = 100;
 $wgEchoMentionStatusNotifications = true;
-// $wgEchoNotificationCategories
 // $wgEchoNotificationIcons
 $wgEchoOnWikiBlacklist = null;
 $wgEchoPerUserWhitelistFormat = null;
-// $wgEchoPollForUpdates
-// $wgEchoSecondaryIcons
-// $wgEchoWatchlistNotifications
-// Remove default values
-$wgNotifyTypeAvailabilityByCategory = [];
+$wgEchoPollForUpdates = 20;
+$wgEchoWatchlistNotifications = true;
+$wgNotifyTypeAvailabilityByCategory = [
+  'edit-user-talk' => [
+    'email' => true,
+    'web' => true
+  ],
+  'mention' => [
+    'email' => true,
+    'web' => true
+  ],
+  'user-rights' => [
+    'email' => true,
+    'web' => true
+  ]
+];
 
 $wgGroupPermissions['push-subscription-manager']['manage-all-push-subscriptions'] = false;
 
+$wgDefaultUserOptions = array_merge($wgDefaultUserOptions, [
+  'echo-email-frequency' => -1,
+  'echo-show-poll-updates' => 1,
+  'echo-subscriptions-email-user-rights' => 0,
+  'echo-subscriptions-web-mention-failure' => 1,
+  'echo-subscriptions-web-thank-you-edit' => 0
+]);
+
 if ($wmgGlobalAccountMode !== null) {
+  $wgDefaultUserOptions['echo-cross-wiki-notifications'] = 1;
   $wgEchoCrossWikiNotifications = true;
   $wgEchoSharedTrackingDB = $wmgCentralDB;
 }
 
 if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupPermissions['steward']['manage-all-push-subscriptions'] = true;
+}
+
+//<< GlobalBlocking >>
+
+if ($wmgGlobalAccountMode === 'shared-db') {
+  $wgGroupPermissions['steward']['globalblock-exempt'] = true;
+  $wgGroupPermissions['steward']['globalblock-whitelist'] = true;
+}
+
+if ($wmgGlobalAccountMode !== null) {
+  // This extension requires running update.php.
+  wfLoadExtension('GlobalBlocking');
+  $wgGlobalBlockingCIDRLimit = $wmgCIDRLimit;
+  $wgGlobalBlockingDatabase = $wmgCentralDB;
+  $wgGlobalBlockRemoteReasonUrl = "{$wmgCentralBaseURL}{$wgScriptPath}/api.php";
+  $wgGroupPermissions['sysop']['globalblock-whitelist'] = false;
+  $wgGroupPermissions['steward']['globalblock'] = false;
+}
+
+//<< GlobalPreferences >>
+
+if ($wmgGlobalAccountMode === 'centralauth') {
+  $wgGlobalPreferencesDB = $wmgCentralDB;
+}
+
+if ($wmgGlobalAccountMode !== null) {
+  // This extension requires running update.php.
+  wfLoadExtension('GlobalPreferences');
+}
+
+//<< Interwiki >>
+
+wfLoadExtension('Interwiki');
+
+$wgGroupPermissions['admin']['interwiki'] = true;
+
+if ($wmgGlobalAccountMode !== null) {
+  $wgInterwikiCentralDB = $wmgCentralDB;
+}
+
+//<< OATHAuth >>
+
+wfLoadExtension('OATHAuth');
+$wgOATHRequiredForGroups = ['steward'];
+
+$wgGroupPermissions['sysop']['oathauth-disable-for-user'] = false;
+$wgGroupPermissions['sysop']['oathauth-verify-user'] = false;
+$wgGroupPermissions['sysop']['oathauth-view-log'] = false;
+
+if ($wmgGlobalAccountMode === null) {
+  $wgGroupPermissions['steward']['oathauth-disable-for-user'] = true;
+  $wgGroupPermissions['steward']['oathauth-verify-user'] = true;
+}
+else {
+  $wgOATHAuthAccountPrefix = 'PlavorMind wikis';
+  $wgOATHAuthDatabase = $wmgCentralDB;
+}
+
+if ($wmgGlobalAccountMode !== 'centralauth') {
+  $wgGroupPermissions['steward']['oathauth-api-all'] = true;
+  $wgGroupPermissions['steward']['oathauth-view-log'] = true;
 }
 
 //<< Renameuser >>
@@ -160,73 +303,54 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
 //<< TitleBlacklist >>
 
 wfLoadExtension('TitleBlacklist');
-// $wgTitleBlacklistSources
-// $wgTitleBlacklistUsernameSources
+$wgTitleBlacklistCaching['expiry'] = $wmgCacheExpiry;
+$wgTitleBlacklistCaching['warningexpiry'] = $wmgCacheExpiry;
+$wgTitleBlacklistLogHits = true;
+$wgTitleBlacklistSources = [
+  'global' => [
+    'src' => "$wmgDataDirectory/private/title-blacklist.txt",
+    'type' => 'file'
+  ]
+];
 
 $wgGroupPermissions['sysop']['tboverride'] = false;
 $wgGroupPermissions['sysop']['titleblacklistlog'] = false;
+
+if ($wmgGlobalAccountMode !== null) {
+  $wgTitleBlacklistUsernameSources = ['global'];
+}
 
 if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupPermissions['steward']['tboverride'] = true;
   $wgGroupPermissions['steward']['titleblacklistlog'] = true;
 }
 
+//<< Other extensions >>
+
+wfLoadExtension('SecureLinkFixer');
+
+//< Skins >
+
+//<< Vector >>
+
+wfLoadSkin('Vector');
+$wgVectorDefaultSidebarVisibleForAnonymousUser = true;
+$wgVectorMaxWidthOptions = [
+  'exclude' => [
+    'mainpage' => true,
+    // All namespaces
+    'namespaces' => range(-1, 15)
+  ],
+  'include' => []
+];
+$wgVectorResponsive = true;
+$wgVectorStickyHeader['logged_out'] = true;
+$wgVectorStickyHeaderEdit = [
+  'logged_in' => true,
+  'logged_out' => true
+];
+
 //< Extensions >
-
-//<< AbuseFilter >>
-//This extension requires running update.php.
-wfLoadExtension('AbuseFilter');
-$wgAbuseFilterActionRestrictions=
-['block' => false,
-'blockautopromote' => false,
-'degroup' => false,
-'disallow' => false,
-'rangeblock' => false,
-'tag' => false,
-'throttle' => false,
-'warn' => false];
-//"disallow" and "warn" should always be enabled to make AbuseFilter work properly.
-$wgAbuseFilterActions=
-['block' => false,
-'blockautopromote' => false,
-'degroup' => false,
-'disallow' => true,
-'rangeblock' => false,
-'tag' => false,
-'throttle' => false,
-'warn' => true];
-
-if ($wmgGlobalAccountMode !== false)
-  {$wgAbuseFilterCentralDB="{$wmgCentralWiki}wiki";}
-
-$wgAbuseFilterConditionLimit=100;
-$wgAbuseFilterEmergencyDisableCount=
-['default' => 5];
-
-if ($wmgGlobalAccountMode !== false && $wmgWiki === $wmgCentralWiki)
-  {$wgAbuseFilterIsCentral=true;}
-
-$wgAbuseFilterLogPrivateDetailsAccess=true;
-$wgAbuseFilterNotifications='rcandudp';
-$wgAbuseFilterPrivateDetailsForceReason=true;
-//Permissions
-$wmgGroupPermissions['*']['abusefilter-log']=true;
-$wmgGroupPermissions['*']['abusefilter-log-detail']=true;
-$wmgGroupPermissions['*']['abusefilter-view']=true;
-$wmgGroupPermissions['bureaucrat']['abusefilter-log-private']=true;
-$wmgGroupPermissions['bureaucrat']['abusefilter-modify']=true;
-$wmgGroupPermissions['bureaucrat']['abusefilter-revert']=true;
-
-if ($wmgWiki === $wmgCentralWiki)
-  {$wmgGroupPermissions['steward']['abusefilter-modify-global']=true;}
-
-if ($wmgGrantStewardsGlobalPermissions)
-  {$wmgGroupPermissions['steward']=array_merge($wmgGroupPermissions['steward'],
-  ['abusefilter-hidden-log' => true,
-  'abusefilter-hide-log' => true,
-  'abusefilter-modify-restricted' => true,
-  'abusefilter-privatedetails' => true,
-  'abusefilter-privatedetails-log' => true]);}
 
 //<< Babel >>
 //This extension requires running update.php.
@@ -260,31 +384,6 @@ if ($wmgExtensions['CodeMirror'] && $wmgExtensions['WikiEditor'])
 if ($wmgExtensions['CommonsMetadata'])
   {wfLoadExtension('CommonsMetadata');}
 
-//<< ConfirmEdit >>
-
-$wgCaptchaBadLoginExpiration=60 * 60; //1 hour
-
-//<< Echo >>
-
-$wgAllowArticleReminderNotification=true;
-$wgDefaultUserOptions=array_merge($wgDefaultUserOptions,
-['echo-email-frequency' => -1,
-'echo-subscriptions-email-user-rights' => false,
-'echo-subscriptions-web-thank-you-edit' => false]);
-
-//<< GlobalBlocking >>
-//This extension requires running update.php.
-if ($wmgGlobalAccountMode !== false)
-  {wfLoadExtension('GlobalBlocking');
-  $wgGlobalBlockingDatabase='wiki_globalblocking';
-  //Permissions
-  if ($wmgWiki === $wmgCentralWiki)
-    {$wmgGroupPermissions['steward']['globalblock']=true;}
-  if ($wmgGrantStewardsGlobalPermissions)
-    {$wmgGroupPermissions['steward']['globalblock-exempt']=true;
-    $wmgGroupPermissions['steward']['globalblock-whitelist']=true;}
-  }
-
 //<< GlobalCssJs >>
 if ($wmgGlobalAccountMode !== false && ($wmgWiki === $wmgCentralWiki || $wmgExtensions['GlobalCssJs']))
   {wfLoadExtension('GlobalCssJs');
@@ -294,15 +393,6 @@ if ($wmgGlobalAccountMode !== false && ($wmgWiki === $wmgCentralWiki || $wmgExte
   $wgResourceLoaderSources['central']=
   ['apiScript' => "{$wmgCentralBaseURL}{$wgScriptPath}/api.php",
   'loadScript' => "{$wmgCentralBaseURL}{$wgScriptPath}/load.php"];}
-
-//<< GlobalPreferences >>
-//This extension requires running update.php.
-if ($wmgGlobalAccountMode !== false)
-  {wfLoadExtension('GlobalPreferences');
-
-  if ($wmgGlobalAccountMode === 'centralauth')
-    {$wgGlobalPreferencesDB='wiki_globalpreferences';}
-  }
 
 //<< GlobalUserPage >>
 if ($wmgGlobalAccountMode !== false && ($wmgWiki === $wmgCentralWiki || $wmgExtensions['GlobalUserPage']))
@@ -319,17 +409,6 @@ if ($wmgExtensions['Highlightjs_Integration'] && $wmgPlatform === 'Windows')
 //<< InputBox >>
 if ($wmgExtensions['InputBox'])
   {wfLoadExtension('InputBox');}
-
-//<< Interwiki >>
-wfLoadExtension('Interwiki');
-if ($wmgGlobalAccountMode !== false)
-  {$wgInterwikiCentralDB="{$wmgCentralWiki}wiki";}
-//Permissions
-if ($wmgGlobalAccountMode === false || $wmgWiki !== $wmgCentralWiki)
-  {$wmgGroupPermissions['bureaucrat']['interwiki']=true;}
-
-if ($wmgGrantStewardsGlobalPermissions)
-  {$wmgGroupPermissions['steward']['interwiki']=true;}
 
 //<< Josa >>
 if ($wmgExtensions['Josa'])
@@ -359,25 +438,6 @@ if ($wmgExtensions['Nuke'])
   {wfLoadExtension('Nuke');
   //Permissions
   $wmgGroupPermissions['bureaucrat']['nuke']=true;}
-
-//<< OATHAuth >>
-if ($wmgGlobalAccountMode !== 'shared-database')
-  {wfLoadExtension('OATHAuth');
-  $wgOATHAuthAccountPrefix='PlavorMind wikis';
-
-  if ($wmgGlobalAccountMode === 'centralauth')
-    {$wgOATHAuthDatabase='wiki_centralauth';}
-  //Permissions
-  $wmgGroupPermissions['user']['oathauth-enable']=true;
-
-  if ($wmgWiki === $wmgCentralWiki)
-    {$wmgGroupPermissions['steward']['oathauth-verify-user']=true;}
-
-  if ($wmgGrantStewardsGlobalPermissions)
-    {$wmgGroupPermissions['steward']['oathauth-api-all']=true;
-    $wmgGroupPermissions['steward']['oathauth-disable-for-user']=true;
-    $wmgGroupPermissions['steward']['oathauth-view-log']=true;}
-  }
 
 //<< PageImages >>
 if ($wmgExtensions['PageImages'])
@@ -457,16 +517,6 @@ if ($wmgExtensions['TextExtracts'])
   {wfLoadExtension('TextExtracts');
   $wgExtractsExtendOpenSearchXml=true;}
 
-//<< TitleBlacklist >>
-$wgTitleBlacklistSources=
-['global' =>
-  ['src' => "{$wmgDataDirectory}/private/titleblacklist.txt",
-  'type' => 'file']
-];
-
-if ($wmgGlobalAccountMode !== false)
-  {$wgTitleBlacklistUsernameSources=['global'];}
-
 //<< TwoColConflict >>
 if ($wmgExtensions['TwoColConflict'])
   {wfLoadExtension('TwoColConflict');
@@ -489,9 +539,6 @@ if ($wmgExtensions['WikiEditor'])
   {wfLoadExtension('WikiEditor');
   $wgWikiEditorRealtimePreview=true;}
 
-//<< Other extensions >>
-wfLoadExtension('SecureLinkFixer');
-
 //< Skins >
 
 //<< Citizen >>
@@ -505,16 +552,6 @@ if ($wmgSkins['Citizen'])
 if ($wmgSkins['Medik'])
   {wfLoadSkin('Medik');
   $wgMedikColor='#9933ff';}
-
-//<< Metrolook >>
-if ($wmgSkins['Metrolook'])
-  {wfLoadSkin('Metrolook');
-  $wgMetrolookDownArrow=false;
-  $wgMetrolookFeatures['collapsiblenav']=
-  ['global' => true,
-  'user' => false];
-  $wgMetrolookSearchBar=false;
-  $wgMetrolookUploadButton=false;}
 
 //<< MinervaNeue >>
 if ($wmgSkins['MinervaNeue'])
@@ -535,30 +572,3 @@ if ($wmgSkins['MinervaNeue'])
 //<< Timeless >>
 if ($wmgSkins['Timeless'])
   {wfLoadSkin('Timeless');}
-
-//<< Vector >>
-wfLoadSkin('Vector');
-$wgVectorDefaultSidebarVisibleForAnonymousUser=true;
-$wgVectorDefaultSkinVersion='2';
-$wgVectorDefaultSkinVersionForExistingAccounts='2';
-$wgVectorDefaultSkinVersionForNewAccounts='2';
-$wgVectorGrid=true;
-$wgVectorLanguageAlertInSidebar=
-['logged_in' => true,
-'logged_out' => true];
-$wgVectorMaxWidthOptions=
-['exclude' =>
-  ['mainpage' => true,
-  'namespaces' =>
-    //All namespaces
-    [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-  ],
-'include' =>
-  []
-];
-$wgVectorResponsive=true;
-$wgVectorStickyHeader['logged_out']=true;
-$wgVectorStickyHeaderEdit=
-['logged_in' => true,
-'logged_out' => true];
-$wgVectorTableOfContents['default']=true;
