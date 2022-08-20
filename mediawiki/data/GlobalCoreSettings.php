@@ -661,6 +661,12 @@ $wgHTTPTimeout = 30;
 
 $wgSkinsPreferred = ['vector-2022'];
 
+//< Extension and skin usages >
+
+if (file_exists("$wmgDataDirectory/per-wiki/$wmgWiki/extra-usages.php")) {
+  include_once "$wmgDataDirectory/per-wiki/$wmgWiki/extra-usages.php";
+}
+
 //< Legacy settings >
 
 //<< Rate limits >>
@@ -804,48 +810,3 @@ $wgRateLimits=
 //<< Images >>
 
 $wgHashedUploadDirectory = false;
-
-//< Extensions >
-
-//<< Extension usage >>
-$wmgExtensions=
-['Babel' => true,
-'Cite' => false,
-'CodeEditor' => false,
-'CodeMirror' => false,
-'CommonsMetadata' => false,
-'GlobalCssJs' => true,
-'GlobalUserPage' => true,
-'Highlightjs_Integration' => false,
-'InputBox' => false,
-'Josa' => false,
-'MassEditRegex' => false,
-'Math' => false,
-'MultimediaViewer' => false,
-'Nuke' => false,
-'PageImages' => false,
-'ParserFunctions' => false,
-'Poem' => false,
-'Popups' => false,
-'ReplaceText' => false,
-'RevisionSlider' => false,
-'Scribunto' => false,
-'SyntaxHighlight_GeSHi' => false,
-'TemplateData' => false,
-'TemplateSandbox' => false,
-'TemplateStyles' => false,
-'TemplateWizard' => false,
-'TextExtracts' => false,
-'TwoColConflict' => false,
-'UniversalLanguageSelector' => false,
-'UploadsLink' => false,
-'WikiEditor' => false];
-
-//< Skins >
-
-//<< Skin usage >>
-$wmgSkins=
-['Citizen' => false,
-'Medik' => false,
-'MinervaNeue' => false,
-'Timeless' => false];
