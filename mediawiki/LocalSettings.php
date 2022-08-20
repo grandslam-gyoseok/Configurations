@@ -43,6 +43,24 @@ $wmgCIDRLimit = [
 $wmgCustomDomains = [];
 $wmgDebugLevel = 0;
 $wmgDefaultDomain = '%wiki%.plavormind.tk';
+$wmgUseExtensions = [
+  'Babel' => true,
+  'Cite' => true,
+  'CodeEditor' => false,
+  'InputBox' => false,
+  'Math' => false,
+  'MultimediaViewer' => false,
+  'Nuke' => true,
+  'PageImages' => false,
+  'ParserFunctions' => true,
+  'Poem' => false,
+  'ReplaceText' => false,
+  'Scribunto' => false,
+  'TemplateData' => false,
+  'TextExtracts' => false,
+  'WikiEditor' => true
+];
+$wmgUseSkins = [];
 $wmgWiki = getWiki($wmgDefaultDomain, 'default', $wmgCustomDomains);
 $wmgWikis = ['central', 'osa'];
 
@@ -73,8 +91,32 @@ if (!in_array($wmgWiki, $wmgWikis, true)) {
 
 //<< Backward compatibility >>
 
-$wmgGrantStewardsGlobalPermissions = false;
 $wmgPlatform = PHP_OS_FAMILY;
+
+$wmgExtensions = array_merge([
+  'CodeMirror' => false,
+  'CommonsMetadata' => false,
+  'GlobalCssJs' => true,
+  'GlobalUserPage' => true,
+  'Highlightjs_Integration' => false,
+  'Josa' => false,
+  'MassEditRegex' => false,
+  'Popups' => false,
+  'RevisionSlider' => false,
+  'SyntaxHighlight_GeSHi' => false,
+  'TemplateSandbox' => false,
+  'TemplateStyles' => false,
+  'TemplateWizard' => false,
+  'TwoColConflict' => false,
+  'UniversalLanguageSelector' => false,
+  'UploadsLink' => false
+], $wmgUseExtensions);
+$wmgSkins = array_merge([
+  'Citizen' => false,
+  'Medik' => false,
+  'MinervaNeue' => false,
+  'Timeless' => false
+], $wmgUseSkins);
 
 //<< Global accounts >>
 
@@ -100,6 +142,4 @@ if (file_exists("$wmgDataDirectory/per-wiki/$wmgWiki/ExtraSettings.php")) {
   include_once "$wmgDataDirectory/per-wiki/$wmgWiki/ExtraSettings.php";
 }
 
-if (file_exists("$wmgDataDirectory/private/PrivateSettings.php")) {
-  include_once "$wmgDataDirectory/private/PrivateSettings.php";
-}
+require_once "$wmgDataDirectory/private/PrivateSettings.php";
