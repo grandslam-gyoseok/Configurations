@@ -36,11 +36,6 @@ $wgAbuseFilterNotifications = 'rcandudp';
 
 $wgGroupPermissions['suppress']['abusefilter-hidden-log'] = false;
 $wgGroupPermissions['suppress']['abusefilter-hide-log'] = false;
-$wgGroupPermissions['moderator']['abusefilter-log-detail'] = true;
-$wgGroupPermissions['staff']['abusefilter-modify'] = true;
-$wgGroupPermissions['admin']['abusefilter-log-detail'] = true;
-$wgGroupPermissions['admin']['abusefilter-modify-restricted'] = true;
-
 // array_merge() should not be used here because sysop group was not defined before.
 $wgGroupPermissions['sysop'] = [
   'abusefilter-log-detail' => false,
@@ -50,6 +45,10 @@ $wgGroupPermissions['sysop'] = [
   'abusefilter-revert' => false,
   'abusefilter-view-private' => false
 ];
+$wgGroupPermissions['moderator']['abusefilter-log-detail'] = true;
+$wgGroupPermissions['staff']['abusefilter-modify'] = true;
+$wgGroupPermissions['admin']['abusefilter-log-detail'] = true;
+$wgGroupPermissions['admin']['abusefilter-modify-restricted'] = true;
 
 if ($wmgGlobalAccountMode === 'centralauth') {
   $wgAbuseFilterCentralDB = $wmgCentralDB;
@@ -78,6 +77,24 @@ if ($wmgGlobalAccountMode === null) {
 }
 elseif ($wmgGlobalAccountMode === 'shared-db') {
   $wgSharedTables[] = 'spoofuser';
+}
+
+//<< Babel >>
+
+if ($wmgUseExtensions['Babel']) {
+  // This extension requires running update.php.
+  wfLoadExtension('Babel');
+  $wgBabelCategoryNames = [
+    '0' => false,
+    '1' => false,
+    '2' => false,
+    '3' => false,
+    '4' => false,
+    '5' => false,
+    'N' => false
+  ];
+  $wgBabelMainCategory = false;
+  $wgBabelUseUserLanguage = true;
 }
 
 //<< CentralAuth >>
@@ -135,6 +152,19 @@ if ($wmgGlobalAccountMode === 'centralauth') {
 else {
   $wgGroupPermissions['steward']['checkuser'] = true;
   $wgGroupPermissions['steward']['checkuser-log'] = true;
+}
+
+//<< Cite >>
+
+if ($wmgUseExtensions['Cite']) {
+  wfLoadExtension('Cite');
+  $wgCiteBookReferencing = true;
+}
+
+//<< CodeEditor >>
+
+if ($wmgUseExtensions['CodeEditor'] && $wmgUseExtensions['WikiEditor']) {
+  wfLoadExtension('CodeEditor');
 }
 
 //<< ConfirmEdit >>
@@ -245,6 +275,12 @@ if ($wmgGlobalAccountMode !== null) {
   wfLoadExtension('GlobalPreferences');
 }
 
+//<< InputBox >>
+
+if ($wmgUseExtensions['InputBox']) {
+  wfLoadExtension('InputBox');
+}
+
 //<< Interwiki >>
 
 wfLoadExtension('Interwiki');
@@ -253,6 +289,34 @@ $wgGroupPermissions['admin']['interwiki'] = true;
 
 if ($wmgGlobalAccountMode !== null) {
   $wgInterwikiCentralDB = $wmgCentralDB;
+}
+
+//<< Math >>
+
+if ($wmgUseExtensions['Math']) {
+  // This extension requires running update.php.
+  wfLoadExtension('Math');
+  $wgMathEnableWikibaseDataType = false;
+  $wgMathValidModes = ['mathml', 'source'];
+}
+
+//<< MultimediaViewer >>
+
+if ($wmgUseExtensions['MultimediaViewer']) {
+  wfLoadExtension('MultimediaViewer');
+}
+
+//<< Nuke >>
+
+if ($wmgUseExtensions['Nuke']) {
+  wfLoadExtension('Nuke');
+
+  $wgGroupPermissions['sysop']['nuke'] = false;
+  $wgGroupPermissions['staff']['nuke'] = true;
+
+  if ($wmgGlobalAccountMode !== 'centralauth') {
+    $wgGroupPermissions['steward']['nuke'] = true;
+  }
 }
 
 //<< OATHAuth >>
@@ -278,6 +342,28 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupPermissions['steward']['oathauth-view-log'] = true;
 }
 
+//<< PageImages >>
+
+if ($wmgUseExtensions['PageImages']) {
+  wfLoadExtension('PageImages');
+  $wgPageImagesDenylistExpiry = $wmgCacheExpiry;
+  $wgPageImagesExpandOpenSearchXml = true;
+  $wgPageImagesNamespaces = [NS_HELP, NS_MAIN, NS_PROJECT, NS_USER];
+}
+
+//<< ParserFunctions >>
+
+if ($wmgUseExtensions['ParserFunctions']) {
+  wfLoadExtension('ParserFunctions');
+  $wgPFEnableStringFunctions = true;
+}
+
+//<< Poem >>
+
+if ($wmgUseExtensions['Poem']) {
+  wfLoadExtension('Poem');
+}
+
 //<< Renameuser >>
 
 wfLoadExtension('Renameuser');
@@ -286,6 +372,25 @@ $wgGroupPermissions['bureaucrat']['renameuser'] = false;
 
 if ($wmgGlobalAccountMode === null) {
   $wgGroupPermissions['steward']['renameuser'] = true;
+}
+
+//<< ReplaceText >>
+
+if ($wmgUseExtensions['ReplaceText']) {
+  wfLoadExtension('ReplaceText');
+  $wgReplaceTextResultsLimit = 100;
+
+  $wgGroupPermissions['sysop']['replacetext'] = false;
+
+  if ($wmgGlobalAccountMode !== 'centralauth') {
+    $wgGroupPermissions['steward']['replacetext'] = true;
+  }
+}
+
+//<< Scribunto >>
+
+if ($wmgUseExtensions['Scribunto']) {
+  wfLoadExtension('Scribunto');
 }
 
 //<< StaffPowers >>
@@ -299,6 +404,20 @@ $wgGroupPermissions['staff']['unblockable'] = false;
 if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupPermissions['steward']['unblockable'] = true;
 }
+
+//<< TemplateData >>
+
+if ($wmgUseExtensions['TemplateData']) {
+  wfLoadExtension('TemplateData');
+}
+
+//<< TextExtracts >>
+
+if ($wmgUseExtensions['TextExtracts']) {
+  wfLoadExtension('TextExtracts');
+  $wgExtractsExtendOpenSearchXml = true;
+}
+
 
 //<< TitleBlacklist >>
 
@@ -323,6 +442,13 @@ if ($wmgGlobalAccountMode !== null) {
 if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupPermissions['steward']['tboverride'] = true;
   $wgGroupPermissions['steward']['titleblacklistlog'] = true;
+}
+
+//<< WikiEditor >>
+
+if ($wmgUseExtensions['WikiEditor']) {
+  wfLoadExtension('WikiEditor');
+  $wgWikiEditorRealtimePreview = true;
 }
 
 //<< Other extensions >>
@@ -351,30 +477,6 @@ $wgVectorStickyHeaderEdit = [
 ];
 
 //< Extensions >
-
-//<< Babel >>
-//This extension requires running update.php.
-if ($wmgExtensions['Babel'])
-  {wfLoadExtension('Babel');
-  $wgBabelCategoryNames=
-  ['0' => false,
-  '1' => false,
-  '2' => false,
-  '3' => false,
-  '4' => false,
-  '5' => false,
-  'N' => false];
-  $wgBabelMainCategory=false;
-  $wgBabelUseUserLanguage=true;}
-
-//<< Cite >>
-if ($wmgExtensions['Cite'])
-  {wfLoadExtension('Cite');
-  $wgCiteBookReferencing=true;}
-
-//<< CodeEditor >>
-if ($wmgExtensions['CodeEditor'] && $wmgExtensions['WikiEditor'])
-  {wfLoadExtension('CodeEditor');}
 
 //<< CodeMirror >>
 if ($wmgExtensions['CodeMirror'] && $wmgExtensions['WikiEditor'])
@@ -406,10 +508,6 @@ if ($wmgGlobalAccountMode !== false && ($wmgWiki === $wmgCentralWiki || $wmgExte
 if ($wmgExtensions['Highlightjs_Integration'] && $wmgPlatform === 'Windows')
   {wfLoadExtension('Highlightjs_Integration');}
 
-//<< InputBox >>
-if ($wmgExtensions['InputBox'])
-  {wfLoadExtension('InputBox');}
-
 //<< Josa >>
 if ($wmgExtensions['Josa'])
   {wfLoadExtension('Josa');}
@@ -419,37 +517,6 @@ if ($wmgExtensions['MassEditRegex'])
   {wfLoadExtension('MassEditRegex');
   //Permissions
   $wmgGroupPermissions['bureaucrat']['masseditregex']=true;}
-
-//<< Math >>
-//This extension requires running update.php.
-if ($wmgExtensions['Math'])
-  {wfLoadExtension('Math');
-  $wgMathEnableExperimentalInputFormats=true;}
-
-//<< MultimediaViewer >>
-if ($wmgExtensions['MultimediaViewer'])
-  {wfLoadExtension('MultimediaViewer');
-  if ($wgThumbnailScriptPath)
-    {$wgMediaViewerUseThumbnailGuessing=true;}
-  }
-
-//<< Nuke >>
-if ($wmgExtensions['Nuke'])
-  {wfLoadExtension('Nuke');
-  //Permissions
-  $wmgGroupPermissions['bureaucrat']['nuke']=true;}
-
-//<< PageImages >>
-if ($wmgExtensions['PageImages'])
-  {wfLoadExtension('PageImages');
-  $wgPageImagesBlacklistExpiry=$wmgCacheExpiry;
-  $wgPageImagesExpandOpenSearchXml=true;
-  $wgPageImagesNamespaces=[NS_HELP, NS_MAIN, NS_PROJECT, NS_USER];}
-
-//<< ParserFunctions >>
-if ($wmgExtensions['ParserFunctions'])
-  {wfLoadExtension('ParserFunctions');
-  $wgPFEnableStringFunctions=true;}
 
 //<< PlavorMindTools >>
 wfLoadExtension('PlavorMindTools');
@@ -464,39 +531,19 @@ $wmgGroupPermissions['user']['deleteownuserpages']=true;
 $wmgGroupPermissions['user']['moveownuserpages']=true;
 $wmgGroupPermissions['moderator']['editotheruserpages']=true;
 
-//<< Poem >>
-if ($wmgExtensions['Poem'])
-  {wfLoadExtension('Poem');}
-
 //<< Popups >>
 if ($wmgExtensions['Popups'] && $wmgExtensions['PageImages'] && $wmgExtensions['TextExtracts'])
   {wfLoadExtension('Popups');
   $wgPopupsHideOptInOnPreferencesPage=true;
   $wgPopupsReferencePreviewsBetaFeature=false;}
 
-//<< ReplaceText >>
-if ($wmgExtensions['ReplaceText'])
-  {wfLoadExtension('ReplaceText');
-  //Permissions
-  if ($wmgGrantStewardsGlobalPermissions)
-    {$wmgGroupPermissions['steward']['replacetext']=true;}
-  }
-
 //<< RevisionSlider >>
 if ($wmgExtensions['RevisionSlider'])
   {wfLoadExtension('RevisionSlider');}
 
-//<< Scribunto >>
-if ($wmgExtensions['Scribunto'])
-  {wfLoadExtension('Scribunto');}
-
 //<< SyntaxHighlight_GeSHi >>
 if ($wmgExtensions['SyntaxHighlight_GeSHi'] && $wmgPlatform === 'Linux')
   {wfLoadExtension('SyntaxHighlight_GeSHi');}
-
-//<< TemplateData >>
-if ($wmgExtensions['TemplateData'])
-  {wfLoadExtension('TemplateData');}
 
 //<< TemplateSandbox >>
 if ($wmgExtensions['TemplateSandbox'])
@@ -511,11 +558,6 @@ if ($wmgExtensions['TemplateStyles'])
 //<< TemplateWizard >>
 if ($wmgExtensions['TemplateWizard'] && $wmgExtensions['TemplateData'] && $wmgExtensions['WikiEditor'])
   {wfLoadExtension('TemplateWizard');}
-
-//<< TextExtracts >>
-if ($wmgExtensions['TextExtracts'])
-  {wfLoadExtension('TextExtracts');
-  $wgExtractsExtendOpenSearchXml=true;}
 
 //<< TwoColConflict >>
 if ($wmgExtensions['TwoColConflict'])
@@ -533,11 +575,6 @@ if ($wmgExtensions['UniversalLanguageSelector'])
 //<< UploadsLink >>
 if ($wmgExtensions['UploadsLink'])
   {wfLoadExtension('UploadsLink');}
-
-//<< WikiEditor >>
-if ($wmgExtensions['WikiEditor'])
-  {wfLoadExtension('WikiEditor');
-  $wgWikiEditorRealtimePreview=true;}
 
 //< Skins >
 
