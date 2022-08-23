@@ -167,6 +167,18 @@ if ($wmgUseExtensions['CodeEditor'] && $wmgUseExtensions['WikiEditor']) {
   wfLoadExtension('CodeEditor');
 }
 
+//<< CodeMirror >>
+
+if ($wmgUseExtensions['CodeMirror'] && $wmgUseExtensions['WikiEditor']) {
+  wfLoadExtension('CodeMirror');
+}
+
+//<< CommonsMetadata >>
+
+if ($wmgUseExtensions['CommonsMetadata']) {
+  wfLoadExtension('CommonsMetadata');
+}
+
 //<< ConfirmEdit >>
 
 wfLoadExtensions(['ConfirmEdit', 'ConfirmEdit/hCaptcha']);
@@ -210,7 +222,7 @@ $wgEchoMentionStatusNotifications = true;
 // $wgEchoNotificationIcons
 $wgEchoOnWikiBlacklist = null;
 $wgEchoPerUserWhitelistFormat = null;
-$wgEchoPollForUpdates = 20;
+$wgEchoPollForUpdates = 30;
 $wgEchoWatchlistNotifications = true;
 $wgNotifyTypeAvailabilityByCategory = [
   'edit-user-talk' => [
@@ -264,6 +276,21 @@ if ($wmgGlobalAccountMode !== null) {
   $wgGroupPermissions['steward']['globalblock'] = false;
 }
 
+//<< GlobalCssJs >>
+
+if ($wmgUseExtensions['GlobalCssJs'] && $wmgGlobalAccountMode !== null) {
+  wfLoadExtension('GlobalCssJs');
+  $wgGlobalCssJsConfig = [
+    'source' => 'central',
+    'wiki' => $wmgCentralDB
+  ];
+
+  $wgResourceLoaderSources['central'] = [
+    'apiScript' => "{$wmgCentralBaseURL}{$wgScriptPath}/api.php",
+    'loadScript' => "{$wmgCentralBaseURL}{$wgScriptPath}/load.php"
+  ];
+}
+
 //<< GlobalPreferences >>
 
 if ($wmgGlobalAccountMode === 'centralauth') {
@@ -273,6 +300,23 @@ if ($wmgGlobalAccountMode === 'centralauth') {
 if ($wmgGlobalAccountMode !== null) {
   // This extension requires running update.php.
   wfLoadExtension('GlobalPreferences');
+}
+
+//<< GlobalUserPage >>
+
+if ($wmgUseExtensions['GlobalUserPage'] && $wmgGlobalAccountMode !== null) {
+  wfLoadExtension('GlobalUserPage');
+  $wgGlobalUserPageAPIUrl = "{$wmgCentralBaseURL}{$wgScriptPath}/api.php";
+  $wgGlobalUserPageCacheExpiry = $wmgCacheExpiry;
+  $wgGlobalUserPageDBname = $wmgCentralDB;
+  // $wgGlobalUserPageFooterKey
+  $wgGlobalUserPageTimeout = 'default';
+}
+
+//<< Highlightjs_Integration >>
+
+if ($wmgUseExtensions['Highlightjs_Integration'] && PHP_OS_FAMILY === 'Windows') {
+  wfLoadExtension('Highlightjs_Integration');
 }
 
 //<< InputBox >>
@@ -289,6 +333,12 @@ $wgGroupPermissions['admin']['interwiki'] = true;
 
 if ($wmgGlobalAccountMode !== null) {
   $wgInterwikiCentralDB = $wmgCentralDB;
+}
+
+//<< Josa >>
+
+if ($wmgUseExtensions['Josa']) {
+  wfLoadExtension('Josa');
 }
 
 //<< Math >>
@@ -358,10 +408,45 @@ if ($wmgUseExtensions['ParserFunctions']) {
   $wgPFEnableStringFunctions = true;
 }
 
+//<< Parsoid >>
+
+wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
+
+//<< PlavorMindTools >>
+
+wfLoadExtension('PlavorMindTools');
+$wgPMTFeatureConfig = [
+  'BlueCategoryLinks' => [
+    'enable' => false
+  ],
+  'NoActionsOnNonEditable' => [
+    'enable' => true,
+    'HideMoveTab' => true
+  ],
+  'ReplaceInterfaceMessages' => [
+    'enable' => true,
+    'EnglishSystemUsers' => true
+  ],
+  'UserPageAccess' => [
+    'enable' => true
+  ]
+];
+
+$wgGroupPermissions['moderator']['editotheruserpages'] = true;
+$wgGroupPermissions['admin']['editotheruserpages'] = true;
+
 //<< Poem >>
 
 if ($wmgUseExtensions['Poem']) {
   wfLoadExtension('Poem');
+}
+
+//<< Popups >>
+
+if ($wmgUseExtensions['Popups'] && $wmgUseExtensions['PageImages'] && $wmgUseExtensions['TextExtracts']) {
+  wfLoadExtension('Popups');
+  $wgPopupsHideOptInOnPreferencesPage = true;
+  $wgPopupsReferencePreviewsBetaFeature = false;
 }
 
 //<< Renameuser >>
@@ -387,6 +472,12 @@ if ($wmgUseExtensions['ReplaceText']) {
   }
 }
 
+//<< RevisionSlider >>
+
+if ($wmgUseExtensions['RevisionSlider']) {
+  wfLoadExtension('RevisionSlider');
+}
+
 //<< Scribunto >>
 
 if ($wmgUseExtensions['Scribunto']) {
@@ -405,10 +496,36 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupPermissions['steward']['unblockable'] = true;
 }
 
+//<< SyntaxHighlight_GeSHi >>
+
+if ($wmgUseExtensions['SyntaxHighlight_GeSHi'] && PHP_OS_FAMILY === 'Linux') {
+  wfLoadExtension('SyntaxHighlight_GeSHi');
+}
+
 //<< TemplateData >>
 
 if ($wmgUseExtensions['TemplateData']) {
   wfLoadExtension('TemplateData');
+}
+
+//<< TemplateSandbox >>
+
+if ($wmgUseExtensions['TemplateSandbox']) {
+  wfLoadExtension('TemplateSandbox');
+}
+
+//<< TemplateStyles >>
+
+if ($wmgUseExtensions['TemplateStyles']) {
+  wfLoadExtension('TemplateStyles');
+  // Remove default values
+  $wgTemplateStylesAllowedUrls = [];
+}
+
+//<< TemplateWizard >>
+
+if ($wmgUseExtensions['TemplateWizard'] && $wmgUseExtensions['TemplateData'] && $wmgUseExtensions['WikiEditor']) {
+  wfLoadExtension('TemplateWizard');
 }
 
 //<< TextExtracts >>
@@ -417,7 +534,6 @@ if ($wmgUseExtensions['TextExtracts']) {
   wfLoadExtension('TextExtracts');
   $wgExtractsExtendOpenSearchXml = true;
 }
-
 
 //<< TitleBlacklist >>
 
@@ -444,6 +560,28 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupPermissions['steward']['titleblacklistlog'] = true;
 }
 
+//<< TwoColConflict >>
+
+if ($wmgUseExtensions['TwoColConflict']) {
+  wfLoadExtension('TwoColConflict');
+  $wgTwoColConflictBetaFeature = false;
+}
+
+//<< UniversalLanguageSelector >>
+
+if ($wmgUseExtensions['UniversalLanguageSelector']) {
+  wfLoadExtension('UniversalLanguageSelector');
+  $wgULSIMEEnabled = false;
+  $wgULSLanguageDetection = false;
+  $wgULSWebfontsEnabled = false;
+}
+
+//<< UploadsLink >>
+
+if ($wmgUseExtensions['UploadsLink']) {
+  wfLoadExtension('UploadsLink');
+}
+
 //<< WikiEditor >>
 
 if ($wmgUseExtensions['WikiEditor']) {
@@ -456,6 +594,25 @@ if ($wmgUseExtensions['WikiEditor']) {
 wfLoadExtension('SecureLinkFixer');
 
 //< Skins >
+
+//<< MinervaNeue >>
+
+if ($wmgUseSkins['MinervaNeue']) {
+  wfLoadSkin('MinervaNeue');
+  $wgMinervaAdvancedMainMenu['base'] = true;
+  $wgMinervaAlwaysShowLanguageButton = false;
+  $wgMinervaHistoryInPageActions['base'] = true;
+  $wgMinervaOverflowInPageActions['base'] = true;
+  $wgMinervaPersonalMenu['base'] = true;
+  $wgMinervaShowCategories['base'] = true;
+  $wgMinervaTalkAtTop['base'] = true;
+}
+
+//<< Timeless >>
+
+if ($wmgUseSkins['Timeless']) {
+  wfLoadSkin('Timeless');
+}
 
 //<< Vector >>
 
@@ -475,137 +632,3 @@ $wgVectorStickyHeaderEdit = [
   'logged_in' => true,
   'logged_out' => true
 ];
-
-//< Extensions >
-
-//<< CodeMirror >>
-if ($wmgExtensions['CodeMirror'] && $wmgExtensions['WikiEditor'])
-  {wfLoadExtension('CodeMirror');}
-
-//<< CommonsMetadata >>
-if ($wmgExtensions['CommonsMetadata'])
-  {wfLoadExtension('CommonsMetadata');}
-
-//<< GlobalCssJs >>
-if ($wmgGlobalAccountMode !== false && ($wmgWiki === $wmgCentralWiki || $wmgExtensions['GlobalCssJs']))
-  {wfLoadExtension('GlobalCssJs');
-  $wgGlobalCssJsConfig=
-  ['source' => 'central',
-  'wiki' => "{$wmgCentralWiki}wiki"];
-  $wgResourceLoaderSources['central']=
-  ['apiScript' => "{$wmgCentralBaseURL}{$wgScriptPath}/api.php",
-  'loadScript' => "{$wmgCentralBaseURL}{$wgScriptPath}/load.php"];}
-
-//<< GlobalUserPage >>
-if ($wmgGlobalAccountMode !== false && ($wmgWiki === $wmgCentralWiki || $wmgExtensions['GlobalUserPage']))
-  {wfLoadExtension('GlobalUserPage');
-  $wgGlobalUserPageAPIUrl="{$wmgCentralBaseURL}{$wgScriptPath}/api.php";
-  $wgGlobalUserPageCacheExpiry=$wmgCacheExpiry;
-  $wgGlobalUserPageDBname="{$wmgCentralWiki}wiki";
-  $wgGlobalUserPageTimeout='default';}
-
-//<< Highlightjs_Integration >>
-if ($wmgExtensions['Highlightjs_Integration'] && $wmgPlatform === 'Windows')
-  {wfLoadExtension('Highlightjs_Integration');}
-
-//<< Josa >>
-if ($wmgExtensions['Josa'])
-  {wfLoadExtension('Josa');}
-
-//<< MassEditRegex >>
-if ($wmgExtensions['MassEditRegex'])
-  {wfLoadExtension('MassEditRegex');
-  //Permissions
-  $wmgGroupPermissions['bureaucrat']['masseditregex']=true;}
-
-//<< PlavorMindTools >>
-wfLoadExtension('PlavorMindTools');
-$wgPMTFeatureConfig['NoActionsOnNonEditable']=
-['enable' => true,
-'HideMoveTab' => true];
-$wgPMTFeatureConfig['ReplaceInterfaceMessages']=
-['enable' => true,
-'EnglishSystemUsers' => true];
-//Permissions
-$wmgGroupPermissions['user']['deleteownuserpages']=true;
-$wmgGroupPermissions['user']['moveownuserpages']=true;
-$wmgGroupPermissions['moderator']['editotheruserpages']=true;
-
-//<< Popups >>
-if ($wmgExtensions['Popups'] && $wmgExtensions['PageImages'] && $wmgExtensions['TextExtracts'])
-  {wfLoadExtension('Popups');
-  $wgPopupsHideOptInOnPreferencesPage=true;
-  $wgPopupsReferencePreviewsBetaFeature=false;}
-
-//<< RevisionSlider >>
-if ($wmgExtensions['RevisionSlider'])
-  {wfLoadExtension('RevisionSlider');}
-
-//<< SyntaxHighlight_GeSHi >>
-if ($wmgExtensions['SyntaxHighlight_GeSHi'] && $wmgPlatform === 'Linux')
-  {wfLoadExtension('SyntaxHighlight_GeSHi');}
-
-//<< TemplateSandbox >>
-if ($wmgExtensions['TemplateSandbox'])
-  {wfLoadExtension('TemplateSandbox');}
-
-//<< TemplateStyles >>
-if ($wmgExtensions['TemplateStyles'])
-  {wfLoadExtension('TemplateStyles');
-  //Remove default value
-  $wgTemplateStylesAllowedUrls=[];}
-
-//<< TemplateWizard >>
-if ($wmgExtensions['TemplateWizard'] && $wmgExtensions['TemplateData'] && $wmgExtensions['WikiEditor'])
-  {wfLoadExtension('TemplateWizard');}
-
-//<< TwoColConflict >>
-if ($wmgExtensions['TwoColConflict'])
-  {wfLoadExtension('TwoColConflict');
-  $wgTwoColConflictBetaFeature=false;}
-
-//<< UniversalLanguageSelector >>
-if ($wmgExtensions['UniversalLanguageSelector'])
-  {wfLoadExtension('UniversalLanguageSelector');
-  $wgULSCompactLanguageLinksBetaFeature=false;
-  $wgULSIMEEnabled=false;
-  $wgULSLanguageDetection=false;
-  $wgULSWebfontsEnabled=false;}
-
-//<< UploadsLink >>
-if ($wmgExtensions['UploadsLink'])
-  {wfLoadExtension('UploadsLink');}
-
-//< Skins >
-
-//<< Citizen >>
-if ($wmgSkins['Citizen'])
-  {wfLoadSkin('Citizen');
-  $wgCitizenEnableManifest=false;
-  $wgCitizenManifestThemeColor='#9933ff';
-  $wgCitizenThemeColor='#9933ff';}
-
-//<< Medik >>
-if ($wmgSkins['Medik'])
-  {wfLoadSkin('Medik');
-  $wgMedikColor='#9933ff';}
-
-//<< MinervaNeue >>
-if ($wmgSkins['MinervaNeue'])
-  {wfLoadSkin('MinervaNeue');
-  $wgMinervaAdvancedMainMenu['base']=true;
-  $wgMinervaAdvancedMainMenu['beta']=true;
-  $wgMinervaAlwaysShowLanguageButton=false;
-  $wgMinervaApplyKnownTemplateHacks=true;
-  $wgMinervaHistoryInPageActions['base']=true;
-  $wgMinervaHistoryInPageActions['beta']=true;
-  $wgMinervaPageIssuesNewTreatment['beta']=false;
-  $wgMinervaPersonalMenu['base']=true;
-  $wgMinervaPersonalMenu['beta']=true;
-  $wgMinervaShowCategoriesButton['base']=true;
-  $wgMinervaTalkAtTop['base']=true;
-  $wgMinervaTalkAtTop['beta']=true;}
-
-//<< Timeless >>
-if ($wmgSkins['Timeless'])
-  {wfLoadSkin('Timeless');}
