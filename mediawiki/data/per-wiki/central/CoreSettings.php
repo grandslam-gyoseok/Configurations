@@ -39,18 +39,7 @@ $wgLocalInterwikis = ['central'];
 
 //< User rights, access control and monitoring >
 
-$wgGroupPermissions['steward']['userrights'] = true;
-$wgGroupPermissions['steward']['userrights-interwiki'] = true;
-
-$wgGroupPermissions['admin'] = array_merge($wgGroupPermissions['admin'], [
-  'editinterface' => false,
-  'editsitecss' => false,
-  'editsitejson' => false,
-  'editusercss' => false,
-  'edituserjson' => false
-]);
-
-if ($wmgGlobalAccountMode !== 'centralauth') {
+if ($wmgGlobalAccountMode === 'shared-db') {
   $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['steward'], [
     'editinterface' => true,
     'editsitecss' => true,
@@ -58,6 +47,18 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
     'editusercss' => true,
     'edituserjson' => true,
   ]);
+}
+
+if ($wmgGlobalAccountMode !== null) {
+  $wgGroupPermissions['admin'] = array_merge($wgGroupPermissions['admin'], [
+    'editinterface' => false,
+    'editsitecss' => false,
+    'editsitejson' => false,
+    'editusercss' => false,
+    'edituserjson' => false
+  ]);
+  $wgGroupPermissions['steward']['userrights'] = true;
+  $wgGroupPermissions['steward']['userrights-interwiki'] = true;
 }
 
 //<< Access >>
@@ -80,39 +81,3 @@ $wgImportSources = [];
 //< Miscellaneous settings >
 
 $wgRedirectOnLogin = 'PlavorMindCentral';
-
-//< Extensions >
-
-//<< Extension usage >>
-$wmgExtensions=array_merge($wmgExtensions,
-['Babel' => true,
-'Cite' => true,
-'CodeEditor' => true,
-'CodeMirror' => true,
-'CommonsMetadata' => true,
-'Highlightjs_Integration' => true,
-'MassEditRegex' => true,
-'MultimediaViewer' => true,
-'Nuke' => true,
-'PageImages' => true,
-'Poem' => true,
-'Popups' => true,
-'ReplaceText' => true,
-'RevisionSlider' => true,
-'SyntaxHighlight_GeSHi' => true,
-'TemplateData' => true,
-'TemplateSandbox' => true,
-'TemplateStyles' => true,
-'TemplateWizard' => true,
-'TextExtracts' => true,
-'TwoColConflict' => true,
-'UniversalLanguageSelector' => true,
-'UploadsLink' => true,
-'WikiEditor' => true]);
-
-//< Skins >
-
-//<< Skin usage >>
-$wmgSkins['Citizen'] = true;
-$wmgSkins['MinervaNeue'] = true;
-$wmgSkins['Timeless'] = true;
