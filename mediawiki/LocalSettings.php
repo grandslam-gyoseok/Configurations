@@ -42,25 +42,43 @@ $wmgCIDRLimit = [
 ];
 $wmgCustomDomains = [];
 $wmgDebugLevel = 0;
-$wmgDefaultDomain = '%wiki%.plavormind.tk';
+$wmgDefaultDomain = '%wiki%.plavormind.io';
 $wmgUseExtensions = [
   'Babel' => true,
   'Cite' => true,
   'CodeEditor' => false,
+  'CodeMirror' => false,
+  'CommonsMetadata' => false,
+  'GlobalCssJs' => true,
+  'GlobalUserPage' => true,
+  'Highlightjs_Integration' => false,
   'InputBox' => false,
+  'Josa' => false,
   'Math' => false,
   'MultimediaViewer' => false,
   'Nuke' => true,
   'PageImages' => false,
   'ParserFunctions' => true,
   'Poem' => false,
+  'Popups' => false,
   'ReplaceText' => false,
+  'RevisionSlider' => false,
   'Scribunto' => false,
+  'SyntaxHighlight_GeSHi' => false,
   'TemplateData' => false,
+  'TemplateSandbox' => false,
+  'TemplateStyles' => false,
+  'TemplateWizard' => false,
   'TextExtracts' => false,
+  'TwoColConflict' => true,
+  'UniversalLanguageSelector' => false,
+  'UploadsLink' => false,
   'WikiEditor' => true
 ];
-$wmgUseSkins = [];
+$wmgUseSkins = [
+  'MinervaNeue' => false,
+  'Timeless' => false
+];
 $wmgWiki = getWiki($wmgDefaultDomain, 'default', $wmgCustomDomains);
 $wmgWikis = ['central', 'osa'];
 
@@ -89,35 +107,6 @@ if (!in_array($wmgWiki, $wmgWikis, true)) {
   exit('Cannot find this wiki.');
 }
 
-//<< Backward compatibility >>
-
-$wmgPlatform = PHP_OS_FAMILY;
-
-$wmgExtensions = array_merge([
-  'CodeMirror' => false,
-  'CommonsMetadata' => false,
-  'GlobalCssJs' => true,
-  'GlobalUserPage' => true,
-  'Highlightjs_Integration' => false,
-  'Josa' => false,
-  'MassEditRegex' => false,
-  'Popups' => false,
-  'RevisionSlider' => false,
-  'SyntaxHighlight_GeSHi' => false,
-  'TemplateSandbox' => false,
-  'TemplateStyles' => false,
-  'TemplateWizard' => false,
-  'TwoColConflict' => false,
-  'UniversalLanguageSelector' => false,
-  'UploadsLink' => false
-], $wmgUseExtensions);
-$wmgSkins = array_merge([
-  'Citizen' => false,
-  'Medik' => false,
-  'MinervaNeue' => false,
-  'Timeless' => false
-], $wmgUseSkins);
-
 //<< Global accounts >>
 
 $wmgGlobalAccountExemptWikis = [];
@@ -131,12 +120,11 @@ if (in_array($wmgWiki, $wmgGlobalAccountExemptWikis, true)) {
 //< Load settings >
 
 require_once "$wmgDataDirectory/GlobalCoreSettings.php";
+require_once "$wmgDataDirectory/GlobalExtraSettings.php";
 
 if (file_exists("$wmgDataDirectory/per-wiki/$wmgWiki/CoreSettings.php")) {
   include_once "$wmgDataDirectory/per-wiki/$wmgWiki/CoreSettings.php";
 }
-
-require_once "$wmgDataDirectory/GlobalExtraSettings.php";
 
 if (file_exists("$wmgDataDirectory/per-wiki/$wmgWiki/ExtraSettings.php")) {
   include_once "$wmgDataDirectory/per-wiki/$wmgWiki/ExtraSettings.php";
