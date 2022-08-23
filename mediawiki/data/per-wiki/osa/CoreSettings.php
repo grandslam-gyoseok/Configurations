@@ -1,31 +1,18 @@
 <?php
-//< General >
+//< General Settings >
 
-//<< Basic information >>
-$wgLogos=
-['1x' => "/resources/per-wiki/{$wmgWiki}/logos/logo-1x.png",
-'1.5x' => "/resources/per-wiki/{$wmgWiki}/logos/logo-1.5x.png",
-'2x' => "/resources/per-wiki/{$wmgWiki}/logos/logo-2x.png",
-'icon' => "/resources/per-wiki/{$wmgWiki}/logos/logo-2x.png"];
-$wgSitename='오사위키덤프';
+$wgSitename = '오사위키덤프';
 
-//< Permissions >
+//< Server URLs and file paths >
 
-//<< User group permissions >>
-$wmgGroupPermissions['*']['createaccount']=false;
-$wmgGroupPermissions['user']['edit']=false;
+$wgLogos = [
+  '1x' => "/resources/per-wiki/$wmgWiki/logos/logo-1x.png",
+  '1.5x' => "/resources/per-wiki/$wmgWiki/logos/logo-1.5x.png",
+  '2x' => "/resources/per-wiki/$wmgWiki/logos/logo-2x.png",
+  'icon' => "/resources/per-wiki/$wmgWiki/logos/logo-2x.png"
+];
 
-//< Extensions >
+//< User rights, access control and monitoring >
 
-//<< Extension usage >>
-$wmgExtensions=array_merge($wmgExtensions,
-['Cite' => true,
-'Highlightjs_Integration' => true,
-'Josa' => true,
-'Math' => true,
-'PageImages' => true,
-'ParserFunctions' => true,
-'Popups' => true,
-'ReplaceText' => true,
-'SyntaxHighlight_GeSHi' => true,
-'TextExtracts' => true]);
+$wgGroupPermissions['*']['createaccount'] = false;
+$wgGroupPermissions['user']['edit'] = false;
