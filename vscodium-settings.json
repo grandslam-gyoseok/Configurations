@@ -24,6 +24,7 @@
   "powershell.integratedConsole.showOnStartup": false,
   "security.workspace.trust.banner": "always",
   "security.workspace.trust.emptyWindow": false,
+  "security.workspace.trust.enabled": false,
   "security.workspace.trust.startupPrompt": "never",
   "security.workspace.trust.untrustedFiles": "newWindow",
   "window.autoDetectColorScheme": true,
