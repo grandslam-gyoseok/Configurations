@@ -27,6 +27,8 @@
   "security.workspace.trust.untrustedFiles": "newWindow",
   "window.autoDetectColorScheme": true,
   "window.restoreWindows": "none",
-  "workbench.colorTheme": "Default Light+",
-  "workbench.editor.languageDetection": false
+  "workbench.colorTheme": "GitHub Light Default",
+  "workbench.editor.languageDetection": false,
+  "workbench.preferredDarkColorTheme": "GitHub Dark Default",
+  "workbench.preferredLightColorTheme": "GitHub Light Default"
 }
