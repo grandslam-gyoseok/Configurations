@@ -1,7 +1,7 @@
 <?php
 //< General Settings >
 
-$wgSitename = 'PlavorMindCentral';
+$wgSitename = 'PlavorMind Central';
 
 //< Server URLs and file paths >
 
@@ -23,7 +23,7 @@ $wgAllowSiteCSSOnRestrictedPages = true;
 $wgMetaNamespace = 'PlavorMind';
 $wgNamespaceAliases = [
   '@' => NS_USER,
-  'PlavorMindCentral' => NS_PROJECT,
+  'PlavorMind_Central' => NS_PROJECT,
   'PM' => NS_PROJECT
 ];
 
@@ -117,8 +117,18 @@ if ($wmgGlobalAccountMode !== null) {
 $wgGroupPermissions['steward']['oathauth-disable-for-user'] = true;
 $wgGroupPermissions['steward']['oathauth-verify-user'] = true;
 
+//<< PlavorMindTools >>
+
+$wgPMTDisabledUserGroups = array_diff($wgPMTDisabledUserGroups, ['steward']);
+
 //<< Renameuser >>
 
 if ($wmgGlobalAccountMode === 'shared-db') {
   $wgGroupPermissions['steward']['renameuser'] = true;
 }
+
+//< Skins >
+
+//<< Vector >>
+
+$wgVectorVisualEnhancementNext = true;
