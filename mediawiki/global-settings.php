@@ -1298,7 +1298,7 @@ wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
 //<< PlavorMindTools >>
 
 wfLoadExtension('PlavorMindTools');
-$wgPMTDisabledUserGroups = [
+$wgPMTDisableUserGroups = [
   'bot',
   'bureaucrat',
   'checkuser',

@@ -119,7 +119,7 @@ $wgGroupPermissions['steward']['oathauth-verify-user'] = true;
 
 //<< PlavorMindTools >>
 
-$wgPMTDisabledUserGroups = array_diff($wgPMTDisabledUserGroups, ['steward']);
+$wgPMTDisableUserGroups = array_diff($wgPMTDisableUserGroups, ['steward']);
 
 //<< Renameuser >>
 
