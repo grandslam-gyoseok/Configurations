@@ -868,8 +868,8 @@ if (PHP_OS_FAMILY === 'Windows') {
 //< HTTP client >
 
 $wgAsyncHTTPTimeout = 40;
-$wgHTTPMaxTimeout = 40;
 $wgHTTPImportTimeout = 30;
+$wgHTTPMaxTimeout = 40;
 $wgHTTPTimeout = 30;
 
 //< Miscellaneous settings >
@@ -1298,25 +1298,26 @@ wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
 //<< PlavorMindTools >>
 
 wfLoadExtension('PlavorMindTools');
-$wgPMTFeatureConfig = [
-  'BlueCategoryLinks' => [
-    'enable' => false
-  ],
-  'NoActionsOnNonEditable' => [
-    'enable' => true,
-    'HideMoveTab' => true
-  ],
-  'ReplaceInterfaceMessages' => [
-    'enable' => true,
-    'EnglishSystemUsers' => true
-  ],
-  'UserPageAccess' => [
-    'enable' => true
-  ]
+$wgPMTDisabledUserGroups = [
+  'bot',
+  'bureaucrat',
+  'checkuser',
+  'push-subscription-manager',
+  'steward',
+  'suppress',
+  'sysop'
 ];
+$wgRIMEnglishSystemUsers = true;
+$wgRIMPlavorMindSpecificMessages = true;
+$wgUPAEnable = true;
 
 $wgGroupPermissions['moderator']['editotheruserpages'] = true;
+$wgGroupPermissions['staff']['movetousernamespace'] = true;
 $wgGroupPermissions['admin']['editotheruserpages'] = true;
+
+if ($wmgGlobalAccountMode !== 'centralauth') {
+  $wgGroupPermissions['steward']['movetousernamespace'] = true;
+}
 
 //<< Poem >>
 
