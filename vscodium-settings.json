@@ -9,6 +9,11 @@
   "editor.unicodeHighlight.includeComments": true,
   "editor.unicodeHighlight.nonBasicASCII": false,
   "editor.wordWrap": "on",
+  "extensions.supportUntrustedWorkspaces": {
+    "LeonardSSH.vscord": {
+      "supported": true
+    }
+  },
   "php.validate.executablePath": "C:/plavormind/php/php.exe",
   "powershell.codeFormatting.alignPropertyValuePairs": false,
   "powershell.codeFormatting.autoCorrectAliases": true,
