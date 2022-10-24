@@ -1310,6 +1310,13 @@ $wgPMTDisableUserGroups = [
 ];
 $wgRIMEnglishSystemUsers = true;
 $wgRIMPlavorMindSpecificMessages = true;
+$wgUGHEnable = true;
+$wgUGHHierarchies = [
+  'moderator' => 1,
+  'staff' => 2,
+  'admin' => 3,
+  'steward' => 4
+];
 $wgUPAEnable = true;
 
 $wgGroupPermissions['moderator']['editotheruserpages'] = true;
@@ -1367,18 +1374,6 @@ if ($wmgUseExtensions['RevisionSlider']) {
 
 if ($wmgUseExtensions['Scribunto']) {
   wfLoadExtension('Scribunto');
-}
-
-//<< StaffPowers >>
-
-wfLoadExtension('StaffPowers');
-$wgStaffPowersShoutWikiMessages = false;
-$wgStaffPowersStewardGroupName = 'admin';
-
-$wgGroupPermissions['staff']['unblockable'] = false;
-
-if ($wmgGlobalAccountMode !== 'centralauth') {
-  $wgGroupPermissions['steward']['unblockable'] = true;
 }
 
 //<< SyntaxHighlight_GeSHi >>
