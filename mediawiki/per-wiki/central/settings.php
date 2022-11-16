@@ -147,4 +147,5 @@ $wgVectorArticleTools = [
   'logged_in' => true,
   'logged_out' => true
 ];
+// This is true by default in MediaWiki 1.40 or newer.
 $wgVectorVisualEnhancementNext = true;
