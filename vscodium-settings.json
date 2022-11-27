@@ -33,8 +33,7 @@
   "vscord.status.state.enabled": false,
   "window.autoDetectColorScheme": true,
   "window.restoreWindows": "none",
-  "workbench.colorTheme": "GitHub Light Default",
+  "workbench.colorTheme": "Huacat Pink Theme",
   "workbench.editor.languageDetection": false,
-  "workbench.preferredDarkColorTheme": "GitHub Dark Default",
-  "workbench.preferredLightColorTheme": "GitHub Light Default"
+  "workbench.preferredLightColorTheme": "Huacat Pink Theme"
 }
