@@ -1231,6 +1231,7 @@ if ($wmgUseExtensions['Math']) {
   // This extension requires running update.php.
   wfLoadExtension('Math');
   $wgMathEnableWikibaseDataType = false;
+  // This is same as default in MediaWiki 1.40 or newer.
   $wgMathValidModes = ['mathml', 'source'];
 }
 
