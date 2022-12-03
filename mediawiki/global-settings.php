@@ -348,7 +348,7 @@ $wgTranscludeCacheExpiry = $wmgCacheExpiry;
 // Only allow HTTP and HTTPS protocols in links
 $wgUrlProtocols = ['http://', 'https://'];
 
-if (strpos($wmgDefaultDomain, '%wiki%.') === 0) {
+if (str_starts_with($wmgDefaultDomain, '%wiki%.')) {
   $wgNoFollowDomainExceptions[] = preg_replace('/^%wiki%\\./', '', $wmgDefaultDomain);
 }
 elseif (!isset($wmgCustomDomains[$wmgWiki])) {
@@ -771,7 +771,7 @@ $wgRestAllowCrossOriginCookieAuth = true;
 // 2 months
 $wgExtendedLoginCookieExpiration = 60 * 60 * 24 * 30 * 2;
 
-if ($wmgGlobalAccountMode === 'shared-db' && strpos($wmgDefaultDomain, '%wiki%.') === 0 && !isset($wmgCustomDomains[$wmgWiki])) {
+if ($wmgGlobalAccountMode === 'shared-db' && str_starts_with($wmgDefaultDomain, '%wiki%.') && !isset($wmgCustomDomains[$wmgWiki])) {
   $wgCookieDomain = preg_replace('/^%wiki%/', '', $wmgDefaultDomain);
 }
 
@@ -1005,7 +1005,7 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgGroupPermissions['steward']['centralauth-suppress'] = false;
   $wgGroupPermissions['steward']['centralauth-unmerge'] = false;
 
-  if (strpos($wmgDefaultDomain, '%wiki%.') === 0 && !isset($wmgCustomDomains[$wmgWiki])) {
+  if (str_starts_with($wmgDefaultDomain, '%wiki%.') && !isset($wmgCustomDomains[$wmgWiki])) {
     $wgCentralAuthCookieDomain = preg_replace('/^%wiki%/', '', $wmgDefaultDomain);
   }
 }
