@@ -1309,6 +1309,7 @@ $wgPMTDisableUserGroups = [
   'suppress',
   'sysop'
 ];
+$wgRIMEnable = true;
 $wgRIMEnglishSystemUsers = true;
 $wgRIMPlavorMindSpecificMessages = true;
 $wgUGHEnable = true;
