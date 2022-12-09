@@ -1300,7 +1300,7 @@ wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
 //<< PlavorMindTools >>
 
 wfLoadExtension('PlavorMindTools');
-$wgPMTDisableUserGroups = [
+$wgCUGDisableGroups = [
   'bot',
   'bureaucrat',
   'checkuser',
@@ -1309,16 +1309,16 @@ $wgPMTDisableUserGroups = [
   'suppress',
   'sysop'
 ];
-$wgRIMEnable = true;
-$wgRIMEnglishSystemUsers = true;
-$wgRIMPlavorMindSpecificMessages = true;
-$wgUGHEnable = true;
-$wgUGHHierarchies = [
+$wgCUGEnable = true;
+$wgCUGHierarchies = [
   'moderator' => 1,
   'staff' => 2,
   'admin' => 3,
   'steward' => 4
 ];
+$wgRIMEnable = true;
+$wgRIMEnglishSystemUsers = true;
+$wgRIMPlavorMindSpecificMessages = true;
 $wgUPAEnable = true;
 
 $wgGroupPermissions['moderator']['editotheruserpages'] = true;
