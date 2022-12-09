@@ -128,7 +128,7 @@ $wgGroupPermissions['steward']['oathauth-verify-user'] = true;
 
 //<< PlavorMindTools >>
 
-$wgPMTDisableUserGroups = array_diff($wgPMTDisableUserGroups, ['steward']);
+$wgCUGDisableGroups = array_diff($wgCUGDisableGroups, ['steward']);
 // 1.40+
 $wgPMTNewPreferencesLayout = true;
 
