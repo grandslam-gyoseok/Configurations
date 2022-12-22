@@ -3,7 +3,6 @@ $wmgUseExtensions = array_merge($wmgUseExtensions, [
   'CodeEditor' => true,
   'CodeMirror' => true,
   'CommonsMetadata' => true,
-  'Highlightjs_Integration' => true,
   'InputBox' => true,
   'Josa' => true,
   'Math' => true,
