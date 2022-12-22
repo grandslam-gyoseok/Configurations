@@ -47,7 +47,6 @@ $wmgUseExtensions = [
   'CommonsMetadata' => false,
   'GlobalCssJs' => true,
   'GlobalUserPage' => true,
-  'Highlightjs_Integration' => false,
   'InputBox' => false,
   'Josa' => false,
   'Math' => false,
@@ -863,7 +862,7 @@ $wgAPICacheHelpTimeout = $wmgCacheExpiry;
 //< Shell and process control >
 
 if (PHP_OS_FAMILY === 'Windows') {
-  $wgPhpCli = 'C:/plavormind/php/php.exe';
+  $wgPhpCli = 'C:/plavormind/php/php.cmd';
 }
 
 //< HTTP client >
@@ -1197,12 +1196,6 @@ if ($wmgUseExtensions['GlobalUserPage'] && $wmgGlobalAccountMode !== null) {
   $wgGlobalUserPageTimeout = 'default';
 }
 
-//<< Highlightjs_Integration >>
-
-if ($wmgUseExtensions['Highlightjs_Integration'] && PHP_OS_FAMILY === 'Windows') {
-  wfLoadExtension('Highlightjs_Integration');
-}
-
 //<< InputBox >>
 
 if ($wmgUseExtensions['InputBox']) {
@@ -1227,6 +1220,8 @@ if ($wmgUseExtensions['Josa']) {
 
 //<< Math >>
 
+// This extension should not be enabled until https://phabricator.wikimedia.org/T324234 is resolved.
+/*
 if ($wmgUseExtensions['Math']) {
   // This extension requires running update.php.
   wfLoadExtension('Math');
@@ -1234,6 +1229,7 @@ if ($wmgUseExtensions['Math']) {
   // This is same as default in MediaWiki 1.40 or newer.
   $wgMathValidModes = ['mathml', 'source'];
 }
+*/
 
 //<< MultimediaViewer >>
 
@@ -1380,8 +1376,12 @@ if ($wmgUseExtensions['Scribunto']) {
 
 //<< SyntaxHighlight_GeSHi >>
 
-if ($wmgUseExtensions['SyntaxHighlight_GeSHi'] && PHP_OS_FAMILY === 'Linux') {
+if ($wmgUseExtensions['SyntaxHighlight_GeSHi']) {
   wfLoadExtension('SyntaxHighlight_GeSHi');
+
+  if (PHP_OS_FAMILY === 'Windows') {
+    $wgPygmentizePath = 'C:/Program Files/Python310/Scripts/pygmentize.exe';
+  }
 }
 
 //<< TemplateData >>
