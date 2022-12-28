@@ -1380,7 +1380,7 @@ if ($wmgUseExtensions['SyntaxHighlight_GeSHi']) {
   wfLoadExtension('SyntaxHighlight_GeSHi');
 
   if (PHP_OS_FAMILY === 'Windows') {
-    $wgPygmentizePath = 'C:/Program Files/Python310/Scripts/pygmentize.exe';
+    $wgPygmentizePath = 'C:/Program Files/Python311/Scripts/pygmentize.exe';
   }
 }
 
