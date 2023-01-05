@@ -1014,6 +1014,7 @@ if ($wmgGlobalAccountMode === 'centralauth') {
 // This extension requires running update.php.
 wfLoadExtension('CheckUser');
 $wgCheckUserCIDRLimit = $wmgCIDRLimit;
+// This is same as default in MediaWiki 1.40 or newer.
 $wgCheckUserEnableSpecialInvestigate = true;
 $wgCheckUserLogLogins = true;
 $wgCheckUserMaxBlocks = 10;
