@@ -1221,16 +1221,15 @@ if ($wmgUseExtensions['Josa']) {
 
 //<< Math >>
 
-// This extension should not be enabled until https://phabricator.wikimedia.org/T324234 is resolved.
-/*
 if ($wmgUseExtensions['Math']) {
   // This extension requires running update.php.
   wfLoadExtension('Math');
   $wgMathEnableWikibaseDataType = false;
+  // https://gerrit.wikimedia.org/r/c/mediawiki/extensions/Math/+/873522
+  $wgMathMathMLUrl = 'https://mathoid-beta.wmcloud.org';
   // This is same as default in MediaWiki 1.40 or newer.
   $wgMathValidModes = ['mathml', 'source'];
 }
-*/
 
 //<< MultimediaViewer >>
 
