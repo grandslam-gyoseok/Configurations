@@ -1510,6 +1510,7 @@ $wgVectorMaxWidthOptions = [
 ];
 $wgVectorResponsive = true;
 $wgVectorStickyHeader['logged_out'] = true;
+// Removed in MediaWiki 1.40
 $wgVectorStickyHeaderEdit = [
   'logged_in' => true,
   'logged_out' => true
