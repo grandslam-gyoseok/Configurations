@@ -129,8 +129,6 @@ $wgGroupPermissions['steward']['oathauth-verify-user'] = true;
 //<< PlavorMindTools >>
 
 $wgCUGDisableGroups = array_diff($wgCUGDisableGroups, ['steward']);
-// 1.40+
-$wgPMTNewPreferencesLayout = true;
 
 //<< Renameuser >>
 
@@ -143,7 +141,7 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 //<< Vector >>
 
 // 1.40+
-$wgVectorArticleTools = [
+$wgVectorPageTools = [
   'logged_in' => true,
   'logged_out' => true
 ];
