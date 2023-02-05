@@ -16,7 +16,7 @@ function getWiki($defaultDomain, $uploadDomain, $customDomains) {
   }
 
   foreach ([$defaultDomain, $uploadDomain] as $expectedDomain) {
-    $regex = str_replace('%wiki%', '([\w\-]+)', preg_quote($expectedDomain, '/'));
+    $regex = str_replace('%wiki%', '([\\w\\-]+)', preg_quote($expectedDomain, '/'));
 
     if (preg_match("/^{$regex}$/i", $currentDomain, $matches)) {
       return $matches[1];
@@ -326,7 +326,7 @@ $wgCapitalLinks = false;
 //< Interwiki links and sites >
 
 $baseURL = str_replace('%domain%', $wmgDefaultDomain, $wmgBaseURL);
-$regex = str_replace('%wiki%', '([\w\-]+)', preg_quote($baseURL, '/'));
+$regex = str_replace('%wiki%', '([\\w\\-]+)', preg_quote($baseURL, '/'));
 $wgRedirectSources = "/^{$regex}$/i";
 unset($baseURL, $regex);
 
@@ -805,7 +805,7 @@ $wgSearchSuggestCacheExpiry = $wmgCacheExpiry;
 //< Maintenance Scripts setting >
 
 $wgGitBin = false;
-$wgGitRepositoryViewers['https:\/\/github\.com\/([\w-.]+\/[\w-.]+)\.git'] = 'https://github.com/$1/commit/%H';
+$wgGitRepositoryViewers['https:\\/\\/github\\.com\\/([\\w-.]+\\/[\\w-.]+)\\.git'] = 'https://github.com/$1/commit/%H';
 
 if (PHP_SAPI !== 'cli') {
   $wgReadOnlyFile = "$wmgDataDirectory/read-only.txt";
@@ -1225,8 +1225,6 @@ if ($wmgUseExtensions['Math']) {
   // This extension requires running update.php.
   wfLoadExtension('Math');
   $wgMathEnableWikibaseDataType = false;
-  // https://gerrit.wikimedia.org/r/c/mediawiki/extensions/Math/+/873522
-  $wgMathMathMLUrl = 'https://mathoid-beta.wmcloud.org';
   // This is same as default in MediaWiki 1.40 or newer.
   $wgMathValidModes = ['mathml', 'source'];
 }
@@ -1500,13 +1498,9 @@ if ($wmgUseSkins['Timeless']) {
 
 wfLoadSkin('Vector');
 $wgVectorDefaultSidebarVisibleForAnonymousUser = true;
-$wgVectorMaxWidthOptions = [
-  'exclude' => [
-    'mainpage' => true,
-    // All namespaces
-    'namespaces' => range(-1, 15)
-  ],
-  'include' => []
+$wgVectorLanguageInHeader = [
+  'logged_in' => false,
+  'logged_out' => false
 ];
 $wgVectorResponsive = true;
 $wgVectorStickyHeader['logged_out'] = true;
@@ -1515,6 +1509,23 @@ $wgVectorStickyHeaderEdit = [
   'logged_in' => true,
   'logged_out' => true
 ];
+
+// 1.40+
+$wgDefaultUserOptions['vector-limited-width'] = 0;
+
+if (version_compare(MW_VERSION, '1.40', '<')) {
+  $wgVectorMaxWidthOptions = [
+    'exclude' => [
+      'mainpage' => true,
+      // All namespaces
+      'namespaces' => range(-1, 15)
+    ],
+    'include' => []
+  ];
+}
+else {
+  $wgVectorMaxWidthOptions['exclude'] = [];
+}
 
 //< Load other settings >
 
