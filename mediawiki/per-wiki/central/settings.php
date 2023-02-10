@@ -9,7 +9,8 @@ $wgLogos = [
   '1x' => "/resources/per-wiki/$wmgWiki/logos/logo-1x.png",
   '1.5x' => "/resources/per-wiki/$wmgWiki/logos/logo-1.5x.png",
   '2x' => "/resources/per-wiki/$wmgWiki/logos/logo-2x.png",
-  'icon' => "/resources/per-wiki/$wmgWiki/logos/logo-2x.png"
+  'icon' => "/resources/per-wiki/$wmgWiki/logos/logo.svg",
+  'svg' => "/resources/per-wiki/$wmgWiki/logos/logo.svg"
 ];
 
 //< Files and file uploads >
