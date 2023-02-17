@@ -1313,6 +1313,7 @@ $wgCUGHierarchies = [
   'admin' => 3,
   'steward' => 4
 ];
+$wgPMTImgAuthCSPs['enforced'] = "default-src 'none'; img-src 'self';";
 $wgRIMEnable = true;
 $wgRIMEnglishSystemUsers = true;
 $wgRIMPlavorMindSpecificMessages = true;
