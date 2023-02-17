@@ -759,8 +759,11 @@ $wgAllowUserCssPrefs = false;
 $wgAllowUserCss = true;
 $wgAllowUserJs = true;
 $wgBreakFrames = true;
-// $wgCSPHeader
-// $wgCSPReportOnlyHeader
+$wgCSPHeader = [
+  'default-src' => [],
+  'includeCORS' => false,
+  'unsafeFallback' => false
+];
 $wgRestAllowCrossOriginCookieAuth = true;
 
 //< Cookies >
