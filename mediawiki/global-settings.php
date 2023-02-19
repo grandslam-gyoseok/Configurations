@@ -1297,6 +1297,9 @@ wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
 //<< PlavorMindTools >>
 
 wfLoadExtension('PlavorMindTools');
+$wgCUGCentralAuthHierarchies = [
+  'steward' => 4
+];
 $wgCUGDisableGroups = [
   'bot',
   'bureaucrat',
