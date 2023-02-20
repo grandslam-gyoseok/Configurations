@@ -1,5 +1,5 @@
 <?php
-function getWiki($defaultDomain, $uploadDomain, $customDomains) {
+function getWiki(string $defaultDomain, string $uploadDomain, array $customDomains) {
   if (PHP_SAPI === 'cli') {
     if (defined('MW_WIKI_NAME')) {
       return MW_WIKI_NAME;
