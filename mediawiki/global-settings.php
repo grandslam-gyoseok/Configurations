@@ -782,7 +782,11 @@ if ($wmgGlobalAccountMode === 'shared-db' && str_starts_with($wmgDefaultDomain, 
 //<< Debug >>
 
 $wgDebugDumpSql = true;
-// $wgDebugLogGroups
+$wgDebugLogGroups = [
+  'csp' => "$wmgDataDirectory/private/per-wiki/$wmgWiki/debug-logs/csp-report.log",
+  'ratelimit' => "$wmgDataDirectory/private/per-wiki/$wmgWiki/debug-logs/rate-limit.log",
+  'throttler' => "$wmgDataDirectory/private/per-wiki/$wmgWiki/debug-logs/rate-limit.log"
+];
 
 if (PHP_SAPI === 'cli' || $wmgDebugLevel >= 1) {
   $wgShowExceptionDetails = true;
@@ -790,7 +794,7 @@ if (PHP_SAPI === 'cli' || $wmgDebugLevel >= 1) {
 
 if ($wmgDebugLevel >= 2) {
   $wgDebugComments = true;
-  // $wgDebugLogFile
+  $wgDebugLogFile = "$wmgDataDirectory/private/per-wiki/$wmgWiki/debug-logs/main.log";
   $wgDevelopmentWarnings = true;
   $wgShowDebug = true;
   $wgShowHostnames = true;
