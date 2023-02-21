@@ -888,7 +888,7 @@ $wgSkinsPreferred = ['vector-2022'];
 
 //< Extension and skin usages >
 
-if (file_exists("$wmgDataDirectory/per-wiki/$wmgWiki/extra-usages.php")) {
+if (is_file("$wmgDataDirectory/per-wiki/$wmgWiki/extra-usages.php")) {
   include_once "$wmgDataDirectory/per-wiki/$wmgWiki/extra-usages.php";
 }
 
@@ -1545,7 +1545,7 @@ else {
 
 //< Load other settings >
 
-if (file_exists("$wmgDataDirectory/per-wiki/$wmgWiki/settings.php")) {
+if (is_file("$wmgDataDirectory/per-wiki/$wmgWiki/settings.php")) {
   include_once "$wmgDataDirectory/per-wiki/$wmgWiki/settings.php";
 }
 
