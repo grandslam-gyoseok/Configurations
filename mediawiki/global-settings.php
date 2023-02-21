@@ -977,6 +977,8 @@ elseif ($wmgGlobalAccountMode === 'shared-db') {
 if ($wmgUseExtensions['Babel']) {
   // This extension requires running update.php.
   wfLoadExtension('Babel');
+  // 1.40+
+  $wgBabelAllowOverride = false;
   $wgBabelCategoryNames = [
     '0' => false,
     '1' => false,
