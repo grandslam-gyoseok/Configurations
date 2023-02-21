@@ -807,7 +807,10 @@ $wgSearchSuggestCacheExpiry = $wmgCacheExpiry;
 
 //< Edit user interface >
 
-// $wgDiff3
+if (PHP_OS_FAMILY === 'Windows') {
+  $wgDiff = 'C:/Program Files (x86)/GnuWin32/bin/diff.exe';
+  $wgDiff3 = 'C:/Program Files (x86)/GnuWin32/bin/diff3.exe';
+}
 
 //< Maintenance Scripts setting >
 
