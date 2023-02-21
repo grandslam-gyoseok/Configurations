@@ -142,9 +142,6 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 //<< Vector >>
 
 // 1.40+
-$wgVectorPageTools = [
-  'logged_in' => true,
-  'logged_out' => true
-];
+$wgVectorPageTools['logged_out'] = true;
 // Removed in MediaWiki 1.40
 $wgVectorVisualEnhancementNext = true;
