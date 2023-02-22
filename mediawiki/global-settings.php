@@ -49,6 +49,7 @@ $wmgUseExtensions = [
   'GlobalUserPage' => true,
   'InputBox' => false,
   'Josa' => false,
+  'Linter' => false,
   'Math' => false,
   'MultimediaViewer' => false,
   'Nuke' => true,
@@ -1229,6 +1230,15 @@ if ($wmgGlobalAccountMode !== null) {
 
 if ($wmgUseExtensions['Josa']) {
   wfLoadExtension('Josa');
+}
+
+//<< Linter >>
+
+if ($wmgUseExtensions['Linter']) {
+  // This extension requires running update.php.
+  wfLoadExtension('Linter');
+
+  $wgParsoidSettings['linting'] = true;
 }
 
 //<< Math >>
