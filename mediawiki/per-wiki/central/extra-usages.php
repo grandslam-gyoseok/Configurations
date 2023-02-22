@@ -5,6 +5,7 @@ $wmgUseExtensions = array_merge($wmgUseExtensions, [
   'CommonsMetadata' => true,
   'InputBox' => true,
   'Josa' => true,
+  'Linter' => true,
   'Math' => true,
   'MultimediaViewer' => true,
   'PageImages' => true,
