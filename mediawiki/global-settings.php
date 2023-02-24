@@ -26,7 +26,7 @@ function getWiki(string $defaultDomain, string $uploadDomain, array $customDomai
 
 //< Custom settings >
 
-$wmgBaseURL = 'http://%domain%:81';
+$wmgBaseURL = 'https://%domain%';
 // 1 minute
 $wmgCacheExpiry = 60;
 $wmgCentralWiki = 'central';
@@ -770,7 +770,7 @@ $wgRestAllowCrossOriginCookieAuth = true;
 //< Cookies >
 
 // This requires HTTPS.
-// $wgCookieSameSite = 'None';
+$wgCookieSameSite = 'None';
 // 2 months
 $wgExtendedLoginCookieExpiration = 60 * 60 * 24 * 30 * 2;
 
