@@ -16,6 +16,7 @@ function getWiki(string $defaultDomain, string $uploadDomain, array $customDomai
   }
 
   foreach ([$defaultDomain, $uploadDomain] as $expectedDomain) {
+    // PCRE requires escaping "-" next to character class.
     $regex = str_replace('%wiki%', '([\\w\\-]+)', preg_quote($expectedDomain, '/'));
 
     if (preg_match("/^{$regex}$/i", $currentDomain, $matches)) {
@@ -816,7 +817,7 @@ if (PHP_OS_FAMILY === 'Windows') {
 //< Maintenance Scripts setting >
 
 $wgGitBin = false;
-$wgGitRepositoryViewers['https:\\/\\/github\\.com\\/([\\w-.]+\\/[\\w-.]+)\\.git'] = 'https://github.com/$1/commit/%H';
+$wgGitRepositoryViewers['https:\\/\\/github\\.com\\/([\\w\\-.]+\\/[\\w\\-.]+)\\.git'] = 'https://github.com/$1/commit/%H';
 
 if (PHP_SAPI !== 'cli') {
   $wgReadOnlyFile = "$wmgDataDirectory/read-only.txt";
