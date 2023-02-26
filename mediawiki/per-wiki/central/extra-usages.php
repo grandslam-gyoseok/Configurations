@@ -1,5 +1,6 @@
 <?php
 $wmgUseExtensions = array_merge($wmgUseExtensions, [
+  'CategoryTree' => true,
   'CodeEditor' => true,
   'CodeMirror' => true,
   'CommonsMetadata' => true,
