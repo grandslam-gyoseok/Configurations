@@ -44,6 +44,7 @@ $wmgUseExtensions = [
   'Babel' => true,
   'CategoryTree' => false,
   'Cite' => true,
+  'CiteThisPage' => false,
   'CodeEditor' => false,
   'CodeMirror' => false,
   'CommonsMetadata' => false,
@@ -1088,6 +1089,12 @@ else {
 if ($wmgUseExtensions['Cite']) {
   wfLoadExtension('Cite');
   $wgCiteBookReferencing = true;
+}
+
+//<< CiteThisPage >>
+
+if ($wmgUseExtensions['CiteThisPage']) {
+  wfLoadExtension('CiteThisPage');
 }
 
 //<< CodeEditor >>
