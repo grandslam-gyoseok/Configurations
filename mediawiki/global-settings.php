@@ -776,7 +776,7 @@ $wgCookieSameSite = 'None';
 $wgExtendedLoginCookieExpiration = 60 * 60 * 24 * 30 * 2;
 
 if ($wmgGlobalAccountMode === 'shared-db' && str_starts_with($wmgDefaultDomain, '%wiki%.') && !isset($wmgCustomDomains[$wmgWiki])) {
-  $wgCookieDomain = preg_replace('/^%wiki%/', '', $wmgDefaultDomain);
+  $wgCookieDomain = preg_replace('/^%wiki%\\./', '', $wmgDefaultDomain);
 }
 
 //< Profiling, testing and debugging >
@@ -929,21 +929,30 @@ $wgAbuseFilterEmergencyDisableThreshold = [
 ];
 $wgAbuseFilterNotifications = 'rcandudp';
 
-$wgGroupPermissions['suppress']['abusefilter-hidden-log'] = false;
-$wgGroupPermissions['suppress']['abusefilter-hide-log'] = false;
-// array_merge() should not be used here because sysop group was not defined before.
-$wgGroupPermissions['sysop'] = [
-  'abusefilter-log-detail' => false,
-  'abusefilter-log-private' => false,
-  'abusefilter-modify' => false,
-  'abusefilter-modify-restricted' => false,
-  'abusefilter-revert' => false,
-  'abusefilter-view-private' => false
-];
-$wgGroupPermissions['moderator']['abusefilter-log-detail'] = true;
-$wgGroupPermissions['staff']['abusefilter-modify'] = true;
-$wgGroupPermissions['admin']['abusefilter-log-detail'] = true;
-$wgGroupPermissions['admin']['abusefilter-modify-restricted'] = true;
+$wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
+  'suppress' => [
+    'abusefilter-hidden-log' => false,
+    'abusefilter-hide-log' => false
+  ],
+  'sysop' => [
+    'abusefilter-log-detail' => false,
+    'abusefilter-log-private' => false,
+    'abusefilter-modify' => false,
+    'abusefilter-modify-restricted' => false,
+    'abusefilter-revert' => false,
+    'abusefilter-view-private' => false
+  ],
+  'moderator' => [
+    'abusefilter-log-detail' => true
+  ],
+  'staff' => [
+    'abusefilter-modify' => true
+  ],
+  'admin' => [
+    'abusefilter-log-detail' => true,
+    'abusefilter-modify-restricted' => true
+  ]
+]);
 
 if ($wmgGlobalAccountMode === 'centralauth') {
   $wgAbuseFilterCentralDB = $wmgCentralDB;
@@ -1010,16 +1019,26 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgCentralAuthPreventUnattached = true;
   $wgCentralAuthStrict = true;
   $wgDisableUnmergedEditing = true;
-  $wgGroupPermissions['sysop']['centralauth-createlocal'] = false;
-  $wgGroupPermissions['*']['centralauth-merge'] = false;
-  $wgGroupPermissions['user']['centralauth-merge'] = true;
-  $wgGroupPermissions['steward']['centralauth-createlocal'] = false;
-  $wgGroupPermissions['steward']['centralauth-lock'] = false;
-  $wgGroupPermissions['steward']['centralauth-suppress'] = false;
-  $wgGroupPermissions['steward']['centralauth-unmerge'] = false;
+  $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
+    'sysop' => [
+      'centralauth-createlocal' => false
+    ],
+    '*' => [
+      'centralauth-merge' => false
+    ],
+    'user' => [
+      'centralauth-merge' => true
+    ],
+    'steward' => [
+      'centralauth-createlocal' => false,
+      'centralauth-lock' => false,
+      'centralauth-suppress' => false,
+      'centralauth-unmerge' => false
+    ]
+  ]);
 
   if (str_starts_with($wmgDefaultDomain, '%wiki%.') && !isset($wmgCustomDomains[$wmgWiki])) {
-    $wgCentralAuthCookieDomain = preg_replace('/^%wiki%/', '', $wmgDefaultDomain);
+    $wgCentralAuthCookieDomain = preg_replace('/^%wiki%\\./', '', $wmgDefaultDomain);
   }
 }
 
@@ -1317,9 +1336,7 @@ wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
 //<< PlavorMindTools >>
 
 wfLoadExtension('PlavorMindTools');
-$wgCUGCentralAuthHierarchies = [
-  'steward' => 4
-];
+$wgCUGCentralAuthHierarchies['steward'] = 4;
 $wgCUGDisableGroups = [
   'bot',
   'bureaucrat',
