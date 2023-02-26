@@ -42,6 +42,7 @@ $wmgDebugLevel = 1;
 $wmgDefaultDomain = '%wiki%.plavormind.io';
 $wmgUseExtensions = [
   'Babel' => true,
+  'CategoryTree' => false,
   'Cite' => true,
   'CodeEditor' => false,
   'CodeMirror' => false,
@@ -1001,6 +1002,17 @@ if ($wmgUseExtensions['Babel']) {
   ];
   $wgBabelMainCategory = false;
   $wgBabelUseUserLanguage = true;
+}
+
+//<< CategoryTree >>
+
+if ($wmgUseExtensions['CategoryTree']) {
+  wfLoadExtension('CategoryTree');
+  $wgCategoryTreeAllowTag = false;
+  $wgCategoryTreeDisableCache = $wmgCacheExpiry;
+  $wgCategoryTreeDynamicTag = true;
+  $wgCategoryTreeMaxChildren = 50;
+  $wgCategoryTreeUseCache = true;
 }
 
 //<< CentralAuth >>
