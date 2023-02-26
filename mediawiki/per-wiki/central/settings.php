@@ -54,15 +54,19 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 }
 
 if ($wmgGlobalAccountMode !== null) {
-  $wgGroupPermissions['admin'] = array_merge($wgGroupPermissions['admin'], [
-    'editinterface' => false,
-    'editsitecss' => false,
-    'editsitejson' => false,
-    'editusercss' => false,
-    'edituserjson' => false
+  $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
+    'admin' => [
+      'editinterface' => false,
+      'editsitecss' => false,
+      'editsitejson' => false,
+      'editusercss' => false,
+      'edituserjson' => false
+    ],
+    'steward' => [
+      'userrights' => true,
+      'userrights-interwiki' => true
+    ]
   ]);
-  $wgGroupPermissions['steward']['userrights'] = true;
-  $wgGroupPermissions['steward']['userrights-interwiki'] = true;
 }
 
 //<< Access >>
@@ -98,12 +102,14 @@ $wgGroupPermissions['steward']['override-antispoof'] = true;
 //<< CentralAuth >>
 
 if ($wmgGlobalAccountMode === 'centralauth') {
-  $wgGroupPermissions['steward']['centralauth-lock'] = true;
-  $wgGroupPermissions['steward']['centralauth-rename'] = true;
-  $wgGroupPermissions['steward']['centralauth-suppress'] = true;
-  $wgGroupPermissions['steward']['centralauth-unmerge'] = true;
-  $wgGroupPermissions['steward']['globalgroupmembership'] = true;
-  $wgGroupPermissions['steward']['globalgrouppermissions'] = true;
+  $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['steward'], [
+    'centralauth-lock' => true,
+    'centralauth-rename' => true,
+    'centralauth-suppress' => true,
+    'centralauth-unmerge' => true,
+    'globalgroupmembership' => true,
+    'globalgrouppermissions' => true
+  ]);
 }
 
 //<< CiteThisPage >>
