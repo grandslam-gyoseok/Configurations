@@ -106,6 +106,10 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgGroupPermissions['steward']['globalgrouppermissions'] = true;
 }
 
+//<< CiteThisPage >>
+
+$wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
+
 //<< GlobalBlocking >>
 
 if ($wmgGlobalAccountMode !== null) {
