@@ -633,7 +633,8 @@ $wgRateLimits = array_merge($wgRateLimits, [
   'mailpassword' => [
     'subnet' => [3, 60 * 60 * 24]
   ],
-  'emailuser' => [
+  // 1.40+
+  'sendemail' => [
     'subnet-all' => [3, 60 * 60 * 24],
     'user-global' => [3, 60 * 60 * 24],
     'admin' => [5, 60 * 60 * 24]
@@ -690,7 +691,8 @@ $wgRateLimits = array_merge($wgRateLimits, [
     'staff' => [12, 60],
     'admin' => [20, 60]
   ],
-  'changetag' => [
+  // 1.40+
+  'changetags' => [
     'subnet' => [3, 60],
     'user-global' => [3, 60],
     'autoconfirmed' => [6, 60],
@@ -708,6 +710,12 @@ $wgRateLimits = array_merge($wgRateLimits, [
 ]);
 $wgRateLimits['rollback'] = $wgRateLimits['edit'];
 $wgRateLimits['confirmemail'] = $wgRateLimits['changeemail'];
+
+// https://gerrit.wikimedia.org/r/c/mediawiki/core/+/879862
+if (version_compare(MW_VERSION, '1.40', '<')) {
+  $wgRateLimits['emailuser'] = $wgRateLimits['sendemail'];
+  $wgRateLimits['changetag'] = $wgRateLimits['changetags'];
+}
 
 //<< Access >>
 
