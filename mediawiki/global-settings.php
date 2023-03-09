@@ -578,6 +578,8 @@ $wgRemoveGroups = [
 ];
 
 if ($wmgGlobalAccountMode === null) {
+  // This permission was moved from Renameuser extension to core in MediaWiki 1.40.
+  $wgGroupPermissions['steward']['renameuser'] = true;
   $wgGroupPermissions['steward']['userrights'] = true;
 }
 
@@ -1410,12 +1412,13 @@ if ($wmgUseExtensions['Popups'] && $wmgUseExtensions['PageImages'] && $wmgUseExt
 
 //<< Renameuser >>
 
-wfLoadExtension('Renameuser');
+if (version_compare(MW_VERSION, '1.40', '<')) {
+  wfLoadExtension('Renameuser');
+  $wgGroupPermissions['bureaucrat']['renameuser'] = false;
 
-$wgGroupPermissions['bureaucrat']['renameuser'] = false;
-
-if ($wmgGlobalAccountMode === null) {
-  $wgGroupPermissions['steward']['renameuser'] = true;
+  if ($wmgGlobalAccountMode === null) {
+    $wgGroupPermissions['steward']['renameuser'] = true;
+  }
 }
 
 //<< ReplaceText >>
