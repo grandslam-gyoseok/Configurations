@@ -138,7 +138,7 @@ if ($wmgGlobalAccountMode === 'centralauth') {
     }
   }
 
-  $wgConf->siteParamsCallback = function ($siteConfiguration, $wikiDB) {
+  $wgConf->siteParamsCallback = function ($siteConfiguration, string $wikiDB) {
     $wiki = preg_replace('/^pmw/', '', $wikiDB);
     return [
       'lang' => 'en',
@@ -1577,6 +1577,8 @@ $wgVectorLanguageInHeader = [
   'logged_out' => false
 ];
 $wgVectorResponsive = true;
+// 1.40+
+$wgVectorShareUserScripts = false;
 $wgVectorStickyHeader['logged_out'] = true;
 // Removed in MediaWiki 1.40
 $wgVectorStickyHeaderEdit = [
