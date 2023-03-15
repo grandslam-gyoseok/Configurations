@@ -50,6 +50,8 @@ if ($wmgGlobalAccountMode === 'shared-db') {
     'editsitejson' => true,
     'editusercss' => true,
     'edituserjson' => true,
+    // This permission was moved from Renameuser extension to core in MediaWiki 1.40.
+    'renameuser' => true
   ]);
 }
 
@@ -143,7 +145,7 @@ $wgCUGDisableGroups = array_diff($wgCUGDisableGroups, ['steward']);
 
 //<< Renameuser >>
 
-if ($wmgGlobalAccountMode === 'shared-db') {
+if (version_compare(MW_VERSION, '1.40', '<') && $wmgGlobalAccountMode === 'shared-db') {
   $wgGroupPermissions['steward']['renameuser'] = true;
 }
 
