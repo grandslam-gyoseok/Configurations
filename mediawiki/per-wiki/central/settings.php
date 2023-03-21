@@ -145,16 +145,7 @@ $wgCUGDisableGroups = array_diff($wgCUGDisableGroups, ['steward']);
 
 //<< Renameuser >>
 
-if (version_compare(MW_VERSION, '1.40', '<') && $wmgGlobalAccountMode === 'shared-db') {
+if ($wmgGlobalAccountMode === 'shared-db') {
+  // This permission was moved from Renameuser extension to core in MediaWiki 1.40.
   $wgGroupPermissions['steward']['renameuser'] = true;
 }
-
-//< Skins >
-
-//<< Vector >>
-
-// 1.40+
-// This is same as default in MediaWiki 1.41 or newer.
-$wgVectorPageTools['logged_out'] = true;
-// Removed in MediaWiki 1.40
-$wgVectorVisualEnhancementNext = true;
