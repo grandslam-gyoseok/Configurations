@@ -1575,6 +1575,9 @@ $wgVectorLanguageInHeader = [
   'logged_in' => false,
   'logged_out' => false
 ];
+// 1.40+
+// This is same as default in MediaWiki 1.41 or newer.
+$wgVectorPageTools['logged_out'] = true;
 $wgVectorResponsive = true;
 // 1.40+
 $wgVectorShareUserScripts = false;
@@ -1584,6 +1587,8 @@ $wgVectorStickyHeaderEdit = [
   'logged_in' => true,
   'logged_out' => true
 ];
+// Removed in MediaWiki 1.40
+$wgVectorVisualEnhancementNext = true;
 
 // 1.40+
 $wgDefaultUserOptions['vector-limited-width'] = 0;
