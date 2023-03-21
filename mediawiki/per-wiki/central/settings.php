@@ -154,6 +154,7 @@ if (version_compare(MW_VERSION, '1.40', '<') && $wmgGlobalAccountMode === 'share
 //<< Vector >>
 
 // 1.40+
+// This is same as default in MediaWiki 1.41 or newer.
 $wgVectorPageTools['logged_out'] = true;
 // Removed in MediaWiki 1.40
 $wgVectorVisualEnhancementNext = true;
