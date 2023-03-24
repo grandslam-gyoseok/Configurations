@@ -1577,8 +1577,10 @@ $wgVectorLanguageInHeader = [
   'logged_in' => false,
   'logged_out' => false
 ];
-// 1.40+
-// This is same as default in MediaWiki 1.41 or newer.
+/*
+1.40+
+This is same as default in MediaWiki 1.41 or newer.
+*/
 $wgVectorPageTools['logged_out'] = true;
 $wgVectorResponsive = true;
 // 1.40+
