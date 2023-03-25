@@ -1384,9 +1384,8 @@ $wgCUGHierarchies = [
 $wgRIMEnable = true;
 $wgRIMEnglishSystemUsers = true;
 $wgRIMPlavorMindSpecificMessages = true;
-$wgUUHDeletedFileCSPs['enforced'] = "default-src 'none'; img-src 'self';";
+$wgUHHCSPs['enforced'] = "default-src 'none'; img-src 'self';";
 $wgUHHEnable = true;
-$wgUHHImgAuthCSPs['enforced'] = "default-src 'none'; img-src 'self';";
 $wgUPAEnable = true;
 
 $wgGroupPermissions['moderator']['editotheruserpages'] = true;
