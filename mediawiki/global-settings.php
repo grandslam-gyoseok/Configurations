@@ -30,6 +30,7 @@ function getWiki(string $defaultDomain, string $uploadDomain, array $customDomai
 $wmgBaseURL = 'https://%domain%';
 // 1 minute
 $wmgCacheExpiry = 60;
+$wmgCacheType = CACHE_MEMCACHED;
 $wmgCentralWiki = 'central';
 $wmgCIDRLimit = [
   // ###.0.0.0/8
@@ -138,7 +139,7 @@ if ($wmgGlobalAccountMode === 'centralauth') {
     }
   }
 
-  $wgConf->siteParamsCallback = function ($siteConfiguration, string $wikiDB) {
+  $wgConf->siteParamsCallback = function ($siteConfiguration, string $wikiDB): array {
     $wiki = preg_replace('/^pmw/', '', $wikiDB);
     return [
       'lang' => 'en',
@@ -271,14 +272,14 @@ $wgRevisionCacheExpiry = $wmgCacheExpiry;
 
 $wgCacheDirectory = "$wmgDataDirectory/private/per-wiki/$wmgWiki/caches";
 $wgFooterLinkCacheExpiry = $wmgCacheExpiry;
-$wgLanguageConverterCacheType = CACHE_ACCEL;
-$wgMainCacheType = CACHE_ACCEL;
-$wgStatsCacheType = CACHE_ACCEL;
+$wgLanguageConverterCacheType = $wmgCacheType;
+$wgMainCacheType = $wmgCacheType;
+$wgStatsCacheType = $wmgCacheType;
 $wgUseFileCache = true;
 
 //<< Message Cache >>
 
-$wgMessageCacheType = CACHE_ACCEL;
+$wgMessageCacheType = $wmgCacheType;
 $wgUseLocalMessageCache = true;
 
 //<< Sidebar Cache >>
@@ -290,12 +291,12 @@ $wgSidebarCacheExpiry = $wmgCacheExpiry;
 
 $wgOldRevisionParserCacheExpireTime = $wmgCacheExpiry;
 $wgParserCacheExpireTime = $wmgCacheExpiry;
-$wgParserCacheType = CACHE_ACCEL;
+$wgParserCacheType = $wmgCacheType;
 $wgUseContentMediaStyles = true;
 
 //<< Memcached settings >>
 
-$wgSessionCacheType = CACHE_ACCEL;
+$wgSessionCacheType = $wmgCacheType;
 
 //< Language, regional and character encoding settings >
 
