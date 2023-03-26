@@ -73,6 +73,7 @@ $wmgUseExtensions = [
   'TwoColConflict' => true,
   'UniversalLanguageSelector' => false,
   'UploadsLink' => false,
+  'VisualEditor' => false,
   'WikiEditor' => true
 ];
 $wmgUseSkins = [
@@ -1117,7 +1118,7 @@ if ($wmgUseExtensions['CodeEditor'] && $wmgUseExtensions['WikiEditor']) {
 
 //<< CodeMirror >>
 
-if ($wmgUseExtensions['CodeMirror'] && $wmgUseExtensions['WikiEditor']) {
+if ($wmgUseExtensions['CodeMirror'] && ($wmgUseExtensions['VisualEditor'] || $wmgUseExtensions['WikiEditor'])) {
   wfLoadExtension('CodeMirror');
 }
 
@@ -1535,6 +1536,23 @@ if ($wmgUseExtensions['UniversalLanguageSelector']) {
 
 if ($wmgUseExtensions['UploadsLink']) {
   wfLoadExtension('UploadsLink');
+}
+
+//<< VisualEditor >>
+
+if ($wmgUseExtensions['VisualEditor']) {
+  wfLoadExtension('VisualEditor');
+  $wgVisualEditorAvailableNamespaces['Help'] = true;
+  $wgVisualEditorAvailableNamespaces['Project'] = true;
+  // This is same as default in MediaWiki 1.40 or newer.
+  $wgVisualEditorEnableDiffPage = true;
+  $wgVisualEditorEnableWikitext = true;
+  $wgVisualEditorShowBetaWelcome = false;
+  $wgVisualEditorUseSingleEditTab = true;
+
+  $wgDefaultUserOptions['visualeditor-editor'] = 'wikitext';
+  $wgDefaultUserOptions['visualeditor-newwikitext'] = 1;
+  $wgHiddenPrefs[] = 'visualeditor-betatempdisable';
 }
 
 //<< WikiEditor >>
