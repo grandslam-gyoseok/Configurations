@@ -23,7 +23,8 @@ $wmgUseExtensions = array_merge($wmgUseExtensions, [
   'TemplateWizard' => true,
   'TextExtracts' => true,
   'UniversalLanguageSelector' => true,
-  'UploadsLink' => true
+  'UploadsLink' => true,
+  'VisualEditor' => true
 ]);
 $wmgUseSkins = [
   'MinervaNeue' => true,

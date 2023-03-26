@@ -149,3 +149,9 @@ if ($wmgGlobalAccountMode === 'shared-db') {
   // This permission was moved from Renameuser extension to core in MediaWiki 1.40.
   $wgGroupPermissions['steward']['renameuser'] = true;
 }
+
+//<< VisualEditor >>
+
+// Experimental
+$wgVisualEditorAllowExternalLinkPaste = true;
+$wgVisualEditorEnableVisualSectionEditing = true;
