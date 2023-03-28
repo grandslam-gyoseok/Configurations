@@ -1559,6 +1559,7 @@ if ($wmgUseExtensions['VisualEditor']) {
 
 if ($wmgUseExtensions['WikiEditor']) {
   wfLoadExtension('WikiEditor');
+  // This is same as default in MediaWiki 1.41 or newer.
   $wgWikiEditorRealtimePreview = true;
 }
 
