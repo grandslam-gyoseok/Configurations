@@ -1095,6 +1095,8 @@ if ($wmgGlobalAccountMode === 'centralauth') {
 else {
   $wgGroupPermissions['steward']['checkuser'] = true;
   $wgGroupPermissions['steward']['checkuser-log'] = true;
+  // 1.40+
+  $wgGroupPermissions['steward']['checkuser-temporary-account'] = true;
 }
 
 //<< Cite >>
