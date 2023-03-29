@@ -302,7 +302,6 @@ $wgSessionCacheType = $wmgCacheType;
 //< Language, regional and character encoding settings >
 
 $wgAllUnicodeFixes = true;
-// $wgRawHtmlMessages
 
 //<< Language-specific >>
 
@@ -1506,6 +1505,8 @@ $wgTitleBlacklistSources = [
 
 $wgGroupPermissions['sysop']['tboverride'] = false;
 $wgGroupPermissions['sysop']['titleblacklistlog'] = false;
+$wgRawHtmlMessages[] = 'titleblacklist';
+$wgRawHtmlMessages[] = 'titlewhitelist';
 
 if ($wmgGlobalAccountMode !== null) {
   $wgTitleBlacklistUsernameSources = ['global'];
