@@ -64,6 +64,7 @@ $wmgUseExtensions = [
   'ReplaceText' => false,
   'RevisionSlider' => false,
   'Scribunto' => false,
+  'SpamBlacklist' => false,
   'SyntaxHighlight_GeSHi' => false,
   'TemplateData' => false,
   'TemplateSandbox' => false,
@@ -1445,6 +1446,25 @@ if ($wmgUseExtensions['RevisionSlider']) {
 
 if ($wmgUseExtensions['Scribunto']) {
   wfLoadExtension('Scribunto');
+}
+
+//<< SpamBlacklist >>
+
+if ($wmgUseExtensions['SpamBlacklist']) {
+  wfLoadExtension('SpamBlacklist');
+  $wgBlacklistSettings['spam']['files'] = [];
+  $wgLogSpamBlacklistHits = true;
+
+  $wgGroupPermissions['user']['spamblacklistlog'] = false;
+  $wgRawHtmlMessages[] = 'email-blacklist';
+  $wgRawHtmlMessages[] = 'email-whitelist';
+  $wgRawHtmlMessages[] = 'spam-blacklist';
+  $wgRawHtmlMessages[] = 'spam-whitelist';
+
+  if ($wmgGlobalAccountMode !== 'centralauth') {
+    $wgGroupPermissions['steward']['sboverride'] = true;
+    $wgGroupPermissions['steward']['spamblacklistlog'] = true;
+  }
 }
 
 //<< SyntaxHighlight_GeSHi >>

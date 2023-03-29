@@ -16,6 +16,7 @@ $wmgUseExtensions = array_merge($wmgUseExtensions, [
   'ReplaceText' => true,
   'RevisionSlider' => true,
   'Scribunto' => true,
+  'SpamBlacklist' => true,
   'SyntaxHighlight_GeSHi' => true,
   'TemplateData' => true,
   'TemplateSandbox' => true,
