@@ -23,6 +23,7 @@ $wmgUseExtensions = array_merge($wmgUseExtensions, [
   'TemplateStyles' => true,
   'TemplateWizard' => true,
   'TextExtracts' => true,
+  'Thanks' => true,
   'UniversalLanguageSelector' => true,
   'UploadsLink' => true,
   'VisualEditor' => true

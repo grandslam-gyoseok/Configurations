@@ -71,6 +71,7 @@ $wmgUseExtensions = [
   'TemplateStyles' => false,
   'TemplateWizard' => false,
   'TextExtracts' => false,
+  'Thanks' => false,
   'TwoColConflict' => true,
   'UniversalLanguageSelector' => false,
   'UploadsLink' => false,
@@ -1510,6 +1511,12 @@ if ($wmgUseExtensions['TemplateWizard'] && $wmgUseExtensions['TemplateData'] && 
 if ($wmgUseExtensions['TextExtracts']) {
   wfLoadExtension('TextExtracts');
   $wgExtractsExtendOpenSearchXml = true;
+}
+
+//<< Thanks >>
+
+if ($wmgUseExtensions['Thanks']) {
+  wfLoadExtension('Thanks');
 }
 
 //<< TitleBlacklist >>
