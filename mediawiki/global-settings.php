@@ -914,6 +914,7 @@ if (is_file("$wmgDataDirectory/per-wiki/$wmgWiki/extra-usages.php")) {
 
 //<< AbuseFilter >>
 
+// This extension requires running update.php.
 wfLoadExtension('AbuseFilter');
 $wgAbuseFilterActionRestrictions = [
   'block' => false,
