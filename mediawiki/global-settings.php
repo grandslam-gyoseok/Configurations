@@ -54,6 +54,7 @@ $wmgUseExtensions = [
   'InputBox' => false,
   'Josa' => false,
   'Linter' => false,
+  'LoginNotify' => true,
   'Math' => false,
   'MultimediaViewer' => false,
   'Nuke' => true,
@@ -1182,6 +1183,11 @@ $wgNotifyTypeAvailabilityByCategory = [
     'email' => true,
     'web' => true
   ],
+  // LoginNotify
+  'login-fail' => [
+    'email' => true,
+    'web' => true
+  ],
   'mention' => [
     'email' => true,
     'web' => true
@@ -1295,6 +1301,28 @@ if ($wmgUseExtensions['Linter']) {
   wfLoadExtension('Linter');
 
   $wgParsoidSettings['linting'] = true;
+}
+
+//<< LoginNotify >>
+
+if ($wmgUseExtensions['LoginNotify']) {
+  wfLoadExtension('LoginNotify');
+  // Default value specified in "Extension:LoginNotify" page on MediaWiki.org does not match actual default value.
+  $wgLoginNotifyAttemptsNewIP = 3;
+  // 2 week
+  $wgLoginNotifyCacheLoginIPExpiry = 60 * 60 * 24 * 7 * 2;
+  $wgLoginNotifyEnableForPriv = [];
+  // 3 days
+  $wgLoginNotifyExpiryKnownIP = 60 * 60 * 24 * 3;
+  // 1 week
+  $wgLoginNotifyExpiryNewIP = 60 * 60 * 24 * 7;
+
+  $wgDefaultUserOptions['echo-subscriptions-email-login-fail'] = 0;
+  $wgDefaultUserOptions['echo-subscriptions-email-login-success'] = 0;
+
+  if ($wmgGlobalAccountMode !== null && str_starts_with($wmgDefaultDomain, '%wiki%.') && !isset($wmgCustomDomains[$wmgWiki])) {
+    $wgLoginNotifyCookieDomain = preg_replace('/^%wiki%\\./', '', $wmgDefaultDomain);
+  }
 }
 
 //<< Math >>
