@@ -1204,6 +1204,7 @@ $wgDefaultUserOptions = array_merge($wgDefaultUserOptions, [
   'echo-email-frequency' => -1,
   'echo-show-poll-updates' => 1,
   'echo-subscriptions-email-user-rights' => 0,
+  'echo-subscriptions-web-edit-user-page' => 0,
   'echo-subscriptions-web-mention-failure' => 1,
   'echo-subscriptions-web-thank-you-edit' => 0
 ]);
@@ -1650,6 +1651,7 @@ if ($wmgUseSkins['Timeless']) {
 //<< Vector >>
 
 wfLoadSkin('Vector');
+// Removed in MediaWiki 1.41
 $wgVectorDefaultSidebarVisibleForAnonymousUser = true;
 $wgVectorLanguageInHeader = [
   'logged_in' => false,
@@ -1657,7 +1659,7 @@ $wgVectorLanguageInHeader = [
 ];
 /*
 1.40+
-This is same as default in MediaWiki 1.41 or newer.
+Removed in MediaWiki 1.41
 */
 $wgVectorPageTools['logged_out'] = true;
 $wgVectorResponsive = true;
