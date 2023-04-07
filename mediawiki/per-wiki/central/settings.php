@@ -155,3 +155,10 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 // Experimental
 $wgVisualEditorAllowExternalLinkPaste = true;
 $wgVisualEditorEnableVisualSectionEditing = true;
+
+//< Skins >
+
+//<< Vector >>
+
+// 1.41+
+$wgVectorZebraDesign = true;
