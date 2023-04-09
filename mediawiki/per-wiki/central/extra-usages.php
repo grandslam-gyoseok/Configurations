@@ -5,6 +5,7 @@ $wmgUseExtensions = array_merge($wmgUseExtensions, [
   'CodeEditor' => true,
   'CodeMirror' => true,
   'CommonsMetadata' => true,
+  'DiscussionTools' => true,
   'InputBox' => true,
   'Josa' => true,
   'Linter' => true,

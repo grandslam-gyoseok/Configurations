@@ -49,6 +49,7 @@ $wmgUseExtensions = [
   'CodeEditor' => false,
   'CodeMirror' => false,
   'CommonsMetadata' => false,
+  'DiscussionTools' => false,
   'GlobalCssJs' => true,
   'GlobalUserPage' => true,
   'InputBox' => false,
@@ -1158,6 +1159,13 @@ $wgGroupPermissions['staff']['skipcaptcha'] = true;
 
 if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupPermissions['steward']['skipcaptcha'] = true;
+}
+
+//<< DiscussionTools >>
+
+if ($wmgUseExtensions['DiscussionTools']) {
+  // This extension requires running update.php.
+  wfLoadExtension('DiscussionTools');
 }
 
 //<< Echo >>
