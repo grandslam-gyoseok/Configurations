@@ -580,12 +580,6 @@ $wgRemoveGroups = [
   'admin' => ['moderator', 'staff']
 ];
 
-if ($wmgGlobalAccountMode === null) {
-  // This permission was moved from Renameuser extension to core in MediaWiki 1.40.
-  $wgGroupPermissions['steward']['renameuser'] = true;
-  $wgGroupPermissions['steward']['userrights'] = true;
-}
-
 if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupInheritsPermissions['steward'] = 'admin';
   $wgGroupPermissions['steward'] = [
@@ -992,10 +986,7 @@ wfLoadExtension('AntiSpoof');
 $wgGroupPermissions['bureaucrat']['override-antispoof'] = false;
 $wgGroupPermissions['sysop']['override-antispoof'] = false;
 
-if ($wmgGlobalAccountMode === null) {
-  $wgGroupPermissions['steward']['override-antispoof'] = true;
-}
-elseif ($wmgGlobalAccountMode === 'shared-db') {
+if ($wmgGlobalAccountMode === 'shared-db') {
   $wgSharedTables[] = 'spoofuser';
 }
 
@@ -1367,11 +1358,7 @@ $wgGroupPermissions['sysop']['oathauth-disable-for-user'] = false;
 $wgGroupPermissions['sysop']['oathauth-verify-user'] = false;
 $wgGroupPermissions['sysop']['oathauth-view-log'] = false;
 
-if ($wmgGlobalAccountMode === null) {
-  $wgGroupPermissions['steward']['oathauth-disable-for-user'] = true;
-  $wgGroupPermissions['steward']['oathauth-verify-user'] = true;
-}
-else {
+if ($wmgGlobalAccountMode !== null) {
   $wgOATHAuthAccountPrefix = 'PlavorMind wikis';
   $wgOATHAuthDatabase = $wmgCentralDB;
 }
@@ -1462,10 +1449,6 @@ if ($wmgUseExtensions['QuickInstantCommons']) {
 if (version_compare(MW_VERSION, '1.40', '<')) {
   wfLoadExtension('Renameuser');
   $wgGroupPermissions['bureaucrat']['renameuser'] = false;
-
-  if ($wmgGlobalAccountMode === null) {
-    $wgGroupPermissions['steward']['renameuser'] = true;
-  }
 }
 
 //<< ReplaceText >>
@@ -1704,6 +1687,10 @@ else {
 }
 
 //< Load other settings >
+
+if (($wmgWiki === $wmgCentralWiki || $wmgGlobalAccountMode === null) && is_file("$wmgDataDirectory/central-settings.php")) {
+  include_once "$wmgDataDirectory/central-settings.php";
+}
 
 if (is_file("$wmgDataDirectory/per-wiki/$wmgWiki/settings.php")) {
   include_once "$wmgDataDirectory/per-wiki/$wmgWiki/settings.php";
