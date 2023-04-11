@@ -63,6 +63,7 @@ $wmgUseExtensions = [
   'ParserFunctions' => true,
   'Poem' => false,
   'Popups' => false,
+  'QuickInstantCommons' => true,
   'ReplaceText' => false,
   'RevisionSlider' => false,
   'Scribunto' => false,
@@ -221,10 +222,6 @@ $wgMediaInTargetLanguage = true;
 $wgNativeImageLazyLoading = true;
 // 1 MiB
 $wgUploadSizeWarning = 1024 * 1024 * 1;
-
-//<< Shared uploads >>
-
-$wgUseInstantCommons = true;
 
 //<< MIME types >>
 
@@ -1451,6 +1448,13 @@ if ($wmgUseExtensions['Popups'] && $wmgUseExtensions['PageImages'] && $wmgUseExt
   wfLoadExtension('Popups');
   $wgPopupsHideOptInOnPreferencesPage = true;
   $wgPopupsReferencePreviewsBetaFeature = false;
+}
+
+//<< QuickInstantCommons >>
+
+if ($wmgUseExtensions['QuickInstantCommons']) {
+  wfLoadExtension('QuickInstantCommons');
+  $wgQuickInstantCommonsPrefetchMaxLimit = 100;
 }
 
 //<< Renameuser >>
