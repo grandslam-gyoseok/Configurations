@@ -836,7 +836,6 @@ if (PHP_SAPI !== 'cli') {
 
 $wgDisableAnonTalk = true;
 $wgRCWatchCategoryMembership = true;
-// $wgRecentChangesFlags
 // 1 week
 $wgWatchersMaxAge = 60 * 60 * 24 * 7;
 $wgWatchlistExpiry = true;
@@ -1418,6 +1417,8 @@ $wgUPAEnable = true;
 $wgGroupPermissions['moderator']['editotheruserpages'] = true;
 $wgGroupPermissions['staff']['movetousernamespace'] = true;
 $wgGroupPermissions['admin']['editotheruserpages'] = true;
+$wgRecentChangesFlags['minor']['letter'] = 'pmt-rc-flag-minor-edit';
+$wgRecentChangesFlags['newpage']['letter'] = 'pmt-rc-flag-new-page';
 
 if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupPermissions['steward']['movetousernamespace'] = true;
