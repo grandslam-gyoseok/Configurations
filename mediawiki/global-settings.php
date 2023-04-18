@@ -1395,6 +1395,8 @@ $wgCUGDisableGroups = [
   'bot',
   'bureaucrat',
   'checkuser',
+  // 1.41+
+  'checkuser-temporary-account-viewer',
   'push-subscription-manager',
   'steward',
   'suppress',
