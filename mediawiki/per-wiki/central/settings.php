@@ -56,6 +56,10 @@ $wgNamespaceProtection = [
 
 $wgUseCopyrightUpload = true;
 
+//< Logging >
+
+$wgFilterLogTypes['create'] = true;
+
 //< Extensions >
 
 //<< CiteThisPage >>

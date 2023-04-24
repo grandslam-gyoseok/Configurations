@@ -859,7 +859,6 @@ $wgImportSources = ['central'];
 
 //< Logging >
 
-// $wgFilterLogTypes
 // $wgLogHeaders
 // $wgLogNames
 
