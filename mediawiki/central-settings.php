@@ -4,28 +4,14 @@
 $wgGroupPermissions['steward']['userrights'] = true;
 
 if ($wmgGlobalAccountMode === 'shared-db') {
-  $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['steward'], [
-    'editinterface' => true,
-    'editsitecss' => true,
-    'editsitejson' => true,
-    'editusercss' => true,
-    'edituserjson' => true
-  ]);
+  $wgGroupPermissions['steward']['editinterface'] = true;
+  $wgGroupPermissions['steward']['editusercss'] = true;
 }
 
 if ($wmgGlobalAccountMode !== null) {
-  $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
-    'admin' => [
-      'editinterface' => false,
-      'editsitecss' => false,
-      'editsitejson' => false,
-      'editusercss' => false,
-      'edituserjson' => false
-    ],
-    'steward' => [
-      'userrights-interwiki' => true
-    ]
-  ]);
+  $wgGroupPermissions['admin']['editinterface'] = false;
+  $wgGroupPermissions['admin']['editusercss'] = false;
+  $wgGroupPermissions['steward']['userrights-interwiki'] = true;
 }
 
 if ($wmgGlobalAccountMode !== 'centralauth') {
