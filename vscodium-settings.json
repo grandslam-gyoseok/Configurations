@@ -27,13 +27,16 @@
   "security.workspace.trust.startupPrompt": "never",
   "security.workspace.trust.untrustedFiles": "newWindow",
   "vscord.app.name": "Visual Studio Code",
+  "vscord.status.buttons.button1.active.enabled": true,
+  "vscord.status.buttons.button1.active.label": "Join PlavorMind server",
+  "vscord.status.buttons.button1.active.url": "https://discord.gg/ufHHmSD",
   "vscord.status.details.text.editing": "Editing {file_name}{file_extension}",
-  "vscord.status.details.text.notInWorkspace": "Editing {file_name}{file_extension}",
   "vscord.status.details.text.viewing": "Viewing {file_name}{file_extension}",
   "vscord.status.state.enabled": false,
   "window.autoDetectColorScheme": true,
   "window.restoreWindows": "none",
-  "workbench.colorTheme": "Huacat Pink Theme",
+  "workbench.colorTheme": "Default Light+ Experimental",
   "workbench.editor.languageDetection": false,
-  "workbench.preferredLightColorTheme": "Huacat Pink Theme"
+  "workbench.preferredDarkColorTheme": "Default Dark+ Experimental",
+  "workbench.preferredLightColorTheme": "Default Light+ Experimental"
 }
