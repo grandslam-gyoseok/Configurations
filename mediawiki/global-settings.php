@@ -1087,6 +1087,8 @@ else {
   $wgGroupPermissions['steward']['checkuser-log'] = true;
   // 1.40+
   $wgGroupPermissions['steward']['checkuser-temporary-account'] = true;
+  // 1.41+
+  $wgGroupPermissions['steward']['checkuser-temporary-account-log'] = true;
 }
 
 //<< Cite >>
