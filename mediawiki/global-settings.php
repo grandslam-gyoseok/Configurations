@@ -55,6 +55,7 @@ $wmgUseExtensions = [
   'InputBox' => false,
   'Josa' => false,
   'Linter' => false,
+  // This extension should not be disabled on wikis with global account enabled.
   'LoginNotify' => true,
   'Math' => false,
   'MultimediaViewer' => false,
@@ -67,6 +68,8 @@ $wmgUseExtensions = [
   'ReplaceText' => false,
   'RevisionSlider' => false,
   'Scribunto' => false,
+  // This extension should not be disabled on wikis with global account enabled.
+  'SecureLinkFixer' => true,
   'SpamBlacklist' => false,
   'SyntaxHighlight_GeSHi' => false,
   'TemplateData' => false,
@@ -1480,6 +1483,12 @@ if ($wmgUseExtensions['Scribunto']) {
   wfLoadExtension('Scribunto');
 }
 
+//<< SecureLinkFixer >>
+
+if ($wmgUseExtensions['SecureLinkFixer']) {
+  wfLoadExtension('SecureLinkFixer');
+}
+
 //<< SpamBlacklist >>
 
 if ($wmgUseExtensions['SpamBlacklist']) {
@@ -1621,10 +1630,6 @@ if ($wmgUseExtensions['WikiEditor']) {
   // This is same as default in MediaWiki 1.41 or newer.
   $wgWikiEditorRealtimePreview = true;
 }
-
-//<< Other extensions >>
-
-wfLoadExtension('SecureLinkFixer');
 
 //< Skins >
 
