@@ -323,6 +323,7 @@ $wgFragmentMode = ['html5'];
 
 //<< Skins >>
 
+// This is same as default in MediaWiki 1.41 or newer.
 $wgDefaultSkin = 'vector-2022';
 $wgSkinMetaTags = ['og:title'];
 
