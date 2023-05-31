@@ -226,6 +226,10 @@ $wgNativeImageLazyLoading = true;
 // 1 MiB
 $wgUploadSizeWarning = 1024 * 1024 * 1;
 
+if (version_compare(MW_VERSION, '1.41', '>=')) {
+  $wgFileExtensions[] = 'svg';
+}
+
 //<< MIME types >>
 
 $wgVerifyMimeTypeIE = false;
@@ -898,6 +902,11 @@ $wgHTTPTimeout = 30;
 //< Miscellaneous settings >
 
 $wgSkinsPreferred = ['vector-2022'];
+
+//< Not listed yet >
+
+// 1.41+
+$wgSVGNativeRendering = true;
 
 //< Extension and skin usages >
 
