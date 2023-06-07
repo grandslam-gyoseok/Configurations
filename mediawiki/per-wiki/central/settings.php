@@ -62,6 +62,11 @@ $wgFilterLogTypes['create'] = true;
 
 //< Extensions >
 
+//<< AbuseFilter >>
+
+// 1.41+
+$wgAbuseFilterEnableBlockedExternalDomain = true;
+
 //<< CiteThisPage >>
 
 $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
