@@ -983,6 +983,8 @@ else {
     'abusefilter-hidden-log' => true,
     'abusefilter-hide-log' => true,
     'abusefilter-modify' => true,
+    // 1.41+
+    'abusefilter-modify-blocked-external-domains' => true,
     'abusefilter-privatedetails' => true,
     'abusefilter-privatedetails-log' => true,
     'abusefilter-revert' => true
