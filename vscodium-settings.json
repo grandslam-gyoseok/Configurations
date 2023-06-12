@@ -14,6 +14,7 @@
       "supported": true
     }
   },
+  "files.eol": "\n",
   "php.validate.executablePath": "C:/plavormind/php/app/php.exe",
   "powershell.buttons.showRunButtons": false,
   "powershell.codeFormatting.alignPropertyValuePairs": false,
@@ -35,8 +36,10 @@
   "vscord.status.state.enabled": false,
   "window.autoDetectColorScheme": true,
   "window.restoreWindows": "none",
-  "workbench.colorTheme": "Default Light+ Experimental",
+  "workbench.colorTheme": "Default Light Modern",
   "workbench.editor.languageDetection": false,
-  "workbench.preferredDarkColorTheme": "Default Dark+ Experimental",
-  "workbench.preferredLightColorTheme": "Default Light+ Experimental"
+
+  "[go]": {
+    "editor.insertSpaces": true
+  }
 }
