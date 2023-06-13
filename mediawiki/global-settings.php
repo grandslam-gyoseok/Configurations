@@ -356,7 +356,7 @@ $wgExternalLinkTarget = '_blank';
 $wgMaxTemplateDepth = 5;
 // Remove default value ('mediawiki.org')
 $wgNoFollowDomainExceptions = [];
-// This is same as default in MediaWiki 1.41 or newer.
+// This is same as default in MediaWiki 1.40 or newer.
 $wgParserEnableLegacyMediaDOM = false;
 $wgTranscludeCacheExpiry = $wmgCacheExpiry;
 // Only allow HTTP and HTTPS protocols in links
