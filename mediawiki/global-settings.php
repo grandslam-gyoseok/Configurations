@@ -1,11 +1,11 @@
 <?php
-function getWiki(string $defaultDomain, string $uploadDomain, array $customDomains) {
+function getWiki(string $defaultDomain, string $uploadDomain, array $customDomains): ?string {
   if (PHP_SAPI === 'cli') {
     if (defined('MW_WIKI_NAME')) {
       return MW_WIKI_NAME;
     }
 
-    return;
+    return null;
   }
 
   $currentDomain = parse_url('//' . $_SERVER['HTTP_HOST'], PHP_URL_HOST);
@@ -951,6 +951,10 @@ $wgAbuseFilterEmergencyDisableThreshold = [
 $wgAbuseFilterNotifications = 'rcandudp';
 
 $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
+  'bot' => [
+    // 1.41+
+    'abusefilter-bypass-blocked-external-domains' => false
+  ],
   'suppress' => [
     'abusefilter-hidden-log' => false,
     'abusefilter-hide-log' => false
@@ -959,6 +963,8 @@ $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
     'abusefilter-log-detail' => false,
     'abusefilter-log-private' => false,
     'abusefilter-modify' => false,
+    // 1.41+
+    'abusefilter-modify-blocked-external-domains' => false,
     'abusefilter-modify-restricted' => false,
     'abusefilter-revert' => false,
     'abusefilter-view-private' => false
@@ -983,12 +989,15 @@ else {
     'abusefilter-hidden-log' => true,
     'abusefilter-hide-log' => true,
     'abusefilter-modify' => true,
-    // 1.41+
-    'abusefilter-modify-blocked-external-domains' => true,
     'abusefilter-privatedetails' => true,
     'abusefilter-privatedetails-log' => true,
     'abusefilter-revert' => true
   ]);
+
+  if (version_compare(MW_VERSION, '1.41', '>=')) {
+    $wgGroupPermissions['steward']['abusefilter-bypass-blocked-external-domains'] = true;
+    $wgGroupPermissions['steward']['abusefilter-modify-blocked-external-domains'] = true;
+  }
 }
 
 //<< AntiSpoof >>
@@ -1100,10 +1109,14 @@ if ($wmgGlobalAccountMode === 'centralauth') {
 else {
   $wgGroupPermissions['steward']['checkuser'] = true;
   $wgGroupPermissions['steward']['checkuser-log'] = true;
-  // 1.40+
-  $wgGroupPermissions['steward']['checkuser-temporary-account'] = true;
-  // 1.41+
-  $wgGroupPermissions['steward']['checkuser-temporary-account-log'] = true;
+
+  if (version_compare(MW_VERSION, '1.40', '>=')) {
+    $wgGroupPermissions['steward']['checkuser-temporary-account'] = true;
+  }
+
+  if (version_compare(MW_VERSION, '1.41', '>=')) {
+    $wgGroupPermissions['steward']['checkuser-temporary-account-log'] = true;
+  }
 }
 
 //<< Cite >>
@@ -1508,6 +1521,8 @@ if ($wmgUseExtensions['SpamBlacklist']) {
   $wgBlacklistSettings['spam']['files'] = [];
   $wgLogSpamBlacklistHits = true;
 
+  // 1.41+
+  $wgGroupPermissions['bot']['sboverride'] = false;
   $wgGroupPermissions['user']['spamblacklistlog'] = false;
   $wgRawHtmlMessages[] = 'email-blacklist';
   $wgRawHtmlMessages[] = 'email-whitelist';
