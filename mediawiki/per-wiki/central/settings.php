@@ -60,6 +60,11 @@ $wgUseCopyrightUpload = true;
 
 $wgFilterLogTypes['create'] = true;
 
+//< Miscellaneous settings >
+
+// 1.40+
+$wgSpecialContributeSkinsEnabled = ['vector-2022'];
+
 //< Extensions >
 
 //<< AbuseFilter >>
