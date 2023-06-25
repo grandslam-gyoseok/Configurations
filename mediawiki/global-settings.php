@@ -236,6 +236,11 @@ $wgVerifyMimeTypeIE = false;
 
 //<< Images >>
 
+//<<< SVG >>>
+
+// 1.41+
+$wgSVGNativeRendering = true;
+
 //<<< Thumbnail settings >>>
 
 $wgGenerateThumbnailOnParse = false;
@@ -902,11 +907,6 @@ $wgHTTPTimeout = 30;
 //< Miscellaneous settings >
 
 $wgSkinsPreferred = ['vector-2022'];
-
-//< Not listed yet >
-
-// 1.41+
-$wgSVGNativeRendering = true;
 
 //< Extension and skin usages >
 
