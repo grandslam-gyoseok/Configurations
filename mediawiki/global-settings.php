@@ -78,6 +78,8 @@ $wmgUseExtensions = [
   'TemplateWizard' => false,
   'TextExtracts' => false,
   'Thanks' => false,
+  // This extension should not be disabled on wikis with global account enabled.
+  'TitleBlacklist' => true,
   'TwoColConflict' => true,
   'UniversalLanguageSelector' => false,
   'UploadsLink' => false,
@@ -1586,29 +1588,31 @@ if ($wmgUseExtensions['Thanks']) {
 
 //<< TitleBlacklist >>
 
-wfLoadExtension('TitleBlacklist');
-$wgTitleBlacklistCaching['expiry'] = $wmgCacheExpiry;
-$wgTitleBlacklistCaching['warningexpiry'] = $wmgCacheExpiry;
-$wgTitleBlacklistLogHits = true;
-$wgTitleBlacklistSources = [
-  'global' => [
-    'src' => "$wmgDataDirectory/private/title-blacklist.txt",
-    'type' => 'file'
-  ]
-];
+if ($wmgUseExtensions['TitleBlacklist']) {
+  wfLoadExtension('TitleBlacklist');
+  $wgTitleBlacklistCaching['expiry'] = $wmgCacheExpiry;
+  $wgTitleBlacklistCaching['warningexpiry'] = $wmgCacheExpiry;
+  $wgTitleBlacklistLogHits = true;
+  $wgTitleBlacklistSources = [
+    'global' => [
+      'src' => "$wmgDataDirectory/private/title-blacklist.txt",
+      'type' => 'file'
+    ]
+  ];
 
-$wgGroupPermissions['sysop']['tboverride'] = false;
-$wgGroupPermissions['sysop']['titleblacklistlog'] = false;
-$wgRawHtmlMessages[] = 'titleblacklist';
-$wgRawHtmlMessages[] = 'titlewhitelist';
+  $wgGroupPermissions['sysop']['tboverride'] = false;
+  $wgGroupPermissions['sysop']['titleblacklistlog'] = false;
+  $wgRawHtmlMessages[] = 'titleblacklist';
+  $wgRawHtmlMessages[] = 'titlewhitelist';
 
-if ($wmgGlobalAccountMode !== null) {
-  $wgTitleBlacklistUsernameSources = ['global'];
-}
+  if ($wmgGlobalAccountMode !== null) {
+    $wgTitleBlacklistUsernameSources = ['global'];
+  }
 
-if ($wmgGlobalAccountMode !== 'centralauth') {
-  $wgGroupPermissions['steward']['tboverride'] = true;
-  $wgGroupPermissions['steward']['titleblacklistlog'] = true;
+  if ($wmgGlobalAccountMode !== 'centralauth') {
+    $wgGroupPermissions['steward']['tboverride'] = true;
+    $wgGroupPermissions['steward']['titleblacklistlog'] = true;
+  }
 }
 
 //<< TwoColConflict >>
