@@ -1053,13 +1053,16 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgCentralAuthAutoMigrate = true;
   $wgCentralAuthAutoMigrateNonGlobalAccounts = true;
   $wgCentralAuthCookies = true;
+  // Removed in MediaWiki 1.41
   $wgCentralAuthCreateOnView = true;
   $wgCentralAuthDatabase = 'wiki_centralauth';
   $wgCentralAuthGlobalPasswordPolicies['steward'] = $wgPasswordPolicy['policies']['steward'];
   $wgCentralAuthLoginWiki = $wmgCentralDB;
   $wgCentralAuthOldNameAntiSpoofWiki = $wmgCentralDB;
+  // Removed in MediaWiki 1.41
   $wgCentralAuthPreventUnattached = true;
   $wgCentralAuthStrict = true;
+  // Removed in MediaWiki 1.41
   $wgDisableUnmergedEditing = true;
   $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
     'sysop' => [
