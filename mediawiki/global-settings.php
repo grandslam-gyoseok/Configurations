@@ -53,6 +53,7 @@ $wmgUseExtensions = [
   'GlobalCssJs' => true,
   'GlobalUserPage' => true,
   'InputBox' => false,
+  'Interwiki' => true,
   'Josa' => false,
   'Linter' => false,
   // This extension should not be disabled on wikis with global account enabled.
@@ -1310,12 +1311,14 @@ if ($wmgUseExtensions['InputBox']) {
 
 //<< Interwiki >>
 
-wfLoadExtension('Interwiki');
+if ($wmgUseExtensions['Interwiki']) {
+  wfLoadExtension('Interwiki');
 
-$wgGroupPermissions['admin']['interwiki'] = true;
+  $wgGroupPermissions['admin']['interwiki'] = true;
 
-if ($wmgGlobalAccountMode !== null) {
-  $wgInterwikiCentralDB = $wmgCentralDB;
+  if ($wmgGlobalAccountMode !== null) {
+    $wgInterwikiCentralDB = $wmgCentralDB;
+  }
 }
 
 //<< Josa >>
