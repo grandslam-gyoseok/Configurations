@@ -75,6 +75,8 @@ $wmgUseExtensions = [
   'OATHAuth' => true,
   'PageImages' => false,
   'ParserFunctions' => true,
+  // This extension should not be disabled on wikis with global account enabled.
+  'PlavorMindTools' => true,
   'Poem' => false,
   'Popups' => false,
   'QuickInstantCommons' => true,
@@ -1450,41 +1452,43 @@ wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
 
 //<< PlavorMindTools >>
 
-wfLoadExtension('PlavorMindTools');
-$wgCUGCentralAuthHierarchies['steward'] = 4;
-$wgCUGDisableGroups = [
-  'bot',
-  'bureaucrat',
-  'checkuser',
-  // 1.41+
-  'checkuser-temporary-account-viewer',
-  'push-subscription-manager',
-  'steward',
-  'suppress',
-  'sysop'
-];
-$wgCUGEnable = true;
-$wgCUGHierarchies = [
-  'moderator' => 1,
-  'staff' => 2,
-  'admin' => 3,
-  'steward' => 4
-];
-$wgRIMEnable = true;
-$wgRIMEnglishSystemUsers = true;
-$wgRIMPlavorMindSpecificMessages = true;
-$wgUHHCSPs['enforced'] = "default-src 'none'; img-src 'self';";
-$wgUHHEnable = true;
-$wgUPAEnable = true;
+if ($wmgUseExtensions['PlavorMindTools']) {
+  wfLoadExtension('PlavorMindTools');
+  $wgCUGCentralAuthHierarchies['steward'] = 4;
+  $wgCUGDisableGroups = [
+    'bot',
+    'bureaucrat',
+    'checkuser',
+    // 1.41+
+    'checkuser-temporary-account-viewer',
+    'push-subscription-manager',
+    'steward',
+    'suppress',
+    'sysop'
+  ];
+  $wgCUGEnable = true;
+  $wgCUGHierarchies = [
+    'moderator' => 1,
+    'staff' => 2,
+    'admin' => 3,
+    'steward' => 4
+  ];
+  $wgRIMEnable = true;
+  $wgRIMEnglishSystemUsers = true;
+  $wgRIMPlavorMindSpecificMessages = true;
+  $wgUHHCSPs['enforced'] = "default-src 'none'; img-src 'self';";
+  $wgUHHEnable = true;
+  $wgUPAEnable = true;
 
-$wgGroupPermissions['moderator']['editotheruserpages'] = true;
-$wgGroupPermissions['staff']['movetousernamespace'] = true;
-$wgGroupPermissions['admin']['editotheruserpages'] = true;
-$wgRecentChangesFlags['minor']['letter'] = 'pmt-rc-flag-minor-edit';
-$wgRecentChangesFlags['newpage']['letter'] = 'pmt-rc-flag-new-page';
+  $wgGroupPermissions['moderator']['editotheruserpages'] = true;
+  $wgGroupPermissions['staff']['movetousernamespace'] = true;
+  $wgGroupPermissions['admin']['editotheruserpages'] = true;
+  $wgRecentChangesFlags['minor']['letter'] = 'pmt-rc-flag-minor-edit';
+  $wgRecentChangesFlags['newpage']['letter'] = 'pmt-rc-flag-new-page';
 
-if ($wmgGlobalAccountMode !== 'centralauth') {
-  $wgGroupPermissions['steward']['movetousernamespace'] = true;
+  if ($wmgGlobalAccountMode !== 'centralauth') {
+    $wgGroupPermissions['steward']['movetousernamespace'] = true;
+  }
 }
 
 //<< Poem >>
