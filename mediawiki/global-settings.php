@@ -380,8 +380,6 @@ $wgExternalLinkTarget = '_blank';
 $wgMaxTemplateDepth = 5;
 // Remove default value ('mediawiki.org')
 $wgNoFollowDomainExceptions = [];
-// This is same as default in MediaWiki 1.40 or newer.
-$wgParserEnableLegacyMediaDOM = false;
 $wgTranscludeCacheExpiry = $wmgCacheExpiry;
 // Only allow HTTP and HTTPS protocols in links
 $wgUrlProtocols = ['http://', 'https://'];
@@ -664,7 +662,6 @@ $wgRateLimits = array_merge($wgRateLimits, [
   'mailpassword' => [
     'subnet' => [3, 60 * 60 * 24]
   ],
-  // 1.40+
   'sendemail' => [
     'subnet-all' => [3, 60 * 60 * 24],
     'user-global' => [3, 60 * 60 * 24],
@@ -722,7 +719,6 @@ $wgRateLimits = array_merge($wgRateLimits, [
     'staff' => [12, 60],
     'admin' => [20, 60]
   ],
-  // 1.40+
   'changetags' => [
     'subnet' => [3, 60],
     'user-global' => [3, 60],
@@ -741,12 +737,6 @@ $wgRateLimits = array_merge($wgRateLimits, [
 ]);
 $wgRateLimits['rollback'] = $wgRateLimits['edit'];
 $wgRateLimits['confirmemail'] = $wgRateLimits['changeemail'];
-
-// https://gerrit.wikimedia.org/r/c/mediawiki/core/+/879862
-if (version_compare(MW_VERSION, '1.40', '<')) {
-  $wgRateLimits['emailuser'] = $wgRateLimits['sendemail'];
-  $wgRateLimits['changetag'] = $wgRateLimits['changetags'];
-}
 
 //<< Access >>
 
@@ -1040,7 +1030,6 @@ if ($wmgUseExtensions['AntiSpoof'] || $wmgGlobalAccountMode === 'centralauth') {
 if ($wmgUseExtensions['Babel']) {
   // This extension requires running update.php.
   wfLoadExtension('Babel');
-  // 1.40+
   $wgBabelAllowOverride = false;
   $wgBabelCategoryNames = [
     '0' => false,
@@ -1114,8 +1103,6 @@ if ($wmgUseExtensions['CheckUser']) {
   // This extension requires running update.php.
   wfLoadExtension('CheckUser');
   $wgCheckUserCIDRLimit = $wmgCIDRLimit;
-  // This is same as default in MediaWiki 1.40 or newer.
-  $wgCheckUserEnableSpecialInvestigate = true;
   $wgCheckUserLogLogins = true;
   $wgCheckUserMaxBlocks = 10;
 
@@ -1136,10 +1123,7 @@ if ($wmgUseExtensions['CheckUser']) {
   else {
     $wgGroupPermissions['steward']['checkuser'] = true;
     $wgGroupPermissions['steward']['checkuser-log'] = true;
-
-    if (version_compare(MW_VERSION, '1.40', '>=')) {
-      $wgGroupPermissions['steward']['checkuser-temporary-account'] = true;
-    }
+    $wgGroupPermissions['steward']['checkuser-temporary-account'] = true;
 
     if (version_compare(MW_VERSION, '1.41', '>=')) {
       $wgGroupPermissions['steward']['checkuser-temporary-account-log'] = true;
@@ -1516,13 +1500,6 @@ if ($wmgUseExtensions['QuickInstantCommons']) {
   $wgQuickInstantCommonsPrefetchMaxLimit = 100;
 }
 
-//<< Renameuser >>
-
-if (version_compare(MW_VERSION, '1.40', '<')) {
-  wfLoadExtension('Renameuser');
-  $wgGroupPermissions['bureaucrat']['renameuser'] = false;
-}
-
 //<< ReplaceText >>
 
 if ($wmgUseExtensions['ReplaceText']) {
@@ -1681,8 +1658,6 @@ if ($wmgUseExtensions['VisualEditor']) {
   wfLoadExtension('VisualEditor');
   $wgVisualEditorAvailableNamespaces['Help'] = true;
   $wgVisualEditorAvailableNamespaces['Project'] = true;
-  // This is same as default in MediaWiki 1.40 or newer.
-  $wgVisualEditorEnableDiffPage = true;
   $wgVisualEditorEnableWikitext = true;
   $wgVisualEditorShowBetaWelcome = false;
   $wgVisualEditorUseSingleEditTab = true;
@@ -1730,39 +1705,14 @@ $wgVectorLanguageInHeader = [
   'logged_in' => false,
   'logged_out' => false
 ];
-/*
-1.40+
-Removed in MediaWiki 1.41
-*/
+$wgVectorMaxWidthOptions['exclude'] = [];
+// Removed in MediaWiki 1.41
 $wgVectorPageTools['logged_out'] = true;
 $wgVectorResponsive = true;
-// 1.40+
 $wgVectorShareUserScripts = false;
 $wgVectorStickyHeader['logged_out'] = true;
-// Removed in MediaWiki 1.40
-$wgVectorStickyHeaderEdit = [
-  'logged_in' => true,
-  'logged_out' => true
-];
-// Removed in MediaWiki 1.40
-$wgVectorVisualEnhancementNext = true;
 
-// 1.40+
 $wgDefaultUserOptions['vector-limited-width'] = 0;
-
-if (version_compare(MW_VERSION, '1.40', '<')) {
-  $wgVectorMaxWidthOptions = [
-    'exclude' => [
-      'mainpage' => true,
-      // All namespaces
-      'namespaces' => range(-1, 15)
-    ],
-    'include' => []
-  ];
-}
-else {
-  $wgVectorMaxWidthOptions['exclude'] = [];
-}
 
 //< Load other settings >
 
