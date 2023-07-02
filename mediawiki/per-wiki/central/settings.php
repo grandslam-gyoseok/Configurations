@@ -19,7 +19,6 @@ $wgLogos = [
 
 //<<< Thumbnail settings >>>
 
-// 1.40+
 $wgThumbnailNamespaces = [NS_FILE, NS_HELP, NS_MAIN, NS_PROJECT, NS_USER];
 
 //< ResourceLoader >
@@ -62,7 +61,6 @@ $wgFilterLogTypes['create'] = true;
 
 //< Miscellaneous settings >
 
-// 1.40+
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
 
 //< Extensions >
