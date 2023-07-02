@@ -15,7 +15,6 @@ if ($wmgGlobalAccountMode !== null) {
 }
 
 if ($wmgGlobalAccountMode !== 'centralauth') {
-  // This permission was moved from Renameuser extension to core in MediaWiki 1.40.
   $wgGroupPermissions['steward']['renameuser'] = true;
 }
 
@@ -73,10 +72,3 @@ $wgGroupPermissions['steward']['oathauth-verify-user'] = true;
 //<< PlavorMindTools >>
 
 $wgCUGDisableGroups = array_diff($wgCUGDisableGroups, ['steward']);
-
-//<< Renameuser >>
-
-if ($wmgGlobalAccountMode !== 'centralauth') {
-  // This permission was moved from Renameuser extension to core in MediaWiki 1.40.
-  $wgGroupPermissions['steward']['renameuser'] = true;
-}
