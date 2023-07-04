@@ -26,14 +26,17 @@ $wgImportSources = [];
 
 //<< AbuseFilter >>
 
-if ($wmgGlobalAccountMode === 'centralauth') {
+if ($wmgUseExtensions['AbuseFilter'] && $wmgGlobalAccountMode === 'centralauth') {
   $wgAbuseFilterIsCentral = true;
+
   $wgGroupPermissions['steward']['abusefilter-modify-global'] = true;
 }
 
 //<< AntiSpoof >>
 
-$wgGroupPermissions['steward']['override-antispoof'] = true;
+if ($wmgUseExtensions['AntiSpoof']) {
+  $wgGroupPermissions['steward']['override-antispoof'] = true;
+}
 
 //<< CentralAuth >>
 
@@ -56,18 +59,22 @@ if ($wmgGlobalAccountMode !== null) {
 
 //<< Interwiki >>
 
-if ($wmgGlobalAccountMode === 'shared-db') {
-  $wgGroupPermissions['steward']['interwiki'] = true;
-}
+if ($wmgUseExtensions['Interwiki']) {
+  if ($wmgGlobalAccountMode === 'shared-db') {
+    $wgGroupPermissions['steward']['interwiki'] = true;
+  }
 
-if ($wmgGlobalAccountMode !== null) {
-  $wgGroupPermissions['admin']['interwiki'] = false;
+  if ($wmgGlobalAccountMode !== null) {
+    $wgGroupPermissions['admin']['interwiki'] = false;
+  }
 }
 
 //<< OATHAuth >>
 
-$wgGroupPermissions['steward']['oathauth-disable-for-user'] = true;
-$wgGroupPermissions['steward']['oathauth-verify-user'] = true;
+if ($wmgUseExtensions['OATHAuth']) {
+  $wgGroupPermissions['steward']['oathauth-disable-for-user'] = true;
+  $wgGroupPermissions['steward']['oathauth-verify-user'] = true;
+}
 
 //<< PlavorMindTools >>
 
