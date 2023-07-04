@@ -75,8 +75,7 @@ $wmgUseExtensions = [
   'OATHAuth' => true,
   'PageImages' => false,
   'ParserFunctions' => true,
-  // This extension should not be disabled on wikis with global account enabled.
-  'Parsoid' => true,
+  'Parsoid' => false,
   // This extension should not be disabled on wikis with global account enabled.
   'PlavorMindTools' => true,
   'Poem' => false,
@@ -1193,7 +1192,7 @@ if ($wmgUseExtensions['ConfirmEdit']) {
 
 //<< DiscussionTools >>
 
-if ($wmgUseExtensions['DiscussionTools']) {
+if ($wmgUseExtensions['DiscussionTools'] && $wmgUseExtensions['Linter'] && $wmgUseExtensions['VisualEditor']) {
   // This extension requires running update.php.
   wfLoadExtension('DiscussionTools');
 }
@@ -1436,6 +1435,8 @@ if ($wmgUseExtensions['ParserFunctions']) {
 
 if ($wmgUseExtensions['Parsoid']) {
   wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
+  // 1.41+
+  $wgParsoidEnableQueryString = true;
 }
 
 //<< PlavorMindTools >>
