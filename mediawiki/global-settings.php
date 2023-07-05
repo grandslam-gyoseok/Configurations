@@ -1065,6 +1065,7 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   // Removed in MediaWiki 1.41
   $wgCentralAuthCreateOnView = true;
   $wgCentralAuthDatabase = 'wiki_centralauth';
+  $wgCentralAuthGlobalBlockInterwikiPrefix = 'central';
   $wgCentralAuthGlobalPasswordPolicies['steward'] = $wgPasswordPolicy['policies']['steward'];
   $wgCentralAuthLoginWiki = $wmgCentralDB;
   $wgCentralAuthOldNameAntiSpoofWiki = $wmgCentralDB;
