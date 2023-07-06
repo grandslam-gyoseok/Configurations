@@ -1468,14 +1468,14 @@ if ($wmgUseExtensions['PlavorMindTools']) {
   $wgUHHEnable = true;
   $wgUPAEnable = true;
 
-  $wgGroupPermissions['moderator']['editotheruserpages'] = true;
-  $wgGroupPermissions['staff']['movetousernamespace'] = true;
-  $wgGroupPermissions['admin']['editotheruserpages'] = true;
+  $wgGroupPermissions['moderator']['edit-other-user-pages'] = true;
+  $wgGroupPermissions['staff']['move-user-namespace'] = true;
+  $wgGroupPermissions['admin']['edit-other-user-pages'] = true;
   $wgRecentChangesFlags['minor']['letter'] = 'pmt-rc-flag-minor-edit';
   $wgRecentChangesFlags['newpage']['letter'] = 'pmt-rc-flag-new-page';
 
   if ($wmgGlobalAccountMode !== 'centralauth') {
-    $wgGroupPermissions['steward']['movetousernamespace'] = true;
+    $wgGroupPermissions['steward']['move-user-namespace'] = true;
   }
 }
 
