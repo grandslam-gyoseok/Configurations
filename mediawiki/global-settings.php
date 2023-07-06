@@ -377,7 +377,6 @@ $wgCleanSignatures = false;
 $wgEnableScaryTranscluding = true;
 $wgExternalLinkTarget = '_blank';
 $wgMaxTemplateDepth = 5;
-// Remove the default value ('mediawiki.org')
 $wgNoFollowDomainExceptions = [];
 $wgTranscludeCacheExpiry = $wmgCacheExpiry;
 // Only allow HTTP and HTTPS protocols in links
@@ -451,7 +450,6 @@ $wgPasswordPolicy['policies'] = [
     'MinimumPasswordLengthToLogin' => 6
   ]
 ];
-// Remove the default value ('obsolete-tag')
 $wgSignatureAllowedLintErrors = [];
 $wgSignatureValidation = 'disallow';
 
@@ -1580,7 +1578,6 @@ if ($wmgUseExtensions['TemplateSandbox']) {
 
 if ($wmgUseExtensions['TemplateStyles']) {
   wfLoadExtension('TemplateStyles');
-  // Remove default values
   $wgTemplateStylesAllowedUrls = [];
 }
 
