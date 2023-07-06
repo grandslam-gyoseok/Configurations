@@ -1012,7 +1012,7 @@ if ($wmgUseExtensions['AbuseFilter']) {
 
 //<< AntiSpoof >>
 
-if ($wmgUseExtensions['AntiSpoof'] || $wmgGlobalAccountMode === 'centralauth') {
+if ($wmgUseExtensions['AntiSpoof']) {
   // This extension requires running update.php.
   wfLoadExtension('AntiSpoof');
 
