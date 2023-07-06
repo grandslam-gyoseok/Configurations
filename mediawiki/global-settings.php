@@ -16,7 +16,7 @@ function getWiki(string $defaultDomain, string $uploadDomain, array $customDomai
   }
 
   foreach ([$defaultDomain, $uploadDomain] as $expectedDomain) {
-    // PCRE requires escaping "-" next to character class.
+    // PCRE requires escaping "-" next to a character class.
     $regex = str_replace('%wiki%', '([\\w\\-]+)', preg_quote($expectedDomain, '/'));
 
     if (preg_match("/^{$regex}$/i", $currentDomain, $matches)) {
@@ -350,7 +350,7 @@ $wgFragmentMode = ['html5'];
 
 //<< Skins >>
 
-// This is same as default in MediaWiki 1.41 or newer.
+// This is same as the default in MediaWiki 1.41 or newer.
 $wgDefaultSkin = 'vector-2022';
 $wgSkinMetaTags = ['og:title'];
 
@@ -377,7 +377,7 @@ $wgCleanSignatures = false;
 $wgEnableScaryTranscluding = true;
 $wgExternalLinkTarget = '_blank';
 $wgMaxTemplateDepth = 5;
-// Remove default value ('mediawiki.org')
+// Remove the default value ('mediawiki.org')
 $wgNoFollowDomainExceptions = [];
 $wgTranscludeCacheExpiry = $wmgCacheExpiry;
 // Only allow HTTP and HTTPS protocols in links
@@ -451,7 +451,7 @@ $wgPasswordPolicy['policies'] = [
     'MinimumPasswordLengthToLogin' => 6
   ]
 ];
-// Remove default value ('obsolete-tag')
+// Remove the default value ('obsolete-tag')
 $wgSignatureAllowedLintErrors = [];
 $wgSignatureValidation = 'disallow';
 
@@ -1166,11 +1166,11 @@ if ($wmgUseExtensions['CommonsMetadata']) {
 
 if ($wmgUseExtensions['ConfirmEdit']) {
   wfLoadExtensions(['ConfirmEdit', 'ConfirmEdit/hCaptcha']);
-  // This completely blocks API login until expiration.
+  // This completely blocks API login until the expiration.
   // 10 minutes
   $wgCaptchaBadLoginExpiration = 60 * 10;
   $wgCaptchaBadLoginPerUserAttempts = 10;
-  // This completely blocks API login until expiration.
+  // This completely blocks API login until the expiration.
   // 1 day
   $wgCaptchaBadLoginPerUserExpiration = 60 * 60 * 24;
   $wgCaptchaTriggers['create'] = true;
@@ -1209,7 +1209,7 @@ if ($wmgUseExtensions['Echo']) {
   ];
   $wgEchoMaxMentionsCount = 10;
   $wgEchoMaxMentionsInEditSummary = 10;
-  // This is also the number of maximum notifications for single user to have.
+  // This is also the number of maximum notifications for a single user to have.
   $wgEchoMaxUpdateCount = 100;
   $wgEchoMentionStatusNotifications = true;
   // $wgEchoNotificationIcons
@@ -1350,7 +1350,7 @@ if ($wmgUseExtensions['Linter']) {
 
 if ($wmgUseExtensions['LoginNotify'] && $wmgUseExtensions['Echo']) {
   wfLoadExtension('LoginNotify');
-  // Default value specified in "Extension:LoginNotify" page on MediaWiki.org does not match actual default value.
+  // Default value specified in "Extension:LoginNotify" page on MediaWiki.org does not match the actual default value.
   $wgLoginNotifyAttemptsNewIP = 3;
   // 2 week
   $wgLoginNotifyCacheLoginIPExpiry = 60 * 60 * 24 * 7 * 2;
