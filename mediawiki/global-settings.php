@@ -1028,6 +1028,8 @@ if ($wmgUseExtensions['Babel']) {
   // This extension requires running update.php.
   wfLoadExtension('Babel');
   $wgBabelAllowOverride = false;
+  // 1.41+
+  $wgBabelAutoCreate = false;
   $wgBabelCategoryNames = [
     '0' => false,
     '1' => false,
