@@ -63,6 +63,13 @@ $wgFilterLogTypes['create'] = true;
 
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
 
+//< Not listed yet >
+
+if ($wmgDebugLevel >= 1) {
+  // 1.41+
+  $wgResourceLoaderEnableSourceMapLinks = true;
+}
+
 //< Extensions >
 
 //<< AbuseFilter >>
@@ -84,5 +91,10 @@ $wgVisualEditorEnableVisualSectionEditing = true;
 
 //<< Vector >>
 
+// 1.41+
+$wgVectorCustomFontSize = [
+  'logged_in' => true,
+  'logged_out' => true
+];
 // 1.41+
 $wgVectorZebraDesign = true;
