@@ -32,6 +32,8 @@ $wmgBaseURL = 'https://%domain%';
 $wmgCacheExpiry = 60;
 $wmgCacheType = CACHE_MEMCACHED;
 $wmgCentralWiki = 'central';
+// This must end with "/" because it is used in Content Security Policy.
+$wmgCDNBaseURL = 'https://cdn.plavor.mind.local/wikis/';
 $wmgCIDRLimit = [
   // ###.0.0.0/8
   'IPv4' => 8,
@@ -39,8 +41,8 @@ $wmgCIDRLimit = [
   'IPv6' => 16
 ];
 $wmgCustomDomains = [];
-$wmgDebugLevel = 1;
-$wmgDefaultDomain = '%wiki%.plavormind.io';
+$wmgDebugLevel = 0;
+$wmgDefaultDomain = '%wiki%.w.plavor.mind.local';
 $wmgUseExtensions = [
   // This extension should not be disabled on wikis with global account enabled.
   'AbuseFilter' => true,
@@ -790,9 +792,10 @@ $wgAllowUserCss = true;
 $wgAllowUserJs = true;
 $wgBreakFrames = true;
 $wgCSPHeader = [
-  'default-src' => [],
+  'default-src' => [$wmgCDNBaseURL],
   'includeCORS' => false,
-  'unsafeFallback' => false
+  // This breaks some features.
+  // 'unsafeFallback' => false
 ];
 $wgRestAllowCrossOriginCookieAuth = true;
 
@@ -1466,7 +1469,7 @@ if ($wmgUseExtensions['PlavorMindTools']) {
   $wgRIMEnable = true;
   $wgRIMEnglishSystemUsers = true;
   $wgRIMPlavorMindSpecificMessages = true;
-  $wgUHHCSPs['enforced'] = "default-src 'none'; img-src 'self';";
+  $wgUHHCSPs['enforced'] = "default-src 'none'; img-src 'self'; sandbox; style-src 'unsafe-inline';";
   $wgUHHEnable = true;
   $wgUPAEnable = true;
 
