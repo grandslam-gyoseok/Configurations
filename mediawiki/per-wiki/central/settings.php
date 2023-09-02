@@ -10,7 +10,7 @@ $wgLogos = [
   '1.5x' => "$wmgCDNBaseURL/per-wiki/$wmgWiki/logos/logo-1.5x.png",
   '2x' => "$wmgCDNBaseURL/per-wiki/$wmgWiki/logos/logo-2x.png",
   'icon' => "$wmgCDNBaseURL/per-wiki/$wmgWiki/logos/logo.svg",
-  'svg' => "$wmgCDNBaseURL/per-wiki/$wmgWiki/logos/logo.svg",
+  'svg' => "$wmgCDNBaseURL/per-wiki/$wmgWiki/logos/logo.svg"
 ];
 
 //< Files and file uploads >
