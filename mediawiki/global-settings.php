@@ -32,8 +32,7 @@ $wmgBaseURL = 'https://%domain%';
 $wmgCacheExpiry = 60;
 $wmgCacheType = CACHE_MEMCACHED;
 $wmgCentralWiki = 'central';
-// This must end with "/" because it is used in Content Security Policy.
-$wmgCDNBaseURL = 'https://cdn.plavor.mind.local/wikis/';
+$wmgCDNBaseURL = 'https://cdn.plavor.mind.local/wikis';
 $wmgCIDRLimit = [
   // ###.0.0.0/8
   'IPv4' => 8,
@@ -792,7 +791,7 @@ $wgAllowUserCss = true;
 $wgAllowUserJs = true;
 $wgBreakFrames = true;
 $wgCSPHeader = [
-  'default-src' => [$wmgCDNBaseURL],
+  'default-src' => ["$wmgCDNBaseURL/"],
   'includeCORS' => false,
   // This breaks some features.
   // 'unsafeFallback' => false
