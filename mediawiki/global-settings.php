@@ -1468,7 +1468,7 @@ if ($wmgUseExtensions['PlavorMindTools']) {
   $wgRIMEnable = true;
   $wgRIMEnglishSystemUsers = true;
   $wgRIMPlavorMindSpecificMessages = true;
-  $wgUHHCSPs['enforced'] = "default-src 'none'; img-src 'self'; sandbox; style-src 'unsafe-inline';";
+  $wgUHHCSPs['enforced'] = "default-src 'none'; img-src $wgServer/favicon.ico; sandbox; style-src 'unsafe-inline';";
   $wgUHHEnable = true;
   $wgUPAEnable = true;
 
