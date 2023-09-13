@@ -325,7 +325,6 @@ $wgSidebarCacheExpiry = $wmgCacheExpiry;
 $wgOldRevisionParserCacheExpireTime = $wmgCacheExpiry;
 $wgParserCacheExpireTime = $wmgCacheExpiry;
 $wgParserCacheType = $wmgCacheType;
-$wgUseContentMediaStyles = true;
 
 //<< Memcached settings >>
 
