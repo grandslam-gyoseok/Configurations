@@ -788,11 +788,10 @@ $wgAllowUserCssPrefs = false;
 $wgAllowUserCss = true;
 $wgAllowUserJs = true;
 $wgBreakFrames = true;
+// Nonce support has been removed in MediaWiki 1.41: https://gerrit.wikimedia.org/r/c/mediawiki/core/+/945958
 $wgCSPHeader = [
   'default-src' => ["$wmgCDNBaseURL/"],
-  'includeCORS' => false,
-  // This breaks some features.
-  // 'unsafeFallback' => false
+  'includeCORS' => false
 ];
 $wgRestAllowCrossOriginCookieAuth = true;
 
