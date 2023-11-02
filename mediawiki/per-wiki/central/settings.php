@@ -21,14 +21,16 @@ $wgLogos = [
 
 $wgThumbnailNamespaces = [NS_FILE, NS_HELP, NS_MAIN, NS_PROJECT, NS_USER];
 
-//< ResourceLoader >
-
-$wgAllowSiteCSSOnRestrictedPages = true;
+//< Language, regional and character encoding settings >
 
 if ($wmgDebugLevel >= 1) {
   // 1.41+
-  $wgResourceLoaderEnableSourceMapLinks = true;
+  $wgUseXssLanguage = true;
 }
+
+//< ResourceLoader >
+
+$wgAllowSiteCSSOnRestrictedPages = true;
 
 //< Page titles and redirects >
 
