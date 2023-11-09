@@ -70,12 +70,20 @@ $wgFilterLogTypes['create'] = true;
 
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
 
+//< Not listed yet >
+
+// 1.42+
+$wgEnableMultiBlocks = true;
+
 //< Extensions >
 
 //<< AbuseFilter >>
 
+// 1.42+
+$wgAbuseFilterBlockedExternalDomainsNotifications = true;
 // 1.41+
 $wgAbuseFilterEnableBlockedExternalDomain = true;
+
 
 //<< CiteThisPage >>
 
