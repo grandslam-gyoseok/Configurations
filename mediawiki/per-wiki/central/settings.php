@@ -84,7 +84,6 @@ $wgAbuseFilterBlockedExternalDomainsNotifications = true;
 // 1.41+
 $wgAbuseFilterEnableBlockedExternalDomain = true;
 
-
 //<< CiteThisPage >>
 
 $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
