@@ -1373,6 +1373,10 @@ if ($wmgUseExtensions['Math']) {
   // This extension requires running update.php.
   wfLoadExtension('Math');
   $wgMathEnableWikibaseDataType = false;
+  // Merge strategy of this is array_merge.
+  $wgMathValidModes = ['native'];
+
+  $wgDefaultUserOptions['math'] = 'native';
 }
 
 //<< MultimediaViewer >>
@@ -1435,7 +1439,10 @@ if ($wmgUseExtensions['ParserFunctions']) {
 
 if ($wmgUseExtensions['Parsoid']) {
   wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
-  // 1.41+
+  /*
+  1.41+
+  Removed in MediaWiki 1.42
+  */
   $wgParsoidEnableQueryString = true;
 }
 
