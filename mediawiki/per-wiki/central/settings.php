@@ -51,6 +51,8 @@ $wgLocalInterwikis = ['central'];
 
 //<< Access >>
 
+// 1.42+
+$wgEnableMultiBlocks = true;
 $wgEnablePartialActionBlocks = true;
 $wgNamespaceProtection = [
   NS_PROJECT => ['editprotected-admin'],
@@ -69,11 +71,6 @@ $wgFilterLogTypes['create'] = true;
 //< Miscellaneous settings >
 
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
-
-//< Not listed yet >
-
-// 1.42+
-$wgEnableMultiBlocks = true;
 
 //< Extensions >
 
