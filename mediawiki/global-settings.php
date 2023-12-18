@@ -576,6 +576,8 @@ $wgGroupPermissions = [
     'editsitejson' => true,
     'editusercss' => true,
     'edituserjson' => true,
+    'import' => true,
+    'importupload' => true,
     'mergehistory' => true
   ]
 ];
@@ -616,8 +618,6 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
     'editsitejs' => true,
     'edituserjs' => true,
     'hideuser' => true,
-    'import' => true,
-    'importupload' => true,
     'nominornewtalk' => true,
     'noratelimit' => true,
     'override-export-depth' => true,
@@ -948,12 +948,8 @@ if ($wmgUseExtensions['AbuseFilter']) {
   ];
   // $wgAbuseFilterDefaultDisallowMessage
   // $wgAbuseFilterDefaultWarningMessage
-  $wgAbuseFilterEmergencyDisableCount = [
-    'default' => 10
-  ];
-  $wgAbuseFilterEmergencyDisableThreshold = [
-    'default' => 0.1
-  ];
+  $wgAbuseFilterEmergencyDisableCount['default'] = 10;
+  $wgAbuseFilterEmergencyDisableThreshold['default'] = 0.1;
   $wgAbuseFilterNotifications = 'rcandudp';
 
   $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
@@ -1410,7 +1406,10 @@ if ($wmgUseExtensions['OATHAuth']) {
 
   if ($wmgGlobalAccountMode !== null) {
     $wgOATHAuthAccountPrefix = 'PlavorMind wikis';
+    // This setting is superseded by $wgVirtualDomainsMapping and deprecated in MediaWiki 1.42.
     $wgOATHAuthDatabase = $wmgCentralDB;
+    // 1.42+
+    $wgVirtualDomainsMapping['virtual-oathauth']['db'] = $wmgCentralDB;
   }
 
   if ($wmgGlobalAccountMode !== 'centralauth') {
