@@ -1265,10 +1265,13 @@ if ($wmgGlobalAccountMode !== null) {
   // This extension requires running update.php.
   wfLoadExtension('GlobalBlocking');
   $wgGlobalBlockingCIDRLimit = $wmgCIDRLimit;
+  // Removed in MediaWiki 1.42
   $wgGlobalBlockingDatabase = $wmgCentralDB;
   $wgGlobalBlockRemoteReasonUrl = "{$wmgCentralBaseURL}{$wgScriptPath}/api.php";
   $wgGroupPermissions['sysop']['globalblock-whitelist'] = false;
   $wgGroupPermissions['steward']['globalblock'] = false;
+  // 1.42+
+  $wgVirtualDomainsMapping['virtual-globalblocking']['db'] = $wmgCentralDB;
 }
 
 //<< GlobalCssJs >>
