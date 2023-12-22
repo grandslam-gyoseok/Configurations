@@ -24,7 +24,6 @@ $wgThumbnailNamespaces = [NS_FILE, NS_HELP, NS_MAIN, NS_PROJECT, NS_USER];
 //< Language, regional and character encoding settings >
 
 if ($wmgDebugLevel >= 1) {
-  // 1.41+
   $wgUseXssLanguage = true;
 }
 
@@ -78,7 +77,6 @@ $wgSpecialContributeSkinsEnabled = ['vector-2022'];
 
 // 1.42+
 $wgAbuseFilterBlockedExternalDomainsNotifications = true;
-// 1.41+
 $wgAbuseFilterEnableBlockedExternalDomain = true;
 
 //<< CiteThisPage >>
@@ -95,10 +93,4 @@ $wgVisualEditorEnableVisualSectionEditing = true;
 
 //<< Vector >>
 
-// 1.41+
-$wgVectorCustomFontSize = [
-  'logged_in' => true,
-  'logged_out' => true
-];
-// 1.41+
 $wgVectorZebraDesign = true;
