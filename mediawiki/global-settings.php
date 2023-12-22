@@ -232,7 +232,13 @@ $wgCopyUploadsDomains = ['openclipart.org'];
 $wgCopyUploadsFromSpecialUpload = true;
 $wgDeletedDirectory = "$wmgDataDirectory/private/per-wiki/$wmgWiki/deleted-uploads";
 $wgEnableUploads = true;
-$wgFileExtensions = ['gif', 'jpg', 'png', 'webp'];
+$wgFileExtensions = [
+  'gif',
+  'jpg',
+  'png',
+  'svg',
+  'webp'
+];
 $wgImgAuthDetails = true;
 $wgMaxUploadSize = [
   // 3 MiB
@@ -245,10 +251,6 @@ $wgNativeImageLazyLoading = true;
 // 1 MiB
 $wgUploadSizeWarning = 1024 * 1024 * 1;
 
-if (version_compare(MW_VERSION, '1.41', '>=')) {
-  $wgFileExtensions[] = 'svg';
-}
-
 //<< MIME types >>
 
 $wgVerifyMimeTypeIE = false;
@@ -257,7 +259,6 @@ $wgVerifyMimeTypeIE = false;
 
 //<<< SVG >>>
 
-// 1.41+
 $wgSVGNativeRendering = true;
 
 //<<< Thumbnail settings >>>
@@ -350,8 +351,6 @@ $wgFragmentMode = ['html5'];
 
 //<< Skins >>
 
-// This is same as the default in MediaWiki 1.41 or newer.
-$wgDefaultSkin = 'vector-2022';
 $wgSkinMetaTags = ['og:title'];
 
 unset($wgFooterIcons['poweredby']);
@@ -788,7 +787,7 @@ $wgAllowUserCssPrefs = false;
 $wgAllowUserCss = true;
 $wgAllowUserJs = true;
 $wgBreakFrames = true;
-// Nonce support has been removed in MediaWiki 1.41: https://gerrit.wikimedia.org/r/c/mediawiki/core/+/945958
+// Nonce support has been removed: https://gerrit.wikimedia.org/r/c/mediawiki/core/+/945958
 $wgCSPHeader = [
   'default-src' => ["$wmgCDNBaseURL/"],
   'includeCORS' => false
@@ -954,7 +953,6 @@ if ($wmgUseExtensions['AbuseFilter']) {
 
   $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
     'bot' => [
-      // 1.41+
       'abusefilter-bypass-blocked-external-domains' => false
     ],
     'suppress' => [
@@ -965,7 +963,6 @@ if ($wmgUseExtensions['AbuseFilter']) {
       'abusefilter-log-detail' => false,
       'abusefilter-log-private' => false,
       'abusefilter-modify' => false,
-      // 1.41+
       'abusefilter-modify-blocked-external-domains' => false,
       'abusefilter-modify-restricted' => false,
       'abusefilter-revert' => false,
@@ -988,18 +985,15 @@ if ($wmgUseExtensions['AbuseFilter']) {
   }
   else {
     $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['steward'], [
+      'abusefilter-bypass-blocked-external-domains' => true,
       'abusefilter-hidden-log' => true,
       'abusefilter-hide-log' => true,
       'abusefilter-modify' => true,
+      'abusefilter-modify-blocked-external-domains' => true,
       'abusefilter-privatedetails' => true,
       'abusefilter-privatedetails-log' => true,
       'abusefilter-revert' => true
     ]);
-
-    if (version_compare(MW_VERSION, '1.41', '>=')) {
-      $wgGroupPermissions['steward']['abusefilter-bypass-blocked-external-domains'] = true;
-      $wgGroupPermissions['steward']['abusefilter-modify-blocked-external-domains'] = true;
-    }
   }
 }
 
@@ -1023,7 +1017,6 @@ if ($wmgUseExtensions['Babel']) {
   // This extension requires running update.php.
   wfLoadExtension('Babel');
   $wgBabelAllowOverride = false;
-  // 1.41+
   $wgBabelAutoCreate = false;
   $wgBabelCategoryNames = [
     '0' => false,
@@ -1057,18 +1050,12 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgCentralAuthAutoMigrate = true;
   $wgCentralAuthAutoMigrateNonGlobalAccounts = true;
   $wgCentralAuthCookies = true;
-  // Removed in MediaWiki 1.41
-  $wgCentralAuthCreateOnView = true;
   $wgCentralAuthDatabase = 'wiki_centralauth';
   $wgCentralAuthGlobalBlockInterwikiPrefix = 'central';
   $wgCentralAuthGlobalPasswordPolicies['steward'] = $wgPasswordPolicy['policies']['steward'];
   $wgCentralAuthLoginWiki = $wmgCentralDB;
   $wgCentralAuthOldNameAntiSpoofWiki = $wmgCentralDB;
-  // Removed in MediaWiki 1.41
-  $wgCentralAuthPreventUnattached = true;
   $wgCentralAuthStrict = true;
-  // Removed in MediaWiki 1.41
-  $wgDisableUnmergedEditing = true;
   $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
     'sysop' => [
       'centralauth-createlocal' => false
@@ -1119,10 +1106,7 @@ if ($wmgUseExtensions['CheckUser']) {
     $wgGroupPermissions['steward']['checkuser'] = true;
     $wgGroupPermissions['steward']['checkuser-log'] = true;
     $wgGroupPermissions['steward']['checkuser-temporary-account'] = true;
-
-    if (version_compare(MW_VERSION, '1.41', '>=')) {
-      $wgGroupPermissions['steward']['checkuser-temporary-account-log'] = true;
-    }
+    $wgGroupPermissions['steward']['checkuser-temporary-account-log'] = true;
   }
 }
 
@@ -1441,10 +1425,7 @@ if ($wmgUseExtensions['ParserFunctions']) {
 
 if ($wmgUseExtensions['Parsoid']) {
   wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
-  /*
-  1.41+
-  Removed in MediaWiki 1.42
-  */
+  // Removed in MediaWiki 1.42
   $wgParsoidEnableQueryString = true;
 }
 
@@ -1457,7 +1438,6 @@ if ($wmgUseExtensions['PlavorMindTools']) {
     'bot',
     'bureaucrat',
     'checkuser',
-    // 1.41+
     'checkuser-temporary-account-viewer',
     'push-subscription-manager',
     'steward',
@@ -1548,7 +1528,6 @@ if ($wmgUseExtensions['SpamBlacklist']) {
   $wgBlacklistSettings['spam']['files'] = [];
   $wgLogSpamBlacklistHits = true;
 
-  // 1.41+
   $wgGroupPermissions['bot']['sboverride'] = false;
   $wgGroupPermissions['user']['spamblacklistlog'] = false;
   $wgRawHtmlMessages[] = 'email-blacklist';
@@ -1680,8 +1659,6 @@ if ($wmgUseExtensions['VisualEditor']) {
 
 if ($wmgUseExtensions['WikiEditor']) {
   wfLoadExtension('WikiEditor');
-  // This is same as default in MediaWiki 1.41 or newer.
-  $wgWikiEditorRealtimePreview = true;
 }
 
 //< Skins >
@@ -1708,15 +1685,11 @@ if ($wmgUseSkins['Timeless']) {
 //<< Vector >>
 
 wfLoadSkin('Vector');
-// Removed in MediaWiki 1.41
-$wgVectorDefaultSidebarVisibleForAnonymousUser = true;
 $wgVectorLanguageInHeader = [
   'logged_in' => false,
   'logged_out' => false
 ];
 $wgVectorMaxWidthOptions['exclude'] = [];
-// Removed in MediaWiki 1.41
-$wgVectorPageTools['logged_out'] = true;
 $wgVectorResponsive = true;
 $wgVectorShareUserScripts = false;
 $wgVectorStickyHeader['logged_out'] = true;
