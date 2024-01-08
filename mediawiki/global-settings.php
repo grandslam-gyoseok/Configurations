@@ -1,5 +1,5 @@
 <?php
-function getWiki(string $defaultDomain, string $uploadDomain, array $customDomains): ?string {
+function getWiki(string $defaultDomain, array $customDomains): ?string {
   if (PHP_SAPI === 'cli') {
     if (defined('MW_WIKI_NAME')) {
       return MW_WIKI_NAME;
@@ -15,13 +15,11 @@ function getWiki(string $defaultDomain, string $uploadDomain, array $customDomai
     return $wiki;
   }
 
-  foreach ([$defaultDomain, $uploadDomain] as $expectedDomain) {
-    // PCRE requires escaping "-" next to a character class.
-    $regex = str_replace('%wiki%', '([\\w\\-]+)', preg_quote($expectedDomain, '/'));
+  // PCRE requires escaping "-" next to a character class.
+  $regex = str_replace('%wiki%', '([\\w\\-]+)', preg_quote($defaultDomain, '/'));
 
-    if (preg_match("/^{$regex}$/i", $currentDomain, $matches)) {
-      return $matches[1];
-    }
+  if (preg_match("/^{$regex}$/i", $currentDomain, $matches)) {
+    return $matches[1];
   }
 }
 
@@ -107,7 +105,7 @@ $wmgUseSkins = [
   'MinervaNeue' => false,
   'Timeless' => false
 ];
-$wmgWiki = getWiki($wmgDefaultDomain, 'default', $wmgCustomDomains);
+$wmgWiki = getWiki($wmgDefaultDomain, $wmgCustomDomains);
 $wmgWikis = ['central', 'osa'];
 
 $wmgCentralDB = "pmw$wmgCentralWiki";
