@@ -37,9 +37,5 @@
   "window.autoDetectColorScheme": true,
   "window.restoreWindows": "none",
   "workbench.colorTheme": "Default Light Modern",
-  "workbench.editor.languageDetection": false,
-
-  "[go]": {
-    "editor.insertSpaces": true
-  }
+  "workbench.editor.languageDetection": false
 }
