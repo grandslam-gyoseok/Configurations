@@ -88,9 +88,3 @@ $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
 // Experimental
 $wgVisualEditorAllowExternalLinkPaste = true;
 $wgVisualEditorEnableVisualSectionEditing = true;
-
-//< Skins >
-
-//<< Vector >>
-
-$wgVectorZebraDesign = true;
