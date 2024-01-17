@@ -1691,6 +1691,11 @@ $wgVectorMaxWidthOptions['exclude'] = [];
 $wgVectorResponsive = true;
 $wgVectorShareUserScripts = false;
 $wgVectorStickyHeader['logged_out'] = true;
+// Removed in MediaWiki 1.42
+$wgVectorZebraDesign = [
+  'logged_in' => true,
+  'logged_out' => true
+];
 
 $wgDefaultUserOptions['vector-limited-width'] = 0;
 
