@@ -88,3 +88,16 @@ $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
 // Experimental
 $wgVisualEditorAllowExternalLinkPaste = true;
 $wgVisualEditorEnableVisualSectionEditing = true;
+
+//< Skins >
+
+//<< MinervaNeue >>
+
+$wgMinervaNightMode['base'] = true;
+
+//<< Vector >>
+
+$wgVectorNightMode = [
+  'logged_in' => true,
+  'logged_out' => true
+];
