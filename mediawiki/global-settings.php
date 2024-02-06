@@ -1088,6 +1088,10 @@ if ($wmgUseExtensions['CheckUser']) {
 
   $wgGroupPermissions['checkuser']['checkuser'] = false;
   $wgGroupPermissions['checkuser']['checkuser-log'] = false;
+  // 1.42+
+  $wgGroupPermissions['checkuser']['checkuser-temporary-account'] = false;
+  // 1.42+
+  $wgGroupPermissions['checkuser']['checkuser-temporary-account-log'] = false;
 
   if ($wmgGlobalAccountMode === 'centralauth') {
     $wgCheckUserCAMultiLock = [
@@ -1436,7 +1440,6 @@ if ($wmgUseExtensions['PlavorMindTools']) {
     'bot',
     'bureaucrat',
     'checkuser',
-    'checkuser-temporary-account-viewer',
     'push-subscription-manager',
     'steward',
     'suppress',
