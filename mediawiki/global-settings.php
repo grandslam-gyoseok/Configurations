@@ -282,6 +282,8 @@ if ($wmgGlobalAccountMode !== null) {
   }
 
   unset($wiki, $wikis);
+  // 1.42+
+  $wgVirtualDomainsMapping['virtual-botpasswords']['db'] = $wmgCentralDB;
 }
 
 //<< SQLite-specific >>
@@ -760,6 +762,7 @@ $wgCascadingRestrictionLevels = [
   'editprotected-steward'
 ];
 $wgDeleteRevisionsLimit = 250;
+$wgEnablePartialActionBlocks = true;
 $wgRestrictionLevels = [
   '',
   'editprotected-user',
@@ -775,7 +778,8 @@ $wgSemiprotectedRestrictionLevels = [
   'editprotected-autoconfirmed'
 ];
 
-if ($wmgGlobalAccountMode !== null) {
+// https://gerrit.wikimedia.org/r/c/mediawiki/core/+/976765
+if ($wmgGlobalAccountMode !== null && version_compare(MW_VERSION, '1.42', '<')) {
   $wgBotPasswordsDatabase = $wmgCentralDB;
 }
 
@@ -1089,9 +1093,9 @@ if ($wmgUseExtensions['CheckUser']) {
   $wgGroupPermissions['checkuser']['checkuser'] = false;
   $wgGroupPermissions['checkuser']['checkuser-log'] = false;
   // 1.42+
-  $wgGroupPermissions['checkuser']['checkuser-temporary-account'] = false;
-  // 1.42+
   $wgGroupPermissions['checkuser']['checkuser-temporary-account-log'] = false;
+  // 1.42+
+  $wgGroupPermissions['checkuser']['checkuser-temporary-account-no-preference'] = false;
 
   if ($wmgGlobalAccountMode === 'centralauth') {
     $wgCheckUserCAMultiLock = [
@@ -1107,8 +1111,14 @@ if ($wmgUseExtensions['CheckUser']) {
   else {
     $wgGroupPermissions['steward']['checkuser'] = true;
     $wgGroupPermissions['steward']['checkuser-log'] = true;
-    $wgGroupPermissions['steward']['checkuser-temporary-account'] = true;
     $wgGroupPermissions['steward']['checkuser-temporary-account-log'] = true;
+
+    if (version_compare(MW_VERSION, '1.42', '<')) {
+      $wgGroupPermissions['steward']['checkuser-temporary-account'] = true;
+    }
+    else {
+      $wgGroupPermissions['steward']['checkuser-temporary-account-no-preference'] = true;
+    }
   }
 }
 
