@@ -52,7 +52,6 @@ $wgLocalInterwikis = ['central'];
 
 // 1.42+
 $wgEnableMultiBlocks = true;
-$wgEnablePartialActionBlocks = true;
 $wgNamespaceProtection = [
   NS_PROJECT => ['editprotected-admin'],
   NS_TEMPLATE => ['editprotected-admin']
