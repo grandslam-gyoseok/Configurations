@@ -70,6 +70,11 @@ $wgFilterLogTypes['create'] = true;
 
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
 
+//< Not listed yet >
+
+// 1.42+
+$wgUseCodexSpecialBlock = true;
+
 //< Extensions >
 
 //<< AbuseFilter >>
