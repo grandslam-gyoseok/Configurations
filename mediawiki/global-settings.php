@@ -1228,6 +1228,14 @@ if ($wmgUseExtensions['Echo']) {
     ]
   ];
 
+  // 1.42+
+  $wgConditionalUserOptions['echo-subscriptions-email-article-linked'] = [];
+  // 1.42+
+  $wgConditionalUserOptions['echo-subscriptions-email-mention'] = [];
+  // 1.42+
+  $wgConditionalUserOptions['echo-subscriptions-web-article-linked'] = [];
+  // 1.42+
+  $wgConditionalUserOptions['echo-subscriptions-web-reverted'] = [];
   $wgGroupPermissions['push-subscription-manager']['manage-all-push-subscriptions'] = false;
 
   $wgDefaultUserOptions = array_merge($wgDefaultUserOptions, [
@@ -1685,6 +1693,9 @@ if ($wmgUseSkins['MinervaNeue']) {
   $wgMinervaPersonalMenu['base'] = true;
   $wgMinervaShowCategories['base'] = true;
   $wgMinervaTalkAtTop['base'] = true;
+
+  // 1.42+
+  $wgDefaultUserOptions['minerva-night-mode'] = 2;
 }
 
 //<< Timeless >>
