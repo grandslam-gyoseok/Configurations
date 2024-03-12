@@ -5,6 +5,7 @@
   "editor.detectIndentation": false,
   "editor.fontFamily": "'D2Coding', 'Consolas', monospace",
   "editor.inlayHints.fontFamily": "'D2Coding', 'Consolas', monospace",
+  "editor.stickyScroll.enabled": false,
   "editor.tabSize": 2,
   "editor.unicodeHighlight.includeComments": true,
   "editor.unicodeHighlight.nonBasicASCII": false,
