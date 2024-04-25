@@ -1268,7 +1268,10 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 if ($wmgGlobalAccountMode !== null) {
   // This extension requires running update.php.
   wfLoadExtension('GlobalBlocking');
-  // This is same as the default in MediaWiki 1.43 or newer.
+  /*
+  1.42+
+  This is same as the default in MediaWiki 1.43 or newer.
+  */
   $wgGlobalBlockingAllowGlobalAccountBlocks = true;
   $wgGlobalBlockingCIDRLimit = $wmgCIDRLimit;
   // Removed in MediaWiki 1.42
